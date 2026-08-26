@@ -1,0 +1,1498 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Навчальні матеріали" />
+
+    <link rel="icon" type="image/svg+xml" href="../media/icons/space.svg" />
+
+    <title>Python Lesson 9: Loops</title>
+
+    <script>
+      const savedTheme = localStorage.getItem("lms_theme") || "light";
+      document.documentElement.setAttribute("data-theme", savedTheme);
+
+      const hljsThemeLink =
+        savedTheme === "dark"
+          ? "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css"
+          : "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css";
+
+      document.head.insertAdjacentHTML(
+        "beforeend",
+        `<link id="hljs-theme" rel="stylesheet" href="${hljsThemeLink}" />`,
+      );
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Fira+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Tektur:wght@400..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"
+    ></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.css"
+    />
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.js"
+    ></script>
+
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/javascript/javascript.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/xml/xml.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/css/css.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/htmlmixed/htmlmixed.min.js"
+    ></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/theme/dracula.min.css"
+    />
+
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/python/python.min.js"
+    ></script>
+
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt-stdlib.js"
+    ></script>
+
+    <link rel="stylesheet" href="../style.css" />
+    <script src="../script.js" defer></script>
+  </head>
+
+  <body>
+    <div class="transition-curtain"></div>
+
+    <div id="nav-container">
+      <nav class="top-bar">
+        <div class="logo-container">
+          <img
+            src="../media/icons/space.svg"
+            alt="Logo"
+            width="62"
+            height="62"
+            class="site-logo"
+          />
+        </div>
+        <div class="top-bar__controls">
+          <a href="./menu.html" class="menu-link">All Lessons</a>
+          <label class="toggle-switch" aria-label="Перемикач теми">
+            <input type="checkbox" id="theme-checkbox" />
+            <span class="slider">
+              <span class="icon sun"
+                ><img src="../media/icons/stars.svg"
+              /></span>
+              <span class="icon moon"
+                ><img src="../media/icons/moon.svg"
+              /></span>
+            </span>
+          </label>
+
+          <button
+            id="dyslexia-mode-btn"
+            class="wide-toggle"
+            title="Шрифт для дислектиків"
+          >
+            Aa
+          </button>
+        </div>
+      </nav>
+    </div>
+
+    <header>
+      <div class="title-container">
+        <a
+          href="./lesson8.html"
+          class="nav-arrow prev-arrow"
+          title="Попередній урок"
+        >
+          ←
+        </a>
+
+        <h1 id="lesson-title">Python: 09</h1>
+
+        <a href="#" class="nav-arrow next-arrow" title="Наступний урок"> → </a>
+      </div>
+
+      <p class="topic">Цикли: for, while</p>
+
+      <section class="objective">
+        <p>Мета цього уроку:</p>
+        <ul type="square">
+          <li>
+            Зрозуміти різницю між циклами
+            <span class="accent-code">for</span> та
+            <span class="accent-code">while</span>.
+          </li>
+          <li>
+            Навчитися керувати нескінченними циклами за допомогою
+            <span class="accent-code">break</span> і
+            <span class="accent-code">continue</span>.
+          </li>
+          <li>Написати безпечні запити вводу користувача.</li>
+          <li>Застосувати цикли для розв'язання логічних задач.</li>
+        </ul>
+      </section>
+
+      <hr />
+    </header>
+
+    <main>
+      <div class="tabs-nav">
+        <button class="tab-btn active" data-target="part-1">Теорія</button>
+        <button class="tab-btn" data-target="part-2">Практика</button>
+        <button class="tab-btn" data-target="part-3">ДЗ</button>
+      </div>
+
+      <!-- 🌻 PART 1: ТЕОРІЯ -->
+      <section id="part-1" class="accordion tab-content active show">
+        <!-- Розділ 1 -->
+        <details class="accordion__item" name="section1">
+          <summary class="accordion__header">
+            <h2>
+              <img src="../media/icons/read.svg" class="star" />
+              <span>Частина 1. Цикли for з range()</span>
+            </h2>
+            <span class="acc-arrow">▶</span>
+          </summary>
+
+          <div class="accordion__content">
+            <h3>for i in range(n)</h3>
+
+            <p>
+              Цикл із відомою кількістю повторів. Використовуємо, коли наперед
+              відомо, скільки саме разів треба повторити дію.
+            </p>
+
+            <pre><code class="language-python">for i in range(5):
+    print(i)</code></pre>
+
+            <p>
+              <span class="accent-code">range(n)</span> — це числа від
+              <span class="accent-code">0</span> до
+              <span class="accent-code">n-1</span>.
+            </p>
+
+            <!-- <img src="./images/lesson8/8_1.png" alt="code result" /> -->
+
+            <div class="soft-callout">
+              <ul>
+                <li>
+                  Скільки разів виконається
+                  <span class="accent-code">print(i)</span> в циклі
+                  <span class="accent-code">for i in range(255)</span>?
+                </li>
+                <li>Яке число надрукується першим, а яке — останнім?</li>
+              </ul>
+
+              <textarea
+                id="l9-p1-q1"
+                class="test-textarea"
+                rows="2"
+                placeholder="..."
+              ></textarea>
+            </div>
+
+            <hr class="soft-hr" />
+
+            <h3>for i in range(n, m)</h3>
+            <p>
+              Цикл у діапазоні від <span class="accent-code">n</span> до
+              <span class="accent-code">m</span> (не включно з m).
+            </p>
+
+            <pre><code class="language-python">for i in range(3, 8):
+    print(i)</code></pre>
+
+            <p>
+              Починаємо не з нуля, а з <span class="accent-code">n</span>, і
+              зупиняємось на <span class="accent-code">m - 1</span>.
+            </p>
+
+            <!-- <img src="./images/lesson8/8_2.png" alt="code result" /> -->
+
+            <div class="soft-callout">
+              <ul>
+                <li>
+                  Як треба змінити цикл з прикладу, щоб вивести всі числа від
+                  <span class="accent">15</span> до
+                  <span class="accent">25</span> включно?
+                </li>
+              </ul>
+
+              <textarea
+                id="l9-p1-q2"
+                class="test-textarea"
+                rows="2"
+                placeholder="Твоя відповідь..."
+              ></textarea>
+            </div>
+
+            <hr class="soft-hr" />
+
+            <h3>Вкладені цикли</h3>
+            <p>
+              Зовнішній цикл — «рядки», внутрішній — «стовпці». Для кожного
+              значення <span class="accent-code">i</span> внутрішній цикл
+              проходить <strong>повністю по всіх значеннях</strong>
+              <span class="accent-code">j</span>, перед тим, як перейти до
+              наступного <span class="accent-code">i</span>.
+            </p>
+
+            <pre><code class="language-python">for i in range(2):
+    for j in range(3):
+        print(f"i = {i}, j = {j}")
+    print("------------")</code></pre>
+
+            <!-- <img src="./images/lesson8/8_3.png" alt="code result" /> -->
+
+            <pre><code class="language-python">for i in range(1, 4):
+    for j in range(7, 9):
+        print(f"i = {i}, j = {j}")
+    print("------------")</code></pre>
+
+            <!-- <img src="./images/lesson8/8_4.png" alt="code result" /> -->
+
+            <div class="soft-callout">
+              <ul>
+                <li>
+                  В першому прикладі — скільки разів виконається
+                  <span class="accent-code">print(f"i = {i}, j = {j}")</span>, а
+                  скільки разів
+                  <span class="accent-code">print("------------")</span>?
+                </li>
+                <li>
+                  А в другому прикладі — які значення послідовно набуває
+                  <span class="accent-code">j</span>?
+                </li>
+              </ul>
+
+              <textarea
+                id="l9-p1-q3"
+                class="test-textarea"
+                rows="2"
+                placeholder="Твоя відповідь..."
+              ></textarea>
+            </div>
+
+            <hr class="soft-hr" />
+
+            <!-- Вправа 1 -->
+            <details class="task" name="m1" open>
+              <summary><h4>🐍 Міні-вправа 1: Оновлення системи</h4></summary>
+              <div>
+                <p>
+                  Тобі потрібно дописати два цикли. Перший цикл симулює
+                  завантаження 5 файлів (від № 0 до № 4). Другий цикл оновлює
+                  версії модулів від 10-ї до 14-ї <strong>включно</strong>.
+                </p>
+                <div
+                  class="custom-editor-wrapper python-editor-wrapper"
+                  id="l9-ed1"
+                >
+                  <div class="editor-header">
+                    <span class="editor-title">Python 3</span>
+
+                    <div class="editor-actions">
+                      <button type="button" class="reset-btn" title="Очистити">
+                        🔄
+                      </button>
+                      <button
+                        type="button"
+                        class="run-btn"
+                        title="Запустити код"
+                      >
+                        ▶️
+                      </button>
+                    </div>
+                  </div>
+                  <textarea
+                    class="custom-editor-input"
+                    spellcheck="false"
+                    name="code1"
+                  >
+print("Завантаження файлів:")
+for ❓:
+    print(f"- Завантажено файл № ❓")
+
+print("\nОновлення модулів:")
+for ❓:
+    print(f"- Модуль оновлено до версії ❓")
+</textarea
+                  >
+                  <pre class="custom-editor-output">Очікування...</pre>
+                </div>
+              </div>
+            </details>
+
+            <!-- Вправа 2 -->
+            <details class="task" name="m2" open>
+              <summary><h4>🐍 Міні-вправа 2: Бронювання місць</h4></summary>
+              <div>
+                <p>
+                  У невеличкому літаку 3 ряди (№ 1, 2, 3), і в кожному ряду по 4
+                  місця (№ 1, 2, 3, 4). Використай вкладені цикли
+                  <span class="accent-code">for</span>, щоб надрукувати всі
+                  можливі комбінації квитків у форматі
+                  <span class="italic">"Ряд 1, Місце 1"</span>.
+                </p>
+                <div
+                  class="custom-editor-wrapper python-editor-wrapper"
+                  id="l9-ed2"
+                >
+                  <div class="editor-header">
+                    <span class="editor-title">Python 3</span>
+
+                    <div class="editor-actions">
+                      <button type="button" class="reset-btn" title="Очистити">
+                        🔄
+                      </button>
+                      <button
+                        type="button"
+                        class="run-btn"
+                        title="Запустити код"
+                      >
+                        ▶️
+                      </button>
+                    </div>
+                  </div>
+                  <textarea
+                    class="custom-editor-input"
+                    spellcheck="false"
+                    name="code2"
+                  >
+for ❓:
+    for ❓:
+        print(f"Ряд {❓}, Місце {❓}")
+    print("-" * 15)
+</textarea
+                  >
+                  <pre class="custom-editor-output">Очікування...</pre>
+                </div>
+              </div>
+            </details>
+          </div>
+        </details>
+
+        <!-- Розділ 2 -->
+        <details class="accordion__item" name="section1">
+          <summary class="accordion__header">
+            <h2>
+              <img src="../media/icons/read.svg" class="star" />
+              <span>Частина 2. Цикл while</span>
+            </h2>
+            <span class="acc-arrow">▶</span>
+          </summary>
+
+          <div class="accordion__content">
+            <h3>while — поки виконується умова</h3>
+            <p>
+              Синтаксис: <span class="accent-code">while умова:</span> — тіло
+              циклу виконується знову і знову, поки умова істинна. Щойно умова
+              стає хибною — цикл зупиняється сам.
+            </p>
+
+            <pre><code class="language-python">count = 1          # змінна-лічильник
+while count &lt;= 3:  # умова зупинки
+    print(count)
+    count += 1     # змінюємо значення</code></pre>
+
+            <!-- <img src="./images/lesson8/8_5.png" alt="code result 5" /> -->
+
+            <div class="soft-callout">
+              <ul>
+                <li>Яким буде результат цього коду?</li>
+              </ul>
+
+              <pre><code class="language-python">count = 0          
+while count &lt;= 10: 
+    count += 2
+    print(count)    </code></pre>
+
+              <textarea
+                id="l9-p2-q1"
+                class="test-textarea"
+                rows="2"
+                placeholder="..."
+              ></textarea>
+            </div>
+
+            <div class="callout2" style="margin-top: 20px">
+              <p style="margin-top: 0">
+                <strong>⚠️ Нескінченний цикл.</strong> Якщо умова в
+                <span class="accent-code">while</span> ніколи не стає хибною,
+                цикл виконуватиметься вічно, і програма «зависне».
+              </p>
+              <p style="margin-bottom: 0">
+                <strong>Правило:</strong> всередині циклу обов'язково має бути
+                дія, яка рано чи пізно зробить умову хибною. Якщо програма
+                зависла в Thonny — зупинити її можна червоною кнопкою Stop. Якщо
+                такий цикл виник в редакторі коду на цьому сайті – онови
+                сторінку.
+              </p>
+            </div>
+
+            <pre><code class="language-python">num = 5
+while num &gt; 0:
+    print(num)
+    num += 1
+
+# num постійно зростає, тому умова num > 0 ніколи не стане хибною</code></pre>
+
+            <div class="soft-callout">
+              <ul>
+                <li>Що можна змінити в коді вище, щоб цикл завершився?</li>
+              </ul>
+
+              <textarea
+                id="l9-p2-q2"
+                class="test-textarea"
+                rows="2"
+                placeholder="..."
+              ></textarea>
+            </div>
+
+            <hr class="soft-hr" />
+
+            <h3>Відмінність від for</h3>
+            <p>
+              Головна відмінність:
+              <strong
+                >не обов'язково знати наперед, скільки буде повторів</strong
+              >, — це визначає умова, а не лічильник чи довжина списку.
+            </p>
+
+            <p>Наприклад, енергія персонажа зменшується випадковим чином:</p>
+
+            <pre><code class="language-python">import random
+
+energy = 100
+
+while energy &gt; 0:
+    energy -= random.randint(5, 25)
+    if energy &lt; 0:
+        energy = 0
+    print(f"Energy left: {energy}")
+
+print("\nGame over!")</code></pre>
+
+            <!-- <img src="./images/lesson8/8_6.png" alt="code result 6" /> -->
+
+            <p>
+              Ще один приклад — просимо ввести пароль, доки користувач не введе
+              правильний (може вгадати з першої спроби, а може й зі сотої):
+            </p>
+
+            <pre><code class="language-python">password = "1111"
+
+answer = None
+while answer != password:
+    answer = input("Enter the password: ")
+
+print("That's correct. Access granted.")</code></pre>
+
+            <!-- <img src="./images/lesson8/8_7.png" alt="code result 7" /> -->
+
+            <div class="soft-callout">
+              <ul>
+                <li>
+                  Як думаєш, навіщо перед циклом написано
+                  <span class="accent-code">answer = None</span>?
+                </li>
+              </ul>
+
+              <textarea
+                id="l9-p2-q4"
+                class="test-textarea"
+                rows="2"
+                placeholder="..."
+              ></textarea>
+            </div>
+
+            <hr class="soft-hr" />
+
+            <!-- Вправа 3 -->
+            <details class="task" name="m3" open>
+              <summary><h4>🐍 Міні-вправа 3: Скарбничка</h4></summary>
+              <div>
+                <p>
+                  Ти збираєш гроші на нову книгу, яка коштує 500 грн. У тебе є
+                  змінна <span class="accent-code">money = 0</span>. Напиши цикл
+                  <span class="accent-code">while</span>, який запитуватиме:
+                  «Скільки грошей покласти?». Щойно грошей стане достатньо, цикл
+                  має зупинитися сам.
+                </p>
+                <div
+                  class="custom-editor-wrapper python-editor-wrapper"
+                  id="l9-ed3"
+                >
+                  <div class="editor-header">
+                    <span class="editor-title">Python 3</span>
+
+                    <div class="editor-actions">
+                      <button type="button" class="reset-btn" title="Очистити">
+                        🔄
+                      </button>
+                      <button
+                        type="button"
+                        class="run-btn"
+                        title="Запустити код"
+                      >
+                        ▶️
+                      </button>
+                    </div>
+                  </div>
+                  <textarea
+                    class="custom-editor-input"
+                    spellcheck="false"
+                    name="code3"
+                  >
+money = 0
+
+# Допиши початок циклу з умовою:
+❓:
+    add = int(input("Скільки покласти в скарбничку? "))
+
+    # Додай введену суму до money
+    # ...
+
+    print(f"Зараз у скарбничці: {money} грн")
+
+print("Грошей достатньо для купівлі книги!")
+</textarea
+                  >
+                  <pre class="custom-editor-output">Очікування...</pre>
+                </div>
+              </div>
+            </details>
+          </div>
+        </details>
+
+        <!-- Розділ 3 -->
+        <details class="accordion__item" name="section1">
+          <summary class="accordion__header">
+            <h2>
+              <img src="../media/icons/read.svg" class="star" />
+              <span>Частина 3. break, continue та while True</span>
+            </h2>
+            <span class="acc-arrow">▶</span>
+          </summary>
+
+          <div class="accordion__content">
+            <h3>break і continue</h3>
+            <ul type="square">
+              <li>
+                <span class="accent-code">continue</span> — пропускає решту тіла
+                циклу й переходить до наступної ітерації (починає коло знову).
+              </li>
+              <li>
+                <span class="accent-code">break</span> — негайно розриває цикл і
+                повністю виходить із нього.
+              </li>
+            </ul>
+
+            <pre><code class="language-python">for num in range(100):
+    if num == 3:
+        continue
+    if num == 7:
+        break
+    print(num, end=" ")</code></pre>
+
+            <!-- <img src="./images/lesson8/8_8.png" alt="code result 8" /> -->
+
+            <div class="soft-callout">
+              <ul>
+                <li>Чому серед надрукованих чисел немає числа 7?</li>
+                <li>
+                  Як змінити першу умову, щоб пропустити не лише число 3, а всі
+                  числа, які діляться на 3 без остачі?
+                </li>
+              </ul>
+
+              <textarea
+                id="l9-p3-q1"
+                class="test-textarea"
+                rows="2"
+                placeholder="..."
+              ></textarea>
+            </div>
+
+            <hr class="soft-hr" />
+
+            <h3>Особливий патерн: while True</h3>
+            <p>
+              Іноді умову виходу з циклу можна перевірити
+              <strong>лише після</strong> якоїсь дії всередині циклу —
+              наприклад, спочатку треба запитати ввід користувача, і тільки тоді
+              перевірити, чи він коректний.
+            </p>
+
+            <p><strong>Спосіб 1</strong> — визначаємо змінну перед циклом:</p>
+            <pre><code class="language-python">total = 0
+number = None
+
+while number != 0: # умова зупинки тут
+    number = int(input("Enter a number (0 = stop): "))
+    total += number
+
+print(f"Sum = {total}")</code></pre>
+
+            <p>
+              <strong>Спосіб 2</strong> — задаємо умову зупинки всередині через
+              <span class="accent-code">while True</span> та
+              <span class="accent-code">break</span>:
+            </p>
+            <pre><code class="language-python">total = 0
+
+while True:
+    number = int(input("Enter a number (0 = stop): "))
+    
+    if number == 0: # умова зупинки тут
+        break
+        
+    total += number
+
+print(f"Sum = {total}")</code></pre>
+
+            <!-- <img src="./images/lesson8/8_9.png" alt="code result 9" /> -->
+
+            <div class="callout2" style="margin-top: 15px">
+              <p style="margin: 0">
+                Це не окремий вид циклу, а прийом поверх звичайного while: цикл
+                формально «нескінченний», а умову завершення визначає
+                <span class="accent-code">break</span>.
+              </p>
+            </div>
+
+            <p style="margin-top: 25px">
+              Ще один приклад — запитуємо текст, очищаємо його і виводимо. Якщо
+              не введено нічого — пропускаємо ітерацію (<span
+                class="accent-code"
+                >continue</span
+              >), якщо введено "q" — завершуємо програму:
+            </p>
+            <pre><code class="language-python">while True:
+    answer = input("Enter some text or 'q' to stop: ").strip().lower()
+
+    if answer == "":
+        continue
+
+    if answer == "q":
+        break
+
+    print(f"Your input: {answer}")
+
+print("Goodbye!")</code></pre>
+
+            <!-- <img src="./images/lesson8/8_10.png" alt="code result 10" /> -->
+
+            <hr class="soft-hr" />
+
+            <!-- Вправа 4 -->
+            <details class="task" name="m4" open>
+              <summary>
+                <h4>🐍 Міні-вправа 4: Ліфт із забороненими поверхами</h4>
+              </summary>
+              <div>
+                <p>
+                  У будівлі 15 поверхів. Ліфт не зупиняється на поверхах, які
+                  кратні 3 (тобто пропускає їх). Виведи номери всіх поверхів від
+                  1 до 15, на яких ліфт таки зупиняється.
+                </p>
+                <div
+                  class="custom-editor-wrapper python-editor-wrapper"
+                  id="l9-ed4"
+                >
+                  <div class="editor-header">
+                    <span class="editor-title">Python 3</span>
+
+                    <div class="editor-actions">
+                      <button type="button" class="reset-btn" title="Очистити">
+                        🔄
+                      </button>
+                      <button
+                        type="button"
+                        class="run-btn"
+                        title="Запустити код"
+                      >
+                        ▶️
+                      </button>
+                    </div>
+                  </div>
+                  <textarea
+                    class="custom-editor-input"
+                    spellcheck="false"
+                    name="code4"
+                  >
+for floor in ❓:
+    if ❓:
+        # пропустити поверх
+    print(f"Ліфт зупиняється на поверсі {❓}")
+</textarea
+                  >
+                  <pre class="custom-editor-output">Очікування...</pre>
+                </div>
+              </div>
+            </details>
+
+            <!-- Вправа 5 -->
+            <details class="task" name="m5" open>
+              <summary>
+                <h4>🐍 Міні-вправа 5: Таємний книжковий клуб</h4>
+              </summary>
+              <div>
+                <p>
+                  Вхід у клуб охороняє пароль
+                  <span class="accent-code">"sci-fi"</span>. Якщо ввести
+                  неправильний пароль, виводиться повідомлення про помилку. Якщо
+                  користувач нічого не ввів — просто запитай ще раз, не виводячи
+                  повідомлення про помилку. Якщо пароль правильний — цикл має
+                  зупинитися. Додай <span class="accent-code">continue</span> та
+                  <span class="accent-code">break</span> у потрібні місця.
+                </p>
+                <div
+                  class="custom-editor-wrapper python-editor-wrapper"
+                  id="l9-ed5"
+                >
+                  <div class="editor-header">
+                    <span class="editor-title">Python 3</span>
+
+                    <div class="editor-actions">
+                      <button type="button" class="reset-btn" title="Очистити">
+                        🔄
+                      </button>
+                      <button
+                        type="button"
+                        class="run-btn"
+                        title="Запустити код"
+                      >
+                        ▶️
+                      </button>
+                    </div>
+                  </div>
+                  <textarea
+                    class="custom-editor-input"
+                    spellcheck="false"
+                    name="code5"
+                  >
+while True:
+    password = input("\nPassword: ").lower().strip()
+
+    if password == "":
+        print("You didn't input anything!")
+        # Що написати тут, щоб почати цикл знову?
+
+    if password == "sci-fi":
+        print("That's correct!")
+        # Що написати тут, щоб зупинити цикл?
+
+    print("Passwords don't match. Try again!")
+</textarea
+                  >
+                  <pre class="custom-editor-output">Очікування...</pre>
+                </div>
+              </div>
+            </details>
+          </div>
+        </details>
+
+        <!-- Розділ 4 -->
+        <details class="accordion__item" name="section1">
+          <summary class="accordion__header">
+            <h2>
+              <img src="../media/icons/read.svg" class="star" />
+              <span>Частина 4. Приклади використання</span>
+            </h2>
+            <span class="acc-arrow">▶</span>
+          </summary>
+
+          <div class="accordion__content">
+            <h3>Приклад 1: Перевірка коректності вводу</h3>
+            <p>
+              Просимо число від 1 до 5, поки не введуть правильно (обробляємо і
+              «не число», і «число поза діапазоном»):
+            </p>
+            <pre><code class="language-python">while True:
+    user_input = input("Enter a number from 1 to 5: ")
+
+    if not user_input.isdigit():
+        print("It's not a number. Try again!")
+        continue
+
+    number = int(user_input)
+
+    if number &lt; 1 or number &gt; 5:
+        print("The number must be from 1 to 5. Try again!")
+        continue
+
+    break
+
+print("Thanks. Accepted number:", number)</code></pre>
+
+            <!-- <img src="./images/lesson8/8_11.png" alt="code result 11" /> -->
+
+            <div class="soft-callout">
+              <p style="margin-top: 0">
+                <strong
+                  >Метод <span class="accent-code">.isdigit()</span></strong
+                >
+                повертає <span class="accent-code">True</span>, якщо рядок
+                складається <strong>лише з цифр 0–9</strong> (без пробілів,
+                крапок, мінуса тощо), і <span class="accent-code">False</span> в
+                усіх інших випадках.
+              </p>
+              <p style="margin-bottom: 0">
+                <strong>Нюанс:</strong> від'ємні числа він не розпізнає, бо знак
+                мінуса — не цифра. Якщо потрібні й від'ємні відповіді, рядок
+                спершу очищають:
+                <span class="accent-code">answer.lstrip("-").isdigit()</span>.
+              </p>
+            </div>
+
+            <div class="soft-callout">
+              <ul>
+                <li>
+                  Чому перевірка
+                  <span class="accent-code">user_input.isdigit()</span> стоїть
+                  саме перед <span class="accent-code">int(user_input)</span>, а
+                  не після?
+                </li>
+                <li>Що виведе програма, якщо ввести "-3"?</li>
+              </ul>
+
+              <textarea
+                id="l9-p4-q1"
+                class="test-textarea"
+                rows="2"
+                placeholder="Твоя відповідь..."
+              ></textarea>
+            </div>
+
+            <hr class="soft-hr" />
+
+            <h3>Приклад 2: Програма-меню</h3>
+            <pre><code class="language-python">inventory = ["apple", "book", "hat"]
+
+while True:
+    command = input('''Choose a command:
+v - view
+q - quit
+a - add:
+''')
+
+    if command == "v":
+        print(inventory)
+    elif command == "a":
+        el = input("What do you want to add? ").strip().lower()
+        if el:
+            inventory.append(el)
+    elif command == "q":
+        break
+    else:
+        print("Unknown command.\n")</code></pre>
+
+            <hr class="soft-hr" />
+
+            <h3>Приклад 3: Цикл всередині функції</h3>
+            <p>
+              Функція «ховає» всередині себе нескінченний цикл, а назовні віддає
+              вже перевірене значення через
+              <span class="accent-code">return</span> — писати окремий
+              <span class="accent-code">break</span> не потрібно, адже
+              <span class="accent-code">return</span> миттєво завершує і цикл, і
+              саму функцію:
+            </p>
+            <pre><code class="language-python">def ask_number():
+    while True:
+        answer = input("Enter an integer: ")
+
+        if not answer.lstrip("-").isdigit():
+            print("That's not an integer!")
+            continue
+
+        return int(answer)
+
+n1 = ask_number()
+n2 = ask_number()
+print(n1, n2)</code></pre>
+
+            <!-- <img src="./images/lesson8/8_12.png" alt="code result 12" /> -->
+          </div>
+        </details>
+      </section>
+
+      <!-- 🪴 PART 2: ПРАКТИКА -->
+      <section id="part-2" class="accordion tab-content">
+        <details class="accordion__item" name="section2">
+          <summary class="accordion__header">
+            <h2>
+              <img src="../media/icons/read.svg" class="star" />
+              <span>Справа із сейфами</span>
+            </h2>
+            <span class="acc-arrow">▶</span>
+          </summary>
+
+          <div class="accordion__content">
+            <h3 style="margin-top: 0">Легенда</h3>
+            <p>
+              Завтра відкриття нової виставки. Всі цінні експонати замкнені в
+              шести сейфах, а охоронець, який знав усі коди до сейфів, зненацька
+              захворів і не прийшов на роботу. Єдине, що є на місці, — його
+              блокнот із нотатками-підказками, як розгадати всі коди. Допоможи
+              відкрити виставку!
+            </p>
+
+            <img src="./museum.jpg" alt="museum" />
+
+            <hr />
+
+            <!-- Сейф 1 -->
+            <h4>Сейф 1</h4>
+            <p>
+              Перша сторінка блокнота: <br /><span class="italic"
+                >«Стартове число 10. Зроби з ним одну й ту саму дію рівно 5
+                разів підряд: помнож число на 3, а потім відніми 11. Те, що
+                вийде після п'ятого повторення, — код від Сейфа 1.»</span
+              >
+            </p>
+            <div
+              class="custom-editor-wrapper python-editor-wrapper"
+              id="l9-ed6"
+            >
+              <div class="editor-header">
+                <span class="editor-title">Python 3</span>
+
+                <div class="editor-actions">
+                  <button type="button" class="reset-btn" title="Очистити">
+                    🔄
+                  </button>
+                  <button type="button" class="run-btn" title="Запустити код">
+                    ▶️
+                  </button>
+                </div>
+              </div>
+              <textarea
+                class="custom-editor-input"
+                spellcheck="false"
+                name="code6"
+              >
+n = 10
+
+# твій код тут:
+# ...
+
+print(f"Код від Сейфа 1: {n}")
+</textarea
+              >
+              <pre class="custom-editor-output">Очікування...</pre>
+            </div>
+
+            <details class="task" style="margin-top: 15px">
+              <summary>💡 Підказка</summary>
+              <div>
+                <p>
+                  Використай цикл
+                  <span class="accent-code">for i in range(...):</span>. У тілі
+                  циклу виконай математичну дію (множення на 3 та віднімання 11)
+                  і перезапиши результат назад у змінну
+                  <span class="accent-code">n</span>.
+                </p>
+              </div>
+            </details>
+
+            <hr class="soft-hr" />
+
+            <!-- Сейф 2 -->
+            <h4>Сейф 2</h4>
+            <p>
+              Друга сторінка блокнота: <br /><span class="italic"
+                >«Код — непарне число в межах від 2030 до 2070, яке ділиться без
+                остачі і на 3, і на 5 одночасно.»</span
+              >
+            </p>
+            <div
+              class="custom-editor-wrapper python-editor-wrapper"
+              id="l9-ed7"
+            >
+              <div class="editor-header">
+                <span class="editor-title">Python 3</span>
+
+                <div class="editor-actions">
+                  <button type="button" class="reset-btn" title="Очистити">
+                    🔄
+                  </button>
+                  <button type="button" class="run-btn" title="Запустити код">
+                    ▶️
+                  </button>
+                </div>
+              </div>
+              <textarea
+                class="custom-editor-input"
+                spellcheck="false"
+                name="code7"
+              >
+# твій код тут:
+
+</textarea
+              >
+              <pre class="custom-editor-output">Очікування...</pre>
+            </div>
+
+            <details class="task" style="margin-top: 15px">
+              <summary>💡 Підказка</summary>
+              <div>
+                <p>
+                  Використай цикл
+                  <span class="accent-code">for i in range(a, b):</span>.
+                  Всередині циклу додай умову
+                  <span class="accent-code">if</span> з використанням оператора
+                  <span class="accent-code">%</span> (остача від ділення), щоб
+                  перевірити всі три вимоги (непарність, поділ на 3, поділ на
+                  5).
+                </p>
+              </div>
+            </details>
+
+            <hr class="soft-hr" />
+
+            <!-- Сейф 3 -->
+            <h4>Сейф 3</h4>
+            <p>
+              Третя сторінка блокнота: <br /><span class="italic"
+                >«Двозначний код: сума його цифр — 15, добуток — 56, перша цифра
+                менша за другу.»</span
+              >
+            </p>
+            <div
+              class="custom-editor-wrapper python-editor-wrapper"
+              id="l9-ed8"
+            >
+              <div class="editor-header">
+                <span class="editor-title">Python 3</span>
+
+                <div>
+                  <button type="button" class="reset-btn" title="Очистити">
+                    🔄
+                  </button>
+                  <button type="button" class="run-btn" title="Запустити код">
+                    ▶️
+                  </button>
+                </div>
+              </div>
+              <textarea
+                class="custom-editor-input"
+                spellcheck="false"
+                name="code8"
+              >
+code = ""
+
+# твій код тут:
+
+</textarea
+              >
+              <pre class="custom-editor-output">Очікування...</pre>
+            </div>
+
+            <details class="task" style="margin-top: 15px">
+              <summary>💡 Підказка</summary>
+              <div>
+                <p>
+                  Використай вкладені цикли (<span class="accent-code"
+                    >for i...</span
+                  >
+                  та <span class="accent-code">for j...</span>, щоб перевірити
+                  всі комбінації від 00, 01... до 99. Додай умову, яка
+                  перевірить суму (<span class="accent-code">i + j</span>),
+                  добуток (<span class="accent-code">i * j</span>) та те, що
+                  перша цифра менша за другу.
+                </p>
+              </div>
+            </details>
+
+            <hr class="soft-hr" />
+
+            <!-- Сейф 4 -->
+            <h4>Сейф 4</h4>
+            <p>
+              Сторінка 4: <br /><span class="italic"
+                >«Починай додавати числа по порядку: 1 + 2 + 3 + 4 і так далі.
+                Код — це те число, додавши яке, загальна сума вперше строго
+                перевищить 100.»</span
+              >
+            </p>
+            <div
+              class="custom-editor-wrapper python-editor-wrapper"
+              id="l9-ed9"
+            >
+              <div class="editor-header">
+                <span class="editor-title">Python 3</span>
+
+                <div class="editor-actions">
+                  <button type="button" class="reset-btn" title="Очистити">
+                    🔄
+                  </button>
+                  <button type="button" class="run-btn" title="Запустити код">
+                    ▶️
+                  </button>
+                </div>
+              </div>
+              <textarea
+                class="custom-editor-input"
+                spellcheck="false"
+                name="code9"
+              >
+total = 0
+number = 0
+
+# твій код тут:
+
+</textarea
+              >
+              <pre class="custom-editor-output">Очікування...</pre>
+            </div>
+
+            <details class="task" style="margin-top: 15px">
+              <summary>💡 Підказка</summary>
+              <div>
+                <p>
+                  Використай цикл
+                  <span class="accent-code">while total ❓ 100:</span>.
+                  Всередині циклу збільшуй лічильник
+                  <span class="accent-code">number</span> на 1, а потім додавай
+                  його до <span class="accent-code">total</span>. Зверни увагу:
+                  кодом є значення змінної
+                  <span class="accent-code">number</span>, а не
+                  <span class="accent-code">total</span>.
+                </p>
+              </div>
+            </details>
+
+            <hr class="soft-hr" />
+
+            <!-- Сейф 5 -->
+            <h4>Сейф 5</h4>
+            <p>
+              На сторінці 5 список англійських слів і текст: <br /><span
+                class="italic"
+                >«Skip the words with x or z. Stop at the word with "end". The
+                first letters of the remaining words will spell out the
+                code.»</span
+              >
+            </p>
+            <div
+              class="custom-editor-wrapper python-editor-wrapper"
+              id="l9-ed10"
+            >
+              <div class="editor-header">
+                <span class="editor-title">Python 3</span>
+
+                <div class="editor-actions">
+                  <button type="button" class="reset-btn" title="Очистити">
+                    🔄
+                  </button>
+                  <button type="button" class="run-btn" title="Запустити код">
+                    ▶️
+                  </button>
+                </div>
+              </div>
+              <textarea
+                class="custom-editor-input"
+                spellcheck="false"
+                name="code10"
+              >
+words = ["goblet", "axe", "ornament", "bronze", "lamp",
+         "zebra", "diamond", "friend", "crown", "dragon"]
+result = ""
+
+# твій код тут:
+
+</textarea
+              >
+              <pre class="custom-editor-output">Очікування...</pre>
+            </div>
+
+            <details class="task" style="margin-top: 15px">
+              <summary>💡 Підказка</summary>
+              <div>
+                <p>
+                  Використай умову вигляду
+                  <span class="accent-code">if "abc" in word:</span>, щоб
+                  пропустити слова з x та z, а також щоб знайти слово, яке
+                  містить в собі слово "end", і з
+                  <span class="accent-code">break</span> зупинити на ньому цикл.
+                  Першу літеру кожного (не пропущеного) слова можна дістати як
+                  <span class="accent-code">word[0]</span> і додати до
+                  <span class="accent-code">result</span> через
+                  <span class="accent-code">+=</span>.
+                </p>
+              </div>
+            </details>
+
+            <hr class="soft-hr" />
+
+            <!-- Сейф 6 -->
+            <h4>Сейф 6</h4>
+            <p>
+              Про 6-й сейф в блокноті не сказано, але на самому сейфі є
+              сенсорний екран з клавіатурою та текстом:
+              <span class="italic"
+                >"Додай відсутній break, тоді введи те, що від тебе очікується,
+                і я сам скажу тобі код"</span
+              >.
+            </p>
+
+            <div
+              class="custom-editor-wrapper python-editor-wrapper"
+              id="l9-ed11"
+            >
+              <div class="editor-header">
+                <span class="editor-title">Python 3</span>
+
+                <div class="editor-actions">
+                  <button type="button" class="reset-btn" title="Очистити">
+                    🔄
+                  </button>
+                  <button type="button" class="run-btn" title="Запустити код">
+                    ▶️
+                  </button>
+                </div>
+              </div>
+              <textarea
+                class="custom-editor-input"
+                spellcheck="false"
+                name="code11"
+              >
+while True:
+    num = input("Введи що-небудь: ")
+    
+    if not num.isdigit(): 
+        continue
+
+    num = int(num)
+
+    if num % 5 != 0: 
+        continue
+
+    res = ((num * 2 + 10) // 2 - num) * 1000
+    
+print(f"Пароль до Сейфа 6: {res}")
+</textarea
+              >
+              <pre class="custom-editor-output">Очікування...</pre>
+            </div>
+
+            <details class="task" style="margin-top: 15px">
+              <summary>💡 Підказка</summary>
+              <div>
+                <p>
+                  Додай <span class="accent-code">break</span> одразу після
+                  підрахунку змінної <span class="accent-code">res</span>, щоб
+                  зупинити нескінченний цикл. Щоб розблокувати код, тобі
+                  потрібно ввести щось, що відповідає всім умовам (тобто не
+                  пропускається з <span class="accent-code">continue</span>).
+                </p>
+              </div>
+            </details>
+
+            <hr />
+
+            <details class="task" style="margin-top: 25px">
+              <summary>
+                <h4>✅ Відповіді до сейфів (для самоперевірки)</h4>
+              </summary>
+              <div>
+                <ul style="line-height: 1.8">
+                  <li><strong>Сейф 1:</strong> 1099</li>
+                  <li><strong>Сейф 2:</strong> 2055</li>
+                  <li><strong>Сейф 3:</strong> 78</li>
+                  <li><strong>Сейф 4:</strong> 14</li>
+                  <li><strong>Сейф 5:</strong> gold</li>
+                  <li><strong>Сейф 6:</strong> 5000</li>
+                </ul>
+              </div>
+            </details>
+          </div>
+        </details>
+      </section>
+
+      <!-- 🐥 PART 3: HW -->
+      <section id="part-3" class="accordion tab-content">
+        <details class="accordion__item" name="section3">
+          <summary class="accordion__header">
+            <h2>
+              <img src="../media/icons/read.svg" class="star" />
+              <span>Домашнє завдання</span>
+            </h2>
+            <span class="acc-arrow">▶</span>
+          </summary>
+
+          <div class="accordion__content">
+            <h3>Завдання: Каталог фільмів</h3>
+
+            <p>
+              Напиши програму, яка працює точно як на відео нижче. Це повноцінне
+              інтерактивне меню для керування списком фільмів.
+            </p>
+
+            <!-- Блок з відео -->
+            <div class="video-wrapper">
+              <video src="./hw9.mp4" controls></video>
+            </div>
+
+            <details class="task" style="margin-top: 15px">
+              <summary>Скріншоти</summary>
+              <div>
+                <img
+                  class="full-width"
+                  src="./images/lesson9/9_1.png"
+                  alt="step 1 - view"
+                />
+                <img
+                  class="full-width"
+                  src="./images/lesson9/9_2.png"
+                  alt="step 2 - add"
+                />
+                <img
+                  class="full-width"
+                  src="./images/lesson9/9_3.png"
+                  alt="step 3 - remove"
+                />
+                <img
+                  class="full-width"
+                  src="./images/lesson9/9_4.png"
+                  alt="step 4 - remove nonexistent"
+                />
+                <img
+                  class="full-width"
+                  src="./images/lesson9/9_5.png"
+                  alt="step 5 - pick random"
+                />
+                <img
+                  class="full-width"
+                  src="./images/lesson9/9_6.png"
+                  alt="step 6 - bad input"
+                />
+                <img
+                  class="full-width"
+                  src="./images/lesson9/9_7.png"
+                  alt="step 7 - quit"
+                />
+              </div>
+            </details>
+
+            <!-- Блок з інструкціями -->
+            <div class="soft-callout">
+              <p style="margin-top: 0">
+                <strong>Кроки для реалізації:</strong>
+              </p>
+              <ul type="square" style="margin-bottom: 0">
+                <li>
+                  Якщо користувач ввів <strong>"v"</strong> — виведи по черзі
+                  кожен фільм із нумерацією у форматі
+                  <strong>"1. Назва фільму"</strong>.
+                </li>
+                <li>
+                  Якщо <strong>"a"</strong> — запитай назву нового фільму та
+                  додай його до списку <span class="accent-code">movies</span>.
+                </li>
+                <li>
+                  Якщо <strong>"r"</strong> — запитай назву фільму. Якщо він є у
+                  списку — видали його, якщо немає — виведи
+                  <span class="italic">"This movie isn't in the list."</span>.
+                </li>
+                <li>
+                  Якщо <strong>"p"</strong> — за допомогою
+                  <span class="accent-code">random.choice()</span>
+                  обери та виведи випадковий фільм на вечір.
+                </li>
+                <li>
+                  Якщо <strong>"q"</strong> — виведи прощання і зупини цикл за
+                  допомогою <span class="accent-code">break</span>.
+                </li>
+                <li>
+                  Якщо введено будь-яку іншу команду — виведи
+                  <span class="italic">"Unknown command."</span>
+                </li>
+              </ul>
+            </div>
+
+            <p>Початковий код:</p>
+
+            <pre><code class="language-python">import random
+
+movies = [
+    "Kiki's Delivery Service",
+    "The Matrix",
+    "Howl's Moving Castle",
+    "Coco"
+]
+
+MENU = '''
+Choose a command:
+v - view the list
+a - add a movie
+r - remove a movie
+p - pick a random movie
+q - quit
+'''</code></pre>
+          </div>
+        </details>
+      </section>
+    </main>
+
+    <footer>
+      <p>🌷 🍓 🌿 Made by Olena Hapchyna 🌿 🍓 🌷</p>
+
+      <div class="footer-credits">
+        <span
+          >Fruit icons by
+          <a
+            href="https://www.svgrepo.com/collection/fruits-vectors/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >An Nguyen</a
+          ></span
+        >
+        |
+        <a href="../credits.html" target="_blank">Credits & Licenses</a>
+      </div>
+    </footer>
+
+    <button
+      id="scrollToTopBtn"
+      class="scroll-to-top"
+      aria-label="Повернутися нагору"
+    >
+      <img src="../media/icons/ufo-alien.svg" />
+    </button>
+  </body>
+</html>
