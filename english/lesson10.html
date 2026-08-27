@@ -598,6 +598,8 @@
 
           <div class="lesson-content">
             <h3 id="p2-warmup">Quick Warm-Up: Future Simple Refresher</h3>
+
+            <!-- future simple -->
             <div class="soft-callout">
               <p>
                 Before adding today's new rule, let's quickly refresh
@@ -633,7 +635,7 @@
                   ></textarea>
                 </li>
                 <li>
-                  Chloe will need her library card. → Make it a question.
+                  Lily will need her library card. → Make it a question.
                   <textarea
                     id="l10-wu-4"
                     class="test-textarea"
@@ -735,7 +737,7 @@
                 </li>
                 <li>
                   <span class="italic"
-                    >Chloe is completely sure about her plans. She is going to
+                    >Lily is completely sure about her plans. She is going to
                     read a new novel.</span
                   >
                   (чіткий план на вихідні)
@@ -797,6 +799,36 @@
               </ul>
             </div>
 
+            <!-- Примітка: Maybe vs Probably -->
+            <div class="soft-callout">
+              <h4>"Maybe" vs. "Probably"</h4>
+              <p>
+                Обидва слова часто використовуються з
+                <span class="bold">will</span> для припущень, але вони мають
+                різний рівень впевненості та різне місце в реченні:
+              </p>
+              <ul>
+                <li>
+                  <span class="bold accent">Maybe (можливо):</span> Близько 50%
+                  впевненості. Зазвичай ставиться початку речення.<br />
+                  <span class="italic"
+                    >Maybe I will borrow this mystery novel.</span
+                  >
+                  (Можливо, я візьму цей детектив, а можливо, й ні).
+                </li>
+                <li style="margin-top: 8px">
+                  <span class="bold accent">Probably (ймовірно, мабуть):</span>
+                  Близько 75-80% впевненості. Зазвичай ставиться після слова
+                  "will" у ствердженнях.<br />
+                  <span class="italic"
+                    >I will probably borrow this mystery novel.</span
+                  >
+                  (Я майже впевнена, що візьму його, але залишаю невеликий
+                  відсоток на зміну планів).
+                </li>
+              </ul>
+            </div>
+
             <h4 style="margin-top: 30px">Quick Note: Formal Situations</h4>
             <p>
               В офіційних ситуаціях (презентації, оголошення, офіційні листи)
@@ -810,462 +842,562 @@
             <h3 id="p2-practice">Practice</h3>
 
             <!-- 🧩 Exercise 2: Sorting Game -->
-            <div class="soft-callout">
-              <h4>Exercise 2: Sort by Rule (will vs. going to)</h4>
-              <p>
-                Decide if the missing word should be
-                <span class="bold">will</span> or
-                <span class="bold">going to</span>, and drag the sentences to
-                the correct category based on the context.
-              </p>
-
-              <div class="sorting-game-module" data-game-id="l10-sort-wg-lib">
-                <div class="sorting-header">
-                  <button type="button" class="reset-btn-hw sorting-reset-btn">
-                    🔄 Reset
-                  </button>
+            <details class="task" name="l10">
+              <summary>
+                <h4>Exercise 2: Sort by Rule (will vs. going to)</h4>
+              </summary>
+              <div>
+                <p>
+                  Decide if the missing word should be
+                  <span class="bold">will</span> or
+                  <span class="bold">going to</span>, and drag the sentences to
+                  the correct category based on the context.
+                </p>
+                <div class="sorting-game-module" data-game-id="l10-sort-wg-lib">
+                  <div class="sorting-header">
+                    <button
+                      type="button"
+                      class="reset-btn-hw sorting-reset-btn"
+                    >
+                      🔄 Reset
+                    </button>
+                  </div>
+                  <script type="application/json" class="sorting-data">
+                    {
+                      "categories": [
+                        { "id": "cat-will", "title": "WILL" },
+                        { "id": "cat-going-to", "title": "GOING TO" }
+                      ],
+                      "items": [
+                        {
+                          "id": "wg1",
+                          "text": "You have so many books! I ___ carry some of them for you.",
+                          "correctCategory": "cat-will"
+                        },
+                        {
+                          "id": "wg2",
+                          "text": "I already picked out my next novel from the online catalog. I ___ borrow it after school.",
+                          "correctCategory": "cat-going-to"
+                        },
+                        {
+                          "id": "wg3",
+                          "text": "I'm not completely sure yet, but maybe I ___ read something new this weekend.",
+                          "correctCategory": "cat-will"
+                        },
+                        {
+                          "id": "wg4",
+                          "text": "Oh, you don't have your library card? Don't worry, I ___ lend you mine today.",
+                          "correctCategory": "cat-will"
+                        },
+                        {
+                          "id": "wg5",
+                          "text": "Lily already asked the librarian for help yesterday. She ___ show her some new novels.",
+                          "correctCategory": "cat-going-to"
+                        },
+                        {
+                          "id": "wg6",
+                          "text": "I don't know exactly which book I want yet. I think I ___ ask the librarian for ideas.",
+                          "correctCategory": "cat-will"
+                        },
+                        {
+                          "id": "wg7",
+                          "text": "This book is already three days overdue, so I ___ return it right away.",
+                          "correctCategory": "cat-going-to"
+                        }
+                      ]
+                    }
+                  </script>
+                  <div class="sorting-bank"></div>
+                  <div class="sorting-zones-container"></div>
+                  <div class="sorting-feedback"></div>
                 </div>
-
-                <script type="application/json" class="sorting-data">
-                  {
-                    "categories": [
-                      { "id": "cat-will", "title": "WILL" },
-                      { "id": "cat-going-to", "title": "GOING TO" }
-                    ],
-                    "items": [
-                      {
-                        "id": "wg1",
-                        "text": "You have so many books! I ___ carry some of them for you.",
-                        "correctCategory": "cat-will"
-                      },
-                      {
-                        "id": "wg2",
-                        "text": "I already picked out my next novel from the online catalog. I ___ borrow it after school.",
-                        "correctCategory": "cat-going-to"
-                      },
-                      {
-                        "id": "wg3",
-                        "text": "I'm not completely sure yet, but maybe I ___ read something new this weekend.",
-                        "correctCategory": "cat-will"
-                      },
-                      {
-                        "id": "wg4",
-                        "text": "Oh, you don't have your library card? Don't worry, I ___ lend you mine today.",
-                        "correctCategory": "cat-will"
-                      },
-                      {
-                        "id": "wg5",
-                        "text": "Chloe already asked the librarian for help yesterday. She ___ show her some new novels.",
-                        "correctCategory": "cat-going-to"
-                      },
-                      {
-                        "id": "wg6",
-                        "text": "I don't know exactly which book I want yet. I think I ___ ask the librarian for ideas.",
-                        "correctCategory": "cat-will"
-                      },
-                      {
-                        "id": "wg7",
-                        "text": "This book is already three days overdue, so I ___ return it right away.",
-                        "correctCategory": "cat-going-to"
-                      }
-                    ]
-                  }
-                </script>
-                <div class="sorting-bank"></div>
-                <div class="sorting-zones-container"></div>
-                <div class="sorting-feedback"></div>
               </div>
-            </div>
+            </details>
 
             <!-- 📝 Exercise 3: Multiple Choice -->
-            <div class="soft-callout">
-              <h4>Exercise 3: Multiple Choice</h4>
+            <details class="task" name="l10">
+              <summary>
+                <h4>Exercise 3: Multiple Choice</h4>
+              </summary>
 
-              <!-- Q1 -->
-              <fieldset class="test-question">
-                <legend>
-                  1. "Why are you carrying so many books?" — "I ___ take them
-                  all home this weekend!"
-                </legend>
-                <div class="radio-flex">
-                  <label class="test-label"
-                    ><input
-                      type="radio"
-                      class="test-radio"
-                      name="l10-ex3-q1"
-                      value="A"
-                    />
-                    A) will</label
-                  >
-                  <label class="test-label"
-                    ><input
-                      type="radio"
-                      class="test-radio"
-                      name="l10-ex3-q1"
-                      value="B"
-                    />
-                    B) am going to</label
-                  >
-                  <label class="test-label"
-                    ><input
-                      type="radio"
-                      class="test-radio"
-                      name="l10-ex3-q1"
-                      value="C"
-                    />
-                    C) am taking</label
-                  >
-                </div>
-              </fieldset>
+              <div>
+                <!-- Q1 -->
+                <fieldset class="test-question">
+                  <legend>
+                    1. "Why are you carrying so many books?" — "I ___ take them
+                    all home this weekend!"
+                  </legend>
+                  <div class="radio-flex">
+                    <label class="test-label"
+                      ><input
+                        type="radio"
+                        class="test-radio"
+                        name="l10-ex3-q1"
+                        value="A"
+                      />
+                      A) will</label
+                    >
+                    <label class="test-label"
+                      ><input
+                        type="radio"
+                        class="test-radio"
+                        name="l10-ex3-q1"
+                        value="B"
+                      />
+                      B) am going to</label
+                    >
+                  </div>
+                </fieldset>
 
-              <!-- Q2 -->
-              <fieldset class="test-question">
-                <legend>
-                  2. "Oh no, I forgot my library card at home!" — "Don't worry,
-                  I ___ you mine for today."
-                </legend>
-                <div class="radio-flex">
-                  <label class="test-label"
-                    ><input
-                      type="radio"
-                      class="test-radio"
-                      name="l10-ex3-q2"
-                      value="A"
-                    />
-                    A) am lending</label
-                  >
-                  <label class="test-label"
-                    ><input
-                      type="radio"
-                      class="test-radio"
-                      name="l10-ex3-q2"
-                      value="B"
-                    />
-                    B) am going to lend</label
-                  >
-                  <label class="test-label"
-                    ><input
-                      type="radio"
-                      class="test-radio"
-                      name="l10-ex3-q2"
-                      value="C"
-                    />
-                    C) will lend</label
-                  >
-                </div>
-              </fieldset>
-
-              <!-- Q3 -->
-              <fieldset class="test-question">
-                <legend>
-                  3. "Do you know exactly which novel you want?" — "Yes, I ___
-                  that new mystery series."
-                </legend>
-                <div class="radio-flex">
-                  <label class="test-label"
-                    ><input
-                      type="radio"
-                      class="test-radio"
-                      name="l10-ex3-q3"
-                      value="A"
-                    />
-                    A) will borrow</label
-                  >
-                  <label class="test-label"
-                    ><input
-                      type="radio"
-                      class="test-radio"
-                      name="l10-ex3-q3"
-                      value="B"
-                    />
-                    B) am going to borrow</label
-                  >
-                  <label class="test-label"
-                    ><input
-                      type="radio"
-                      class="test-radio"
-                      name="l10-ex3-q3"
-                      value="C"
-                    />
-                    C) am borrowing</label
-                  >
-                </div>
-              </fieldset>
-
-              <!-- Q4 -->
-              <fieldset class="test-question">
-                <legend>
-                  4. "Can you help me shelve these books tomorrow?" — "Sorry, I
-                  can't. I ___ a test in the morning."
-                </legend>
-                <div class="radio-flex">
-                  <label class="test-label"
-                    ><input
-                      type="radio"
-                      class="test-radio"
-                      name="l10-ex3-q4"
-                      value="A"
-                    />
-                    A) will take</label
-                  >
-                  <label class="test-label"
-                    ><input
-                      type="radio"
-                      class="test-radio"
-                      name="l10-ex3-q4"
-                      value="B"
-                    />
-                    B) am going to take</label
-                  >
-                  <label class="test-label"
-                    ><input
-                      type="radio"
-                      class="test-radio"
-                      name="l10-ex3-q4"
-                      value="C"
-                    />
-                    C) take</label
-                  >
-                </div>
-              </fieldset>
-
-              <!-- Q5 -->
-              <fieldset class="test-question">
-                <legend>
-                  5. "I'm not completely certain, but I think I ___ finish this
-                  novel by Friday."
-                </legend>
-                <div class="radio-flex">
-                  <label class="test-label"
-                    ><input
-                      type="radio"
-                      class="test-radio"
-                      name="l10-ex3-q5"
-                      value="A"
-                    />
-                    A) am finishing</label
-                  >
-                  <label class="test-label"
-                    ><input
-                      type="radio"
-                      class="test-radio"
-                      name="l10-ex3-q5"
-                      value="B"
-                    />
-                    B) am going to finish</label
-                  >
-                  <label class="test-label"
-                    ><input
-                      type="radio"
-                      class="test-radio"
-                      name="l10-ex3-q5"
-                      value="C"
-                    />
-                    C) will finish</label
-                  >
-                </div>
-              </fieldset>
-            </div>
+                <!-- Q2 -->
+                <fieldset class="test-question">
+                  <legend>
+                    2. "Oh no, I forgot my library card at home!" — "Don't
+                    worry, I ___ you mine for today."
+                  </legend>
+                  <div class="radio-flex">
+                    <label class="test-label"
+                      ><input
+                        type="radio"
+                        class="test-radio"
+                        name="l10-ex3-q2"
+                        value="C"
+                      />
+                      A) will lend</label
+                    >
+                    <label class="test-label"
+                      ><input
+                        type="radio"
+                        class="test-radio"
+                        name="l10-ex3-q2"
+                        value="B"
+                      />
+                      B) am going to lend</label
+                    >
+                  </div>
+                </fieldset>
+                <!-- Q3 -->
+                <fieldset class="test-question">
+                  <legend>
+                    3. "Do you know exactly which novel you want?" — "Yes, I ___
+                    that new mystery series."
+                  </legend>
+                  <div class="radio-flex">
+                    <label class="test-label"
+                      ><input
+                        type="radio"
+                        class="test-radio"
+                        name="l10-ex3-q3"
+                        value="A"
+                      />
+                      A) will borrow</label
+                    >
+                    <label class="test-label"
+                      ><input
+                        type="radio"
+                        class="test-radio"
+                        name="l10-ex3-q3"
+                        value="B"
+                      />
+                      B) am going to borrow</label
+                    >
+                  </div>
+                </fieldset>
+                <!-- Q4 -->
+                <fieldset class="test-question">
+                  <legend>
+                    4. "Can you help me shelve these books tomorrow?" — "Sorry,
+                    I can't. I ___ a test in the morning."
+                  </legend>
+                  <div class="radio-flex">
+                    <label class="test-label"
+                      ><input
+                        type="radio"
+                        class="test-radio"
+                        name="l10-ex3-q4"
+                        value="A"
+                      />
+                      A) will take</label
+                    >
+                    <label class="test-label"
+                      ><input
+                        type="radio"
+                        class="test-radio"
+                        name="l10-ex3-q4"
+                        value="B"
+                      />
+                      B) am going to take</label
+                    >
+                  </div>
+                </fieldset>
+                <!-- Q5 -->
+                <fieldset class="test-question">
+                  <legend>
+                    5. "I'm not completely certain, but I think I ___ finish
+                    this novel by Friday."
+                  </legend>
+                  <div class="radio-flex">
+                    <label class="test-label"
+                      ><input
+                        type="radio"
+                        class="test-radio"
+                        name="l10-ex3-q5"
+                        value="C"
+                      />
+                      A) will finish</label
+                    >
+                    <label class="test-label"
+                      ><input
+                        type="radio"
+                        class="test-radio"
+                        name="l10-ex3-q5"
+                        value="B"
+                      />
+                      B) am going to finish</label
+                    >
+                  </div>
+                </fieldset>
+              </div>
+            </details>
 
             <!-- 📝 Exercise 4: Word Transformation -->
-            <div class="soft-callout">
-              <h4>Exercise 4: Word Transformation</h4>
-              <p>
-                Complete using <span class="bold">will</span> or
-                <span class="bold">be going to</span>.
-              </p>
-
-              <div class="callout2" style="margin-top: 15px">
+            <details class="task" name="l10">
+              <summary>
+                <h4>Exercise 4: Word Transformation</h4>
+              </summary>
+              <div>
                 <p>
-                  <span class="bold">A:</span> Why are you holding your library
-                  card?<br />
-                  <span class="bold">B:</span> I
-                  <input
-                    type="text"
-                    id="l10-ex4-1"
-                    class="test-input"
-                    placeholder="..."
-                    style="width: 140px"
-                  />
-                  renew my books online right now.
+                  Complete using <span class="bold">will</span> or
+                  <span class="bold">be going to</span>.
                 </p>
+                <div class="callout2" style="margin-top: 15px">
+                  <p>
+                    <span class="bold">A:</span> Why are you holding your
+                    library card?<br />
+                    <span class="bold">B:</span> I
+                    <input
+                      type="text"
+                      id="l10-ex4-1"
+                      class="test-input"
+                      placeholder="..."
+                      style="width: 140px"
+                    />
+                    renew my books online right now.
+                  </p>
+                </div>
+                <div class="callout2" style="margin-top: 10px">
+                  <p>
+                    <span class="bold">A:</span> Is she free this weekend?<br />
+                    <span class="bold">B:</span> No, she
+                    <input
+                      type="text"
+                      id="l10-ex4-3"
+                      class="test-input"
+                      placeholder="..."
+                      style="width: 140px"
+                    />
+                    go to the library to study for the test.
+                  </p>
+                </div>
+                <div class="callout2" style="margin-top: 10px">
+                  <p>
+                    <span class="bold">A:</span> Have you picked a novel yet?<br />
+                    <span class="bold">B:</span> Not yet. Maybe I
+                    <input
+                      type="text"
+                      id="l10-ex4-4"
+                      class="test-input"
+                      placeholder="..."
+                      style="width: 140px"
+                    />
+                    ask the librarian for a recommendation.
+                  </p>
+                </div>
+                <div class="callout2" style="margin-top: 10px">
+                  <p>
+                    <span class="bold">A:</span> Why are you checking the shelf
+                    again?<br />
+                    <span class="bold">B:</span> I'm not completely sure this is
+                    the right novel, so I
+                    <input
+                      type="text"
+                      id="l10-ex4-5"
+                      class="test-input"
+                      placeholder="..."
+                      style="width: 140px"
+                    />
+                    ask at the front desk.
+                  </p>
+                </div>
+                <div class="callout2" style="margin-top: 10px">
+                  <p>
+                    <span class="bold">A:</span> When is this book due?<br />
+                    <span class="bold">B:</span> The due date is Friday, so I
+                    <input
+                      type="text"
+                      id="l10-ex4-6"
+                      class="test-input"
+                      placeholder="..."
+                      style="width: 140px"
+                    />
+                    return it tomorrow, just to be safe.
+                  </p>
+                </div>
               </div>
-
-              <div class="callout2" style="margin-top: 10px">
-                <p>
-                  <span class="bold">A:</span> Is she free this weekend?<br />
-                  <span class="bold">B:</span> No, she
-                  <input
-                    type="text"
-                    id="l10-ex4-3"
-                    class="test-input"
-                    placeholder="..."
-                    style="width: 140px"
-                  />
-                  go to the library to study for the test.
-                </p>
-              </div>
-
-              <div class="callout2" style="margin-top: 10px">
-                <p>
-                  <span class="bold">A:</span> Have you picked a novel yet?<br />
-                  <span class="bold">B:</span> Not yet. Maybe I
-                  <input
-                    type="text"
-                    id="l10-ex4-4"
-                    class="test-input"
-                    placeholder="..."
-                    style="width: 140px"
-                  />
-                  ask the librarian for a recommendation.
-                </p>
-              </div>
-
-              <div class="callout2" style="margin-top: 10px">
-                <p>
-                  <span class="bold">A:</span> Why are you checking the shelf
-                  again?<br />
-                  <span class="bold">B:</span> I'm not completely sure this is
-                  the right novel, so I
-                  <input
-                    type="text"
-                    id="l10-ex4-5"
-                    class="test-input"
-                    placeholder="..."
-                    style="width: 140px"
-                  />
-                  ask at the front desk.
-                </p>
-              </div>
-
-              <div class="callout2" style="margin-top: 10px">
-                <p>
-                  <span class="bold">A:</span> When is this book due?<br />
-                  <span class="bold">B:</span> The due date is Friday, so I
-                  <input
-                    type="text"
-                    id="l10-ex4-6"
-                    class="test-input"
-                    placeholder="..."
-                    style="width: 140px"
-                  />
-                  return it tomorrow, just to be safe.
-                </p>
-              </div>
-            </div>
+            </details>
 
             <!-- 📝 Exercise 5: Unscramble -->
-            <div class="soft-callout">
-              <h4>Exercise 5: Unscramble & Make a Sentence</h4>
-              <ol style="line-height: 1.8">
-                <li>
-                  library. / to / return / going / these / books / am / I / the
-                  <textarea
-                    id="l10-ex5-1"
-                    class="test-textarea"
-                    placeholder="I am..."
-                  ></textarea>
-                </li>
-                <li>
-                  it. / will / with / share / I / you
-                  <textarea
-                    id="l10-ex5-2"
-                    class="test-textarea"
-                    placeholder="I..."
-                  ></textarea>
-                </li>
-                <li>
-                  novel. / new / borrow / a / going / are / to / We
-                  <textarea
-                    id="l10-ex5-3"
-                    class="test-textarea"
-                    placeholder="We..."
-                  ></textarea>
-                </li>
-                <li>
-                  book. / like / this / think / I / will / I
-                  <textarea
-                    id="l10-ex5-4"
-                    class="test-textarea"
-                    placeholder="I..."
-                  ></textarea>
-                </li>
-                <li>
-                  shelf! / fall / that / off / going / is / to
-                  <textarea
-                    id="l10-ex5-5"
-                    class="test-textarea"
-                    placeholder="That..."
-                  ></textarea>
-                </li>
-                <li>
-                  today. / will / this / renew / book / I
-                  <textarea
-                    id="l10-ex5-6"
-                    class="test-textarea"
-                    placeholder="I..."
-                  ></textarea>
-                </li>
-              </ol>
-            </div>
+            <details class="task" name="l10">
+              <summary>
+                <h4>Exercise 5: Unscramble & Make a Sentence</h4>
+              </summary>
+              <div>
+                <ol style="line-height: 1.8">
+                  <li>
+                    library. / to / return / going / these / books / am / I /
+                    the
+                    <textarea
+                      id="l10-ex5-1"
+                      class="test-textarea"
+                      placeholder="I am..."
+                    ></textarea>
+                  </li>
+                  <li>
+                    it. / will / with / share / I / you
+                    <textarea
+                      id="l10-ex5-2"
+                      class="test-textarea"
+                      placeholder="I..."
+                    ></textarea>
+                  </li>
+                  <li>
+                    novel. / new / borrow / a / going / are / to / We
+                    <textarea
+                      id="l10-ex5-3"
+                      class="test-textarea"
+                      placeholder="We..."
+                    ></textarea>
+                  </li>
+                  <li>
+                    book. / like / this / think / I / will / I
+                    <textarea
+                      id="l10-ex5-4"
+                      class="test-textarea"
+                      placeholder="I..."
+                    ></textarea>
+                  </li>
+                  <li>
+                    shelf! / fall / that / off / going / is / to
+                    <textarea
+                      id="l10-ex5-5"
+                      class="test-textarea"
+                      placeholder="That..."
+                    ></textarea>
+                  </li>
+                  <li>
+                    today. / will / this / renew / book / I
+                    <textarea
+                      id="l10-ex5-6"
+                      class="test-textarea"
+                      placeholder="I..."
+                    ></textarea>
+                  </li>
+                </ol>
+              </div>
+            </details>
 
             <!-- 📝 Exercise 6: Translation -->
-            <div class="soft-callout" style="margin-bottom: 25px">
-              <h4>Exercise 6: Translation</h4>
-              <ol style="line-height: 1.8">
-                <li>
-                  Я збираюся позичити (взяти) цю книгу в бібліотеці.
-                  <textarea
-                    id="l10-ex6-1"
-                    class="test-textarea"
-                    placeholder="..."
-                  ></textarea>
-                </li>
-                <li>
-                  Він хоче позичити (дати) свій детективний роман другові.
-                  <textarea
-                    id="l10-ex6-2"
-                    class="test-textarea"
-                    placeholder="..."
-                  ></textarea>
-                </li>
-                <li>
-                  Ці книги прострочені, тому я поверну їх в бібліотеку сьогодні.
-                  <textarea
-                    id="l10-ex6-3"
-                    class="test-textarea"
-                    placeholder="..."
-                  ></textarea>
-                </li>
-                <li>
-                  Я не зовсім впевнена, але, можливо, продовжу термін цієї
-                  книги.
-                  <textarea
-                    id="l10-ex6-4"
-                    class="test-textarea"
-                    placeholder="..."
-                  ></textarea>
-                </li>
-                <li>
-                  Бібліотекарка тримає стос важких книг. Я запропоную допомогти
-                  їй.
-                  <textarea
-                    id="l10-ex6-5"
-                    class="test-textarea"
-                    placeholder="..."
-                  ></textarea>
-                </li>
-                <li>
-                  Мені не подобається ця книга, тому я піду і візьму в
-                  бібліотеці іншу.
-                  <textarea
-                    id="l10-ex6-6"
-                    class="test-textarea"
-                    placeholder="..."
-                  ></textarea>
-                </li>
-              </ol>
-            </div>
+            <details class="task" name="l10">
+              <summary>
+                <h4>Exercise 6: Translation</h4>
+              </summary>
+              <div>
+                <ol style="line-height: 1.8">
+                  <li>
+                    Я збираюся позичити (взяти) цю книгу в бібліотеці.
+                    <textarea
+                      id="l10-ex6-1"
+                      class="test-textarea"
+                      placeholder="..."
+                    ></textarea>
+                  </li>
+                  <li>
+                    Він хоче позичити (дати) свій детективний роман другові.
+                    <textarea
+                      id="l10-ex6-2"
+                      class="test-textarea"
+                      placeholder="..."
+                    ></textarea>
+                  </li>
+                  <li>
+                    Ці книги прострочені, тому я поверну їх в бібліотеку
+                    сьогодні.
+                    <textarea
+                      id="l10-ex6-3"
+                      class="test-textarea"
+                      placeholder="..."
+                    ></textarea>
+                  </li>
+                  <li>
+                    Я не зовсім впевнена, але, можливо, продовжу термін цієї
+                    книги.
+                    <textarea
+                      id="l10-ex6-4"
+                      class="test-textarea"
+                      placeholder="..."
+                    ></textarea>
+                  </li>
+                  <li>
+                    Бібліотекарка тримає стос важких книг. Я запропоную
+                    допомогти їй.
+                    <textarea
+                      id="l10-ex6-5"
+                      class="test-textarea"
+                      placeholder="..."
+                    ></textarea>
+                  </li>
+                  <li>
+                    Мені не подобається ця книга, тому я піду і візьму в
+                    бібліотеці іншу.
+                    <textarea
+                      id="l10-ex6-6"
+                      class="test-textarea"
+                      placeholder="..."
+                    ></textarea>
+                  </li>
+                </ol>
+              </div>
+            </details>
+
+            <!-- 📝 Exercise 7: Two Scenarios -->
+            <details class="task" name="l10">
+              <summary>
+                <h4>Exercise 7: Two Scenarios</h4>
+              </summary>
+
+              <div>
+                <p>
+                  Дано дію. Тобі потрібно написати два варіанти розвитку подій,
+                  використовуючи
+                  <span class="bold">will</span> або
+                  <span class="bold">be going to</span>, спираючись на слова в
+                  дужках. Додай трохи імпровізації.
+                </p>
+                <div class="callout2">
+                  <p style="margin-top: 0">
+                    <span class="bold">Example Action:</span> to go to the
+                    cinema
+                  </p>
+                  <ul>
+                    <li>
+                      (Maybe) ➔
+                      <span class="italic"
+                        >Maybe I will go to the cinema tonight.</span
+                      >
+                    </li>
+                    <li>
+                      (Ticket) ➔
+                      <span class="italic"
+                        >I am going to go to the cinema. I already have a
+                        ticket.</span
+                      >
+                    </li>
+                  </ul>
+                </div>
+                <ol style="line-height: 1.8">
+                  <!-- 1 -->
+                  <li style="margin-bottom: 15px">
+                    <span class="bold">Action:</span> to read a mystery novel
+                    <br />(I think)
+                    <textarea
+                      id="l10-ex7-1a"
+                      class="test-textarea"
+                      placeholder="..."
+                      rows="2"
+                    ></textarea>
+                    (already borrowed)
+                    <textarea
+                      id="l10-ex7-1b"
+                      class="test-textarea"
+                      placeholder="..."
+                      rows="2"
+                    ></textarea>
+                  </li>
+                  <!-- 2 -->
+                  <li style="margin-bottom: 15px">
+                    <span class="bold">Action:</span> to return the books
+                    <br />(probably, tomorrow)
+                    <textarea
+                      id="l10-ex7-2a"
+                      class="test-textarea"
+                      placeholder="..."
+                      rows="2"
+                    ></textarea>
+                    (because, due date is today)
+                    <textarea
+                      id="l10-ex7-2b"
+                      class="test-textarea"
+                      placeholder="..."
+                      rows="2"
+                    ></textarea>
+                  </li>
+                  <!-- 3 -->
+                  <li style="margin-bottom: 15px">
+                    <span class="bold">Action:</span> to arrive at the library
+                    <br />(I think, she, at noon)
+                    <textarea
+                      id="l10-ex7-3a"
+                      class="test-textarea"
+                      placeholder="..."
+                      rows="2"
+                    ></textarea>
+                    (she just texted me, in 5 minutes)
+                    <textarea
+                      id="l10-ex7-3b"
+                      class="test-textarea"
+                      placeholder="..."
+                      rows="2"
+                    ></textarea>
+                  </li>
+                  <!-- 4 -->
+                  <li style="margin-bottom: 15px">
+                    <span class="bold">Action:</span> to drop this boring book
+                    <br />(Maybe)
+                    <textarea
+                      id="l10-ex7-4a"
+                      class="test-textarea"
+                      placeholder="..."
+                      rows="2"
+                    ></textarea>
+                    (because, found another one)
+                    <textarea
+                      id="l10-ex7-4b"
+                      class="test-textarea"
+                      placeholder="..."
+                      rows="2"
+                    ></textarea>
+                  </li>
+                  <!-- 5 -->
+                  <li>
+                    <span class="bold">Action:</span> to spend the weekend
+                    reading <br />(I am not certain)
+                    <textarea
+                      id="l10-ex7-5a"
+                      class="test-textarea"
+                      placeholder="..."
+                      rows="2"
+                    ></textarea>
+                    (and, look forward to)
+                    <textarea
+                      id="l10-ex7-5b"
+                      class="test-textarea"
+                      placeholder="..."
+                      rows="2"
+                    ></textarea>
+                  </li>
+                </ol>
+              </div>
+            </details>
 
             <hr />
 
@@ -1309,7 +1441,7 @@
               <div class="callout2">
                 <p>
                   It is Saturday morning, and Maya is packing her backpack. She
-                  <span class="bold">is meeting</span> her friend, Chloe, at the
+                  <span class="bold">is meeting</span> her friend, Lily, at the
                   library at noon.
                 </p>
                 <p>
@@ -1321,26 +1453,26 @@
                   <span class="italic">"The Murder at the Vicarage"</span> by
                   Agatha Christie, she
                   <span class="bold">will borrow</span> that one. Also, Maya and
-                  Chloe have an English test next week, so they
+                  Lily have an English test next week, so they
                   <span class="bold">are going to study</span> together in the
                   reading room.
                 </p>
                 <p>
-                  When Maya arrives at the library, Chloe is already there. She
+                  When Maya arrives at the library, Lily is already there. She
                   is holding a big pile of books.
                 </p>
                 <p>
                   "Be careful!" Maya says. "The books
                   <span class="bold">are going to fall</span>!"
                 </p>
-                <p>"I know, they are so heavy," Chloe sighs.</p>
+                <p>"I know, they are so heavy," Lily sighs.</p>
                 <p>
                   "I <span class="bold">will help</span> you carry them," Maya
                   offers, taking half of the books from her hands. "Why do you
                   have so many?"
                 </p>
                 <p>
-                  "I couldn't choose," Chloe says. "What about you? Did you find
+                  "I couldn't choose," Lily says. "What about you? Did you find
                   your mystery novel?"
                 </p>
                 <p>
@@ -1349,7 +1481,7 @@
                   reading it. I am really looking forward to it."
                 </p>
                 <p>
-                  "That sounds perfect," Chloe says, smiling. "I
+                  "That sounds perfect," Lily says, smiling. "I
                   <span class="bold">will probably start</span> reading one of
                   mine on the bus home. Ok, now, let's go to the reading room.
                   We <span class="bold">are taking</span> that test on Monday,
@@ -1382,7 +1514,7 @@
               <h4>Questions about the text</h4>
               <ul>
                 <li>What is Maya going to do in the library?</li>
-                <li>Why does Chloe have so many books in her hands?</li>
+                <li>Why does Lily have so many books in her hands?</li>
                 <li>What are the girls going to do in the reading room?</li>
                 <li>What is Maya going to do this weekend?</li>
               </ul>
@@ -1399,7 +1531,7 @@
               </p>
               <ol style="line-height: 1.8">
                 <li>
-                  Chloe already reserved a specific novel online yesterday. What
+                  Lily already reserved a specific novel online yesterday. What
                   ___ she do today?
                 </li>
                 <li>
