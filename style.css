@@ -3087,3 +3087,57 @@ code.long-code .hljs-ln td.hljs-ln-code {
   border-radius: 6px;
   text-align: center;
 }
+
+/* ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ */
+/* 📑 REORDER LIST GAME */
+/* ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ */
+
+.reorder-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.reorder-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 12px 15px;
+  background-color: var(--panel);
+  border: 2px solid var(--accent);
+  border-radius: 6px;
+  cursor: grab;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s,
+    border-color 0.2s,
+    background-color 0.2s;
+  user-select: none;
+  color: var(--text-main);
+  line-height: 1.4;
+}
+
+.reorder-item:active {
+  cursor: grabbing;
+}
+
+.reorder-item.dragging {
+  opacity: 0.5;
+  background-color: var(--hover-bg);
+  border-color: var(--brand4);
+  box-shadow: var(--code-shadow);
+}
+
+.reorder-item.correct {
+  border-color: var(--brand7);
+  background-color: rgba(76, 149, 108, 0.1);
+}
+
+.drag-handle {
+  color: var(--text-soft);
+  font-size: 20px;
+  cursor: grab;
+}

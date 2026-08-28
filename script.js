@@ -782,6 +782,14 @@
           gameModule.inlineDndInstance.resetGame();
         }
       });
+
+      // 4. Clear Reorder List Games
+      const reorderGames = container.querySelectorAll(".reorder-game-module");
+      reorderGames.forEach((gameModule) => {
+        if (gameModule.reorderInstance) {
+          gameModule.reorderInstance.resetGame();
+        }
+      });
     }
   }
 
@@ -2144,6 +2152,115 @@
   }
 
   // -----------------------------------------
+  // 📑 REORDER GAME MANAGER
+  // -----------------------------------------
+  class ReorderGameManager {
+    constructor(moduleElement) {
+      this.module = moduleElement;
+      this.gameId = this.module.getAttribute("data-game-id") || "default";
+      this.pageId = window.location.pathname.replace(/[^a-zA-Z0-9]/g, "_");
+      this.storageKey = `lms_reorder_${this.pageId}_${this.gameId}`;
+
+      this.list = this.module.querySelector(".reorder-list");
+      this.items = Array.from(this.list.querySelectorAll(".reorder-item"));
+      this.feedbackEl = this.module.querySelector(".reorder-feedback");
+
+      this.init();
+    }
+
+    init() {
+      this.loadState();
+      this.setupDragEvents();
+      this.checkWinCondition();
+    }
+
+    loadState() {
+      const savedOrder = JSON.parse(localStorage.getItem(this.storageKey));
+      if (savedOrder && savedOrder.length === this.items.length) {
+        savedOrder.forEach((id) => {
+          const item = this.items.find((i) => i.getAttribute("data-id") === id);
+          if (item) this.list.appendChild(item);
+        });
+        this.items = Array.from(this.list.querySelectorAll(".reorder-item"));
+      }
+    }
+
+    saveState() {
+      const currentOrder = Array.from(
+        this.list.querySelectorAll(".reorder-item"),
+      ).map((item) => item.getAttribute("data-id"));
+      localStorage.setItem(this.storageKey, JSON.stringify(currentOrder));
+    }
+
+    setupDragEvents() {
+      this.items.forEach((item) => {
+        item.addEventListener("dragstart", () => {
+          setTimeout(() => item.classList.add("dragging"), 0);
+        });
+        item.addEventListener("dragend", () => {
+          item.classList.remove("dragging");
+          this.saveState();
+          this.checkWinCondition();
+        });
+      });
+
+      this.list.addEventListener("dragover", (e) => {
+        e.preventDefault();
+        const draggingItem = this.list.querySelector(".dragging");
+        if (!draggingItem) return;
+
+        const siblings = [
+          ...this.list.querySelectorAll(".reorder-item:not(.dragging)"),
+        ];
+        let nextSibling = siblings.find((sibling) => {
+          return (
+            e.clientY <=
+            sibling.getBoundingClientRect().top + sibling.offsetHeight / 2
+          );
+        });
+
+        this.list.insertBefore(draggingItem, nextSibling);
+      });
+    }
+
+    checkWinCondition() {
+      const currentItems = Array.from(
+        this.list.querySelectorAll(".reorder-item"),
+      );
+      let isCorrect = true;
+
+      currentItems.forEach((item, index) => {
+        const expectedIndex = parseInt(item.getAttribute("data-correct")) - 1;
+        if (index === expectedIndex) {
+          item.classList.add("correct");
+        } else {
+          item.classList.remove("correct");
+          isCorrect = false;
+        }
+      });
+
+      if (isCorrect) {
+        this.feedbackEl.textContent = "🎉 Perfect order!";
+      } else {
+        this.feedbackEl.textContent = "";
+      }
+    }
+
+    resetGame() {
+      localStorage.removeItem(this.storageKey);
+      // Restore default HTML order using data-id string comparison
+      this.items.sort((a, b) =>
+        a.getAttribute("data-id").localeCompare(b.getAttribute("data-id")),
+      );
+      this.items.forEach((item) => {
+        item.classList.remove("correct");
+        this.list.appendChild(item);
+      });
+      this.feedbackEl.textContent = "";
+    }
+  }
+
+  // -----------------------------------------
   // 🏁 8. INITIALIZATION (The Engine)
   // -----------------------------------------
   document.addEventListener("DOMContentLoaded", () => {
@@ -2167,6 +2284,11 @@
     document.querySelectorAll(".inline-dnd-module").forEach((module) => {
       // Save the instance directly to the DOM element so we can trigger resetGame() from outside
       module.inlineDndInstance = new InlineDragAndDropManager(module);
+    });
+
+    // Ініціалізуємо ігри на впорядкування списку
+    document.querySelectorAll(".reorder-game-module").forEach((module) => {
+      module.reorderInstance = new ReorderGameManager(module);
     });
 
     // 1. Ініціалізуємо всі модулі карток на сторінці
