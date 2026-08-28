@@ -101,10 +101,10 @@
         const tocBox = document.createElement("div");
         tocBox.className = "toc-box";
 
-        const tocTitle = document.createElement("h4");
-        tocTitle.className = "toc-title";
-        tocTitle.textContent = "Навігація";
-        tocBox.appendChild(tocTitle);
+        // const tocTitle = document.createElement("h4");
+        // tocTitle.className = "toc-title";
+        // tocTitle.textContent = "Навігація";
+        // tocBox.appendChild(tocTitle);
 
         const nav = document.createElement("nav");
         nav.className = "subsection-nav";
