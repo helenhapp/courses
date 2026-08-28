@@ -774,6 +774,14 @@
           gameModule.sortInstance.resetGame();
         }
       });
+
+      // 3. Clear Inline Drag & Drop Games
+      const inlineDndGames = section.querySelectorAll(".inline-dnd-module");
+      inlineDndGames.forEach((gameModule) => {
+        if (gameModule.inlineDndInstance) {
+          gameModule.inlineDndInstance.resetGame();
+        }
+      });
     }
   }
 
@@ -2003,6 +2011,139 @@
   }
 
   // -----------------------------------------
+  // 🧩 INLINE DRAG & DROP MANAGER
+  // -----------------------------------------
+  class InlineDragAndDropManager {
+    constructor(moduleElement) {
+      this.module = moduleElement;
+
+      // Use the element's ID as a unique identifier for LocalStorage
+      this.gameId =
+        this.module.getAttribute("id") ||
+        Math.random().toString(36).substr(2, 9);
+      this.pageId = window.location.pathname.replace(/[^a-zA-Z0-9]/g, "_");
+      this.storageKey = `lms_inline_dnd_${this.pageId}_${this.gameId}`;
+
+      // Convert NodeLists to Arrays for easier searching
+      this.words = Array.from(this.module.querySelectorAll(".draggable-word"));
+      this.dropZones = Array.from(
+        this.module.querySelectorAll(".inline-drop-zone"),
+      );
+      this.bank = this.module.querySelector(".inline-bank");
+      this.resetBtn = this.module.querySelector(".inline-reset-btn");
+
+      this.draggedWord = null;
+
+      this.init();
+    }
+
+    init() {
+      this.loadState();
+      this.setupDragEvents();
+
+      if (this.resetBtn) {
+        this.resetBtn.addEventListener("click", () => this.resetGame());
+      }
+    }
+
+    saveState() {
+      const state = {};
+      // Save the text of the word currently sitting in each numbered drop zone
+      this.dropZones.forEach((zone, index) => {
+        if (zone.children.length > 0) {
+          state[index] = zone.children[0].textContent.trim();
+        } else {
+          state[index] = null;
+        }
+      });
+      localStorage.setItem(this.storageKey, JSON.stringify(state));
+    }
+
+    loadState() {
+      try {
+        const saved = localStorage.getItem(this.storageKey);
+        if (!saved) return;
+
+        const state = JSON.parse(saved);
+
+        this.dropZones.forEach((zone, index) => {
+          const savedWordText = state[index];
+          if (savedWordText) {
+            // Find the word element that matches the saved text and move it to this zone
+            const wordToMove = this.words.find(
+              (w) => w.textContent.trim() === savedWordText,
+            );
+            if (wordToMove) {
+              zone.appendChild(wordToMove);
+            }
+          }
+        });
+      } catch (e) {
+        console.error("Failed to load LocalStorage for Inline DND", e);
+      }
+    }
+
+    setupDragEvents() {
+      this.words.forEach((word) => {
+        word.addEventListener("dragstart", (e) => {
+          this.draggedWord = word;
+          setTimeout(() => word.classList.add("dragging"), 0);
+          e.dataTransfer.effectAllowed = "move";
+        });
+
+        word.addEventListener("dragend", () => {
+          word.classList.remove("dragging");
+          this.draggedWord = null;
+          this.saveState(); // Save to LocalStorage when drag finishes
+        });
+      });
+
+      const setupZone = (zone) => {
+        zone.addEventListener("dragover", (e) => {
+          e.preventDefault();
+          zone.classList.add("drag-over");
+        });
+
+        zone.addEventListener("dragleave", () => {
+          zone.classList.remove("drag-over");
+        });
+
+        zone.addEventListener("drop", (e) => {
+          e.preventDefault();
+          zone.classList.remove("drag-over");
+
+          if (this.draggedWord) {
+            if (zone === this.draggedWord.parentNode) return;
+
+            // If dropping into a text blank that already has a word, swap it back to the bank
+            if (
+              zone.classList.contains("inline-drop-zone") &&
+              zone.children.length > 0
+            ) {
+              this.bank.appendChild(zone.children[0]);
+            }
+
+            zone.appendChild(this.draggedWord);
+            this.saveState(); // Save immediately on drop
+          }
+        });
+      };
+
+      this.dropZones.forEach(setupZone);
+      if (this.bank) setupZone(this.bank);
+    }
+
+    resetGame() {
+      localStorage.removeItem(this.storageKey);
+
+      // Move all words back to the bank
+      this.words.forEach((word) => {
+        this.bank.appendChild(word);
+      });
+    }
+  }
+
+  // -----------------------------------------
   // 🏁 8. INITIALIZATION (The Engine)
   // -----------------------------------------
   document.addEventListener("DOMContentLoaded", () => {
@@ -2021,6 +2162,12 @@
     // document.querySelectorAll(".flashcard-module").forEach((module) => {
     //   new FlashcardManager(module);
     // });
+
+    // Ініціалізуємо всі інлайн drag-and-drop модулі на сторінці
+    document.querySelectorAll(".inline-dnd-module").forEach((module) => {
+      // Save the instance directly to the DOM element so we can trigger resetGame() from outside
+      module.inlineDndInstance = new InlineDragAndDropManager(module);
+    });
 
     // 1. Ініціалізуємо всі модулі карток на сторінці
     document.querySelectorAll(".flashcard-module").forEach((module) => {

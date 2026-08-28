@@ -2004,6 +2004,70 @@ pre::-webkit-scrollbar-thumb,
   margin-top: 8px;
 }
 
+/* DRAG-AND-DROP WORD BANK EXERCISE */
+.inline-bank {
+  display: flex;
+  gap: 10px;
+  margin: 20px 0;
+  padding: 15px;
+  min-height: 52px;
+  transition: background-color 0.2s ease;
+  background-color: var(--soft-callout);
+}
+.inline-bank.drag-over {
+  background-color: var(--soft-callout);
+}
+.draggable-word {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--panel);
+  border: 2px solid var(--accent);
+  padding: 0 12px;
+  border-radius: 6px;
+  cursor: grab;
+  font-family: "Fira Code", monospace;
+  color: var(--text-main);
+  user-select: none;
+  transition: transform 0.1s;
+  z-index: 10;
+}
+.draggable-word:active {
+  cursor: grabbing;
+}
+.draggable-word.dragging {
+  opacity: 0.5;
+  transform: scale(1.05);
+}
+.inline-drop-zone {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 120px;
+  min-height: 34px;
+  margin: 0 8px;
+  background-color: var(--panel);
+  border: 2px dashed var(--accent);
+  border-radius: 6px;
+  vertical-align: middle;
+  transition: all 0.2s ease;
+  overflow: hidden;
+}
+.inline-drop-zone.drag-over {
+  background-color: var(--soft-callout);
+  border-color: var(--brand4);
+  border-style: solid;
+}
+.inline-drop-zone .draggable-word {
+  border: none;
+  background-color: transparent;
+  color: var(--brand2);
+  font-size: 15px;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
 /* ------------------------------------- */
 /* ВБУДОВАНІ ПОЛЯ ВВЕДЕННЯ (В СЕРЕДИНІ ТЕКСТУ) */
 /* ------------------------------------- */
@@ -2736,7 +2800,6 @@ code.long-code .hljs-ln td.hljs-ln-code {
 
 .sorting-header h4 {
   margin: 0;
-  color: var(--title);
 }
 
 .sorting-reset-btn {
