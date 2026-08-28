@@ -1579,7 +1579,7 @@
       // Update placeholder to hint what language to type
       const sourceName =
         this.langNames[this.sourceLang]?.toLowerCase() || this.sourceLang;
-      this.inputEl.placeholder = `Введіть слово (${sourceName})...`;
+      this.inputEl.placeholder = `Enter the word (${sourceName})...`;
     }
 
     async translate() {

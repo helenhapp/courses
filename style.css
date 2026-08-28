@@ -356,6 +356,11 @@ p code {
   margin-top: 10px;
 }
 
+.task-description {
+  color: var(--text-soft);
+  font-size: 0.95rem;
+}
+
 /* ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ */
 /* 🌸 3. АНІМАЦІЇ ПЕРЕХОДІВ */
 /* ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ */
@@ -2804,7 +2809,17 @@ code.long-code .hljs-ln td.hljs-ln-code {
 
 .sorting-reset-btn {
   padding: 6px 12px;
+  color: var(--text-soft);
   font-size: 12px;
+  background-color: var(--panel-alt);
+}
+.sorting-reset-btn:hover {
+  background-color: var(--hover-bg);
+  color: var(--text-soft);
+  transform: scale(1.05);
+}
+.sorting-reset-btn:active {
+  transform: scale(0.95);
 }
 
 /* The Bank (Where items start) */
