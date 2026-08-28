@@ -2812,6 +2812,7 @@ code.long-code .hljs-ln td.hljs-ln-code {
   color: var(--text-soft);
   font-size: 12px;
   background-color: var(--panel-alt);
+  min-width: 90px;
 }
 .sorting-reset-btn:hover {
   background-color: var(--hover-bg);
