@@ -2078,7 +2078,7 @@ pre::-webkit-scrollbar-thumb,
 /* ------------------------------------- */
 .test-input {
   display: inline-block;
-  width: 120px; /* Ширина за замовчуванням (можна міняти інлайн для довших слів) */
+  width: 120px;
   padding: 4px 10px;
   margin: 0 8px;
   background-color: var(--panel);
@@ -2105,10 +2105,15 @@ pre::-webkit-scrollbar-thumb,
   opacity: 0.6;
 }
 
-/* Коли поле міститься в списку, збільшуємо висоту рядка, щоб поля не злипалися */
 ol:has(.test-input),
 ul:has(.test-input) {
   line-height: 2.2;
+}
+
+select.test-input {
+  width: auto;
+  padding: 2px 8px;
+  cursor: pointer;
 }
 
 .student-info {
@@ -3023,11 +3028,11 @@ code.long-code .hljs-ln td.hljs-ln-code {
   display: flex;
   flex-direction: row;
   gap: 10px;
-  align-items: stretch; 
+  align-items: stretch;
 }
 
 .translator-input {
-  flex-grow: 1; 
+  flex-grow: 1;
   width: auto;
   padding: 12px 15px;
   background-color: var(--code-bg);
@@ -3046,8 +3051,8 @@ code.long-code .hljs-ln td.hljs-ln-code {
 .translate-btn {
   border: 1px solid var(--accent);
   color: var(--text-soft);
-  width: auto; 
-  padding: 0 25px; 
+  width: auto;
+  padding: 0 25px;
   font-size: 15px;
   font-weight: 500;
   white-space: nowrap;
