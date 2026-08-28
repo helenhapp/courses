@@ -493,7 +493,7 @@ h4 {
   font-family: "Tektur", sans-serif;
   font-weight: 600;
   font-size: 1.1rem;
-  margin: 0.7rem 0;
+  margin: 15px 0;
   /* color: var(--accent-pop); */
   color: var(--accent);
 }
@@ -2956,12 +2956,12 @@ code.long-code .hljs-ln td.hljs-ln-code {
 /* ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ */
 
 .translator-module {
-  background-color: var(--soft-callout);
-  border: 1px solid var(--accordion-border);
-  border-radius: 8px;
+  background-color: var(--panel);
   padding: 20px;
-  margin: 20px 0;
   width: 100%;
+  border-radius: 12px;
+  border: 1px solid var(--accent);
+  margin: 25px auto;
 }
 
 .translator-header {
@@ -3021,15 +3021,17 @@ code.long-code .hljs-ln td.hljs-ln-code {
 
 .translator-inputs {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 10px;
+  align-items: stretch; 
 }
 
 .translator-input {
-  width: 100%;
+  flex-grow: 1; 
+  width: auto;
   padding: 12px 15px;
   background-color: var(--code-bg);
-  border: 2px solid var(--accent);
+  border: 1px solid var(--accent);
   border-radius: 6px;
   color: var(--text-main);
   font-family: inherit;
@@ -3042,9 +3044,29 @@ code.long-code .hljs-ln td.hljs-ln-code {
 }
 
 .translate-btn {
-  width: 100%;
+  border: 1px solid var(--accent);
+  color: var(--text-soft);
+  width: auto; 
+  padding: 0 25px; 
   font-size: 15px;
-  font-weight: bold;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.translate-btn:hover {
+  transform: scale(1.05);
+}
+.translate-btn:active {
+  transform: scale(0.95);
+}
+
+@media (max-width: 449px) {
+  .translator-inputs {
+    flex-direction: column;
+  }
+  .translate-btn {
+    width: 100%;
+    padding: 12px 25px;
+  }
 }
 
 .translate-btn:disabled {
