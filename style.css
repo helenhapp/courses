@@ -1316,7 +1316,7 @@ details.task[open] summary::before {
 }
 .task ol,
 .task ul {
-  margin-left: 25px;
+  /* margin-left: 25px; */
   margin-top: 10px;
 }
 .task summary h4 {
