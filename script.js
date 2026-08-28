@@ -2189,18 +2189,42 @@
         try {
           const categories = JSON.parse(dataScript.textContent);
           let html = "";
+
           categories.forEach((cat) => {
-            html += `<h5 class="vocab-group-name">${cat.title}</h5><div class="vocab-grid">`;
-            cat.words.forEach((word) => {
-              html += `
-                <label class="test-label">
-                  <input type="checkbox" class="test-checkbox dynamic-cb" data-front="${word.en}" data-back="${word.uk}" />
-                  ${word.en}
-                </label>
-              `;
-            });
-            html += `</div>`;
+            // Check if the wrapper is a table body
+            if (wrapper.tagName === "TBODY") {
+              // Generate the table rows (Category titles have been removed)
+              cat.words.forEach((word) => {
+                html += `
+                  <tr>
+                    <td>
+                      <!-- Checkbox and word are now grouped together -->
+                      <label class="test-label" style="margin:0; display:inline-flex; align-items:center; gap:12px;">
+                        <input type="checkbox" class="test-checkbox dynamic-cb" data-front="${word.en}" data-back="${word.uk}" />
+                        <span class="accent">${word.en}</span>
+                      </label>
+                    </td>
+                    <td><span class="accent-string">${word.pron || ""}</span></td>
+                    <td>${word.uk}</td>
+                    <td class="italic">${word.sent || ""}</td>
+                  </tr>
+                `;
+              });
+            } else {
+              // Original Grid Layout Fallback (if you use this elsewhere)
+              html += `<h5 class="vocab-group-name">${cat.title}</h5><div class="vocab-grid">`;
+              cat.words.forEach((word) => {
+                html += `
+                  <label class="test-label">
+                    <input type="checkbox" class="test-checkbox dynamic-cb" data-front="${word.en}" data-back="${word.uk}" />
+                    ${word.en}
+                  </label>
+                `;
+              });
+              html += `</div>`;
+            }
           });
+
           wrapper.innerHTML = html;
         } catch (error) {
           console.error("Помилка генерації словника:", error);
