@@ -1,0 +1,1084 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Навчальні матеріали" />
+
+    <link rel="icon" type="image/svg+xml" href="../media/icons/carambola.svg" />
+
+    <title>English Lesson 11</title>
+
+    <script>
+      const savedTheme = localStorage.getItem("lms_theme") || "light";
+      document.documentElement.setAttribute("data-theme", savedTheme);
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Fira+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Tektur:wght@400..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="../style.css" />
+    <script src="../script.js" defer></script>
+  </head>
+
+  <body>
+    <!-- transition curtain -->
+    <div class="transition-curtain"></div>
+
+    <!-- top-bar -->
+    <div id="nav-container">
+      <nav class="top-bar">
+        <div class="logo-container">
+          <img
+            src="../media/icons/carambola.svg"
+            alt="Logo"
+            class="site-logo"
+          />
+        </div>
+
+        <div class="top-bar__controls">
+          <!-- <a href="./menu.html" class="menu-link">All Lessons</a> -->
+          <label class="toggle-switch" aria-label="Перемикач теми">
+            <input type="checkbox" id="theme-checkbox" />
+            <span class="slider">
+              <span class="icon sun"
+                ><img src="../media/icons/stars.svg"
+              /></span>
+              <span class="icon moon"
+                ><img src="../media/icons/moon.svg"
+              /></span>
+            </span>
+          </label>
+          <button
+            id="dyslexia-mode-btn"
+            class="wide-toggle"
+            title="Шрифт для дислектиків"
+          >
+            Aa
+          </button>
+        </div>
+      </nav>
+    </div>
+
+    <!-- lesson header -->
+    <header>
+      <div class="title-container">
+        <a href="./lesson10.html" class="nav-arrow prev-arrow" title="Попередній урок"> ← </a>
+
+        <h1 id="lesson-title">English: ##</h1>
+
+        <!-- <a href="#" class="nav-arrow next-arrow" title="Наступний урок"> → </a> -->
+      </div>
+
+      <p class="topic">Grammar Topic | Vocabulary Topic</p>
+
+      <hr class="pretty-divider" />
+    </header>
+
+    <!-- lesson content -->
+    <main>
+      <!-- tab buttons -->
+      <div class="tabs-nav">
+        <button class="tab-btn active" data-target="part-1">Vocabulary</button>
+        <button class="tab-btn" data-target="part-2">Grammar</button>
+        <button class="tab-btn" data-target="part-3">Read & Speak</button>
+        <button class="tab-btn" data-target="part-4">Homework</button>
+      </div>
+
+      <!-- 🍓 PART 1: VOCABULARY -->
+      <section id="part-1" class="lesson-wrapper tab-content active show">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img
+                src="../media/icons/strawberry.svg"
+                class="star"
+                alt="an open book"
+              />
+              <span>Vocabulary Bank</span>
+            </h2>
+          </div>
+
+          <div class="lesson-content">
+            <h3 id="p1-vocab">Today's Vocabulary</h3>
+
+            <!-- TABLE with CHECKBOXES -->
+            <!-- prettier-ignore -->
+            <div class="dynamic-fc-container" data-target-fc="fc-dynamic-vocab" style="margin-top: 20px">
+              <!-- JSON Data (Notice the "pron" and "sent" fields) -->
+              <script type="application/json" class="vocab-data">
+                [
+                  {
+                    "words": [
+                      {
+                        "en": "avocado",
+                        "uk": "авокадо",
+                        "pron": "/ˌæv.əˈkɑː.dəʊ/",
+                        "sent": "I had toast with avocado for breakfast."
+                      },
+                      {
+                        "en": "cocoa powder",
+                        "uk": "какао-порошок",
+                        "pron": "/ˈkəʊ.kəʊ ˌpaʊ.dər/",
+                        "sent": "Add two spoons of cocoa powder to the milk."
+                      },
+                      {
+                        "en": "recipe",
+                        "uk": "рецепт",
+                        "pron": "/ˈres.ɪ.pi/",
+                        "sent": "Do you know a good recipe for a chocolate cake?"
+                      }
+                    ]
+                  }
+                ]
+              </script>
+              <!-- table -->
+              <div class="tablecontainer">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Word</th>
+                      <th>Pronunciation</th>
+                      <th>Translation</th>
+                      <th>Sentence</th>
+                    </tr>
+                  </thead>
+                  <!-- The JS will inject the table rows here -->
+                  <tbody class="vocab-groups-wrapper"></tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- FLASHCARDS -->
+            <!-- prettier-ignore -->
+            <div class="flashcard-module" id="fc-dynamic-vocab" data-fc-id="dynamic-vocab-2">
+              <!-- stats -->
+              <div class="flashcard-stats">
+                <span class="fc-remaining">Remaining: 0</span>
+                <span class="fc-learned">Learned: 0</span>
+              </div>
+              <!-- scene -->
+              <div class="flashcard-scene">
+                <div class="flashcard">
+                  <div class="flashcard-face flashcard-front fc-front">Word</div>
+                  <div class="flashcard-face flashcard-back fc-back">Translation</div>
+                </div>
+              </div>
+              <!-- controls -->
+              <div class="flashcard-controls">
+                <button type="button" class="fc-know-btn" title="Key: Left Arrow">← I know it</button>
+                <button type="button" class="fc-dont-know-btn" title="Key: Right Arrow">I don't know it →</button>
+              </div>
+              <!-- menu -->
+              <div class="flashcard-menu" style="display: none">
+                <button type="button" class="submit-btn fc-action-btn">Start</button>
+                <button type="button" class="reset-btn-hw fc-clear-btn">Reset progress</button>
+              </div>
+            </div>
+
+            <hr />
+
+            <h3 id="p1-notes">Language Notes</h3>
+
+            <h4>Some / Any (Трохи, кілька)</h4>
+
+            <p>
+              Коли ми говоримо про незлічувані продукти або множину злічуваних,
+              ми рідко знаємо точну кількість. Щоб сказати "трохи" або "кілька",
+              ми використовуємо слова
+              <span class="accent">some</span> та
+              <span class="accent">any</span>.
+            </p>
+
+            <p>
+              <span class="accent">Some</span> використовується в
+              <span class="bold">стверджувальних</span> реченнях:
+            </p>
+            <ul>
+              <li>
+                I have <span class="accent">some</span> mushrooms. — У мене є
+                кілька грибів.
+              </li>
+              <li>
+                There is <span class="accent">some</span> juice in the glass. —
+                У склянці є трохи соку.
+              </li>
+            </ul>
+
+            <p>
+              <span class="accent">Any</span> використовується в
+              <span class="bold">запереченнях</span> та звичайних
+              <span class="bold">запитаннях</span>:
+            </p>
+            <ul>
+              <li>
+                Do you have <span class="accent">any</span> strawberries? — У
+                тебе є (хоч якісь) полуниці?
+              </li>
+              <li>
+                There isn't <span class="accent">any</span> sugar in my tea. — У
+                моєму чаї немає (ніякого) цукру.
+              </li>
+            </ul>
+
+            <hr />
+
+            <h3 id="p1-practice">Practice</h3>
+
+            <!-- EXERCISE: drag-and-drop words -->
+            <!-- prettier-ignore -->
+            <div class="soft-callout inline-dnd-module" id="inline-dnd-exercise-1">
+              <!-- header with Reset Button -->
+              <div class="sorting-header">
+                <h4>Exercise: Choose the correct word</h4>
+                <button class="sorting-reset-btn inline-reset-btn">🔄 Reset</button>
+              </div>
+
+              <p class="task-description">
+                Read the sentences and drag the missing words into the blanks. You can easily swap words or return them to the bank if you change your mind.
+              </p>
+
+              <!-- Word Bank -->
+              <div class="callout2 word-bank inline-bank">
+                <span class="draggable-word" draggable="true">avocado</span>
+                <span class="draggable-word" draggable="true">recipe</span>
+                <span class="draggable-word" draggable="true">cocoa powder</span>
+              </div>
+
+              <!-- Sentences -->
+              <ol style="line-height: 2.5">
+                <li>I had toast with <span class="inline-drop-zone"></span> for breakfast.</li>
+                <li>Add two spoons of <span class="inline-drop-zone"></span> to the milk.</li>
+                <li>Do you know a good <span class="inline-drop-zone"></span> for a chocolate cake?</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 🍉 PART 2: GRAMMAR -->
+      <section id="part-2" class="lesson-wrapper tab-content">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img
+                src="../media/icons/watermelon.svg"
+                class="star"
+                alt="an open book"
+              />
+              <span>Grammar Topic Name</span>
+            </h2>
+          </div>
+
+          <div class="lesson-content">
+            <h3 id="p2-subtopic1">Subtopic 1</h3>
+
+            <p>
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sapiente
+              dolorem, fuga quae nisi voluptatibus tempora neque! Minus tempora,
+              vitae voluptatibus eveniet, expedita accusamus voluptatum ad
+              soluta voluptas quae perspiciatis suscipit!
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sapiente
+              dolorem, fuga quae nisi voluptatibus tempora neque! Minus tempora,
+              vitae voluptatibus eveniet, expedita accusamus voluptatum ad
+              soluta voluptas quae perspiciatis suscipit!
+            </p>
+
+            <hr />
+
+            <h3 id="p2-subtopic2">Subtopic 2</h3>
+
+            <h4>Lorem, ipsum</h4>
+
+            <p>
+              Lorem <span class="accent">ipsum</span>, dolor sit
+              <span class="bold">amet</span> consectetur
+              <span class="accent-string">adipisicing</span> elit. Deserunt, ex.
+            </p>
+
+            <h4>Lorem, ipsum</h4>
+
+            <ul>
+              <li>...</li>
+              <li>...</li>
+              <li>...</li>
+            </ul>
+
+            <hr />
+
+            <h3 id="p2-practice1">Practice</h3>
+
+            <!-- <p>
+              There are templates for 8 types of exercises. Every actual lesson
+              will only include 5 exercises, 2 of which would be optional (some
+              extra practice if the student works too fast through the reading
+              section).
+            </p> -->
+
+            <!-- 📝 Exercise 1. Type: Word Transformation -->
+            <details class="task" name="grammar" open>
+              <summary>
+                <h4>Exercise 1: Word Transformation</h4>
+              </summary>
+
+              <div>
+                <p class="task-description">
+                  Complete the sentences using the correct form of the verbs in
+                  brackets (Present Perfect Simple).
+                </p>
+                <ol style="line-height: 2.2">
+                  <li>
+                    The detective
+                    <input
+                      type="text"
+                      id="l10-ex2-1"
+                      class="test-input"
+                      placeholder="..."
+                      style="width: 130px"
+                    />
+                    (just / find) a new clue in the garden.
+                  </li>
+                  <li>
+                    I
+                    <input
+                      type="text"
+                      id="l10-ex2-2"
+                      class="test-input"
+                      placeholder="..."
+                    />
+                    (not / finish) my investigation yet.
+                  </li>
+                  <li>
+                    <input
+                      type="text"
+                      id="l10-ex2-3"
+                      class="test-input"
+                      placeholder="..."
+                      style="width: 80px"
+                    />
+                    you ever
+                    <input
+                      type="text"
+                      id="l10-ex2-4"
+                      class="test-input"
+                      placeholder="..."
+                      style="width: 80px"
+                    />
+                    (be) to a real crime scene?
+                  </li>
+                </ol>
+              </div>
+            </details>
+
+            <!-- 📝 Exercise 2. Type: Multiple Choice -->
+            <details class="task" name="grammar">
+              <summary>
+                <h4>Exercise 2: Multiple Choice</h4>
+              </summary>
+
+              <div>
+                <p class="task-description">
+                  Choose the correct option to complete each sentence.
+                </p>
+
+                <!-- Питання 1 -->
+                <fieldset class="test-question">
+                  <!-- prettier-ignore -->
+                  <legend>1. She ___ her keys, so she can't open the door.</legend>
+
+                  <!-- prettier-ignore -->
+                  <div class="radio-flex">
+                    <label class="test-label">
+                      <input type="radio" class="test-radio" name="l10-ex3-q1" value="A" />
+                      A) lost
+                    </label>
+                    <label class="test-label">
+                      <input type="radio" class="test-radio" name="l10-ex3-q1" value="B" />
+                      B) has lost
+                    </label>
+                    <label class="test-label">
+                      <input type="radio" class="test-radio" name="l10-ex3-q1" value="C" />
+                      C) have lost
+                    </label>
+                  </div>
+                </fieldset>
+              </div>
+            </details>
+
+            <!-- 📝 Exercise 3. Type: Make a Sentence -->
+            <details class="task" name="grammar">
+              <summary>
+                <h4>Exercise 3: Make a Sentence</h4>
+              </summary>
+
+              <div>
+                <p class="task-description">
+                  Write full sentences using the given words. Use the Present
+                  Perfect Simple tense.
+                </p>
+
+                <ol>
+                  <li>we / already / explore / the entire cave</li>
+                  <li>the scientists / not / discover / the truth / yet</li>
+                  <li>what / you / find / in the box / ?</li>
+                </ol>
+
+                <textarea
+                  id="l10-ex4"
+                  class="test-textarea"
+                  placeholder="..."
+                ></textarea>
+              </div>
+            </details>
+
+            <!-- 📝 Exercise 4. Type: Translation -->
+            <details class="task" name="grammar">
+              <summary>
+                <h4>Exercise 4: Translation</h4>
+              </summary>
+
+              <div>
+                <p class="task-description">
+                  Translate these sentences into English.
+                </p>
+
+                <ol>
+                  <li>Я щойно знайшов карту скарбів!</li>
+                  <li>Вона ніколи не була в Єгипті.</li>
+                </ol>
+
+                <textarea
+                  id="l10-ex5"
+                  class="test-textarea"
+                  placeholder="..."
+                ></textarea>
+              </div>
+            </details>
+
+            <!-- 📝 Exercise 5. Type: Sorting Game -->
+            <details class="task" name="grammar">
+              <summary>
+                <h4>Exercise 5: Sort by Rule (For vs Since)</h4>
+              </summary>
+
+              <div>
+                <p class="task-description">
+                  Sort the time expressions into the correct categories.
+                </p>
+                <div
+                  class="sorting-game-module"
+                  data-game-id="l10-sort-for-since"
+                >
+                  <div class="sorting-header">
+                    <h4>For or Since?</h4>
+                    <!-- prettier-ignore -->
+                    <button type="button" class="sorting-reset-btn">🔄 Reset</button>
+                  </div>
+                  <!-- JSON Дані для гри -->
+                  <script type="application/json" class="sorting-data">
+                    {
+                      "categories": [
+                        {
+                          "id": "cat-for",
+                          "title": "FOR",
+                          "hint": "(a period of time)"
+                        },
+                        {
+                          "id": "cat-since",
+                          "title": "SINCE",
+                          "hint": "(a starting point)"
+                        }
+                      ],
+                      "items": [
+                        {
+                          "id": "t1",
+                          "text": "three days",
+                          "correctCategory": "cat-for"
+                        },
+                        {
+                          "id": "t2",
+                          "text": "a long time",
+                          "correctCategory": "cat-for"
+                        },
+                        {
+                          "id": "t3",
+                          "text": "10 years",
+                          "correctCategory": "cat-for"
+                        },
+                        {
+                          "id": "t4",
+                          "text": "2015",
+                          "correctCategory": "cat-since"
+                        },
+                        {
+                          "id": "t5",
+                          "text": "last Monday",
+                          "correctCategory": "cat-since"
+                        },
+                        {
+                          "id": "t6",
+                          "text": "I was a child",
+                          "correctCategory": "cat-since"
+                        }
+                      ]
+                    }
+                  </script>
+                  <div class="sorting-bank"></div>
+                  <div class="sorting-zones-container"></div>
+                  <div class="sorting-feedback"></div>
+                </div>
+              </div>
+            </details>
+
+            <!-- 📝 Exercise 6. Type: Mixed Cloze Passage -->
+            <details class="task" name="grammar">
+              <summary>
+                <h4>Exercise 6: Mixed Cloze Passage</h4>
+              </summary>
+
+              <div>
+                <p class="task-description">
+                  Read the story and fill in the blanks with the correct form of
+                  the verbs (Past Simple or Past Continuous).
+                </p>
+
+                <div class="callout2" style="line-height: 2.4">
+                  Yesterday, while I
+                  <input
+                    type="text"
+                    id="l14-cloze-1"
+                    class="test-input"
+                    placeholder="(walk)"
+                    style="width: 140px"
+                  />
+                  to the store, I suddenly
+                  <input
+                    type="text"
+                    id="l14-cloze-2"
+                    class="test-input"
+                    placeholder="(hear)"
+                    style="width: 140px"
+                  />
+                  a loud noise. I
+                  <input
+                    type="text"
+                    id="l14-cloze-3"
+                    class="test-input"
+                    placeholder="(look)"
+                    style="width: 140px"
+                  />
+                  around, but everyone else
+                  <input
+                    type="text"
+                    id="l14-cloze-4"
+                    class="test-input"
+                    placeholder="(mind)"
+                    style="width: 140px"
+                  />
+                  their own business.
+                </div>
+              </div>
+            </details>
+
+            <!-- 📝 Exercise 7. Type: Error Hunt -->
+            <details class="task" name="grammar">
+              <summary>
+                <h4>Exercise 7: Error Hunt</h4>
+              </summary>
+
+              <div>
+                <p class="task-description">
+                  There are 3 mistakes in this paragraph. Find them and rewrite
+                  the paragraph correctly below.
+                </p>
+
+                <div class="callout2">
+                  I have went to Paris last year. While I was visiting the
+                  Eiffel Tower, it start to rain. I have never see such heavy
+                  rain before.
+                </div>
+
+                <textarea
+                  id="l18-error-hunt"
+                  class="test-textarea"
+                  placeholder="Rewrite the correct text here..."
+                  rows="4"
+                ></textarea>
+              </div>
+            </details>
+
+            <!-- 8 -->
+            <!-- 📝 Exercise: Choose the Correct Tense -->
+            <details class="task" name="grammar">
+              <summary>
+                <h4>Exercise 8: Choose the Correct Tense</h4>
+              </summary>
+
+              <div>
+                <p class="task-description">
+                  Read the sentences and choose the correct tense (Past Simple
+                  or Past Continuous) from the dropdown menus. Pay attention to
+                  the signal words <span class="accent">when</span> and
+                  <span class="accent">while</span>.
+                </p>
+
+                <ol>
+                  <!-- 1 -->
+                  <li>
+                    I
+                    <select id="l12-ex1-1" class="test-input">
+                      <option value="" disabled selected>...</option>
+                      <option value="was reading">was reading</option>
+                      <option value="read">read</option>
+                    </select>
+                    a book when the phone suddenly
+                    <select id="l12-ex1-2" class="test-input">
+                      <option value="" disabled selected>...</option>
+                      <option value="was ringing">was ringing</option>
+                      <option value="rang">rang</option></select
+                    >.
+                  </li>
+
+                  <!-- 2 -->
+                  <li>
+                    While we
+                    <select id="l12-ex1-3" class="test-input">
+                      <option value="" disabled selected>...</option>
+                      <option value="were walking">were walking</option>
+                      <option value="walked">walked</option>
+                    </select>
+                    in the park, it
+                    <select id="l12-ex1-4" class="test-input">
+                      <option value="" disabled selected>...</option>
+                      <option value="was starting">was starting</option>
+                      <option value="started">started</option>
+                    </select>
+                    to rain.
+                  </li>
+                </ol>
+              </div>
+            </details>
+
+            <!-- clear all button -->
+            <div class="clear-btn-container">
+              <button
+                type="button"
+                class="reset-btn-hw clear-section-btn"
+                data-section="part-2"
+              >
+                Clear All Answers
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 🍋 PART 3: READING & SPEAKING -->
+      <section id="part-3" class="lesson-wrapper tab-content">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img
+                src="../media/icons/lemon.svg"
+                class="star"
+                alt="an open book"
+              />
+              <span>Reading & Speaking Practice </span>
+            </h2>
+          </div>
+
+          <div class="lesson-content">
+            <!-- 
+            Most of the lessons would have this type of practice where the student reads the text out loud, but some lessons will have listening practice instead - where the text is read by the teacher.
+            -->
+
+            <h3 id="p3-reading">Reading Practice</h3>
+
+            <p class="task-description">
+              Read the text out loud and translate it into Ukrainian sentence by
+              sentence. Pay attention to the
+              <span class="accent">Present Perfect</span> forms.
+            </p>
+
+            <!-- 📚 THE STORY -->
+            <div class="callout2">
+              <h4>The Failed Glue That Became a Bestseller</h4>
+
+              <p>
+                In 1968, Spencer Silver worked as a scientist at a company
+                called 3M in the US. Every day, he was testing new kinds of glue
+                in his laboratory. His goal was simple: to invent the strongest
+                glue in the world.
+              </p>
+              <p>
+                One day, Silver was mixing different chemicals, as usual. He was
+                hoping this new combination would make a strong, powerful glue.
+                But something went wrong. The result was the opposite: instead
+                of a strong glue, he got a very weak one. It didn't stick well
+                at all. You could pull it off paper very easily, and it didn't
+                leave any mark.
+              </p>
+              <p>
+                At first, everyone at the company thought this weak glue was
+                useless. For six long years, Silver talked to his colleagues
+                about his strange invention because he believed it was special.
+                But nobody else understood it.
+              </p>
+              <p>
+                In 1974, another man worked at the same company. His name was
+                Art Fry. Fry was singing in his church choir every Sunday. He
+                was also using small pieces of paper to mark the pages of his
+                songbook. But there was a problem: the papers always fell out of
+                the book.
+              </p>
+              <p>
+                One boring afternoon, Fry was thinking about his songbook
+                problem. Suddenly, he remembered Silver's weak glue. He knew
+                immediately: this strange glue could hold paper in place, and it
+                wouldn’t damage the paper at all! Fry was excited. He tested
+                small pieces of paper with Silver's glue. Step by step, he
+                improved his idea.
+              </p>
+              <p>
+                By 1980, 3M was selling this new invention all over the United
+                States. Today, we call this invention the “Post-it Note”, and
+                people all around the world use billions of these notes every
+                year. And it all started with a "failed" glue…
+              </p>
+            </div>
+
+            <!-- optional notes -->
+            <textarea
+              id="l10-reading-notes"
+              class="test-textarea"
+              placeholder="You can write some notes here..."
+            ></textarea>
+
+            <!-- 🌍 BUILT-IN TRANSLATOR -->
+            <!-- prettier-ignore -->
+            <div class="translator-module" data-source-lang="en" data-target-lang="uk">
+              <div class="translator-lang-labels">
+                <span class="lang-source">Англійська</span>
+                <button class="swap-lang-btn" title="Swap languages">⇄</button>
+                <span class="lang-target">Українська</span>
+              </div>
+
+              <div class="translator-inputs">
+                <input type="text" class="translator-input" placeholder="Type a word..." />
+                <button class="translate-btn">Translate</button>
+              </div>
+
+              <div class="translator-output" style="display: none"></div>
+            </div>
+
+            <hr />
+
+            <h3 id="p3-speaking">Speaking Practice</h3>
+
+            <!-- 1. Answer the questions -->
+            <details class="task" name="speaking" open>
+              <summary><h4>Option 1: Answer the Questions</h4></summary>
+
+              <div>
+                <ol>
+                  <li>What good things can reading give a person?</li>
+                  <li>Do all readers know their favorite genre already?</li>
+                  <li>How many books have you read this year?</li>
+                  <li>Have you ever listened to an audiobook?</li>
+                </ol>
+              </div>
+            </details>
+
+            <!-- 2. True or False? -->
+            <details class="task" name="speaking">
+              <summary>
+                <h4>Option 2: True or False?</h4>
+              </summary>
+
+              <div>
+                <p class="task-description">
+                  Read the statements out loud. Say
+                  <span class="accent">why</span> it is true or false based on
+                  the text, and then drag it to the correct category.
+                </p>
+
+                <div class="sorting-game-module" data-game-id="l10-sort-tf">
+                  <div class="sorting-header">
+                    <h4>Exercise: Sort the statements</h4>
+                    <!-- prettier-ignore -->
+                    <button type="button" class="sorting-reset-btn">🔄 Reset</button>
+                  </div>
+                  <!-- JSON Дані для гри True/False -->
+                  <script type="application/json" class="sorting-data">
+                    {
+                      "categories": [
+                        { "id": "cat-true", "title": "TRUE" },
+                        { "id": "cat-false", "title": "FALSE" }
+                      ],
+                      "items": [
+                        {
+                          "id": "tf1",
+                          "text": "Books can show us new places.",
+                          "correctCategory": "cat-true"
+                        },
+                        {
+                          "id": "tf2",
+                          "text": "Audiobooks are not very popular.",
+                          "correctCategory": "cat-false"
+                        },
+                        {
+                          "id": "tf3",
+                          "text": "Everyone already knows their favorite genre.",
+                          "correctCategory": "cat-false"
+                        },
+                        {
+                          "id": "tf4",
+                          "text": "Many people still love printed books.",
+                          "correctCategory": "cat-true"
+                        }
+                      ]
+                    }
+                  </script>
+                  <div class="sorting-bank"></div>
+                  <div class="sorting-zones-container"></div>
+                  <div class="sorting-feedback"></div>
+                </div>
+              </div>
+            </details>
+
+            <!-- 3. Keyword retelling -->
+            <details class="task" name="speaking">
+              <summary>
+                <h4>Option 3: Retell the Story</h4>
+              </summary>
+
+              <div>
+                <p class="task-description">
+                  Retell the story using the keywords below. The words are in
+                  the same order as in the text. Make one or two sentences for
+                  each word to summarize the main ideas. Try to use the
+                  <span class="accent">Present Perfect</span> tense where
+                  possible.
+                </p>
+                <div class="keywords-container">
+                  <span class="keyword-badge">places</span>
+                  <span class="keyword-badge">comfort</span>
+                  <span class="keyword-badge">different lives</span>
+                  <span class="keyword-badge">audiobooks</span>
+                  <span class="keyword-badge">journey</span>
+                </div>
+              </div>
+            </details>
+
+            <!-- 4. Two truths and a lie game -->
+            <details class="task" name="speaking">
+              <summary>
+                <h4>Option 4: Two Truths and a Lie</h4>
+              </summary>
+
+              <div>
+                <p class="task-description">
+                  Write three sentences about your reading experiences using the
+                  <span class="accent">Present Perfect</span> tense. Two
+                  sentences must be <span class="accent">true</span>, and one
+                  must be a <span class="accent">lie</span>. Then, read your
+                  sentences out loud. The teacher will ask you questions to
+                  guess which one is the lie.
+                </p>
+                <div class="callout2">
+                  <textarea
+                    id="l10-p3-ttl-1"
+                    class="test-textarea"
+                    placeholder="Sentence 1..."
+                    rows="2"
+                  ></textarea>
+                  <textarea
+                    id="l10-p3-ttl-2"
+                    class="test-textarea"
+                    placeholder="Sentence 2..."
+                    rows="2"
+                  ></textarea>
+                  <textarea
+                    id="l10-p3-ttl-3"
+                    class="test-textarea"
+                    placeholder="Sentence 3..."
+                    rows="2"
+                  ></textarea>
+                </div>
+              </div>
+            </details>
+
+            <!-- 5. Multiple Choice Comprehension -->
+            <details class="task" name="speaking">
+              <summary>
+                <h4>Option 5: Comprehension Check</h4>
+              </summary>
+
+              <div>
+                <p class="task-description">
+                  Choose the correct answer based on the text.
+                </p>
+
+                <fieldset class="test-question" style="margin-bottom: 0">
+                  <legend>1. What was Spencer Silver's original goal?</legend>
+                  <!-- prettier-ignore -->
+                  <div class="radio-flex">
+                    <!-- 1 -->
+                    <label class="test-label">
+                      <input type="radio" class="test-radio" name="l10-comp-q1" value="A" />
+                      A) To create a weak glue
+                    </label>
+                    <!-- 2 -->
+                    <label class="test-label">
+                      <input type="radio" class="test-radio" name="l10-comp-q1" value="B" />
+                      B) To invent the strongest glue
+                    </label>
+                  </div>
+                </fieldset>
+              </div>
+            </details>
+
+            <!-- 6. Reorder Game -->
+            <details class="task" name="speaking">
+              <summary>
+                <h4>Option 6: Order the Events</h4>
+              </summary>
+
+              <div>
+                <p class="task-description">
+                  Drag and drop the sentences to put the events in the correct
+                  chronological order.
+                </p>
+
+                <!-- prettier-ignore -->
+                <div class="reorder-game-module" data-game-id="l10-reorder-events">
+                  <ul class="reorder-list">
+                    <!-- Note: data-correct="X" dictates their final winning position (1 to 4) -->
+                    <li class="reorder-item" draggable="true" data-id="seq1" data-correct="3" >
+                      <span class="drag-handle">☰</span> Art Fry used the weak glue for his songbook.
+                    </li>
+                    <li class="reorder-item" draggable="true" data-id="seq2" data-correct="1" >
+                      <span class="drag-handle">☰</span> Spencer Silver tried to invent the strongest glue.
+                    </li>
+                    <li class="reorder-item" draggable="true" data-id="seq3" data-correct="4" >
+                      <span class="drag-handle">☰</span> 3M started selling Post-it Notes globally.
+                    </li>
+                    <li class="reorder-item" draggable="true" data-id="seq4" data-correct="2" >
+                      <span class="drag-handle">☰</span> Silver accidentally created a very weak glue.
+                    </li>
+                  </ul>
+                  <div class="sorting-feedback reorder-feedback"></div>
+                </div>
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- 🍊 PART 4: HOMEWORK -->
+      <section id="part-4" class="lesson-wrapper tab-content">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img
+                src="../media/icons/orange.svg"
+                class="star"
+                alt="an open book"
+              />
+              <span>Writing Practice</span>
+            </h2>
+          </div>
+
+          <div class="lesson-content">
+            <h3>Vocabulary & Writing</h3>
+
+            <ol>
+              <li>
+                Ознайомся зі словами з таблиці та потренуйся вимовляти їх
+                вголос.
+              </li>
+            </ol>
+
+            <div class="tablecontainer" style="margin-top: 20px">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Word</th>
+                    <th>Pronunciation</th>
+                    <th>Translation</th>
+                    <th>Sentence</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr>
+                    <td class="accent">word</td>
+                    <td><span class="accent-string">/wɜːd/</span></td>
+                    <td>слово</td>
+                    <td class="italic">Do you know the words to this song?</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <ol start="2">
+              <li>
+                Із кожним словом склади речення, використовуючи граматику з
+                уроку.
+              </li>
+            </ol>
+
+            <textarea
+              id="l10-hw"
+              class="test-textarea"
+              placeholder="..."
+            ></textarea>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>🌷 🍓 🌿 Made by Olena Hapchyna 🌿 🍓 🌷</p>
+
+      <div class="footer-credits">
+        <span
+          >Fruit icons by
+          <a
+            href="https://www.svgrepo.com/collection/fruits-vectors/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >An Nguyen</a
+          ></span
+        >
+        |
+        <a href="../credits.html" target="_blank">Credits & Licenses</a>
+      </div>
+    </footer>
+
+    <button
+      id="scrollToTopBtn"
+      class="scroll-to-top"
+      aria-label="Scroll to top"
+    >
+      <img src="../media/icons/apple.svg" />
+    </button>
+
+    <dialog id="clear-confirm-dialog" class="custom-dialog">
+      <div class="dialog-content">
+        <h3>⚠️ Attention!</h3>
+        <p>Do you really want to delete ALL your answers and start over?</p>
+        <div class="dialog-actions">
+          <button type="button" id="dialog-cancel-btn">No</button>
+          <button type="button" id="dialog-confirm-btn">Yes, delete</button>
+        </div>
+      </div>
+    </dialog>
+  </body>
+</html>

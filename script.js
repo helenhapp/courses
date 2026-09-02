@@ -211,18 +211,6 @@
             if (d.hasAttribute("open")) openIndices.push(i);
           });
           sessionStorage.setItem("openAccordions", JSON.stringify(openIndices));
-
-          if (
-            detail.open &&
-            (detail.classList.contains("accordion__item") ||
-              detail.classList.contains("task"))
-          ) {
-            setTimeout(() => {
-              const y =
-                detail.getBoundingClientRect().top + window.scrollY - 75;
-              window.scrollTo({ top: y, behavior: "smooth" });
-            }, 400);
-          }
         });
       });
     }
