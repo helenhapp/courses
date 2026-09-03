@@ -3169,8 +3169,20 @@ code.long-code .hljs-ln td.hljs-ln-code {
   aspect-ratio: 9 / 5;
 }
 
+.image-gallery2 {
+  grid-template-columns: repeat(6, 1fr);
+}
+
+.image-gallery2 img {
+  aspect-ratio: 5 / 9;
+}
+
 @media (max-width: 768px) {
   .image-gallery {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  .image-gallery2 {
+  grid-template-columns: repeat(3, 1fr);
+}
 }
