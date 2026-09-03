@@ -67,14 +67,20 @@
     <!-- lesson header -->
     <header>
       <div class="title-container">
-        <a href="./lesson10.html" class="nav-arrow prev-arrow" title="Попередній урок"> ← </a>
+        <a
+          href="./lesson10.html"
+          class="nav-arrow prev-arrow"
+          title="Попередній урок"
+        >
+          ←
+        </a>
 
-        <h1 id="lesson-title">English: ##</h1>
+        <h1 id="lesson-title">English: 11</h1>
 
         <!-- <a href="#" class="nav-arrow next-arrow" title="Наступний урок"> → </a> -->
       </div>
 
-      <p class="topic">Grammar Topic | Vocabulary Topic</p>
+      <p class="topic">Past Continuous Tense</p>
 
       <hr class="pretty-divider" />
     </header>
@@ -184,7 +190,7 @@
 
             <h3 id="p1-notes">Language Notes</h3>
 
-            <h4>Some / Any (Трохи, кілька)</h4>
+            <h4>Post-It Notes</h4>
 
             <p>
               Коли ми говоримо про незлічувані продукти або множину злічуваних,
@@ -231,31 +237,33 @@
 
             <!-- EXERCISE: drag-and-drop words -->
             <!-- prettier-ignore -->
-            <div class="soft-callout inline-dnd-module" id="inline-dnd-exercise-1">
+            <details class="task inline-dnd-module" id="inline-dnd-exercise-1">
               <!-- header with Reset Button -->
-              <div class="sorting-header">
-                <h4>Exercise: Choose the correct word</h4>
-                <button class="sorting-reset-btn inline-reset-btn">🔄 Reset</button>
+              <summary>
+                <h4>Exercise 1: Choose the correct word</h4>
+                
+              </summary>
+
+              <div>
+                
+                <p class="task-description">
+                  Read the sentences and drag the missing words into the blanks. You can easily swap words or return them to the bank if you change your mind.
+                </p>
+                <!-- Word Bank -->
+                <div class="callout2 word-bank inline-bank">
+                  <span class="draggable-word" draggable="true">avocado</span>
+                  <span class="draggable-word" draggable="true">recipe</span>
+                  <span class="draggable-word" draggable="true">cocoa powder</span>
+                </div>
+                <!-- Sentences -->
+                <ol style="line-height: 2.5">
+                  <li>I had toast with <span class="inline-drop-zone"></span> for breakfast.</li>
+                  <li>Add two spoons of <span class="inline-drop-zone"></span> to the milk.</li>
+                  <li>Do you know a good <span class="inline-drop-zone"></span> for a chocolate cake?</li>
+                </ol>
+                <div style="display: flex; justify-content: flex-end;"><button class="sorting-reset-btn inline-reset-btn" style="margin-top: 10px;">🔄 Reset</button></div>
               </div>
-
-              <p class="task-description">
-                Read the sentences and drag the missing words into the blanks. You can easily swap words or return them to the bank if you change your mind.
-              </p>
-
-              <!-- Word Bank -->
-              <div class="callout2 word-bank inline-bank">
-                <span class="draggable-word" draggable="true">avocado</span>
-                <span class="draggable-word" draggable="true">recipe</span>
-                <span class="draggable-word" draggable="true">cocoa powder</span>
-              </div>
-
-              <!-- Sentences -->
-              <ol style="line-height: 2.5">
-                <li>I had toast with <span class="inline-drop-zone"></span> for breakfast.</li>
-                <li>Add two spoons of <span class="inline-drop-zone"></span> to the milk.</li>
-                <li>Do you know a good <span class="inline-drop-zone"></span> for a chocolate cake?</li>
-              </ol>
-            </div>
+            </details>
           </div>
         </div>
       </section>
@@ -314,17 +322,10 @@
 
             <h3 id="p2-practice1">Practice</h3>
 
-            <!-- <p>
-              There are templates for 8 types of exercises. Every actual lesson
-              will only include 5 exercises, 2 of which would be optional (some
-              extra practice if the student works too fast through the reading
-              section).
-            </p> -->
-
-            <!-- 📝 Exercise 1. Type: Word Transformation -->
+            <!-- 📝 Exercise 2. Type: Word Transformation -->
             <details class="task" name="grammar" open>
               <summary>
-                <h4>Exercise 1: Word Transformation</h4>
+                <h4>Exercise 2: Word Transformation</h4>
               </summary>
 
               <div>
@@ -339,75 +340,12 @@
                       type="text"
                       id="l10-ex2-1"
                       class="test-input"
-                      placeholder="..."
+                      placeholder="(find)"
                       style="width: 130px"
                     />
-                    (just / find) a new clue in the garden.
-                  </li>
-                  <li>
-                    I
-                    <input
-                      type="text"
-                      id="l10-ex2-2"
-                      class="test-input"
-                      placeholder="..."
-                    />
-                    (not / finish) my investigation yet.
-                  </li>
-                  <li>
-                    <input
-                      type="text"
-                      id="l10-ex2-3"
-                      class="test-input"
-                      placeholder="..."
-                      style="width: 80px"
-                    />
-                    you ever
-                    <input
-                      type="text"
-                      id="l10-ex2-4"
-                      class="test-input"
-                      placeholder="..."
-                      style="width: 80px"
-                    />
-                    (be) to a real crime scene?
+                    a new clue in the garden.
                   </li>
                 </ol>
-              </div>
-            </details>
-
-            <!-- 📝 Exercise 2. Type: Multiple Choice -->
-            <details class="task" name="grammar">
-              <summary>
-                <h4>Exercise 2: Multiple Choice</h4>
-              </summary>
-
-              <div>
-                <p class="task-description">
-                  Choose the correct option to complete each sentence.
-                </p>
-
-                <!-- Питання 1 -->
-                <fieldset class="test-question">
-                  <!-- prettier-ignore -->
-                  <legend>1. She ___ her keys, so she can't open the door.</legend>
-
-                  <!-- prettier-ignore -->
-                  <div class="radio-flex">
-                    <label class="test-label">
-                      <input type="radio" class="test-radio" name="l10-ex3-q1" value="A" />
-                      A) lost
-                    </label>
-                    <label class="test-label">
-                      <input type="radio" class="test-radio" name="l10-ex3-q1" value="B" />
-                      B) has lost
-                    </label>
-                    <label class="test-label">
-                      <input type="radio" class="test-radio" name="l10-ex3-q1" value="C" />
-                      C) have lost
-                    </label>
-                  </div>
-                </fieldset>
               </div>
             </details>
 
@@ -461,210 +399,6 @@
               </div>
             </details>
 
-            <!-- 📝 Exercise 5. Type: Sorting Game -->
-            <details class="task" name="grammar">
-              <summary>
-                <h4>Exercise 5: Sort by Rule (For vs Since)</h4>
-              </summary>
-
-              <div>
-                <p class="task-description">
-                  Sort the time expressions into the correct categories.
-                </p>
-                <div
-                  class="sorting-game-module"
-                  data-game-id="l10-sort-for-since"
-                >
-                  <div class="sorting-header">
-                    <h4>For or Since?</h4>
-                    <!-- prettier-ignore -->
-                    <button type="button" class="sorting-reset-btn">🔄 Reset</button>
-                  </div>
-                  <!-- JSON Дані для гри -->
-                  <script type="application/json" class="sorting-data">
-                    {
-                      "categories": [
-                        {
-                          "id": "cat-for",
-                          "title": "FOR",
-                          "hint": "(a period of time)"
-                        },
-                        {
-                          "id": "cat-since",
-                          "title": "SINCE",
-                          "hint": "(a starting point)"
-                        }
-                      ],
-                      "items": [
-                        {
-                          "id": "t1",
-                          "text": "three days",
-                          "correctCategory": "cat-for"
-                        },
-                        {
-                          "id": "t2",
-                          "text": "a long time",
-                          "correctCategory": "cat-for"
-                        },
-                        {
-                          "id": "t3",
-                          "text": "10 years",
-                          "correctCategory": "cat-for"
-                        },
-                        {
-                          "id": "t4",
-                          "text": "2015",
-                          "correctCategory": "cat-since"
-                        },
-                        {
-                          "id": "t5",
-                          "text": "last Monday",
-                          "correctCategory": "cat-since"
-                        },
-                        {
-                          "id": "t6",
-                          "text": "I was a child",
-                          "correctCategory": "cat-since"
-                        }
-                      ]
-                    }
-                  </script>
-                  <div class="sorting-bank"></div>
-                  <div class="sorting-zones-container"></div>
-                  <div class="sorting-feedback"></div>
-                </div>
-              </div>
-            </details>
-
-            <!-- 📝 Exercise 6. Type: Mixed Cloze Passage -->
-            <details class="task" name="grammar">
-              <summary>
-                <h4>Exercise 6: Mixed Cloze Passage</h4>
-              </summary>
-
-              <div>
-                <p class="task-description">
-                  Read the story and fill in the blanks with the correct form of
-                  the verbs (Past Simple or Past Continuous).
-                </p>
-
-                <div class="callout2" style="line-height: 2.4">
-                  Yesterday, while I
-                  <input
-                    type="text"
-                    id="l14-cloze-1"
-                    class="test-input"
-                    placeholder="(walk)"
-                    style="width: 140px"
-                  />
-                  to the store, I suddenly
-                  <input
-                    type="text"
-                    id="l14-cloze-2"
-                    class="test-input"
-                    placeholder="(hear)"
-                    style="width: 140px"
-                  />
-                  a loud noise. I
-                  <input
-                    type="text"
-                    id="l14-cloze-3"
-                    class="test-input"
-                    placeholder="(look)"
-                    style="width: 140px"
-                  />
-                  around, but everyone else
-                  <input
-                    type="text"
-                    id="l14-cloze-4"
-                    class="test-input"
-                    placeholder="(mind)"
-                    style="width: 140px"
-                  />
-                  their own business.
-                </div>
-              </div>
-            </details>
-
-            <!-- 📝 Exercise 7. Type: Error Hunt -->
-            <details class="task" name="grammar">
-              <summary>
-                <h4>Exercise 7: Error Hunt</h4>
-              </summary>
-
-              <div>
-                <p class="task-description">
-                  There are 3 mistakes in this paragraph. Find them and rewrite
-                  the paragraph correctly below.
-                </p>
-
-                <div class="callout2">
-                  I have went to Paris last year. While I was visiting the
-                  Eiffel Tower, it start to rain. I have never see such heavy
-                  rain before.
-                </div>
-
-                <textarea
-                  id="l18-error-hunt"
-                  class="test-textarea"
-                  placeholder="Rewrite the correct text here..."
-                  rows="4"
-                ></textarea>
-              </div>
-            </details>
-
-            <!-- 8 -->
-            <!-- 📝 Exercise: Choose the Correct Tense -->
-            <details class="task" name="grammar">
-              <summary>
-                <h4>Exercise 8: Choose the Correct Tense</h4>
-              </summary>
-
-              <div>
-                <p class="task-description">
-                  Read the sentences and choose the correct tense (Past Simple
-                  or Past Continuous) from the dropdown menus. Pay attention to
-                  the signal words <span class="accent">when</span> and
-                  <span class="accent">while</span>.
-                </p>
-
-                <ol>
-                  <!-- 1 -->
-                  <li>
-                    I
-                    <select id="l12-ex1-1" class="test-input">
-                      <option value="" disabled selected>...</option>
-                      <option value="was reading">was reading</option>
-                      <option value="read">read</option>
-                    </select>
-                    a book when the phone suddenly
-                    <select id="l12-ex1-2" class="test-input">
-                      <option value="" disabled selected>...</option>
-                      <option value="was ringing">was ringing</option>
-                      <option value="rang">rang</option></select
-                    >.
-                  </li>
-
-                  <!-- 2 -->
-                  <li>
-                    While we
-                    <select id="l12-ex1-3" class="test-input">
-                      <option value="" disabled selected>...</option>
-                      <option value="were walking">were walking</option>
-                      <option value="walked">walked</option>
-                    </select>
-                    in the park, it
-                    <select id="l12-ex1-4" class="test-input">
-                      <option value="" disabled selected>...</option>
-                      <option value="was starting">was starting</option>
-                      <option value="started">started</option>
-                    </select>
-                    to rain.
-                  </li>
-                </ol>
-              </div>
-            </details>
-
             <!-- clear all button -->
             <div class="clear-btn-container">
               <button
@@ -694,10 +428,6 @@
           </div>
 
           <div class="lesson-content">
-            <!-- 
-            Most of the lessons would have this type of practice where the student reads the text out loud, but some lessons will have listening practice instead - where the text is read by the teacher.
-            -->
-
             <h3 id="p3-reading">Reading Practice</h3>
 
             <p class="task-description">
@@ -781,24 +511,10 @@
 
             <h3 id="p3-speaking">Speaking Practice</h3>
 
-            <!-- 1. Answer the questions -->
-            <details class="task" name="speaking" open>
-              <summary><h4>Option 1: Answer the Questions</h4></summary>
-
-              <div>
-                <ol>
-                  <li>What good things can reading give a person?</li>
-                  <li>Do all readers know their favorite genre already?</li>
-                  <li>How many books have you read this year?</li>
-                  <li>Have you ever listened to an audiobook?</li>
-                </ol>
-              </div>
-            </details>
-
-            <!-- 2. True or False? -->
+            <!-- 1. True or False? -->
             <details class="task" name="speaking">
               <summary>
-                <h4>Option 2: True or False?</h4>
+                <h4>Exercise 5: True or False?</h4>
               </summary>
 
               <div>
@@ -852,10 +568,10 @@
               </div>
             </details>
 
-            <!-- 3. Keyword retelling -->
+            <!-- 2. Keyword retelling -->
             <details class="task" name="speaking">
               <summary>
-                <h4>Option 3: Retell the Story</h4>
+                <h4>Exercise 6: Retell the Story</h4>
               </summary>
 
               <div>
@@ -872,108 +588,6 @@
                   <span class="keyword-badge">different lives</span>
                   <span class="keyword-badge">audiobooks</span>
                   <span class="keyword-badge">journey</span>
-                </div>
-              </div>
-            </details>
-
-            <!-- 4. Two truths and a lie game -->
-            <details class="task" name="speaking">
-              <summary>
-                <h4>Option 4: Two Truths and a Lie</h4>
-              </summary>
-
-              <div>
-                <p class="task-description">
-                  Write three sentences about your reading experiences using the
-                  <span class="accent">Present Perfect</span> tense. Two
-                  sentences must be <span class="accent">true</span>, and one
-                  must be a <span class="accent">lie</span>. Then, read your
-                  sentences out loud. The teacher will ask you questions to
-                  guess which one is the lie.
-                </p>
-                <div class="callout2">
-                  <textarea
-                    id="l10-p3-ttl-1"
-                    class="test-textarea"
-                    placeholder="Sentence 1..."
-                    rows="2"
-                  ></textarea>
-                  <textarea
-                    id="l10-p3-ttl-2"
-                    class="test-textarea"
-                    placeholder="Sentence 2..."
-                    rows="2"
-                  ></textarea>
-                  <textarea
-                    id="l10-p3-ttl-3"
-                    class="test-textarea"
-                    placeholder="Sentence 3..."
-                    rows="2"
-                  ></textarea>
-                </div>
-              </div>
-            </details>
-
-            <!-- 5. Multiple Choice Comprehension -->
-            <details class="task" name="speaking">
-              <summary>
-                <h4>Option 5: Comprehension Check</h4>
-              </summary>
-
-              <div>
-                <p class="task-description">
-                  Choose the correct answer based on the text.
-                </p>
-
-                <fieldset class="test-question" style="margin-bottom: 0">
-                  <legend>1. What was Spencer Silver's original goal?</legend>
-                  <!-- prettier-ignore -->
-                  <div class="radio-flex">
-                    <!-- 1 -->
-                    <label class="test-label">
-                      <input type="radio" class="test-radio" name="l10-comp-q1" value="A" />
-                      A) To create a weak glue
-                    </label>
-                    <!-- 2 -->
-                    <label class="test-label">
-                      <input type="radio" class="test-radio" name="l10-comp-q1" value="B" />
-                      B) To invent the strongest glue
-                    </label>
-                  </div>
-                </fieldset>
-              </div>
-            </details>
-
-            <!-- 6. Reorder Game -->
-            <details class="task" name="speaking">
-              <summary>
-                <h4>Option 6: Order the Events</h4>
-              </summary>
-
-              <div>
-                <p class="task-description">
-                  Drag and drop the sentences to put the events in the correct
-                  chronological order.
-                </p>
-
-                <!-- prettier-ignore -->
-                <div class="reorder-game-module" data-game-id="l10-reorder-events">
-                  <ul class="reorder-list">
-                    <!-- Note: data-correct="X" dictates their final winning position (1 to 4) -->
-                    <li class="reorder-item" draggable="true" data-id="seq1" data-correct="3" >
-                      <span class="drag-handle">☰</span> Art Fry used the weak glue for his songbook.
-                    </li>
-                    <li class="reorder-item" draggable="true" data-id="seq2" data-correct="1" >
-                      <span class="drag-handle">☰</span> Spencer Silver tried to invent the strongest glue.
-                    </li>
-                    <li class="reorder-item" draggable="true" data-id="seq3" data-correct="4" >
-                      <span class="drag-handle">☰</span> 3M started selling Post-it Notes globally.
-                    </li>
-                    <li class="reorder-item" draggable="true" data-id="seq4" data-correct="2" >
-                      <span class="drag-handle">☰</span> Silver accidentally created a very weak glue.
-                    </li>
-                  </ul>
-                  <div class="sorting-feedback reorder-feedback"></div>
                 </div>
               </div>
             </details>

@@ -2019,6 +2019,7 @@ pre::-webkit-scrollbar-thumb,
 .inline-bank {
   display: flex;
   gap: 10px;
+  flex-wrap: wrap;
   margin: 20px 0;
   padding: 15px;
   min-height: 52px;
@@ -2526,7 +2527,7 @@ code.long-code .hljs-ln td.hljs-ln-code {
   border-radius: 8px;
   background-color: var(--panel);
   color: var(--text-main);
-  max-width: 400px;
+  max-width: 350px;
   box-shadow: 0 10px 30px var(--shadow-accent);
   text-align: center;
   outline: none;
@@ -2679,6 +2680,9 @@ code.long-code .hljs-ln td.hljs-ln-code {
   flex: 1;
   padding: 15px;
   font-size: 16px;
+}
+.flashcard-controls button:active {
+  transform: scale(0.95);
 }
 
 /* Анімації змахування картки */
