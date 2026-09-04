@@ -253,7 +253,8 @@ textarea {
 
 .italic {
   font-style: italic;
-  color: var(--text-soft);
+  /* color: var(--text-soft); */
+  color: var(--accent);
 }
 
 .bold {

@@ -1,0 +1,694 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Навчальні матеріали" />
+
+    <link rel="icon" type="image/svg+xml" href="../media/icons/carambola.svg" />
+
+    <title>Python Lesson 11</title>
+
+    <script>
+      const savedTheme = localStorage.getItem("lms_theme") || "light";
+      document.documentElement.setAttribute("data-theme", savedTheme);
+
+      const hljsThemeLink =
+        savedTheme === "dark"
+          ? "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css"
+          : "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css";
+
+      document.head.insertAdjacentHTML(
+        "beforeend",
+        `<link id="hljs-theme" rel="stylesheet" href="${hljsThemeLink}" />`,
+      );
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Fira+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Tektur:wght@400..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"
+    ></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.css"
+    />
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.js"
+    ></script>
+
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/javascript/javascript.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/xml/xml.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/css/css.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/htmlmixed/htmlmixed.min.js"
+    ></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/theme/dracula.min.css"
+    />
+
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/python/python.min.js"
+    ></script>
+
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt-stdlib.js"
+    ></script>
+
+    <link rel="stylesheet" href="../style.css" />
+    <script src="../script.js" defer></script>
+  </head>
+
+  <body>
+    <!-- transition curtain -->
+    <div class="transition-curtain"></div>
+
+    <!-- top-bar -->
+    <div id="nav-container">
+      <nav class="top-bar">
+        <div class="logo-container">
+          <img
+            src="../media/icons/carambola.svg"
+            alt="Logo"
+            class="site-logo"
+          />
+        </div>
+
+        <div class="top-bar__controls">
+          <!-- <a href="./menu.html" class="menu-link">All Lessons</a> -->
+          <label class="toggle-switch" aria-label="Перемикач теми">
+            <input type="checkbox" id="theme-checkbox" />
+            <span class="slider">
+              <span class="icon sun"
+                ><img src="../media/icons/stars.svg"
+              /></span>
+              <span class="icon moon"
+                ><img src="../media/icons/moon.svg"
+              /></span>
+            </span>
+          </label>
+          <button
+            id="dyslexia-mode-btn"
+            class="wide-toggle"
+            title="Шрифт для дислектиків"
+          >
+            Aa
+          </button>
+        </div>
+      </nav>
+    </div>
+
+    <!-- lesson header -->
+    <header>
+      <div class="title-container">
+        <!-- <a href="#" class="nav-arrow prev-arrow" title="Попередній урок"> ← </a> -->
+
+        <h1 id="lesson-title">Python: 11</h1>
+
+        <!-- <a href="#" class="nav-arrow next-arrow" title="Наступний урок"> → </a> -->
+      </div>
+
+      <p class="topic">Visual Studio Code</p>
+
+      <hr class="pretty-divider" />
+    </header>
+
+    <!-- lesson content -->
+    <main>
+      <!-- tab buttons -->
+      <div class="tabs-nav">
+        <button class="tab-btn active" data-target="part-1">Частина 1</button>
+        <button class="tab-btn" data-target="part-2">Частина 2</button>
+        <button class="tab-btn" data-target="part-3">Частина 3</button>
+        <button class="tab-btn" data-target="part-4">Частина 4</button>
+      </div>
+
+      <!-- 🍓 PART 1: Install VS Code -->
+      <section id="part-1" class="lesson-wrapper tab-content active show">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img
+                src="../media/icons/strawberry.svg"
+                class="star"
+                alt="strawberry"
+              />
+              <span>Встановлення VS Code</span>
+            </h2>
+          </div>
+
+          <div class="lesson-content">
+            <h3 id="p1-1">Python</h3>
+
+            <p>
+              Спершу треба встановити Python. Це сама мова програмування та
+              програма-інтерпретатор, яка безпосередньо виконує код. Без нього
+              комп'ютер не зможе зрозуміти та запустити написані скрипти.
+            </p>
+
+            <p>
+              Посилання:
+              <a
+                class="accent-link"
+                href="https://www.python.org/downloads/"
+                target="_blank"
+                >https://www.python.org/downloads/</a
+              >.
+            </p>
+
+            <div class="soft-callout">
+              <span class="accent">‼️ Важливо:</span> під час встановлення
+              обов'язково постав галочку біля
+              <strong>"Add python.exe to PATH"</strong>.
+            </div>
+
+            <hr />
+
+            <h3 id="p1-2">VS Code</h3>
+
+            <p>
+              Тепер можна встановлювати VS Code. Це сучасний редактор коду
+              (середовище розробки), у якому ми будемо писати, редагувати та
+              запускати програми.
+            </p>
+
+            <p>
+              Посилання:
+              <a
+                class="accent-link"
+                href="https://code.visualstudio.com/download"
+                target="_blank"
+                >https://code.visualstudio.com/download</a
+              >.
+            </p>
+
+            <hr />
+
+            <h3 id="p1-3">Розширення (Extensions)</h3>
+
+            <p>
+              Розширення — це додаткові інструменти, які вбудовуються у VS Code,
+              щоб навчити його працювати з конкретними мовами та зробити процес
+              написання коду зручнішим.
+            </p>
+            <p>
+              Щоб їх встановити, відкрий панель зліва зі значком чотирьох
+              кубиків (або натисни
+              <span class="accent-string">Ctrl+Shift+X</span>), введи назву
+              розширення в поле пошуку та натисни кнопку
+              <strong>Install</strong>.
+            </p>
+
+            <p>Корисні розширення для роботи з Python:</p>
+
+            <ul>
+              <li>
+                <span class="accent">Python</span> (від Microsoft) — додає
+                підсвітку синтаксису, автодоповнення, запуск і дебаг Python-коду
+                прямо у VS Code.
+              </li>
+              <li>
+                <span class="accent">Black Formatter</span> (від Microsoft) —
+                автоматично «підрівнює» код (відступи, пробіли, лапки) за єдиним
+                стандартом, щоб він виглядав акуратно й однаково в усіх файлах.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- 🍉 PART 2: How to use VS Code -->
+      <section id="part-2" class="lesson-wrapper tab-content">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img
+                src="../media/icons/watermelon.svg"
+                class="star"
+                alt="watermelon"
+              />
+              <span>Використання VS Code</span>
+            </h2>
+          </div>
+
+          <div class="lesson-content">
+            <h3 id="p2-1">Основи користування</h3>
+
+            <p>
+              Щоб комфортно працювати в редакторі, варто одразу запам'ятати
+              кілька базових дій та налаштувань:
+            </p>
+
+            <ol>
+              <li>
+                <span class="bold">Автозбереження (Autosave):</span>
+                <span class="accent-string">File → Auto Save</span>. Вмикаємо
+                один раз — і більше не треба хвилюватися про втрату даних. Файл
+                зберігатиметься сам при кожній зміні, комбінація
+                <span class="accent-string">Ctrl+S</span> більше не потрібна.
+              </li>
+              <li>
+                <span class="bold">Як відкрити робочу папку:</span>
+                <span class="accent-string">File → Open Folder...</span> →
+                обрати або створити папку проєкту на комп'ютері. Ця папка стає
+                робочою областю (<span class="bold">"workspace"</span>) — VS
+                Code показуватиме всі її файли у бічній панелі (Explorer) зліва.
+              </li>
+              <li>
+                <span class="bold">Як створити новий файл:</span> у бічній
+                панелі (Explorer) навести курсор на назву папки → натиснути
+                іконку <span class="bold">"New File"</span> (або клік правою
+                кнопкою миші → <span class="bold">New File</span>) → ввести
+                назву файлу, що обов'язково закінчується розширенням
+                <span class="accent-string">.py</span> → натиснути
+                <span class="accent-string">Enter</span>.
+              </li>
+              <li>
+                <span class="bold">Як відкрити термінал:</span>
+                <span class="accent-string">Terminal → New Terminal</span>, або
+                швидка комбінація <span class="accent-string">Ctrl+`</span>.
+                Термінал — це командний рядок, вбудований прямо в редактор. В
+                ньому можна запускати програму і бачити її результат.
+              </li>
+              <li>
+                <span class="bold">Як запустити програму:</span> у терміналі
+                ввести команду
+                <span class="accent-string">python назва_файлу.py</span> і
+                натиснути <span class="accent-string">Enter</span>.
+              </li>
+              <li>
+                <span class="bold">Швидкий повтор команд:</span> замість того,
+                щоб щоразу вводити команду запуску вручну, натисни
+                <span class="bold">стрілку вгору</span> на клавіатурі. Це
+                дозволить "прогорнути" історію попередніх команд і швидко
+                запустити потрібну.
+              </li>
+              <li>
+                <span class="bold">Очищення терміналу:</span> якщо на екрані
+                зібралося забагато тексту, введи команду
+                <span class="accent-string">cls</span>, або використай
+                комбінацію <span class="accent-string">Ctrl+L</span>.
+              </li>
+              <li>
+                <span class="bold">IntelliSense:</span> це розумна система
+                підказок. Під час написання коду вона сама пропонує варіанти
+                (назви змінних, функцій тощо). Випадаючий список можна гортати
+                стрілками, а обраний варіант одразу підставити клавішею
+                <span class="accent-string">Tab</span> або
+                <span class="accent-string">Enter</span>. Це суттєво економить
+                час.
+              </li>
+              <li>
+                <span class="bold">Швидкі коментарі:</span> щоб тимчасово
+                вимкнути частину коду, виділи потрібні рядки мишкою і натисни
+                комбінацію <span class="accent-string">Ctrl + /</span>. Це
+                автоматично закоментує код (або розкоментує, якщо натиснути ще
+                раз).
+              </li>
+            </ol>
+
+            <hr />
+
+            <h3 id="p2-2">Практика роботи у VS Code</h3>
+
+            <details class="task" open>
+              <summary><h4>Завдання 1</h4></summary>
+
+              <div>
+                <p class="task-description">
+                  Виконай ці кроки послідовно, щоб перевірити, як усе працює на
+                  практиці:
+                </p>
+
+                <ol style="line-height: 2.2">
+                  <li>
+                    Згорни VS Code та створи на робочому столі комп'ютера
+                    звичайну папку з назвою <span class="accent">python</span>.
+                  </li>
+                  <li>
+                    Відкрий цю папку у VS Code через меню
+                    <span class="accent-string">File → Open Folder...</span>.
+                  </li>
+                  <li>
+                    Використовуючи бічну панель (Explorer) у VS Code, створи
+                    всередині папки новий файл з назвою
+                    <span class="accent-string">hello.py</span>.
+                  </li>
+                  <li>
+                    Напиши у файлі традиційний код привітання:
+                    <pre><code class="language-python nocopy">print("Hello, world!")</code></pre>
+                  </li>
+                  <li>Відкрий термінал у VS Code.</li>
+                  <li>
+                    Запусти програму командою:
+                    <pre><code class="language-bash nocopy">python hello.py</code></pre>
+                  </li>
+                </ol>
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- 🍋 PART 3: Lists (review + some new info) -->
+      <section id="part-3" class="lesson-wrapper tab-content">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img src="../media/icons/lemon.svg" class="star" alt="lemon" />
+              <span>Частина 3: Списки</span>
+            </h2>
+          </div>
+
+          <div class="lesson-content">
+            <h3 id="p3-1">1. Створення та доступ до елементів</h3>
+
+            <p>
+              Списки створюються за допомогою квадратних дужок
+              <span class="accent-string">[]</span>, а елементи розділяються
+              комами. Щоб отримати конкретний елемент, використовують його
+              <span class="accent">індекс</span> (порядковий номер), причому
+              нумерація починається з нуля.
+            </p>
+            <p>
+              Функція <span class="accent-string">len()</span> дозволяє
+              дізнатися загальну кількість елементів, а спеціальний цикл
+              <span class="accent-string">for item in list</span> – пройтися по
+              всіх елементах по черзі.
+            </p>
+
+            <pre><code class="language-python">my_list = [] # порожній список
+
+shapes = ["circle", "square", "triangle", "rectangle", "hexagon"] # список з рядками
+
+print(shapes) # вивід усього списку
+
+print(shapes[0]) # доступ до першого елемента -> "circle"
+print(shapes[2]) # доступ до третього елемента -> "triangle"
+
+n = len(shapes)
+print(f"There are {n} words in the list")
+
+# цикл для проходження по всіх елементах списку
+for shape in shapes:
+    print(f"Shape: {shape}.")</code></pre>
+
+            <hr />
+
+            <h3 id="p3-2">2. Копіювання та перемішування</h3>
+
+            <p>
+              Іноді нам потрібно змінити порядок елементів (наприклад,
+              перемішати слова для тесту), але при цьому зберегти оригінальний
+              список недоторканим. Для цього можна спочатку створити незалежну
+              копію списку за допомогою методу
+              <span class="accent-string">.copy()</span>, а потім застосовати
+              функцію <span class="accent-string">random.shuffle()</span>.
+            </p>
+
+            <pre><code class="language-python">import random
+
+shapes_copy = shapes.copy() # створюємо незалежну копію
+random.shuffle(shapes_copy) # перемішуємо елементи в копії
+
+print(shapes) # оригінальний список залишився без змін
+print(shapes_copy) # копія тепер має випадковий порядок елементів</code></pre>
+
+            <hr />
+
+            <h3 id="p3-3">3. Зрізи (Slicing)</h3>
+
+            <p>
+              Зрізи дозволяють "відрізати" й отримати лише певну частину списку.
+              Для цього у квадратних дужках вказують індекс початку та кінця:
+              <span class="accent-string">[старт:кінець]</span>.
+              <span class="accent">Важливо:</span> елемент "старт" включається у
+              зріз, а "кінець" — ні.
+            </p>
+
+            <pre><code class="language-python"># Зріз створює новий список на основі частини старого
+print(shapes[1:4]) # від індексу 1 до 3 (тобто 1, 2, 3)
+print(shapes[2:])  # від індексу 2 до самого кінця
+print(shapes[:3])  # від початку до індексу 2
+
+part = shapes[2:4] # можна зберегти зріз у змінній
+print(part)
+
+# Якщо вказати число, більше за довжину списку, помилки не буде:
+print(shapes[:1000])</code></pre>
+
+            <hr />
+
+            <h3 id="p3-4">Практика</h3>
+
+            <details class="task" open>
+              <summary>
+                <h4>Завдання 2</h4>
+              </summary>
+
+              <div>
+                <p class="task-description">
+                  Ця вправа моделює ситуацію, коли дано список слів, і
+                  користувач обирає, скільки з них він хоче потренувати за один
+                  раз.
+                </p>
+                <ol>
+                  <li>
+                    Створи список
+                    <span class="accent-string">math_operations</span> із 6-ти
+                    рядків: <span class="accent">add</span>,
+                    <span class="accent">subtract</span>,
+                    <span class="accent">multiply</span>,
+                    <span class="accent">divide</span>,
+                    <span class="accent">sum</span>,
+                    <span class="accent">product</span>.
+                  </li>
+                  <li>
+                    Створи копію цього списку і збережи її у новій змінній
+                    <span class="accent-string">math_copy</span>.
+                  </li>
+                  <li>
+                    Перемішай створену копію за допомогою відповідної функції з
+                    <span class="accent-string">random</span>.
+                  </li>
+                  <li>
+                    За допомогою функції визначення довжини списку виведи
+                    повідомлення:
+                    <span class="italic">"There are [N] words in the list"</span
+                    >.
+                  </li>
+                  <li>
+                    Запитай у користувача, скільки слів він хоче потренувати, та
+                    одразу перетвори відповідь на ціле число (<span
+                      class="italic"
+                      >"How many words do you want to practice? "</span
+                    >)
+                  </li>
+                  <li>
+                    Застосуй зріз до перемішаної копії списку, щоб у ньому
+                    залишилося максимум стільки слів, скільки ввів користувач.
+                    Запиши результат зрізу назад в ту саму змінну
+                    <span class="accent-string">math_copy</span>.
+                  </li>
+                  <li>
+                    За допомогою циклу
+                    <span class="accent-string">for</span> виведи на екран
+                    фінальний список слів (кожен елемент з нового рядка).
+                  </li>
+                </ol>
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- 🍋 PART 4: Dicts (review) -->
+      <section id="part-4" class="lesson-wrapper tab-content">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img src="../media/icons/lemon.svg" class="star" alt="lemon" />
+              <span>Частина 4: Словники</span>
+            </h2>
+          </div>
+
+          <div class="lesson-content">
+            <h3 id="p4-1">Створення та доступ до значень</h3>
+
+            <p>
+              Словник зберігає дані у вигляді пар
+              <span class="accent-string">ключ: значення</span>. Під час його
+              створення ми використовуємо фігурні дужки
+              <span class="accent-string">{}</span>, між ключем і значенням
+              ставимо двокрапку <span class="accent-string">:</span>, а самі
+              пари розділяємо комами.
+            </p>
+            <p>
+              Щоб отримати значення, потрібно звернутися до нього за ключем.
+              Існує два способи: через квадратні дужки або через метод
+              <span class="accent-string">.get()</span>. Метод
+              <span class="accent-string">.get()</span> безпечніший — якщо
+              шуканого ключа в словнику немає, він поверне
+              <span class="accent-string">None</span> (порожнечу), тоді як
+              квадратні дужки викличуть помилку і зупинять програму.
+            </p>
+
+            <pre><code class="language-python">word_data = {
+    "eng": "equation",
+    "ukr": "рівняння"
+}
+
+# Доступ через квадратні дужки
+print(word_data["eng"])  # -> "equation"
+
+# Безпечний доступ через метод .get()
+print(word_data.get("ukr"))  # -> "рівняння"
+print(word_data.get("esp"))  # Поверне None, програма не зламається через відсутність ключа
+
+# Можна спершу зберегти у змінній:
+eng_word = word_data.get("eng")
+print(eng_word)</code></pre>
+
+            <hr />
+
+            <h3 id="p4-2">Практика</h3>
+
+            <details class="task" open>
+              <summary>
+                <h4>Завдання 3</h4>
+              </summary>
+              <div>
+                <ol style="line-height: 2.2">
+                  <li>
+                    Створи словник <span class="accent-string">word</span>, що
+                    містить ключі <span class="accent">eng</span> та
+                    <span class="accent">ukr</span>, і запиши в них англійський
+                    математичний термін (<span class="accent">fraction</span>)
+                    та його переклад (<span class="accent">дріб</span>).
+                  </li>
+                  <li>
+                    Створи дві змінні:
+                    <span class="accent-string">question_word</span> та
+                    <span class="accent-string">correct_answer</span>. За
+                    допомогою методу безпечного доступу запиши в першу змінну
+                    англійське слово зі словника, а в другу — український
+                    переклад. Одразу застосуй до перекладу метод
+                    <span class="accent-string">.lower()</span>, щоб уникнути
+                    проблем з великими літерами. Виведи обидві змінні на екран.
+                  </li>
+                  <li>
+                    Додай змінну <span class="accent-string">mode</span>, яка
+                    запитуватиме в користувача режим роботи:
+                    <span class="italic"
+                      >"Choose mode (1 - Eng->Ukr, 2 - Ukr->Eng): "</span
+                    >.
+                  </li>
+                  <li>
+                    Напиши конструкцію
+                    <span class="accent-string">if/else</span>, яка перевірятиме
+                    значення <span class="accent-string">mode</span>. Якщо
+                    користувач обрав <span class="accent">"1"</span>,
+                    <span class="accent-string">question_word</span> має
+                    отримувати англійське слово, а
+                    <span class="accent-string">correct_answer</span> —
+                    українське. В іншому випадку —
+                    <span class="accent">навпаки</span>.
+                  </li>
+                  <li>
+                    Виведи <span class="accent-string">question_word</span> на
+                    екран.
+                  </li>
+                  <li>
+                    Створи змінну
+                    <span class="accent-string">user_answer</span>, яка
+                    прийматиме відповідь користувача (<span class="italic"
+                      >"Translate this word: "</span
+                    >). Одразу застосуй до неї методи
+                    <span class="accent-string">.lower()</span> та
+                    <span class="accent-string">.strip()</span>.
+                  </li>
+                  <li>
+                    Додай фінальну перевірку: якщо введена відповідь збігається
+                    з <span class="accent-string">correct_answer</span>, виведи
+                    <span class="italic">"Correct!"</span>. Інакше виведи
+                    <span class="italic"
+                      >"Wrong. The correct answer is [правильна
+                      відповідь]"</span
+                    >.
+                  </li>
+                </ol>
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>🌷 🍓 🌿 Made by Olena Hapchyna 🌿 🍓 🌷</p>
+
+      <div class="footer-credits">
+        <span
+          >Fruit icons by
+          <a
+            href="https://www.svgrepo.com/collection/fruits-vectors/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >An Nguyen</a
+          ></span
+        >
+        |
+        <a href="../credits.html" target="_blank">Credits & Licenses</a>
+      </div>
+    </footer>
+
+    <button
+      id="scrollToTopBtn"
+      class="scroll-to-top"
+      aria-label="Scroll to top"
+    >
+      <img src="../media/icons/apple.svg" />
+    </button>
+
+    <dialog id="clear-confirm-dialog" class="custom-dialog">
+      <div class="dialog-content">
+        <h3>⚠️ Attention!</h3>
+        <p>Do you really want to delete ALL your answers and start over?</p>
+        <div class="dialog-actions">
+          <button type="button" id="dialog-cancel-btn">No</button>
+          <button type="button" id="dialog-confirm-btn">Yes, delete</button>
+        </div>
+      </div>
+    </dialog>
+  </body>
+</html>
