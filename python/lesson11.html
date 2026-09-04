@@ -485,7 +485,7 @@ print(shapes[:1000])</code></pre>
                 <ol>
                   <li>
                     Створи список
-                    <span class="accent-string">math_operations</span> із 6-ти
+                    <span class="accent-string">math_terms</span> із 6-ти
                     рядків: <span class="accent">add</span>,
                     <span class="accent">subtract</span>,
                     <span class="accent">multiply</span>,
@@ -495,7 +495,7 @@ print(shapes[:1000])</code></pre>
                   </li>
                   <li>
                     Створи копію цього списку і збережи її у новій змінній
-                    <span class="accent-string">math_copy</span>.
+                    <span class="accent-string">terms_copy</span>.
                   </li>
                   <li>
                     Перемішай створену копію за допомогою відповідної функції з
@@ -518,7 +518,7 @@ print(shapes[:1000])</code></pre>
                     Застосуй зріз до перемішаної копії списку, щоб у ньому
                     залишилося максимум стільки слів, скільки ввів користувач.
                     Запиши результат зрізу назад в ту саму змінну
-                    <span class="accent-string">math_copy</span>.
+                    <span class="accent-string">terms_copy</span>.
                   </li>
                   <li>
                     За допомогою циклу
@@ -532,12 +532,12 @@ print(shapes[:1000])</code></pre>
         </div>
       </section>
 
-      <!-- 🍋 PART 4: Dicts (review) -->
+      <!-- 🍇 PART 4: Dicts (review) -->
       <section id="part-4" class="lesson-wrapper tab-content">
         <div class="lesson-block">
           <div class="lesson-header">
             <h2>
-              <img src="../media/icons/lemon.svg" class="star" alt="lemon" />
+              <img src="../media/icons/grapes.svg" class="star" alt="lemon" />
               <span>Частина 4: Словники</span>
             </h2>
           </div>
@@ -588,7 +588,7 @@ print(eng_word)</code></pre>
                 <h4>Завдання 3</h4>
               </summary>
               <div>
-                <ol style="line-height: 2.2">
+                <ol style="line-height: 2">
                   <li>
                     Створи словник <span class="accent-string">word</span>, що
                     містить ключі <span class="accent">eng</span> та
@@ -604,7 +604,8 @@ print(eng_word)</code></pre>
                     англійське слово зі словника, а в другу — український
                     переклад. Одразу застосуй до перекладу метод
                     <span class="accent-string">.lower()</span>, щоб уникнути
-                    проблем з великими літерами. Виведи обидві змінні на екран.
+                    проблем з великими літерами. Виведи обидві змінні на екран,
+                    щоб перевірити, чи все працює.
                   </li>
                   <li>
                     Додай змінну <span class="accent-string">mode</span>, яка
@@ -614,15 +615,29 @@ print(eng_word)</code></pre>
                     >.
                   </li>
                   <li>
-                    Напиши конструкцію
+                    Тепер <span class="accent">зміни код із кроку 2</span>:
+                    змінні <span class="accent-string">question_word</span> та
+                    <span class="accent-string">correct_answer</span> повинні
+                    створюватись всередині конструкції
                     <span class="accent-string">if/else</span>, яка перевірятиме
-                    значення <span class="accent-string">mode</span>. Якщо
-                    користувач обрав <span class="accent">"1"</span>,
-                    <span class="accent-string">question_word</span> має
-                    отримувати англійське слово, а
-                    <span class="accent-string">correct_answer</span> —
-                    українське. В іншому випадку —
-                    <span class="accent">навпаки</span>.
+                    значення <span class="accent-string">mode</span>:
+                    <ul>
+                      <li>
+                        Якщо користувач обрав <span class="accent">"1"</span>,
+                        <span class="accent-string">question_word</span> має
+                        отримувати англійське слово, а
+                        <span class="accent-string">correct_answer</span> –
+                        українське.
+                      </li>
+                      <li>
+                        В іншому випадку –
+                        <span class="accent">навпаки</span> (і не забудь
+                        застосувати метод
+                        <span class="accent-string">.lower()</span> до
+                        англійської відповіді в
+                        <span class="accent-string">else</span>).
+                      </li>
+                    </ul>
                   </li>
                   <li>
                     Виведи <span class="accent-string">question_word</span> на
