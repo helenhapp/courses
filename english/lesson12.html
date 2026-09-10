@@ -1,0 +1,1164 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Навчальні матеріали" />
+
+    <link rel="icon" type="image/svg+xml" href="../media/icons/carambola.svg" />
+
+    <title>English Lesson 12</title>
+
+    <script>
+      const savedTheme = localStorage.getItem("lms_theme") || "light";
+      document.documentElement.setAttribute("data-theme", savedTheme);
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Fira+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Tektur:wght@400..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="../style.css" />
+    <script src="../script.js" defer></script>
+
+    <style>
+      .gloss {
+        border-bottom: 1px dashed #888;
+        cursor: pointer;
+        color: #1a5fb4;
+      }
+      .gloss:hover,
+      .gloss:focus {
+        background: #eaf2fc;
+        outline: none;
+      }
+      .tr-pill {
+        display: none;
+        font-size: 0.85em;
+        color: #1a5fb4;
+        background: #eaf2fc;
+        border-radius: 4px;
+        padding: 1px 6px;
+        margin-left: 4px;
+      }
+      .tr-pill.show {
+        display: inline;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- transition curtain -->
+    <div class="transition-curtain"></div>
+
+    <!-- top-bar -->
+    <div id="nav-container">
+      <nav class="top-bar">
+        <div class="logo-container">
+          <img
+            src="../media/icons/carambola.svg"
+            alt="Logo"
+            class="site-logo"
+          />
+        </div>
+
+        <div class="top-bar__controls">
+          <!-- <a href="./menu.html" class="menu-link">All Lessons</a> -->
+          <label class="toggle-switch" aria-label="Перемикач теми">
+            <input type="checkbox" id="theme-checkbox" />
+            <span class="slider">
+              <span class="icon sun"
+                ><img src="../media/icons/stars.svg"
+              /></span>
+              <span class="icon moon"
+                ><img src="../media/icons/moon.svg"
+              /></span>
+            </span>
+          </label>
+          <button
+            id="dyslexia-mode-btn"
+            class="wide-toggle"
+            title="Шрифт для дислектиків"
+          >
+            Aa
+          </button>
+        </div>
+      </nav>
+    </div>
+
+    <!-- lesson header -->
+    <header>
+      <div class="title-container">
+        <!-- <a
+          href="./lesson10.html"
+          class="nav-arrow prev-arrow"
+          title="Попередній урок"
+        >
+          ←
+        </a> -->
+
+        <h1 id="lesson-title">English: 12</h1>
+
+        <!-- <a href="#" class="nav-arrow next-arrow" title="Наступний урок"> → </a> -->
+      </div>
+
+      <p class="topic">The Present Simple [practice]</p>
+
+      <hr class="pretty-divider" />
+    </header>
+
+    <!-- lesson content -->
+    <main>
+      <!-- tab buttons -->
+      <div class="tabs-nav">
+        <button class="tab-btn active" data-target="part-1">Vocabulary</button>
+        <button class="tab-btn" data-target="part-2">Grammar</button>
+        <button class="tab-btn" data-target="part-3">Speaking</button>
+      </div>
+
+      <!-- 🍓 PART 1: VOCABULARY -->
+      <section id="part-1" class="lesson-wrapper tab-content active show">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img
+                src="../media/icons/strawberry.svg"
+                class="star"
+                alt="an open book"
+              />
+              <span>Vocabulary</span>
+            </h2>
+          </div>
+
+          <div class="lesson-content">
+            <!-- Vocabulary Detective exercise (inputs) -->
+            <h3 id="p1-1">Vocabulary</h3>
+
+            <!-- 📝 Exercise -->
+            <details class="task" name="vocab" open>
+              <summary>
+                <h4>Exercise: Vocabulary Detective</h4>
+              </summary>
+
+              <div>
+                <p class="task-description">
+                  Before you read the text, try to guess these eight words from
+                  the clues. Write your best guess down and don't check the
+                  answer key yet.
+                </p>
+
+                <ol style="line-height: 2.2">
+                  <!-- 1 -->
+                  <li>
+                    A building where people go to look at paintings and art. →
+                    <input
+                      type="text"
+                      id="l12-ex1-1"
+                      class="test-input"
+                      style="width: 160px"
+                    />
+                  </li>
+                  <!-- 2 -->
+                  <li>
+                    A very famous painting. Usually it's the artist's best work.
+                    →
+                    <input
+                      type="text"
+                      id="l12-ex1-2"
+                      class="test-input"
+                      style="width: 160px"
+                    />
+                  </li>
+                  <!-- 3 -->
+                  <li>
+                    A person with the job of keeping a building safe. →
+                    <input
+                      type="text"
+                      id="l12-ex1-3"
+                      class="test-input"
+                      style="width: 160px"
+                    />
+                  </li>
+                  <!-- 4 -->
+                  <li>
+                    A person the detective thinks might be
+                    <span class="gloss" data-tr="винний у злочині"
+                      >guilty of a crime</span
+                    >. →
+                    <input
+                      type="text"
+                      id="l12-ex1-4"
+                      class="test-input"
+                      style="width: 160px"
+                    />
+                  </li>
+                  <!-- 5 -->
+                  <li>
+                    <span class="gloss" data-tr="пробувати зʼясувати"
+                      >To try to find out</span
+                    >
+                    what really happened. (This is something a detective does.)
+                    →
+                    <input
+                      type="text"
+                      id="l12-ex1-5"
+                      class="test-input"
+                      style="width: 160px"
+                      placeholder="to ..."
+                    />
+                  </li>
+                  <!-- 6 -->
+                  <li>
+                    A person with the job of fixing old or damaged paintings. →
+                    <input
+                      type="text"
+                      id="l12-ex1-6"
+                      class="test-input"
+                      style="width: 160px"
+                    />
+                  </li>
+                  <!-- 7 -->
+                  <li>
+                    Things a person does every day, always
+                    <span class="gloss" data-tr="в один і той самий спосіб"
+                      >in the same way</span
+                    >. →
+                    <input
+                      type="text"
+                      id="l12-ex1-7"
+                      class="test-input"
+                      style="width: 160px"
+                    />
+                  </li>
+                  <!-- 8 -->
+                  <li>
+                    A time when the electricity suddenly stops, and all
+                    <span class="gloss" data-tr="гасне світло">
+                      the lights go off </span
+                    >. →
+                    <input
+                      type="text"
+                      id="l12-ex1-8"
+                      class="test-input"
+                      style="width: 160px"
+                    />
+                  </li>
+                </ol>
+              </div>
+            </details>
+
+            <!-- Answer key with transcriptions -->
+            <details class="answer">
+              <summary>Answer key</summary>
+
+              <div class="tablecontainer">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Word</th>
+                      <th>Pronunciation</th>
+                      <th>Translation</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <!-- 1 -->
+                    <tr>
+                      <td>gallery</td>
+                      <td><span class="accent-string">/ˈɡæləri/</span></td>
+                      <td>галерея</td>
+                    </tr>
+                    <!-- 2 -->
+                    <tr>
+                      <td>masterpiece</td>
+                      <td><span class="accent-string">/ˈmɑːstəpiːs/</span></td>
+                      <td>шедевр</td>
+                    </tr>
+                    <!-- 3 -->
+                    <tr>
+                      <td>guard</td>
+                      <td><span class="accent-string">/ɡɑːd/</span></td>
+                      <td>охоронець</td>
+                    </tr>
+                    <!-- 4 -->
+                    <tr>
+                      <td>suspect</td>
+                      <td><span class="accent-string">/ˈsʌspekt/</span></td>
+                      <td>підозрюваний</td>
+                    </tr>
+                    <!-- 5 -->
+                    <tr>
+                      <td>to investigate</td>
+                      <td><span class="accent-string">/ɪnˈvestɪɡeɪt/</span></td>
+                      <td>розслідувати</td>
+                    </tr>
+                    <!-- 6 -->
+                    <tr>
+                      <td>restorer</td>
+                      <td><span class="accent-string">/rɪˈstɔːrə(r)/</span></td>
+                      <td>реставратор</td>
+                    </tr>
+                    <!-- 7 -->
+                    <tr>
+                      <td>routine</td>
+                      <td><span class="accent-string">/ruːˈtiːn/</span></td>
+                      <td>рутина, звичний розпорядок</td>
+                    </tr>
+                    <!-- 8 -->
+                    <tr>
+                      <td>blackout</td>
+                      <td><span class="accent-string">/ˈblækaʊt/</span></td>
+                      <td>блекаут, відключення світла</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </details>
+
+            <hr />
+
+            <!-- Text for reading, prompt to find the words from the exercise -->
+            <!-- 📚 THE STORY -->
+            <h3 id="p1-2">Reading</h3>
+
+            <p class="task-description">
+              Read the text. Try to find all the words from exercise. Then check
+              the answer key.
+            </p>
+
+            <div class="callout2">
+              <h4>The Case</h4>
+
+              <p>
+                Usually, the City Gallery is a
+                <span class="gloss" data-tr="тихе">quiet</span> place. Every
+                morning, Mr. Novak, the director, unlocks the doors. The famous
+                painting, “The Midnight Moon”,
+                <span class="gloss" data-tr="висить">hangs</span> in
+                <span class="gloss" data-tr="головна зала">the main hall</span>.
+                People from all over the world visit the gallery to see this
+                <span class="gloss" data-tr="шедевр">masterpiece</span>.
+              </p>
+
+              <p>
+                Several people work in the gallery. Mia and Sam are the
+                <span class="gloss" data-tr="прибиральники">cleaners</span>.
+                They come to work
+                <span class="gloss" data-tr="рано вранці"
+                  >early in the morning</span
+                >
+                to clean the building before the visitors
+                <span class="gloss" data-tr="прибувати">arrive</span>. Oliver is
+                the <span class="gloss" data-tr="охоронець">guard</span>. He
+                walks around the gallery every hour. He always drinks coffee,
+                and he never <span class="gloss" data-tr="дрімає">naps</span> at
+                work – or so he says. In a small
+                <span class="gloss" data-tr="майстерня">workshop</span> behind
+                the main hall, Beatrice
+                <span class="gloss" data-tr="відновлює/ремонтує">repairs</span>
+                old and damaged frames. She is the
+                <span class="gloss" data-tr="реставратор">restorer</span>. Her
+                <span class="gloss" data-tr="рутина/розпорядок">routine</span>
+                is always the same: she arrives in the
+                <span class="gloss" data-tr="пообідній час">afternoon</span> and
+                leaves late at night.
+              </p>
+
+              <p>
+                But today
+                <span class="gloss" data-tr="щось не так"
+                  >something is wrong</span
+                >. Last night there was a
+                <span class="gloss" data-tr="відключення світла">blackout</span>
+                in the gallery, and when
+                <span class="gloss" data-tr="cвітло знову увімкнулося"
+                  >the lights came back on</span
+                >, "The Midnight Moon"
+                <span class="gloss" data-tr="зникла">was gone</span>. The famous
+                Detective Lance arrives
+                <span class="gloss" data-tr="проводити розслідування"
+                  >to investigate</span
+                >. Everyone who works in the gallery is a
+                <span class="gloss" data-tr="підозрюваний">suspect</span>. Where
+                is the painting now?
+              </p>
+            </div>
+
+            <hr />
+
+            <h3 id="p1-3">Translator</h3>
+
+            <!-- 🌍 BUILT-IN TRANSLATOR -->
+            <!-- prettier-ignore -->
+            <div class="translator-module" data-source-lang="en" data-target-lang="uk">
+              <div class="translator-lang-labels">
+                <span class="lang-source">Англійська</span>
+                <button class="swap-lang-btn" title="Swap languages">⇄</button>
+                <span class="lang-target">Українська</span>
+              </div>
+
+              <div class="translator-inputs">
+                <input type="text" class="translator-input" placeholder="Type a word..." />
+                <button class="translate-btn">Translate</button>
+              </div>
+
+              <div class="translator-output" style="display: none"></div>
+            </div>
+
+            <!-- optional notes -->
+            <textarea
+              style="margin-top: 0"
+              id="l12-vocab-notes"
+              class="test-textarea"
+              placeholder="You can write some notes here..."
+            ></textarea>
+          </div>
+        </div>
+      </section>
+
+      <!-- 🍉 PART 2: GRAMMAR -->
+      <section id="part-2" class="lesson-wrapper tab-content">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img
+                src="../media/icons/watermelon.svg"
+                class="star"
+                alt="a watermelon slice"
+              />
+              <span>Grammar</span>
+            </h2>
+          </div>
+
+          <div class="lesson-content">
+            <!-- intro -->
+            <h3 id="p2-1">Present Simple — the tense of facts and routines</h3>
+
+            <p>
+              We use the Present Simple when something is generally true or
+              happens repeatedly as part of a routine. It's the most common
+              tense in everyday English, and today it's our main tool: before we
+              can spot what's <span class="italic">unusual</span> at the
+              gallery, we first need to describe what's
+              <span class="italic">normal</span>.
+            </p>
+
+            <hr />
+
+            <!-- theory 1 -->
+            <h3 id="p2-2">Part 1 — "to be" + nouns/adjectives</h3>
+
+            <div class="tablecontainer">
+              <table>
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th>Affirmative</th>
+                    <th>Negative</th>
+                    <th>Question</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="bold">I</span></td>
+                    <td>am</td>
+                    <td>am not</td>
+                    <td>Am I ...?</td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">he / she / it</span></td>
+                    <td>is</td>
+                    <td>isn't</td>
+                    <td>Is he/she/it ...?</td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">you / we / they</span></td>
+                    <td>are</td>
+                    <td>aren't</td>
+                    <td>Are you/we/they ...?</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <ul>
+              <li>
+                (+) Oliver <span class="accent">is</span> the night guard.
+              </li>
+              <li>
+                (+) The paintings <span class="accent">are</span> very valuable.
+              </li>
+              <li style="margin-top: 10px">
+                (−) Mia <span class="accent">isn't</span> in the main hall.
+              </li>
+              <li>
+                (−) The gallery <span class="accent">isn't</span> open on
+                Mondays.
+              </li>
+              <li style="margin-top: 10px">
+                (?) <span class="accent">Is</span> Mr. Novak the director?
+              </li>
+              <li>(?) <span class="accent">Are</span> the cameras new?</li>
+            </ul>
+
+            <!-- exercise 1 -->
+            <details class="task" open>
+              <summary>
+                <h4>Exercise 1</h4>
+              </summary>
+              <div>
+                <p class="task-description">
+                  Fill in the blanks with the correct form of the verb
+                  <strong>to be</strong> (am / is / are / isn't / aren't).
+                </p>
+
+                <ol style="line-height: 2.2">
+                  <!-- 1 -->
+                  <li>
+                    The paintings in the gallery
+                    <input
+                      type="text"
+                      id="l12-p2-ex1-1"
+                      class="test-input"
+                      style="width: 70px"
+                    />
+                    very expensive.
+                  </li>
+                  <!-- 2 -->
+                  <li>
+                    Oliver
+                    <input
+                      type="text"
+                      id="l12-p2-ex1-2"
+                      class="test-input"
+                      style="width: 70px"
+                    />
+                    the director – he
+                    <input
+                      type="text"
+                      id="l12-p2-ex1-3"
+                      class="test-input"
+                      style="width: 70px"
+                    />
+                    the guard.
+                  </li>
+                  <!-- 3 -->
+                  <li>
+                    <input
+                      type="text"
+                      id="l12-p2-ex1-4"
+                      class="test-input"
+                      style="width: 70px"
+                    />
+                    Mia the cleaner? Yes,
+                    <input
+                      type="text"
+                      id="l12-p2-ex1-5"
+                      class="test-input"
+                      style="width: 100px"
+                    />.
+                  </li>
+                  <!-- 4 -->
+                  <li>
+                    <input
+                      type="text"
+                      id="l12-p2-ex1-6"
+                      class="test-input"
+                      style="width: 70px"
+                    />
+                    the gallery open every day? No, it
+                    <input
+                      type="text"
+                      id="l12-p2-ex1-7"
+                      class="test-input"
+                      style="width: 70px"
+                    />
+                    open on Monday.
+                  </li>
+                  <!-- 5 -->
+                  <li>
+                    <input
+                      type="text"
+                      id="l12-p2-ex1-8"
+                      class="test-input"
+                      style="width: 70px"
+                    />
+                    the cameras always on? No, they
+                    <input
+                      type="text"
+                      id="l12-p2-ex1-9"
+                      class="test-input"
+                      style="width: 132px"
+                    />.
+                  </li>
+                  <!-- 6 -->
+                  <li>
+                    <input
+                      type="text"
+                      id="l12-p2-ex1-10"
+                      class="test-input"
+                      style="width: 70px"
+                    />
+                    Detective Lance and Mr. Novak in the gallery right now?
+                  </li>
+                </ol>
+              </div>
+            </details>
+
+            <hr />
+
+            <!-- theory 2 -->
+            <h3 id="p2-3">Part 2 — Verbs</h3>
+
+            <div class="tablecontainer">
+              <table>
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th>Affirmative</th>
+                    <th>Negative</th>
+                    <th>Question</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="bold">I / you / we / they</span></td>
+                    <td>read</td>
+                    <td>do not / don't read</td>
+                    <td>Do ... read?</td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">he / she / it</span></td>
+                    <td>read<span class="accent">s</span></td>
+                    <td>does not / doesn't read</td>
+                    <td>Does ... read?</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <ul>
+              <li>
+                (+) Oliver <span class="accent">walks</span> around the gallery
+                every hour.
+              </li>
+              <li>
+                (+) Detective Lance
+                <span class="accent">investigates</span> strange cases.
+              </li>
+              <li style="margin-top: 10px">
+                (−) Visitors <span class="accent">don't touch</span> the
+                paintings.
+              </li>
+              <li>
+                (−) Mia <span class="accent">doesn't work</span> on Sundays.
+              </li>
+              <li style="margin-top: 10px">
+                (?) <span class="accent">Does</span> Oliver
+                <span class="accent">drink</span> coffee every shift?
+              </li>
+              <li>
+                (?) <span class="accent">Do</span> the cleaners
+                <span class="accent">work</span> on weekends?
+              </li>
+            </ul>
+
+            <!-- exercise 2 -->
+            <details class="task" open>
+              <summary>
+                <h4>Exercise 2</h4>
+              </summary>
+              <div>
+                <p class="task-description">
+                  Fill in the blanks with <strong>walk / walks</strong> and
+                  <strong>do / does / don't / doesn't</strong> based on the (+),
+                  (-), or (?) hints.
+                </p>
+
+                <ol style="line-height: 2.2">
+                  <!-- 1 -->
+                  <li>
+                    (+) Beatrice
+                    <input
+                      type="text"
+                      id="l12-p2-ex2-1"
+                      class="test-input"
+                      style="width: 140px"
+                    />
+                    to the workshop in the afternoon.
+                  </li>
+                  <!-- 2 -->
+                  <li>
+                    (+) The visitors
+                    <input
+                      type="text"
+                      id="l12-p2-ex2-2"
+                      class="test-input"
+                      style="width: 140px"
+                    />
+                    around the main hall slowly.
+                  </li>
+                  <!-- 3 -->
+                  <li>
+                    (-) Mr. Novak
+                    <input
+                      type="text"
+                      id="l12-p2-ex2-3"
+                      class="test-input"
+                      style="width: 140px"
+                    />
+                    to work — he takes the bus.
+                  </li>
+                  <!-- 4 -->
+                  <li>
+                    (-) The visitors
+                    <input
+                      type="text"
+                      id="l12-p2-ex2-4"
+                      class="test-input"
+                      style="width: 140px"
+                    />
+                    on the grass.
+                  </li>
+                  <!-- 5 -->
+                  <li>
+                    (?)
+                    <input
+                      type="text"
+                      id="l12-p2-ex2-5"
+                      class="test-input"
+                      style="width: 140px"
+                    />
+                    Detective Lance
+                    <input
+                      type="text"
+                      id="l12-p2-ex2-6"
+                      class="test-input"
+                      style="width: 140px"
+                    />
+                    to every crime scene?
+                  </li>
+                  <!-- 6 -->
+                  <li>
+                    (?)
+                    <input
+                      type="text"
+                      id="l12-p2-ex2-7"
+                      class="test-input"
+                      style="width: 140px"
+                    />
+                    the cleaners
+                    <input
+                      type="text"
+                      id="l12-p2-ex2-8"
+                      class="test-input"
+                      style="width: 140px"
+                    />
+                    to the gallery, or do they take the bus?
+                  </li>
+                </ol>
+              </div>
+            </details>
+
+            <hr />
+
+            <!-- theory 3 -->
+            <h3 id="p2-4">Part 3 — Frequency words</h3>
+
+            <p
+              style="text-align: center; font-size: 1.1rem; margin-bottom: 20px"
+            >
+              <span class="italic"
+                >always → usually → often → sometimes → rarely → never</span
+              >
+            </p>
+            <p
+              style="text-align: center; font-size: 1.1rem; margin-bottom: 20px"
+            >
+              <span class="italic"
+                >завжди → зазвичай → часто → іноді → рідко → ніколи</span
+              >
+            </p>
+
+            <p>
+              They go <span class="bold">before</span> the main verb, but
+              <span class="bold">after</span> "to be":
+            </p>
+
+            <ul>
+              <li>
+                Oliver <span class="accent">always drinks</span> coffee on his
+                <span class="gloss" data-tr="робоча зміна">shift</span>.
+              </li>
+              <li>
+                Mia <span class="accent">never leaves</span> a
+                <span class="gloss" data-tr="безлад">mess</span> behind.
+              </li>
+              <li>
+                Sam <span class="accent">is rarely</span> in the main hall.
+              </li>
+              <li>
+                The workers <span class="accent">are always</span>
+                <span class="gloss" data-tr="ввічливі">polite</span> to the
+                visitors.
+              </li>
+            </ul>
+
+            <!-- exercise 3 -->
+            <details class="task" open>
+              <summary>
+                <h4>Exercise 3</h4>
+              </summary>
+              <div>
+                <p class="task-description">
+                  Rewrite the sentences, inserting the adverb in the correct
+                  position.
+                </p>
+                <ol>
+                  <li>
+                    The
+                    <span class="gloss" data-tr="сигналізація">alarm</span> is
+                    broken. (often)
+                  </li>
+                  <li>Ms. Reyes (Рейєс) leaves her office. (rarely)</li>
+                  <li>Beatrice is very tired after work. (usually)</li>
+                  <li>Mr. Novak forgets his keys. (sometimes)</li>
+                  <li>
+                    The cameras
+                    <span class="gloss" data-tr="увімкнені">are on</span>.
+                    (always)
+                  </li>
+                  <li>Visitors touch the paintings. (never)</li>
+                </ol>
+                <textarea
+                  id="l12-p2-ex3"
+                  class="test-textarea"
+                  placeholder="1. The alarm is often broken.&#10;2. ..."
+                  rows="8"
+                ></textarea>
+              </div>
+            </details>
+
+            <hr />
+
+            <!-- theory 4 -->
+            <h3 id="p2-5">Part 4 — Wh-questions</h3>
+
+            <ul style="line-height: 1.8">
+              <li>
+                <span class="bold">Wh-words:</span> who, what, where, when, why,
+                how, what time, how often…
+              </li>
+              <li style="margin-top: 15px">
+                <span class="bold">a) with "to be":</span> Wh-word + am/is/are +
+                subject?
+                <ul type="circle" style="margin-top: 5px">
+                  <li><span class="italic">Who is the main suspect?</span></li>
+                  <li><span class="italic">Where are the cameras?</span></li>
+                </ul>
+              </li>
+              <li style="margin-top: 15px">
+                <span class="bold">b) with verbs:</span> Wh-word + do/does +
+                subject + base verb?
+                <ul type="circle" style="margin-top: 5px">
+                  <li><span class="italic">What does Oliver drink?</span></li>
+                  <li>
+                    <span class="italic">Where do Mia and Sam work?</span>
+                  </li>
+                </ul>
+              </li>
+              <li style="margin-top: 15px">
+                <span class="bold"
+                  >c) frequency adverbs inside the question:</span
+                >
+                the adverb slots in between the subject and the verb, same spot
+                as always.
+                <ul type="circle" style="margin-top: 5px">
+                  <li>
+                    <span class="italic"
+                      >How is Beatrice always so focused?</span
+                    >
+                  </li>
+                  <li>
+                    <span class="italic"
+                      >Why does Oliver always drink coffee?</span
+                    >
+                  </li>
+                </ul>
+              </li>
+            </ul>
+
+            <!-- exercise 4 -->
+            <details class="task" open>
+              <summary>
+                <h4>Exercise 4</h4>
+              </summary>
+              <div>
+                <p class="task-description">
+                  Build the wh-questions using the clues in brackets.
+                </p>
+                <ol>
+                  <li>
+                    (Чому / Oliver / always /
+                    <span class="gloss" data-tr="засинає">fall asleep</span> /
+                    on quiet nights?)
+                  </li>
+                  <li>
+                    (Як часто / Oliver /
+                    <span class="gloss" data-tr="перевіряє">check</span> / the
+                    main hall?)
+                  </li>
+                  <li>(Хто / the suspects?)</li>
+                  <li>(Коли / the gallery / is not open)</li>
+                </ol>
+                <textarea
+                  id="l12-p2-ex4"
+                  class="test-textarea"
+                  placeholder="1. Why does Oliver always fall asleep on quiet nights?&#10;2. ..."
+                  rows="5"
+                ></textarea>
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- 🍋 PART 3: SPEAKING -->
+      <section id="part-3" class="lesson-wrapper tab-content">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img
+                src="../media/icons/lemon.svg"
+                class="star"
+                alt="a lemon slice"
+              />
+              <span>Speaking</span>
+            </h2>
+          </div>
+
+          <div class="lesson-content">
+            <h3 id="p3-1">Round 1 — Ask the staff</h3>
+
+            <p>
+              You play Detective Lance, gathering facts about the gallery's
+              routine before you can spot what's out of place. Turn each
+              statement below into an English question and ask it out loud.
+              Write down what the tutor actually says – not just yes or no.
+            </p>
+
+            <!-- investigation (part 1, table 1) -->
+            <p>
+              <span class="accent">Group A uses is/are questions.</span> The
+              first row is done for you:
+            </p>
+            <div style="margin-bottom: 20px; font-size: 15px; color: #777">
+              <ul>
+                <li>Statement: Галерея відчинена щодня.</li>
+                <li>Question: "Is the gallery open every day?"</li>
+                <li>Answer: "No, the gallery is closed on Monday."</li>
+                <li>Notes: Closed on Monday.</li>
+              </ul>
+            </div>
+
+            <!-- table 1 -->
+            <div class="tablecontainer">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Statement to check</th>
+                    <th>Notes</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <!-- 1 -->
+                  <tr>
+                    <td>1. Галерея відчинена щодня.</td>
+                    <td>
+                      <textarea id="l12-p3-1" class="test-textarea">
+Closed on Monday.</textarea
+                      >
+                    </td>
+                  </tr>
+                  <!-- 2 -->
+                  <tr>
+                    <td>2. Камери увімкнені завжди.</td>
+                    <td>
+                      <textarea id="l12-p3-2" class="test-textarea"></textarea>
+                    </td>
+                  </tr>
+                  <!-- 3 -->
+                  <tr>
+                    <td>3. Містер Новак – перший, хто приходить на роботу.</td>
+                    <td>
+                      <textarea id="l12-p3-3" class="test-textarea"></textarea>
+                    </td>
+                  </tr>
+                  <!-- 4 -->
+                  <tr>
+                    <td>4. Картина Midnight Moon дуже дорога.</td>
+                    <td>
+                      <textarea id="l12-p3-4" class="test-textarea"></textarea>
+                    </td>
+                  </tr>
+                  <!-- 5 -->
+                  <tr>
+                    <td>
+                      5. Вночі охоронець в галереї один (більше нікого немає).
+                    </td>
+                    <td>
+                      <textarea id="l12-p3-5" class="test-textarea"></textarea>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- investigation (part 2, table 2) -->
+            <p>
+              <span class="accent"
+                >Group B uses do/does questions — and this time, ask two
+                questions per row.</span
+              >
+              First a yes/no question, then a follow-up wh-question based on
+              what your tutor says (Why...? When...? How often...?). The first
+              row is done for you::
+            </p>
+            <div style="margin-bottom: 20px; font-size: 15px; color: #777">
+              <ul>
+                <li>Statement: Галерея відчиняється о 9-й ранку.</li>
+                <li>Question 1: "Does the gallery open at 9 AM?"</li>
+                <li>Answer 1: "No, it doesn't."</li>
+                <li>Question 2: "When does it open?"</li>
+                <li>Answer 2: "It opens at 10 AM."</li>
+                <li>Notes: 10 AM, not 9</li>
+              </ul>
+            </div>
+
+            <!-- table 2 -->
+            <div class="tablecontainer">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Statement to check</th>
+                    <th>Notes</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <!-- 6 -->
+                  <tr>
+                    <td>6. Галерея відчиняється о 9-й ранку.</td>
+                    <td>
+                      <textarea id="l12-p3-6" class="test-textarea">
+10 AM, not 9</textarea
+                      >
+                    </td>
+                  </tr>
+                  <!-- 7 -->
+                  <tr>
+                    <td>7. В прибиральників є ключі (від галереї).</td>
+                    <td>
+                      <textarea id="l12-p3-7" class="test-textarea"></textarea>
+                    </td>
+                  </tr>
+                  <!-- 8 -->
+                  <tr>
+                    <td>8. Сигналізація працює щоночі.</td>
+                    <td>
+                      <textarea id="l12-p3-8" class="test-textarea"></textarea>
+                    </td>
+                  </tr>
+                  <!-- 9 -->
+                  <tr>
+                    <td>9. Олівер перевіряє головну залу кожні пів години.</td>
+                    <td>
+                      <textarea id="l12-p3-9" class="test-textarea"></textarea>
+                    </td>
+                  </tr>
+                  <!-- 10 -->
+                  <tr>
+                    <td>10. Беатрис завжди йде додому рано.</td>
+                    <td>
+                      <textarea id="l12-p3-10" class="test-textarea"></textarea>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <hr />
+
+            <!-- a prompt to analyze the results -->
+            <h3 id="p3-2">Round 2 — What's the clue?</h3>
+
+            <p>
+              Look back at your completed tables. Point out the information that
+              might matter to the case. There's no single correct answer here.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>🌷 🍓 🌿 Made by Olena Hapchyna 🌿 🍓 🌷</p>
+
+      <div class="footer-credits">
+        <span
+          >Fruit icons by
+          <a
+            href="https://www.svgrepo.com/collection/fruits-vectors/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >An Nguyen</a
+          ></span
+        >
+        |
+        <a href="../credits.html" target="_blank">Credits & Licenses</a>
+      </div>
+    </footer>
+
+    <button
+      id="scrollToTopBtn"
+      class="scroll-to-top"
+      aria-label="Scroll to top"
+    >
+      <img src="../media/icons/apple.svg" />
+    </button>
+
+    <dialog id="clear-confirm-dialog" class="custom-dialog">
+      <div class="dialog-content">
+        <h3>⚠️ Attention!</h3>
+        <p>Do you really want to delete ALL your answers and start over?</p>
+        <div class="dialog-actions">
+          <button type="button" id="dialog-cancel-btn">No</button>
+          <button type="button" id="dialog-confirm-btn">Yes, delete</button>
+        </div>
+      </div>
+    </dialog>
+
+    <script>
+      document.querySelectorAll(".gloss").forEach(function (el) {
+        var pill = document.createElement("span");
+        pill.className = "tr-pill";
+        pill.textContent = el.getAttribute("data-tr");
+        el.insertAdjacentElement("afterend", pill);
+        function toggle() {
+          pill.classList.toggle("show");
+        }
+        el.addEventListener("click", toggle);
+        el.addEventListener("keydown", function (e) {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            toggle();
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
