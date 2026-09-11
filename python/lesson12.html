@@ -1,0 +1,677 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Навчальні матеріали" />
+
+    <link rel="icon" type="image/svg+xml" href="../media/icons/carambola.svg" />
+
+    <title>Python Lesson 12</title>
+
+    <script>
+      const savedTheme = localStorage.getItem("lms_theme") || "light";
+      document.documentElement.setAttribute("data-theme", savedTheme);
+
+      const hljsThemeLink =
+        savedTheme === "dark"
+          ? "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css"
+          : "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css";
+
+      document.head.insertAdjacentHTML(
+        "beforeend",
+        `<link id="hljs-theme" rel="stylesheet" href="${hljsThemeLink}" />`,
+      );
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Fira+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Tektur:wght@400..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"
+    ></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.css"
+    />
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.js"
+    ></script>
+
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/javascript/javascript.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/xml/xml.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/css/css.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/htmlmixed/htmlmixed.min.js"
+    ></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/theme/dracula.min.css"
+    />
+
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/python/python.min.js"
+    ></script>
+
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt-stdlib.js"
+    ></script>
+
+    <link rel="stylesheet" href="../style.css" />
+    <script src="../script.js" defer></script>
+  </head>
+
+  <body>
+    <!-- transition curtain -->
+    <div class="transition-curtain"></div>
+
+    <!-- top-bar -->
+    <div id="nav-container">
+      <nav class="top-bar">
+        <div class="logo-container">
+          <img
+            src="../media/icons/carambola.svg"
+            alt="Logo"
+            class="site-logo"
+          />
+        </div>
+
+        <div class="top-bar__controls">
+          <!-- <a href="./menu.html" class="menu-link">All Lessons</a> -->
+          <label class="toggle-switch" aria-label="Перемикач теми">
+            <input type="checkbox" id="theme-checkbox" />
+            <span class="slider">
+              <span class="icon sun"
+                ><img src="../media/icons/stars.svg"
+              /></span>
+              <span class="icon moon"
+                ><img src="../media/icons/moon.svg"
+              /></span>
+            </span>
+          </label>
+          <button
+            id="dyslexia-mode-btn"
+            class="wide-toggle"
+            title="Шрифт для дислектиків"
+          >
+            Aa
+          </button>
+        </div>
+      </nav>
+    </div>
+
+    <!-- lesson header -->
+    <header>
+      <div class="title-container">
+        <!-- <a href="#" class="nav-arrow prev-arrow" title="Попередній урок"> ← </a> -->
+
+        <h1 id="lesson-title">Python: 12</h1>
+
+        <!-- <a href="#" class="nav-arrow next-arrow" title="Наступний урок"> → </a> -->
+      </div>
+
+      <p class="topic">Список словників</p>
+
+      <hr class="pretty-divider" />
+    </header>
+
+    <!-- lesson content -->
+    <main>
+      <!-- tab buttons -->
+      <div class="tabs-nav">
+        <button class="tab-btn active" data-target="part-1">Частина 1</button>
+        <button class="tab-btn" data-target="part-2">Частина 2</button>
+        <button class="tab-btn" data-target="part-3">Частина 3</button>
+      </div>
+
+      <!-- 🍉 PART 1 -->
+      <section id="part-1" class="lesson-wrapper tab-content">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img
+                src="../media/icons/watermelon.svg"
+                class="star"
+                alt="watermelon"
+              />
+              <span>Повторення</span>
+            </h2>
+          </div>
+
+          <div class="lesson-content">
+            <h3 id="p2-1">VS Code</h3>
+
+            <ul>
+              <li>
+                <span class="bold"
+                  >Як швидко закоментувати і розкоментувати код:</span
+                >
+                Виділи потрібні рядки та натисни комбінацію клавіш Ctrl + /
+              </li>
+              <li>
+                <span class="bold">Як додавати emoji:</span> Натисни Windows + .
+                (крапка)
+              </li>
+            </ul>
+
+            <hr />
+
+            <h3 id="p2-2">Повторення</h3>
+
+            <p>
+              Приклад коду для повторення (поясни вголос кожен рядок і що виведе
+              програма):
+            </p>
+
+            <pre><code class="language-python">import random
+
+NUMBERS = [10, 20, 30, 40, 50, 60]
+print(len(NUMBERS))
+
+copied = NUMBERS.copy()
+
+part = copied[2:4]
+print(part)
+
+random.shuffle(copied)
+print(copied)
+
+print(NUMBERS)</code></pre>
+
+            <p>
+              Чому <span class="bold">NUMBERS</span> написано ВЕЛИКИМИ ЛІТЕРАМИ?
+              Це не правило Python, а домовленість між програмістами: змінні у
+              ВЕРХНЬОМУ РЕГІСТРІ позначають дані, які не повинні змінюватися під
+              час роботи програми.
+            </p>
+
+            <hr />
+
+            <h3 id="p2-3">Практика</h3>
+
+            <details class="task" open>
+              <summary><h4>Вправа 1</h4></summary>
+
+              <div>
+                <p>Дано список:</p>
+
+                <pre><code class="language-python">FRUITS = ["apple", "pear", "orange", "kiwi", "mango"]</code></pre>
+
+                <ol>
+                  <li>
+                    Створи копію цього списку і збережи її у змінну
+                    <span class="accent-string">shuffled</span> (щоб
+                    оригінальний <span class="accent-string">FRUITS</span> не
+                    змінювався).
+                  </li>
+                  <li>
+                    Перемішай <span class="accent-string">shuffled</span> у
+                    випадковому порядку.
+                  </li>
+                  <li>
+                    Виведи на екран, скільки всього елементів у списку
+                    <span class="accent-string">shuffled</span>.
+                  </li>
+                  <li>
+                    Залиш у <span class="accent-string">shuffled</span> лише
+                    останні <span class="accent-string">3</span> елементи.
+                  </li>
+                  <li>
+                    Виведи <span class="accent-string">shuffled</span> на екран.
+                  </li>
+                </ol>
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- 🍋 PART 2 -->
+      <section id="part-2" class="lesson-wrapper tab-content">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img src="../media/icons/lemon.svg" class="star" alt="lemon" />
+              <span>Нова тема</span>
+            </h2>
+          </div>
+
+          <div class="lesson-content">
+            <h3 id="p3-1">Список словників</h3>
+
+            <p>
+              Ти вже знаєш, як зберегти інформацію про один обʼєкт в одному
+              словнику. — наприклад, один фрукт:
+            </p>
+
+            <pre><code class="language-python">fruit1 = {"name": "banana", "color": "yellow"}</code></pre>
+
+            <p>
+              Якщо ж фруктів є багато, можна зібрати усі словники
+              <span class="bold">в один список</span>:
+            </p>
+
+            <pre><code class="language-python"># ПРИКЛАД 1
+
+fruit1 = {"name": "banana", "color": "yellow"}
+fruit2 = {"name": "grape", "color": "purple"}
+fruit3 = {"name": "apple", "color": "green"}
+
+fruits = [fruit1, fruit2, fruit3]
+
+print(fruits[0])
+print(fruits[0].get("name"))
+print(fruits[0].get("color"))</code></pre>
+
+            <p>
+              Щоб звернутися до конкретного фрукта, потрібно виконати два кроки:
+            </p>
+
+            <ol>
+              <li>
+                За допомогою індексу отримати зі списку потрібний словник
+                (наприклад, <span class="accent-string">fruits[0]</span>)
+              </li>
+              <li>
+                Використати ключ, щоб отримати зі словника потрібну інформацію
+                (<span class="accent-string">fruits[0].get("name")</span>)
+              </li>
+            </ol>
+
+            <p>
+              Уяви це як полицю з коробками:
+              <span class="accent-string">fruits</span> – це полиця,
+              <span class="accent-string">fruits[0]</span> – перша коробка на
+              ній, а <span class="accent-string">.get("name")</span> — конкретна
+              річ у коробці.
+            </p>
+
+            <hr />
+
+            <h3 id="p3-2">Перебір у циклі</h3>
+
+            <p>
+              Найчастіше зі списком словників працюють через цикл
+              <span class="accent-string">for</span>, щоб не звертатися до
+              кожного елемента вручну:
+            </p>
+
+            <pre><code class="language-python"># ПРИКЛАД 2
+
+fruit1 = {"name": "banana", "color": "yellow"}
+fruit2 = {"name": "grape", "color": "purple"}
+fruit3 = {"name": "apple", "color": "green"}
+
+fruits = [fruit1, fruit2, fruit3]
+
+for fruit in fruits:
+    name = fruit.get("name")
+    color = fruit.get("color")
+    print(f"{name} is {color}")</code></pre>
+
+            <p>
+              На кожному кроці циклу <span class="accent-string">fruit</span> —
+              це один словник зі списку (спочатку
+              <span class="accent-string">fruit1</span>, потім
+              <span class="accent-string">fruit2</span>, потім
+              <span class="accent-string">fruit3</span>).
+            </p>
+
+            <hr />
+
+            <h3 id="p3-3">Коротший запис</h3>
+
+            <p>
+              Список словників не обов'язково збирати з окремих змінних — можна
+              одразу записати його як єдиний список:
+            </p>
+
+            <pre><code class="language-python"># ПРИКЛАД 3
+
+fruits = [
+    {"name": "banana", "color": "yellow"},
+    {"name": "grape", "color": "purple"},
+    {"name": "apple", "color": "green"},
+]
+
+for fruit in fruits:
+    name, color = fruit.get("name"), fruit.get("color")
+    print(f"{name} is {color}")</code></pre>
+
+            <p>
+              Тут
+              <span class="accent-string"
+                >name, color = fruit.get("name"), fruit.get("color")</span
+              >
+              — це спосіб дістати одразу два значення в одному рядку. Це те
+              саме, що написати два окремі рядки, просто коротше.
+            </p>
+
+            <hr />
+
+            <h3 id="p3-4">Патерн для підрахунку балів</h3>
+
+            <pre><code class="language-python">questions = [
+    {"question": "6 * 7", "answer": 42},
+    {"question": "132 / 3", "answer": 44},
+]
+
+score = 0 # 1. create
+
+for q in questions:
+    question, correct = q.get("question"), q.get("answer")
+    
+    user_answer = int(input(question + " = "))
+    
+    if user_answer == correct:
+        score += 1 # 2. update
+
+print(f"\nYour result: {score}/{len(questions)}") # 3. print the final result</code></pre>
+
+            <hr />
+
+            <h3 id="p3-5">Практика</h3>
+
+            <details class="task" open>
+              <summary>
+                <h4>Вправа 2</h4>
+              </summary>
+
+              <div>
+                <p>Дано 4 словники, які описують книги:</p>
+
+                <pre><code class="language-python">book1 = {"title": "Cards on the Table", "pages": 286}
+book2 = {"title": "Hercule Poirot's Christmas", "pages": 250}
+book3 = {"title": "The Hobbit", "pages": 320}
+book4 = {"title": "The Little Prince", "pages": 86}</code></pre>
+
+                <ol>
+                  <li>
+                    Перетвори 4 окремі словники на один список
+                    <span class="accent-string">books</span> як у Прикладі 3.
+                  </li>
+                  <li>
+                    Виведи назву другої книги, використавши індекс та метод
+                    <span class="accent-string">.get()</span>.
+                  </li>
+                  <li>
+                    Пройдись циклом по списку і для кожної книги виведи рядок:
+                    <span class="accent-string"
+                      >The book [title] has [pages] pages.</span
+                    >
+                  </li>
+                  <li>
+                    Додай у список нову книгу за допомогою .append():
+                    <span class="accent-string">
+                      “Why Didn't They Ask Evans?” </span
+                    >, <span class="accent-string">224</span> сторінки.
+                  </li>
+                  <li>
+                    Зміни код так, щоб інформація виводилася лише для книг, які
+                    мають <span class="accent-string">250</span> або більше
+                    сторінок.
+                  </li>
+                  <li>
+                    Порахуй і виведи загальну кількість сторінок у всіх книгах
+                    разом (заведи змінну-суму на кшталт
+                    <span class="accent-string">score = 0</span> із прикладу
+                    вище, тільки тепер вона має рахувати сторінки, а не бали).
+                  </li>
+                </ol>
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- 🍇 PART 3 -->
+      <section id="part-3" class="lesson-wrapper tab-content">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img src="../media/icons/grapes.svg" class="star" alt="lemon" />
+              <span>Проєкт</span>
+            </h2>
+          </div>
+
+          <!-- code result -->
+          <div class="lesson-content">
+            <h3>Завдання</h3>
+
+            <p>Потрібно створити програму, яка працюватиме наступним чином:</p>
+
+            <pre
+              style="max-height: none"
+            ><code class="language-plaintext">📚 There are 6 in the list.
+How many words would you like to practice? 3
+
+How would you like to practice?
+1️⃣  English → Ukrainian
+2️⃣  Ukrainian → English
+Choose mode (1 or 2): 1
+
+📝 Translate: often
+> часто
+✅ Correct!
+
+📝 Translate: usually
+> іноді
+❌ Correct answer: зазвичай
+
+📝 Translate: never
+> ніколи
+✅ Correct!
+
+📊 You've got 2/3 correct!</code></pre>
+
+            <p>
+              Зверни увагу на відступи між рядками – їх також потрібно
+              відтворити (з допомогою <span class="accent-string">"\n"</span>).
+            </p>
+
+            <!-- 1 -->
+            <details class="task" name="project" open>
+              <summary>
+                <h4>Крок 1</h4>
+              </summary>
+
+              <div>
+                <p>Дано список слів для проєкту:</p>
+
+                <ul>
+                  <li>always - завжди</li>
+                  <li>usually - зазвичай</li>
+                  <li>often - часто</li>
+                  <li>sometimes - іноді</li>
+                  <li>rarely - рідко</li>
+                  <li>never - ніколи</li>
+                </ul>
+
+                <p>
+                  Збережи увесь список слів разом з їхніми перекладами в одну
+                  змінну <span class="accent-string">WORDS</span> так, щоб потім
+                  можна було пройтися по кожному слову циклом
+                  <span class="accent-string">for</span> й легко дістати
+                  англійське слово та його переклад для кожного елемента за
+                  допомогою ключів <span class="accent-string">"eng"</span> та
+                  <span class="accent-string">"ukr"</span>.
+                </p>
+              </div>
+            </details>
+
+            <!-- 2 -->
+            <details class="task" name="project">
+              <summary>
+                <h4>Крок 2</h4>
+              </summary>
+
+              <div>
+                <ul>
+                  <li>
+                    Створи робочу копію списку
+                    <span class="accent-string">WORDS</span> (щоб не зіпсувати
+                    оригінал). Збережи її у змінну
+                    <span class="accent-string">practice_words</span>.
+                  </li>
+                  <li>Перемішай слова у випадковому порядку.</li>
+                  <li>Повідом користувачу, скільки всього слів є у списку</li>
+                  <li>
+                    Запитай, скільки з них він хоче потренувати цього разу.
+                  </li>
+                  <li>
+                    Залиш у списку лише стільки слів, скільки він попросив.
+                  </li>
+                </ul>
+              </div>
+            </details>
+
+            <!-- 3 -->
+            <details class="task" name="project">
+              <summary>
+                <h4>Крок 3</h4>
+              </summary>
+
+              <div>
+                <ul>
+                  <li>Пройдись циклом по списку слів.</li>
+                  <li>
+                    Для кожного слова дістань окремо англійське слово та його
+                    переклад, збережи їх у змінних
+                    <span class="accent-string">question_word</span> та
+                    <span class="accent-string">correct_answer</span>.
+                  </li>
+                  <li>
+                    Виведи значення обох змінних на екран (поки що просто щоб
+                    перевірити, що все працює).
+                  </li>
+                </ul>
+              </div>
+            </details>
+
+            <!-- 4 -->
+            <details class="task" name="project">
+              <summary>
+                <h4>Крок 4</h4>
+              </summary>
+
+              <div>
+                <ul>
+                  <li>
+                    Тепер замість простого виведення запитай у користувача
+                    переклад кожного слова (виводиться англійське слово,
+                    очікуваний ввід – його український переклад).
+                  </li>
+                  <li>
+                    Порівняй відповідь користувача із правильною (не забудь
+                    прибрати зайві пробіли та привести текст до одного регістру,
+                    щоб порівняння було справедливим). Виведи ✅, якщо відповідь
+                    правильна, або ❌ з підказкою правильної відповіді — якщо
+                    ні.
+                  </li>
+                  <li>
+                    Наприкінці, порахуй, скільки відповідей було правильними, і
+                    виведи підсумковий результат.
+                  </li>
+                </ul>
+              </div>
+            </details>
+
+            <!-- 5 -->
+            <details class="task" name="project">
+              <summary>
+                <h4>Крок 5</h4>
+              </summary>
+
+              <div>
+                <p>
+                  Додай можливість обирати напрямок перекладу: з англійської на
+                  українську або навпаки:
+                </p>
+                <ul>
+                  <li>
+                    Запитай користувача, який режим він хоче (1 або 2), і
+                    збережи відповідь у змінній
+                    <span class="accent-string">mode</span>.
+                  </li>
+                  <li>
+                    Залежно від його вибору визнач, яке слово показувати як
+                    питання (<span class="accent-string">question_word</span>),
+                    а яке вважати правильною відповіддю (<span
+                      class="accent-string"
+                      >correct_answer</span
+                    >).
+                  </li>
+                </ul>
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>🌷 🍓 🌿 Made by Olena Hapchyna 🌿 🍓 🌷</p>
+
+      <div class="footer-credits">
+        <span
+          >Fruit icons by
+          <a
+            href="https://www.svgrepo.com/collection/fruits-vectors/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >An Nguyen</a
+          ></span
+        >
+        |
+        <a href="../credits.html" target="_blank">Credits & Licenses</a>
+      </div>
+    </footer>
+
+    <button
+      id="scrollToTopBtn"
+      class="scroll-to-top"
+      aria-label="Scroll to top"
+    >
+      <img src="../media/icons/apple.svg" />
+    </button>
+
+    <dialog id="clear-confirm-dialog" class="custom-dialog">
+      <div class="dialog-content">
+        <h3>⚠️ Attention!</h3>
+        <p>Do you really want to delete ALL your answers and start over?</p>
+        <div class="dialog-actions">
+          <button type="button" id="dialog-cancel-btn">No</button>
+          <button type="button" id="dialog-confirm-btn">Yes, delete</button>
+        </div>
+      </div>
+    </dialog>
+  </body>
+</html>
