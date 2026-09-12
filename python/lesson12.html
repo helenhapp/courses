@@ -167,7 +167,7 @@
           </div>
 
           <div class="lesson-content">
-            <h3 id="p2-1">VS Code</h3>
+            <h3 id="p1-1">VS Code</h3>
 
             <ul>
               <li>
@@ -184,7 +184,7 @@
 
             <hr />
 
-            <h3 id="p2-2">Повторення</h3>
+            <h3 id="p1-2">Повторення</h3>
 
             <p>
               Приклад коду для повторення (поясни вголос кожен рядок і що виведе
@@ -215,7 +215,7 @@ print(NUMBERS)</code></pre>
 
             <hr />
 
-            <h3 id="p2-3">Практика</h3>
+            <h3 id="p1-3">Практика</h3>
 
             <details class="task" open>
               <summary><h4>Вправа 1</h4></summary>
@@ -265,7 +265,7 @@ print(NUMBERS)</code></pre>
           </div>
 
           <div class="lesson-content">
-            <h3 id="p3-1">Список словників</h3>
+            <h3 id="p2-1">Список словників</h3>
 
             <p>
               Ти вже знаєш, як зберегти інформацію про один обʼєкт в одному
@@ -316,7 +316,7 @@ print(fruits[0].get("color"))</code></pre>
 
             <hr />
 
-            <h3 id="p3-2">Перебір у циклі</h3>
+            <h3 id="p2-2">Перебір у циклі</h3>
 
             <p>
               Найчастіше зі списком словників працюють через цикл
@@ -347,7 +347,7 @@ for fruit in fruits:
 
             <hr />
 
-            <h3 id="p3-3">Коротший запис</h3>
+            <h3 id="p2-3">Коротший запис</h3>
 
             <p>
               Список словників не обов'язково збирати з окремих змінних — можна
@@ -377,7 +377,7 @@ for fruit in fruits:
 
             <hr />
 
-            <h3 id="p3-4">Патерн для підрахунку балів</h3>
+            <h3 id="p2-4">Патерн для підрахунку балів</h3>
 
             <pre><code class="language-python">questions = [
     {"question": "6 * 7", "answer": 42},
@@ -398,7 +398,7 @@ print(f"\nYour result: {score}/{len(questions)}") # 3. print the final result</c
 
             <hr />
 
-            <h3 id="p3-5">Практика</h3>
+            <h3 id="p2-5">Практика</h3>
 
             <details class="task" open>
               <summary>
@@ -458,13 +458,13 @@ book4 = {"title": "The Little Prince", "pages": 86}</code></pre>
           <div class="lesson-header">
             <h2>
               <img src="../media/icons/grapes.svg" class="star" alt="lemon" />
-              <span>Проєкт</span>
+              <span>Проєкт, частина 1</span>
             </h2>
           </div>
 
           <!-- code result -->
           <div class="lesson-content">
-            <h3>Завдання</h3>
+            <h3 id="p3-1">Завдання</h3>
 
             <p>Потрібно створити програму, яка працюватиме наступним чином:</p>
 
@@ -476,9 +476,13 @@ How many words would you like to practice? 3
 How would you like to practice?
 1️⃣  English → Ukrainian
 2️⃣  Ukrainian → English
-Choose mode (1 or 2): 1
+Choose mode (1 or 2): a
+Please enter 1 or 2: 3
+Please enter 1 or 2: 1
 
 📝 Translate: often
+> 
+> 
 > часто
 ✅ Correct!
 
@@ -630,6 +634,31 @@ Choose mode (1 or 2): 1
                     >).
                   </li>
                 </ul>
+              </div>
+            </details>
+
+            <!-- 6 -->
+            <details class="task" name="project">
+              <summary>
+                <h4>Крок 6</h4>
+              </summary>
+
+              <div>
+                <p>
+                  За допомогою циклу
+                  <span class="accent-string">while</span> додай перевірку: якщо
+                  користувач при виборі режиму ввів не
+                  <span class="accent-string">"1"</span> і не
+                  <span class="accent-string">"2"</span> – програма має
+                  запитувати його повторно поки він не введе те, що потрібно.
+                </p>
+                <p>
+                  За допомогою циклу
+                  <span class="accent-string">while</span> додай перевірку: якщо
+                  користувач при вводі відповіді (перекладу слова) не ввів
+                  нічого (просто натиснув Enter) – програма має запитувати його
+                  повторно, а не вважати це неправильною відповіддю.
+                </p>
               </div>
             </details>
           </div>
