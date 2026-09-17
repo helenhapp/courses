@@ -1,0 +1,1329 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Навчальні матеріали" />
+
+    <link rel="icon" type="image/svg+xml" href="../media/icons/carambola.svg" />
+
+    <title>English Lesson 13</title>
+
+    <script>
+      const savedTheme = localStorage.getItem("lms_theme") || "light";
+      document.documentElement.setAttribute("data-theme", savedTheme);
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Fira+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Tektur:wght@400..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="../style.css" />
+    <script src="../script.js" defer></script>
+  </head>
+
+  <body>
+    <!-- transition curtain -->
+    <div class="transition-curtain"></div>
+
+    <!-- top-bar -->
+    <div id="nav-container">
+      <nav class="top-bar">
+        <div class="logo-container">
+          <img
+            src="../media/icons/carambola.svg"
+            alt="Logo"
+            class="site-logo"
+          />
+        </div>
+
+        <div class="top-bar__controls">
+          <!-- <a href="./menu.html" class="menu-link">All Lessons</a> -->
+          <label class="toggle-switch" aria-label="Перемикач теми">
+            <input type="checkbox" id="theme-checkbox" />
+            <span class="slider">
+              <span class="icon sun"
+                ><img src="../media/icons/stars.svg"
+              /></span>
+              <span class="icon moon"
+                ><img src="../media/icons/moon.svg"
+              /></span>
+            </span>
+          </label>
+          <button
+            id="dyslexia-mode-btn"
+            class="wide-toggle"
+            title="Шрифт для дислектиків"
+          >
+            Aa
+          </button>
+        </div>
+      </nav>
+    </div>
+
+    <!-- lesson header -->
+    <header>
+      <div class="title-container">
+        <!-- <a
+          href="./lesson12.html"
+          class="nav-arrow prev-arrow"
+          title="Попередній урок"
+        >
+          ←
+        </a> -->
+
+        <h1 id="lesson-title">English: 13</h1>
+
+        <!-- <a href="./lesson14.html" class="nav-arrow next-arrow" title="Наступний урок"> → </a> -->
+      </div>
+
+      <p class="topic">The Past Simple [practice]</p>
+
+      <hr class="pretty-divider" />
+    </header>
+
+    <!-- lesson content -->
+    <main>
+      <!-- tab buttons -->
+      <div class="tabs-nav">
+        <button class="tab-btn active" data-target="part-1">Vocabulary</button>
+        <button class="tab-btn" data-target="part-2">Grammar</button>
+        <button class="tab-btn" data-target="part-3">Speaking</button>
+        <!-- <button class="tab-btn" data-target="part-4">Homework</button> -->
+      </div>
+
+      <!-- 🍓 PART 1: VOCABULARY -->
+      <section id="part-1" class="lesson-wrapper tab-content active show">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img
+                src="../media/icons/strawberry.svg"
+                class="star"
+                alt="an open book"
+              />
+              <span>Vocabulary</span>
+            </h2>
+          </div>
+
+          <div class="lesson-content">
+            <h3 id="p1-1">Vocabulary</h3>
+
+            <!-- 📝 Exercise -->
+            <!-- 
+            change the words to:
+            1. immediately - одразу / негайно
+            2. power - електроживлення
+            3. backup - резервний / запасний
+            4. to admit - зізнаватися
+            5. to be embarrassed - відчувати сором
+            6. a witness - свідок
+
+            and the explanations should use simple words and grammar. and can consist of several sentences if necessary
+            -->
+            <details class="task" name="vocab" open>
+              <summary>
+                <h4>Exercise: Vocabulary Detective</h4>
+              </summary>
+
+              <div>
+                <p class="task-description">
+                  Before you read the text, try to guess these eight words from
+                  the clues. Write your best guess down and don't check the
+                  answer key yet.
+                </p>
+
+                <ol style="line-height: 2.2">
+                  <!-- 1 -->
+                  <li>
+                    To suddenly feel very worried and act without
+                    <span class="gloss" data-tr="думаючи ясно"
+                      >thinking clearly</span
+                    >. →
+                    <input
+                      type="text"
+                      id="l13-ex1-1"
+                      class="test-input"
+                      style="width: 160px"
+                      placeholder="to ..."
+                    />
+                  </li>
+                  <!-- 2 -->
+                  <li>
+                    Proof of where you were, showing you
+                    <span class="gloss" data-tr="не могли б"
+                      >couldn't have</span
+                    >
+                    done something. →
+                    <input
+                      type="text"
+                      id="l13-ex1-2"
+                      class="test-input"
+                      style="width: 160px"
+                    />
+                  </li>
+                  <!-- 3 -->
+                  <li>
+                    To finally agree that an
+                    <span class="gloss" data-tr="незручний/соромний"
+                      >embarrassing</span
+                    >
+                    fact is true. →
+                    <input
+                      type="text"
+                      id="l13-ex1-3"
+                      class="test-input"
+                      style="width: 160px"
+                      placeholder="to ..."
+                    />
+                  </li>
+                  <!-- 4 -->
+                  <li>
+                    Facts or objects that help prove what really happened. →
+                    <input
+                      type="text"
+                      id="l13-ex1-4"
+                      class="test-input"
+                      style="width: 160px"
+                    />
+                  </li>
+                  <!-- 5 -->
+                  <li>
+                    A machine that makes
+                    <span class="gloss" data-tr="електрика">electricity</span>
+                    when the normal power stops working. →
+                    <input
+                      type="text"
+                      id="l13-ex1-5"
+                      class="test-input"
+                      style="width: 160px"
+                    />
+                  </li>
+                  <!-- 6 -->
+                  <li>
+                    A small paper that
+                    <span class="gloss" data-tr="доводить">proves</span> you
+                    paid for something, with the date and time on it. →
+                    <input
+                      type="text"
+                      id="l13-ex1-6"
+                      class="test-input"
+                      style="width: 160px"
+                    />
+                  </li>
+                  <!-- 7 -->
+                  <li>
+                    A person who saw something happen and can
+                    <span class="gloss" data-tr="описати">describe</span> it
+                    later. →
+                    <input
+                      type="text"
+                      id="l13-ex1-7"
+                      class="test-input"
+                      style="width: 160px"
+                    />
+                  </li>
+                  <!-- 8 -->
+                  <li>
+                    To officially tell someone about a problem, so they know
+                    what happened. →
+                    <input
+                      type="text"
+                      id="l13-ex1-8"
+                      class="test-input"
+                      style="width: 160px"
+                      placeholder="to ..."
+                    />
+                  </li>
+                </ol>
+              </div>
+            </details>
+            <!-- Answer key with transcriptions -->
+            <details class="answer">
+              <summary>Answer key</summary>
+
+              <div class="tablecontainer">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Word</th>
+                      <th>Pronunciation</th>
+                      <th>Translation</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <!-- 1 -->
+                    <tr>
+                      <td>to panic</td>
+                      <td><span class="accent-string">/ˈpænɪk/</span></td>
+                      <td>панікувати</td>
+                    </tr>
+                    <!-- 2 -->
+                    <tr>
+                      <td>alibi</td>
+                      <td><span class="accent-string">/ˈælɪbaɪ/</span></td>
+                      <td>алібі</td>
+                    </tr>
+                    <!-- 3 -->
+                    <tr>
+                      <td>to admit</td>
+                      <td><span class="accent-string">/ədˈmɪt/</span></td>
+                      <td>зізнаватися</td>
+                    </tr>
+                    <!-- 4 -->
+                    <tr>
+                      <td>evidence</td>
+                      <td><span class="accent-string">/ˈevɪdəns/</span></td>
+                      <td>докази</td>
+                    </tr>
+                    <!-- 5 -->
+                    <tr>
+                      <td>generator</td>
+                      <td>
+                        <span class="accent-string">/ˈdʒenəreɪtə(r)/</span>
+                      </td>
+                      <td>генератор</td>
+                    </tr>
+                    <!-- 6 -->
+                    <tr>
+                      <td>receipt</td>
+                      <td><span class="accent-string">/rɪˈsiːt/</span></td>
+                      <td>чек</td>
+                    </tr>
+                    <!-- 7 -->
+                    <tr>
+                      <td>witness</td>
+                      <td><span class="accent-string">/ˈwɪtnəs/</span></td>
+                      <td>свідок</td>
+                    </tr>
+                    <!-- 8 -->
+                    <tr>
+                      <td>to report</td>
+                      <td><span class="accent-string">/rɪˈpɔːt/</span></td>
+                      <td>доповідати</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </details>
+
+            <hr />
+
+            <!-- 📚 THE STORY -->
+            <h3 id="p1-2">Reading</h3>
+
+            <p class="task-description">
+              Read the text. Try to find all the words from the exercise. Then
+              check the answer key.
+            </p>
+
+            <div class="callout2">
+              <h4>The Case, part 2</h4>
+
+              <!-- 1 -->
+              <p>
+                Yesterday morning, Mr. Novak arrived at the gallery just like
+                every other day. He went
+                <span class="gloss" data-tr="перевірити">to check on</span> "The
+                Midnight Moon", but it wasn't on the wall. He panicked. He
+                remembered the blackout
+                <span class="gloss" data-tr="з минулої ночі"
+                  >from the night before</span
+                >
+                and
+                <span class="gloss" data-tr="одразу">immediately</span> thought
+                that <span class="gloss" data-tr="злодій">a thief</span> used
+                the darkness
+                <span class="gloss" data-tr="щоб вкрасти">to steal</span> the
+                painting.
+              </p>
+
+              <!-- 2 -->
+              <p>
+                He checked
+                <span class="gloss" data-tr="записи з системи сигналізації"
+                  >the alarm records</span
+                >
+                first, but the alarm didn't work
+                <span class="gloss" data-tr="під час">during</span> the
+                blackout. The alarm needs
+                <span class="gloss" data-tr="електроживлення">power</span> to
+                work, but the gallery has no
+                <span class="gloss" data-tr="резервний / запасний">backup</span>
+                generator. Next, he wanted to see the camera footage, but
+                remembered that the cameras were broken. Finally, Mr. Novak
+                called Oliver, the night guard, and asked him
+                <span class="gloss" data-tr="доповісти">to report</span>
+                everything he saw. At first, Oliver said
+                <span class="gloss" data-tr="він охороняв галерею"
+                  >he watched the gallery</span
+                >
+                all night and didn't fall asleep. But after a few more
+                questions, he
+                <span class="gloss" data-tr="зізнався">admitted</span> the
+                truth: the coffee machine was broken, and without coffee, he
+                fell asleep
+                <span class="gloss" data-tr="близько півночі"
+                  >around midnight</span
+                >.
+              </p>
+
+              <!-- 3 -->
+              <p>
+                Mr. Novak was
+                <span class="gloss" data-tr="надто соромно"
+                  >too embarrassed</span
+                >
+                to call the police, so he called his friend instead: the famous
+                Detective Lance. Now Lance needs
+                <span class="gloss" data-tr="свідок">a witness</span> who can
+                answer the question:
+                <span class="gloss" data-tr="що саме">what exactly</span>
+                happened that night?
+              </p>
+            </div>
+
+            <hr />
+
+            <h3 id="p1-3">Translator</h3>
+
+            <!-- 🌍 BUILT-IN TRANSLATOR -->
+            <!-- prettier-ignore -->
+            <div class="translator-module" data-source-lang="en" data-target-lang="uk">
+              <div class="translator-lang-labels">
+                <span class="lang-source">Англійська</span>
+                <button class="swap-lang-btn" title="Swap languages">⇄</button>
+                <span class="lang-target">Українська</span>
+              </div>
+
+              <div class="translator-inputs">
+                <input type="text" class="translator-input" placeholder="Type a word..." />
+                <button class="translate-btn">Translate</button>
+              </div>
+
+              <div class="translator-output" style="display: none"></div>
+            </div>
+
+            <!-- optional notes -->
+            <textarea
+              style="margin-top: 0"
+              id="l13-vocab-notes"
+              class="test-textarea"
+              placeholder="You can write some notes here..."
+            ></textarea>
+          </div>
+        </div>
+      </section>
+
+      <!-- 🍉 PART 2: GRAMMAR -->
+      <section id="part-2" class="lesson-wrapper tab-content">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img
+                src="../media/icons/watermelon.svg"
+                class="star"
+                alt="a watermelon slice"
+              />
+              <span>Grammar</span>
+            </h2>
+          </div>
+
+          <div class="lesson-content">
+            <!-- intro -->
+            <h3 id="p2-1">Past Simple — the tense of finished actions</h3>
+
+            <p>
+              We use the Past Simple for actions that started and finished at a
+              specific point in the past. It's how Mr. Novak explains exactly
+              what he did yesterday — and how we're going to work out what
+              really happened last night.
+            </p>
+
+            <hr />
+
+            <!-- theory 1 -->
+            <h3 id="p2-2">Part 1 — "to be": was / were</h3>
+
+            <div class="tablecontainer">
+              <table>
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th>Affirmative</th>
+                    <th>Negative</th>
+                    <th>Question</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="bold">I / he / she / it</span></td>
+                    <td>was</td>
+                    <td>wasn't</td>
+                    <td>Was I/he/she/it ...?</td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">you / we / they</span></td>
+                    <td>were</td>
+                    <td>weren't</td>
+                    <td>Were you/we/they ...?</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <ul>
+              <li>
+                (+) Mr. Novak <span class="accent">was</span> at the restaurant
+                last night.
+              </li>
+              <li>
+                (+) The lights <span class="accent">were</span> off during the
+                blackout.
+              </li>
+              <li style="margin-top: 10px">
+                (-) Oliver <span class="accent">wasn't</span> awake at midnight.
+              </li>
+              <li>
+                (-) The cameras <span class="accent">weren't</span> working.
+              </li>
+              <li style="margin-top: 10px">
+                (?) <span class="accent">Was</span> the alarm broken?
+              </li>
+              <li>
+                (?) <span class="accent">Were</span> you at the gallery last
+                night?
+              </li>
+            </ul>
+
+            <!-- exercise 1 -->
+            <details class="task" open>
+              <summary>
+                <h4>Exercise 1</h4>
+              </summary>
+              <div>
+                <p class="task-description">
+                  Fill in the blanks with
+                  <strong>was / were / wasn't / weren't</strong>.
+                </p>
+
+                <ol style="line-height: 2.2">
+                  <!-- 1 -->
+                  <li>
+                    Mr. Novak
+                    <input
+                      type="text"
+                      id="l13-p2-ex1-1"
+                      class="test-input"
+                      style="width: 90px"
+                    />
+                    at a restaurant with his family last night.
+                  </li>
+                  <!-- 2 -->
+                  <li>
+                    The cameras
+                    <input
+                      type="text"
+                      id="l13-p2-ex1-2"
+                      class="test-input"
+                      style="width: 90px"
+                    />
+                    broken all week.
+                  </li>
+                  <!-- 3 -->
+                  <li>
+                    <input
+                      type="text"
+                      id="l13-p2-ex1-3"
+                      class="test-input"
+                      style="width: 90px"
+                    />
+                    Oliver awake at midnight? No, he
+                    <input
+                      type="text"
+                      id="l13-p2-ex1-4"
+                      class="test-input"
+                      style="width: 90px"
+                    />
+                    asleep.
+                  </li>
+                  <!-- 4 -->
+                  <li>
+                    <input
+                      type="text"
+                      id="l13-p2-ex1-5"
+                      class="test-input"
+                      style="width: 90px"
+                    />
+                    the alarm working during the blackout? No, it
+                    <input
+                      type="text"
+                      id="l13-p2-ex1-6"
+                      class="test-input"
+                      style="width: 90px"
+                    />.
+                  </li>
+                  <!-- 5 -->
+                  <li>
+                    <input
+                      type="text"
+                      id="l13-p2-ex1-7"
+                      class="test-input"
+                      style="width: 90px"
+                    />
+                    Mia and Sam at the gallery last night? No, they
+                    <input
+                      type="text"
+                      id="l13-p2-ex1-8"
+                      class="test-input"
+                      style="width: 100px"
+                    />
+                    — they only work in the morning.
+                  </li>
+                  <!-- 6 -->
+                  <li>
+                    <input
+                      type="text"
+                      id="l13-p2-ex1-9"
+                      class="test-input"
+                      style="width: 90px"
+                    />
+                    Detective Lance and Mr. Novak at the gallery this morning?
+                  </li>
+                </ol>
+              </div>
+            </details>
+
+            <hr />
+
+            <!-- theory 2 -->
+            <h3 id="p2-3">Part 2 — Verbs: did</h3>
+
+            <div class="tablecontainer">
+              <table>
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th>Affirmative</th>
+                    <th>Negative</th>
+                    <th>Question</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="bold">all subjects</span></td>
+                    <td>
+                      check<span class="accent">ed</span> / f<span
+                        class="accent"
+                        >ell</span
+                      >
+                      (irregular)
+                    </td>
+                    <td>did not / didn't check</td>
+                    <td>Did ... check?</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <ul>
+              <li>
+                (+) Mr. Novak <span class="accent">checked</span> the alarm
+                records.
+              </li>
+              <li>
+                (+) Oliver <span class="accent">fell</span> asleep around
+                midnight.
+                <span class="gloss" data-tr="неправильне дієслово"
+                  >(irregular verb: fall → fell)</span
+                >
+              </li>
+              <li style="margin-top: 10px">
+                (−) The guard <span class="accent">didn't see</span> anyone.
+              </li>
+              <li>
+                (−) Beatrice <span class="accent">didn't go</span> home early.
+              </li>
+              <li style="margin-top: 10px">
+                (?) <span class="accent">Did</span> Oliver
+                <span class="accent">drink</span> his coffee?
+              </li>
+              <li>
+                (?) <span class="accent">Did</span> Mr. Novak
+                <span class="accent">call</span> the police?
+              </li>
+            </ul>
+
+            <!-- exercise 2 -->
+            <details class="task" open>
+              <summary>
+                <h4>Exercise 2</h4>
+              </summary>
+              <div>
+                <p class="task-description">
+                  Fill in the blanks with the correct Past Simple form, or with
+                  <strong>did / didn't</strong>, based on the (+), (−), or (?)
+                  hints.
+                </p>
+
+                <ol style="line-height: 2.2">
+                  <!-- 1 -->
+                  <li>
+                    (+) Mr. Novak
+                    <input
+                      type="text"
+                      id="l13-p2-ex2-1"
+                      class="test-input"
+                      style="width: 140px"
+                    />
+                    (arrive) at the gallery in the morning.
+                  </li>
+                  <!-- 2 -->
+                  <li>
+                    (+) Oliver
+                    <input
+                      type="text"
+                      id="l13-p2-ex2-2"
+                      class="test-input"
+                      style="width: 140px"
+                    />
+                    (fall) asleep around midnight.
+                  </li>
+                  <!-- 3 -->
+                  <li>
+                    (−) The alarm
+                    <input
+                      type="text"
+                      id="l13-p2-ex2-3"
+                      class="test-input"
+                      style="width: 140px"
+                    />
+                    (work) during the blackout.
+                  </li>
+                  <!-- 4 -->
+                  <li>
+                    (−) Mr. Novak
+                    <input
+                      type="text"
+                      id="l13-p2-ex2-4"
+                      class="test-input"
+                      style="width: 140px"
+                    />
+                    (call) the police.
+                  </li>
+                  <!-- 5 -->
+                  <li>
+                    (?)
+                    <input
+                      type="text"
+                      id="l13-p2-ex2-5"
+                      class="test-input"
+                      style="width: 90px"
+                    />
+                    Oliver
+                    <input
+                      type="text"
+                      id="l13-p2-ex2-6"
+                      class="test-input"
+                      style="width: 140px"
+                    />
+                    (drink) his coffee last night?
+                  </li>
+                  <!-- 6 -->
+                  <li>
+                    (?)
+                    <input
+                      type="text"
+                      id="l13-p2-ex2-7"
+                      class="test-input"
+                      style="width: 90px"
+                    />
+                    Mr. Novak
+                    <input
+                      type="text"
+                      id="l13-p2-ex2-8"
+                      class="test-input"
+                      style="width: 140px"
+                    />
+                    (check) the camera footage this morning?
+                  </li>
+                </ol>
+              </div>
+            </details>
+
+            <hr />
+
+            <!-- theory 3 -->
+            <h3 id="p2-4">Part 3 — Time expressions</h3>
+
+            <p>
+              Past Simple almost always comes with a
+              <span class="gloss" data-tr="вираз часу">time expression</span>
+              that tells us exactly when something happened:
+            </p>
+
+            <p
+              style="text-align: center; font-size: 1.1rem; margin-bottom: 20px"
+            >
+              <span class="italic"
+                >yesterday · last night / week / month · two days ago · at 11:30
+                PM · this morning</span
+              >
+            </p>
+
+            <p>
+              They usually go at the <span class="bold">end</span> of the
+              sentence, or at the <span class="bold">beginning</span> for
+              emphasis:
+            </p>
+
+            <ul>
+              <li>
+                (+) The lights went out
+                <span class="accent">at 11:30 PM</span>.
+              </li>
+              <li>
+                (+) <span class="accent">Yesterday</span>, Mr. Novak found the
+                painting missing.
+              </li>
+              <li>
+                (+) Beatrice left the workshop
+                <span class="accent">two hours ago</span>.
+              </li>
+              <li>
+                (+) <span class="accent">Last night</span>, nobody heard
+                anything unusual.
+              </li>
+            </ul>
+
+            <!-- exercise 3 -->
+            <details class="task" open>
+              <summary>
+                <h4>Exercise 3</h4>
+              </summary>
+              <div>
+                <p class="task-description">
+                  Rewrite the sentences, adding the time expression in a natural
+                  position.
+                </p>
+                <ol>
+                  <li>The lights went out. (at 11:30 PM)</li>
+                  <li>Mr. Novak called Detective Lance. (yesterday)</li>
+                  <li>Oliver fell asleep. (last night)</li>
+                  <li>The gallery had no problems. (two days ago)</li>
+                  <li>Beatrice left the workshop. (this morning)</li>
+                  <li>The blackout happened. (last night)</li>
+                </ol>
+                <textarea
+                  id="l13-p2-ex3"
+                  class="test-textarea"
+                  placeholder="1. The lights went out at 11:30 PM.&#10;2. ..."
+                  rows="8"
+                ></textarea>
+              </div>
+            </details>
+
+            <hr />
+
+            <!-- theory 4 -->
+            <h3 id="p2-5">Part 4 — Wh-questions</h3>
+
+            <ul style="line-height: 1.8">
+              <li>
+                <span class="bold">Wh-words:</span> who, what, where, when, why,
+                how…
+              </li>
+              <li style="margin-top: 15px">
+                <span class="bold">a) with "to be":</span> Wh-word + was/were +
+                subject?
+                <ul type="circle" style="margin-top: 5px">
+                  <li>
+                    <span class="italic">Where was Mr. Novak last night?</span>
+                  </li>
+                  <li><span class="italic">Who were the suspects?</span></li>
+                </ul>
+              </li>
+              <li style="margin-top: 15px">
+                <span class="bold">b) with verbs:</span> Wh-word + did + subject
+                + base verb?
+                <ul type="circle" style="margin-top: 5px">
+                  <li><span class="italic">What did Oliver see?</span></li>
+                  <li><span class="italic">Why did the alarm fail?</span></li>
+                </ul>
+              </li>
+              <li style="margin-top: 15px">
+                <span class="bold">c) subject questions — no "did"!</span>
+                When <span class="italic">who</span> or
+                <span class="italic">what</span> is the one doing the action, we
+                use the past tense verb directly, just like with he/she/it in
+                the present:
+                <ul type="circle" style="margin-top: 5px">
+                  <li>
+                    <span class="italic">Who took the painting?</span>
+                    <span
+                      class="italic"
+                      style="color: var(--text-soft); font-size: 0.9em"
+                    >
+                      (NOT "Who did take the painting?")</span
+                    >
+                  </li>
+                  <li>
+                    <span class="italic">What happened at midnight?</span>
+                    <span
+                      class="italic"
+                      style="color: var(--text-soft); font-size: 0.9em"
+                    >
+                      (NOT "What did happen at midnight?")</span
+                    >
+                  </li>
+                </ul>
+              </li>
+            </ul>
+
+            <!-- exercise 4 -->
+            <details class="task" open>
+              <summary>
+                <h4>Exercise 4</h4>
+              </summary>
+              <div>
+                <p class="task-description">
+                  Build the wh-questions using the clues in brackets.
+                </p>
+                <ol>
+                  <li>(Де / Mr. Novak / учора ввечері?)</li>
+                  <li>(Що / Oliver / побачити / опівночі?)</li>
+                  <li>(Хто / взяти / картину?)</li>
+                  <li>(Чому / сигналізація / не спрацювала?)</li>
+                  <li>(Що / сталося / під час блекауту?)</li>
+                </ol>
+                <textarea
+                  id="l13-p2-ex4"
+                  class="test-textarea"
+                  placeholder="1. Where was Mr. Novak last night?&#10;2. ..."
+                  rows="6"
+                ></textarea>
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- 🍋 PART 3: SPEAKING -->
+      <section id="part-3" class="lesson-wrapper tab-content">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img
+                src="../media/icons/lemon.svg"
+                class="star"
+                alt="a lemon slice"
+              />
+              <span>Speaking</span>
+            </h2>
+          </div>
+
+          <div class="lesson-content">
+            <h3 id="p3-1">Part 1 — Mr. Novak's Account</h3>
+
+            <p>
+              You play Detective Lance, gathering the facts of last night from
+              Mr. Novak. Turn each statement below into an English question and
+              ask it out loud. Write down what the tutor actually says — not
+              just yes or no.
+            </p>
+
+            <p>
+              <span class="accent">Group A uses was/were questions.</span> The
+              first row is done for you:
+            </p>
+            <div style="margin-bottom: 20px; font-size: 15px; color: #777">
+              <ul>
+                <li>Statement: Учора ввечері був блекаут по всьому місту.</li>
+                <li>
+                  Question: "Was there a blackout all over the city last night?"
+                </li>
+                <li>Answer: "No, only in the gallery."</li>
+                <li>Notes: only in the gallery, not the whole city.</li>
+              </ul>
+            </div>
+
+            <div class="tablecontainer">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Statement to check</th>
+                    <th>Notes</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <!-- 1 -->
+                  <tr>
+                    <td>1. Олівер був просто неуважний тієї ночі.</td>
+                    <td>
+                      <textarea id="l13-p3-1" class="test-textarea">
+he fell asleep, not just "distracted"</textarea
+                      >
+                    </td>
+                  </tr>
+                  <!-- 2 -->
+                  <tr>
+                    <td>2. Камери були зламані лише один день.</td>
+                    <td>
+                      <textarea id="l13-p3-2" class="test-textarea">
+broken for weeks</textarea
+                      >
+                    </td>
+                  </tr>
+                  <!-- 3 -->
+                  <tr>
+                    <td>3. Містер Новак був удома минулої ночі.</td>
+                    <td>
+                      <textarea id="l13-p3-3" class="test-textarea">
+he was at a restaurant, not home</textarea
+                      >
+                    </td>
+                  </tr>
+                  <!-- 4 -->
+                  <tr>
+                    <td>4. Сигналізація була увімкнена під час блекауту.</td>
+                    <td>
+                      <textarea id="l13-p3-4" class="test-textarea">
+it didn't work without power</textarea
+                      >
+                    </td>
+                  </tr>
+                  <!-- 5 -->
+                  <tr>
+                    <td>5. Усі працівники були в галереї минулої ночі.</td>
+                    <td>
+                      <textarea id="l13-p3-5" class="test-textarea">
+only Oliver on duty, and Beatrice was still working late</textarea
+                      >
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p>
+              <span class="accent"
+                >Group B uses did-questions — and this time, ask two questions
+                per row.</span
+              >
+              First a yes/no question, then a follow-up wh-question based on
+              what your tutor says. The first row is done for you:
+            </p>
+            <div style="margin-bottom: 20px; font-size: 15px; color: #777">
+              <ul>
+                <li>Statement: Містер Новак подзвонив у поліцію.</li>
+                <li>Question 1: "Did Mr. Novak call the police?"</li>
+                <li>Answer 1: "No, he didn't."</li>
+                <li>Question 2: "Who did he call instead?"</li>
+                <li>Answer 2: "He called Detective Lance."</li>
+                <li>Notes: called his friend, not the police</li>
+              </ul>
+            </div>
+
+            <div class="tablecontainer">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Statement to check</th>
+                    <th>Notes</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <!-- 6 -->
+                  <tr>
+                    <td>6. Олівер побачив злодія тієї ночі.</td>
+                    <td>
+                      <textarea id="l13-p3-6" class="test-textarea">
+no, he fell asleep instead</textarea
+                      >
+                    </td>
+                  </tr>
+                  <!-- 7 -->
+                  <tr>
+                    <td>7. Містер Новак одразу перевірив камери.</td>
+                    <td>
+                      <textarea id="l13-p3-7" class="test-textarea">
+he checked the alarm first</textarea
+                      >
+                    </td>
+                  </tr>
+                  <!-- 8 -->
+                  <tr>
+                    <td>8. Олівер випив каву тієї ночі.</td>
+                    <td>
+                      <textarea id="l13-p3-8" class="test-textarea">
+no, the coffee machine was broken</textarea
+                      >
+                    </td>
+                  </tr>
+                  <!-- 9 -->
+                  <tr>
+                    <td>9. Містер Новак знайшов докази на камерах.</td>
+                    <td>
+                      <textarea id="l13-p3-9" class="test-textarea">
+no, the cameras were broken</textarea
+                      >
+                    </td>
+                  </tr>
+                  <!-- 10 -->
+                  <tr>
+                    <td>10. Олівер одразу зізнався, що заснув.</td>
+                    <td>
+                      <textarea id="l13-p3-10" class="test-textarea">
+no, only after a few more questions</textarea
+                      >
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <hr />
+
+            <h3 id="p3-2">Part 2 — Take Turns</h3>
+
+            <p>
+              <span class="bold">a) You ask.</span> Build three more
+              did-questions from these cues and ask your tutor (still as Mr.
+              Novak):
+            </p>
+            <ul>
+              <li>(Mr. Novak / have / a receipt?)</li>
+              <li>(the restaurant / confirm / his story?)</li>
+              <li>(Oliver / see / anyone / before he fell asleep?)</li>
+            </ul>
+
+            <p style="margin-top: 20px">
+              <span class="bold">b) Now swap — you answer.</span> You are Oliver
+              now. Here's what you remember:
+            </p>
+            <div class="callout2">
+              <p>
+                You tried hard to stay awake, but the coffee machine was broken.
+                You fell asleep around midnight. You feel
+                <span class="gloss" data-tr="ніяково">embarrassed</span> about
+                it and didn't want to admit it at first.
+              </p>
+            </div>
+            <p>
+              Your tutor will now play Detective Lance and ask you questions
+              (Where were you...? Why didn't you...? What did you do...?).
+              Answer in full Past Simple sentences, using your notes above.
+            </p>
+
+            <hr />
+
+            <h3 id="p3-3">Part 3 — Free Follow-Up</h3>
+
+            <p>
+              No script this time. Ask Mr. Novak (your tutor) anything else
+              you're curious about last night — try to ask at least three more
+              questions of your own.
+            </p>
+
+            <hr />
+
+            <h3 id="p3-4">Part 4 — Is anything suspicious?</h3>
+
+            <p>
+              Look back at everything you learned today. If Mr. Novak has an
+              alibi, and Oliver was asleep the whole time... who do you think
+              was still inside the building when the lights went out? There's no
+              single correct answer here.
+            </p>
+
+            <hr />
+
+            <h3 id="p3-5">Translator</h3>
+
+            <!-- 🌍 BUILT-IN TRANSLATOR -->
+            <!-- prettier-ignore -->
+            <div class="translator-module" data-source-lang="en" data-target-lang="uk">
+              <div class="translator-lang-labels">
+                <span class="lang-source">Англійська</span>
+                <button class="swap-lang-btn" title="Swap languages">⇄</button>
+                <span class="lang-target">Українська</span>
+              </div>
+
+              <div class="translator-inputs">
+                <input type="text" class="translator-input" placeholder="Type a word..." />
+                <button class="translate-btn">Translate</button>
+              </div>
+
+              <div class="translator-output" style="display: none"></div>
+            </div>
+
+            <!-- optional notes -->
+            <textarea
+              style="margin-top: 0"
+              id="l13-speaking-notes"
+              class="test-textarea"
+              placeholder="You can write some notes here..."
+            ></textarea>
+          </div>
+        </div>
+      </section>
+
+      <!-- 🍊 PART 4: HOMEWORK -->
+      <section id="part-4" class="lesson-wrapper tab-content">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img src="../media/icons/orange.svg" class="star" alt="orange" />
+              <span>Homework</span>
+            </h2>
+          </div>
+
+          <div class="lesson-content">
+            <h3 id="hw-1">Part 1 — Mixed Review</h3>
+
+            <details class="task" open>
+              <summary>
+                <h4>Exercise 1</h4>
+              </summary>
+              <div>
+                <p class="task-description">
+                  Fill in the blanks — some need <strong>was/were</strong>, some
+                  need a Past Simple verb or <strong>did</strong>.
+                </p>
+                <ol style="line-height: 2.2">
+                  <li>
+                    Last night, the gallery ___ (be) very quiet — until the
+                    lights ___ (go) out.
+                  </li>
+                  <li>
+                    ___ Oliver ___ (drink) his coffee? No, the machine ___ (be)
+                    broken.
+                  </li>
+                  <li>
+                    Mr. Novak ___ (not/be) at the gallery when the blackout
+                    happened.
+                  </li>
+                  <li>
+                    Detective Lance ___ (arrive) this morning, right after Mr.
+                    Novak ___ (call) him.
+                  </li>
+                  <li>
+                    ___ the cameras ___ (work) last night? No, they ___ (not).
+                  </li>
+                </ol>
+                <textarea
+                  id="l13-hw-1"
+                  class="test-textarea"
+                  rows="6"
+                  placeholder="Write your answers here..."
+                ></textarea>
+              </div>
+            </details>
+
+            <hr />
+
+            <h3 id="hw-2">Part 2 — Case Analysis</h3>
+
+            <details class="task" open>
+              <summary>
+                <h4>Exercise 2</h4>
+              </summary>
+              <div>
+                <p class="task-description">
+                  Look back at today's reading and speaking tables to answer in
+                  full sentences.
+                </p>
+
+                <ol style="line-height: 2.2">
+                  <li>
+                    Only two people have keys to the gallery. Why couldn't
+                    either of them have let a thief in last night?
+                  </li>
+                  <li>What does Mr. Novak's receipt actually prove?</li>
+                  <li>
+                    Oliver always drinks coffee to stay awake. Why didn't it
+                    work last night?
+                  </li>
+                  <li>
+                    If Mr. Novak was at a restaurant, and Oliver was asleep —
+                    who do you think was still inside the gallery when the
+                    lights went out? Why?
+                  </li>
+                </ol>
+
+                <textarea
+                  id="l13-hw-2"
+                  class="test-textarea"
+                  rows="14"
+                  placeholder="Write your answers here..."
+                ></textarea>
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>🌷 🍓 🌿 Made by Olena Hapchyna 🌿 🍓 🌷</p>
+
+      <div class="footer-credits">
+        <span
+          >Fruit icons by
+          <a
+            href="https://www.svgrepo.com/collection/fruits-vectors/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >An Nguyen</a
+          ></span
+        >
+        |
+        <a href="../credits.html" target="_blank">Credits & Licenses</a>
+      </div>
+    </footer>
+
+    <button
+      id="scrollToTopBtn"
+      class="scroll-to-top"
+      aria-label="Scroll to top"
+    >
+      <img src="../media/icons/apple.svg" />
+    </button>
+
+    <dialog id="clear-confirm-dialog" class="custom-dialog">
+      <div class="dialog-content">
+        <h3>⚠️ Attention!</h3>
+        <p>Do you really want to delete ALL your answers and start over?</p>
+        <div class="dialog-actions">
+          <button type="button" id="dialog-cancel-btn">No</button>
+          <button type="button" id="dialog-confirm-btn">Yes, delete</button>
+        </div>
+      </div>
+    </dialog>
+
+    <script>
+      document.querySelectorAll(".gloss").forEach(function (el) {
+        var pill = document.createElement("span");
+        pill.className = "tr-pill";
+        pill.textContent = el.getAttribute("data-tr");
+        el.insertAdjacentElement("afterend", pill);
+        function toggle() {
+          pill.classList.toggle("show");
+        }
+        el.addEventListener("click", toggle);
+        el.addEventListener("keydown", function (e) {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            toggle();
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

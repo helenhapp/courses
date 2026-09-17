@@ -261,6 +261,42 @@ textarea {
   font-weight: 500;
 }
 
+.gloss {
+  border-bottom: 1px dashed #888;
+  cursor: pointer;
+  color: #1a5fb4;
+}
+.gloss:hover,
+.gloss:focus {
+  background: #cadff9;
+  outline: none;
+}
+.tr-pill {
+  display: none;
+  font-size: 0.85em;
+  color: #0f4f9d;
+  background: #d8e8fa;
+  border-radius: 4px;
+  padding: 1px 6px;
+  margin-left: 4px;
+}
+.tr-pill.show {
+  display: inline;
+}
+
+[data-theme="dark"] .gloss {
+  color: #81b9fe;
+}
+[data-theme="dark"] .gloss:hover,
+[data-theme="dark"] .gloss:focus {
+  background: #161d25;
+}
+[data-theme="dark"] .tr-pill {
+  color: #ddecfe;
+  background: #173960;
+}
+
+
 details summary {
   cursor: pointer;
 }
@@ -3184,6 +3220,6 @@ code.long-code .hljs-ln td.hljs-ln-code {
   }
 
   .image-gallery2 {
-  grid-template-columns: repeat(3, 1fr);
-}
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
