@@ -146,9 +146,9 @@ body.dyslexia-mode .objective {
 
 /* Темна тема */
 [data-theme="dark"] {
-  --brand2: #4c956c;
+  --brand2: #89e1af;
   --brand3: #e8a86c;
-  --brand6: #ff5e6f;
+  --brand6: #ffa7b0;
   --brand7: #2c6e49;
 
   --top-bar-shadow: 0 0 4px rgba(0, 0, 0, 0.7);
