@@ -148,7 +148,7 @@ body.dyslexia-mode .objective {
 [data-theme="dark"] {
   --brand2: #89e1af;
   --brand3: #e8a86c;
-  --brand6: #ffa7b0;
+  --brand6: #fc78a6;
   --brand7: #2c6e49;
 
   --top-bar-shadow: 0 0 4px rgba(0, 0, 0, 0.7);
@@ -169,7 +169,7 @@ body.dyslexia-mode .objective {
   --toggle-border: var(--brand2);
 
   --text-main: #f3f3e1;
-  --text-soft: #9b9a97;
+  --text-soft: #d5d0c3;
   --title: var(--brand5);
   --link-color: var(--brand3);
   --header-link-bg: transparent;
@@ -1255,7 +1255,7 @@ main > .lesson-wrapper:first-child {
 [data-theme="dark"] h3,
 [data-theme="dark"] .accordion__header,
 [data-theme="dark"] .lesson-header {
-  color: var(--brand4);
+  color: var(--brand2);
 }
 .accordion__header::-webkit-details-marker {
   display: none;
