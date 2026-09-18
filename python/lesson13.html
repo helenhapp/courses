@@ -1,0 +1,901 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Навчальні матеріали" />
+
+    <link rel="icon" type="image/svg+xml" href="../media/icons/carambola.svg" />
+
+    <title>Python Lesson 13</title>
+
+    <script>
+      const savedTheme = localStorage.getItem("lms_theme") || "light";
+      document.documentElement.setAttribute("data-theme", savedTheme);
+
+      const hljsThemeLink =
+        savedTheme === "dark"
+          ? "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css"
+          : "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css";
+
+      document.head.insertAdjacentHTML(
+        "beforeend",
+        `<link id="hljs-theme" rel="stylesheet" href="${hljsThemeLink}" />`,
+      );
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Fira+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Tektur:wght@400..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"
+    ></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.css"
+    />
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.js"
+    ></script>
+
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/javascript/javascript.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/xml/xml.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/css/css.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/htmlmixed/htmlmixed.min.js"
+    ></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/theme/dracula.min.css"
+    />
+
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/python/python.min.js"
+    ></script>
+
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt-stdlib.js"
+    ></script>
+
+    <link rel="stylesheet" href="../style.css" />
+    <script src="../script.js" defer></script>
+  </head>
+
+  <body>
+    <!-- transition curtain -->
+    <div class="transition-curtain"></div>
+
+    <!-- top-bar -->
+    <div id="nav-container">
+      <nav class="top-bar">
+        <div class="logo-container">
+          <img
+            src="../media/icons/carambola.svg"
+            alt="Logo"
+            class="site-logo"
+          />
+        </div>
+
+        <div class="top-bar__controls">
+          <label class="toggle-switch" aria-label="Перемикач теми">
+            <input type="checkbox" id="theme-checkbox" />
+            <span class="slider">
+              <span class="icon sun"
+                ><img src="../media/icons/stars.svg"
+              /></span>
+              <span class="icon moon"
+                ><img src="../media/icons/moon.svg"
+              /></span>
+            </span>
+          </label>
+          <button
+            id="dyslexia-mode-btn"
+            class="wide-toggle"
+            title="Шрифт для дислектиків"
+          >
+            Aa
+          </button>
+        </div>
+      </nav>
+    </div>
+
+    <!-- lesson header -->
+    <header>
+      <div class="title-container">
+        <h1 id="lesson-title">Python: 13</h1>
+      </div>
+
+      <p class="topic">Функція main()</p>
+
+      <hr class="pretty-divider" />
+    </header>
+
+    <!-- lesson content -->
+    <main>
+      <!-- tab buttons -->
+      <div class="tabs-nav">
+        <button class="tab-btn active" data-target="part-1">Повторення</button>
+        <button class="tab-btn" data-target="part-2">Нова тема</button>
+        <button class="tab-btn" data-target="part-3">Проєкт</button>
+        <button class="tab-btn" data-target="part-4">Д/З</button>
+      </div>
+
+      <!-- 🍓 PART 1: Повторення -->
+      <section id="part-1" class="lesson-wrapper tab-content active show">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img
+                src="../media/icons/strawberry.svg"
+                class="star"
+                alt="strawberry"
+              />
+              <span>Повторення</span>
+            </h2>
+          </div>
+
+          <div class="lesson-content">
+            <h3 id="p1-1">Функції</h3>
+
+            <p>Перш ніж переходити до нового, швидко згадаємо:</p>
+            <ul>
+              <li>Що таке функція і навіщо вона потрібна.</li>
+              <li>Чим відрізняються параметри та аргументи.</li>
+              <li>
+                Чим <span class="accent-string">return</span> відрізняється від
+                <span class="accent-string">print()</span>.
+              </li>
+            </ul>
+
+            <pre><code class="language-python">def add(a, b):
+    return a + b
+    
+def cube(n):
+    return n ** 3
+
+print(add(2, 3))
+
+x = add(2, 3)
+print(x)
+
+c = cube(x)
+print(c)</code></pre>
+
+            <details class="task" open>
+              <summary><h4>Питання для перевірки</h4></summary>
+
+              <div>
+                <ol style="line-height: 1.8">
+                  <li>
+                    Що тут <span class="accent-string">a</span> і
+                    <span class="accent-string">b</span> – параметри чи
+                    аргументи?
+                  </li>
+                  <li>
+                    Що поверне виклик
+                    <span class="accent-string">add(2, 3)</span>?
+                  </li>
+                  <li>
+                    У чому різниця між
+                    <span class="accent-string">print(add(2, 3))</span> і
+                    <span class="accent-string">x = add(2, 3)</span>? Що можна
+                    зробити зі змінною <span class="accent-string">x</span>,
+                    чого не можна зробити з надрукованим значенням?
+                  </li>
+                  <li>Що виведеться на екран після виконання цього коду?</li>
+                </ol>
+                <textarea
+                  class="test-textarea"
+                  placeholder="Нотатки..."
+                ></textarea>
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- 🍉 PART 2: Нова тема -->
+      <section id="part-2" class="lesson-wrapper tab-content">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img
+                src="../media/icons/watermelon.svg"
+                class="star"
+                alt="watermelon"
+              />
+              <span>Нова тема</span>
+            </h2>
+          </div>
+
+          <div class="lesson-content">
+            <h3 id="p2-1">
+              Навіщо ділити код на функції та створювати main()?
+            </h3>
+
+            <p>
+              Уяви, що ти читаєш рецепт складного торта, який написаний одним
+              величезним абзацом на дві сторінки. Читати його дуже незручно.
+              Набагато легше, коли рецепт поділений на логічні етапи: 1) зробити
+              тісто, 2) спекти коржі, 3) збити крем.
+            </p>
+
+            <p>
+              Те саме з кодом. Коли програма виростає до 50 чи 100 рядків,
+              читати її "суцільним полотном" стає неможливо. Тому програмісти
+              пакують окремі дії у дрібні <span class="bold">функції</span>.
+              Кожна функція виконує лише одне своє маленьке завдання.
+            </p>
+
+            <p>
+              Але коли функцій стає багато, з'являється нове питання:
+              <span class="accent"
+                >хто керує тим, у якому порядку вони запускаються?</span
+              >
+            </p>
+
+            <p>
+              Можна просто написати їхні виклики один за одним десь у кінці
+              файлу. Це спрацює, але створить проблеми: тимчасові змінні стануть
+              "глобальними" (їх зможе випадково зламати інша частина коду), а
+              щоб зрозуміти логіку програми, доведеться гортати весь файл.
+            </p>
+
+            <p>
+              Тому ми створюємо одну головну функцію —
+              <span class="accent-string">main()</span>.
+            </p>
+
+            <div class="callout2" style="margin: 20px 0">
+              Вона працює як <span class="bold">зміст у книзі</span> або
+              <span class="bold">диригент оркестру 🎻</span>. Вона сама нічого
+              не обчислює і не "грає", а лише викликає інші функції у
+              правильному порядку та передає результати від однієї функції до
+              іншої. Якщо хтось інший відкриє твій код, йому достатньо
+              подивитися лише на <span class="bold">main()</span>, щоб за 5
+              секунд зрозуміти сценарій програми (за умови, що всі функції мають
+              змістовні назви).
+            </div>
+
+            <hr />
+
+            <h3 id="p2-2">Приклад: конвеєр функцій</h3>
+
+            <pre><code class="language-python">def main():
+    number = get_number()
+    doubled = double_it(number)
+    show_result(doubled)
+
+def get_number():
+    number = int(input("Введи число: "))
+    return number
+
+def double_it(number):
+    return number * 2
+
+def show_result(result):
+    print(f"Подвоєне число: {result}")
+
+if __name__ == "__main__":
+    main()</code></pre>
+
+            <details class="task" open>
+              <summary><h4>Розбираємо разом</h4></summary>
+              <div>
+                <ol style="line-height: 1.8">
+                  <li>
+                    Що повертає <span class="accent-string">get_number()</span>?
+                    У яку змінну і в якому рядку ми це зберігаємо?
+                  </li>
+                  <li>
+                    Куди йде змінна
+                    <span class="accent-string">number</span> далі? Звідки
+                    <span class="accent-string">double_it()</span> бере свій
+                    параметр number?
+                  </li>
+                  <li>
+                    А що робить
+                    <span class="accent-string">show_result()</span>? Вона щось
+                    повертає? Що вона виведе на екран, якщо користувач введе
+                    число 5?
+                  </li>
+                </ol>
+                <textarea
+                  class="test-textarea"
+                  placeholder="Нотатки..."
+                ></textarea>
+              </div>
+            </details>
+
+            <p>
+              Ще один приклад: міні-програма, яка генерує нікнейми для гри. Тут
+              чітко видно три етапи: ми отримуємо дані від користувача,
+              обробляємо їх (додаємо випадкові слова), а потім красиво виводимо
+              на екран.
+            </p>
+
+            <pre
+              style="max-height: none"
+            ><code class="language-python">import random
+
+def main():
+    user_name = get_name()  # 1. Отримуємо дані
+    nickname = generate_nickname(user_name)  # 2. Обробляємо їх
+    show_profile(nickname)  # 3. Виводимо результат
+
+def get_name():
+    return input("Enter your name: ").strip().capitalize()
+
+def generate_nickname(name):
+    adj = random.choice(["🔥 Epic", "😴 Sleepy", "🦉 Wise", "🍀 Lucky", "🥷 Sneaky"])
+    title = random.choice(["of the Shadows", "the Unstoppable", "the Mysterious", "from the Future"])
+    return f"{adj} {name} {title}"
+
+def show_profile(result):
+    print("=" * 40)
+    print("🎮 Your new gaming nickname:")
+    print(result)
+    print("=" * 40)
+
+if __name__ == "__main__":
+    main()
+</code></pre>
+
+            <img src="./images/lesson13/13-ex-1.png" alt="code result" />
+
+            <hr />
+
+            <h3 id="p2-3">Що таке if __name__ == "__main__":?</h3>
+
+            <p>
+              Щоб зрозуміти цей рядок, згадай, як ми підключаємо готові
+              інструменти: наприклад,
+              <span class="accent-string">import random</span> або
+              <span class="accent-string">import math</span>.
+            </p>
+
+            <p>
+              Модуль <span class="bold">math</span> — це такий самий файл з
+              кодом на Python, всередині якого лежить багато корисних функцій.
+              Але коли ми пишемо
+              <span class="accent-string">import math</span> у своєму коді, цей
+              файл не починає раптом щось друкувати на екран чи запитувати в нас
+              числа. Він просто "тихо" завантажує свої інструменти, щоб ми могли
+              ними скористатися.
+            </p>
+
+            <p>
+              А тепер уяви, що ти написала дуже класну функцію у своєму файлі і
+              колись захочеш підключити її в інший свій проєкт (так само зробити
+              <span class="accent-string">import</span>). Якби в кінці файлу
+              просто стояло <span class="accent-string">main()</span>, то під
+              час імпорту твоя програма одразу б запустилася без дозволу!
+            </p>
+
+            <div class="callout2" style="margin: 20px 0">
+              Рядок <span class="bold">if __name__ == "__main__":</span> — це
+              запобіжник (охоронець). Він каже Python: <br />
+              <span class="italic" style="color: var(--text-soft)"
+                >"Якщо цей файл відкрили напряму (щоб скористатися програмою) —
+                тоді вмикай <strong>main()</strong>. Але якщо цей файл просто
+                імпортували, щоб позичити наші функції як інструменти (як ми
+                позначаємо у <span class="accent-string">math</span>) — тоді
+                нічого сам не запускай!"</span
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 🍋 PART 3: Проєкт -->
+      <section id="part-3" class="lesson-wrapper tab-content">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img src="../media/icons/lemon.svg" class="star" alt="lemon" />
+              <span>Проєкт, частина 1</span>
+            </h2>
+          </div>
+
+          <div class="lesson-content">
+            <h3 id="p3-1">Vocabulary Builder – Частина 1</h3>
+
+            <p>
+              Сьогодні ми напишемо <span class="accent-string">main()</span> і
+              три функції:
+              <span class="accent-string">get_practice_words()</span>,
+              <span class="accent-string">limit_words()</span> та
+              <span class="accent-string">choose_mode()</span>. Будуємо їх по
+              черзі — і одразу під'єднуємо кожну до main(), щоб бачити, як усе
+              працює разом.
+            </p>
+
+            <!-- Крок 0 -->
+            <details class="task" name="project" open>
+              <summary><h4>Крок 0 – Основа програми</h4></summary>
+              <div>
+                <p>
+                  Ось стартовий код (усі функції поки що порожні –
+                  <span class="accent-string">pass</span> потрібен, щоб програма
+                  не видавала помилку порожнього блоку):
+                </p>
+
+                <pre
+                  style="max-height: none"
+                ><code class="language-python">import random
+
+WORDS = [
+    {"eng": "always", "ukr": "завжди"},
+    {"eng": "usually", "ukr": "зазвичай"},
+    {"eng": "often", "ukr": "часто"},
+    {"eng": "sometimes", "ukr": "іноді"},
+    # 🌻 ДОДАЙ ЩЕ 2 СЛОВА: "рідко" та "ніколи"
+]
+
+# 🌻 СТВОРИ ФУНКЦІЮ main()
+
+def get_practice_words():
+    pass
+
+def limit_words(words):
+    pass
+
+def choose_mode():
+    pass
+
+# 🌻 ДОПИШИ ВИКЛИК ФУНКЦІЇ main()</code></pre>
+
+                <ol>
+                  <li>
+                    Напиши функцію
+                    <span class="accent-string">main()</span> (поки що вона може
+                    бути порожньою, <span class="accent-string">pass</span>).
+                  </li>
+                  <li>
+                    Напиши рядок, який запускає
+                    <span class="accent-string">main()</span>, коли ми
+                    відкриваємо цей файл напряму (if __name__...).
+                  </li>
+                  <li>
+                    Додай ще два слова до списку WORDS ("рідко" та "ніколи").
+                  </li>
+                  <li>
+                    Запусти код, щоб переконатися, що у ньому немає помилок.
+                  </li>
+                </ol>
+
+                <!-- <details class="answer">
+                  <summary>Answer key</summary>
+                  <pre style="max-height: none"><code class="language-python">import random
+
+WORDS = [
+    {"eng": "always", "ukr": "завжди"},
+    {"eng": "usually", "ukr": "зазвичай"},
+    {"eng": "often", "ukr": "часто"},
+    {"eng": "sometimes", "ukr": "іноді"},
+    {"eng": "rarely", "ukr": "рідко"},
+    {"eng": "never", "ukr": "ніколи"},
+]
+
+def main():
+    pass
+
+def get_practice_words():
+    pass
+
+def limit_words(words):
+    pass
+
+def choose_mode():
+    pass
+
+if __name__ == "__main__":
+    main()</code></pre>
+                </details> -->
+              </div>
+            </details>
+
+            <!-- Крок 1 -->
+            <details class="task" name="project">
+              <summary><h4>Крок 1 – функція get_practice_words()</h4></summary>
+              <div>
+                <p class="bold">Ця функція має:</p>
+                <ul type="square">
+                  <li>
+                    скопіювати список
+                    <span class="accent-string">WORDS</span> (щоб не змінювати
+                    оригінал);
+                  </li>
+                  <li>перемішати копію списку у випадковому порядку;</li>
+                  <li>повернути перемішаний список.</li>
+                </ul>
+
+                <p>
+                  Після того як напишеш функцію, виклич її у
+                  <span class="accent-string">main()</span> і збережи результат
+                  у змінній <span class="accent-string">words</span>. Для
+                  перевірки додай
+                  <span class="accent-string">print(words)</span> і запусти
+                  програму двічі, щоб переконатися, що слова справді
+                  перемішуються.
+                </p>
+
+                <p class="bold">Очікуваний результат:</p>
+                <img src="./images/lesson13/13-1.png" alt="expected result" />
+
+                <p class="bold" style="margin-bottom: 0">Питання:</p>
+                <ol>
+                  <li>
+                    Що саме повертає
+                    <span class="accent-string">get_practice_words()</span>?
+                  </li>
+                  <li>
+                    Для чого зберігати результат у змінну в
+                    <span class="accent-string">main()</span>?
+                  </li>
+                </ol>
+                <textarea
+                  class="test-textarea"
+                  placeholder="Нотатки..."
+                ></textarea>
+
+                <!-- <details class="answer">
+                  <summary>Answer key</summary>
+                  <pre><code class="language-python">import random
+
+WORDS = [
+    # ... словник ...
+]
+
+def main():
+    words = get_practice_words()
+    print(words)
+
+def get_practice_words():
+    words = WORDS.copy()
+    random.shuffle(words)
+    return words
+
+def limit_words(words):
+    pass
+
+def choose_mode():
+    pass
+
+if __name__ == "__main__":
+    main()</code></pre>
+                </details> -->
+              </div>
+            </details>
+
+            <!-- Крок 2 -->
+            <details class="task" name="project">
+              <summary><h4>Крок 2 — limit_words(words)</h4></summary>
+              <div>
+                <p class="bold">Ця функція:</p>
+                <ul type="square">
+                  <li>приймає список слів як аргумент;</li>
+                  <li>
+                    запитує користувача, скільки слів він хоче практикувати;
+                  </li>
+                  <li>
+                    повертає обрізаний список із потрібною кількістю слів.
+                  </li>
+                </ul>
+
+                <p>Текст для копіювання:</p>
+                <pre><code class="language-plaintext">📚 There are [number] words in the list.</code></pre>
+                <pre><code class="language-plaintext">How many words would you like to practice? </code></pre>
+
+                <p>
+                  Після того як напишеш функцію, виклич її у
+                  <span class="accent-string">main()</span>, передавши їй як
+                  аргумент список <span class="accent-string">words</span>, і
+                  збережи результат назад у ту саму змінну
+                  <span class="accent-string">words</span>.
+                </p>
+                <p>
+                  Перемісти <span class="accent-string">print(words)</span> у
+                  наступний рядок після виклику
+                  <span class="accent-string">limit_words</span>. Запусти
+                  програму двічі, ввівши перший раз
+                  <span class="accent-string">3</span>, а другий
+                  <span class="accent-string">2</span>.
+                </p>
+
+                <p class="bold">Очікуваний результат:</p>
+                <img src="./images/lesson13/13-2.png" alt="expected result" />
+
+                <p class="bold" style="margin-bottom: 0">Питання:</p>
+                <ol>
+                  <li>
+                    Звідки <span class="accent-string">limit_words()</span> бере
+                    свій список слів?
+                  </li>
+                  <li>
+                    Чому змінна зліва і аргумент, який ми передаємо функції,
+                    мають однакову назву
+                    <span class="accent-string">words</span>?
+                  </li>
+                  <li>
+                    Що було б, якби ми викликали
+                    <span class="accent-string">limit_words()</span>
+                    <strong>перед</strong>
+                    <span class="accent-string">get_practice_words()</span>?
+                  </li>
+                </ol>
+                <textarea
+                  class="test-textarea"
+                  placeholder="Нотатки..."
+                ></textarea>
+
+                <!-- <details class="answer">
+                  <summary>Answer key</summary>
+                  <pre><code class="language-python">def main():
+    words = get_practice_words()
+    words = limit_words(words)
+    print(words)
+
+def get_practice_words():
+    words = WORDS.copy()
+    random.shuffle(words)
+    return words
+
+def limit_words(words):
+    print(f"\n📚 There are {len(words)} words in the list.")
+    limit = int(input("How many words would you like to practice? "))
+    words = words[:limit]
+    return words</code></pre>
+                </details> -->
+              </div>
+            </details>
+
+            <!-- Крок 3 -->
+            <details class="task" name="project">
+              <summary><h4>Крок 3 — choose_mode()</h4></summary>
+              <div>
+                <p class="bold">Ця функція:</p>
+                <ul type="square">
+                  <li>виводить меню на вибір режиму</li>
+                  <li>просить користувача ввести "1" або "2"</li>
+                  <li>
+                    повертає його відповідь (очищену від зайвих пробілів за
+                    допомогою `.strip()`)
+                  </li>
+                </ul>
+
+                <p>Текст для копіювання:</p>
+                <pre><code class="language-plaintext">How would you like to practice?</code></pre>
+                <pre><code class="language-plaintext">1️⃣  English → Ukrainian</code></pre>
+                <pre><code class="language-plaintext">2️⃣  Ukrainian → English</code></pre>
+                <pre><code class="language-plaintext">Choose mode (1 or 2): </code></pre>
+
+                <p>
+                  Після того як напишеш функцію, виклич її у
+                  <span class="accent-string">main()</span> і збережи результат
+                  у змінну <span class="accent-string">mode</span>.
+                </p>
+                <p>
+                  Для перевірки використай
+                  <span class="accent-string">print(mode)</span>. Запусти
+                  програму, введи “1” або “2” і переконайся, що все працює без
+                  помилок. (Попередній виклик print(words) можна прибрати або
+                  закоментувати).
+                </p>
+
+                <p class="bold">Очікуваний результат:</p>
+                <img src="./images/lesson13/13-3.png" alt="expected result" />
+
+                <!-- <details class="answer">
+                  <summary>Answer key</summary>
+                  <pre><code class="language-python">def main():
+    words = get_practice_words()
+    words = limit_words(words)
+    # print(words)
+
+    mode = choose_mode()
+    print(mode)
+
+def choose_mode():
+    print("\nHow would you like to practice?")
+    print("1️⃣  English → Ukrainian")
+    print("2️⃣  Ukrainian → English")
+
+    mode = input("Choose mode (1 or 2): ").strip()
+    return mode</code></pre>
+                </details> -->
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- 🍊 PART 4: Домашнє завдання -->
+      <section id="part-4" class="lesson-wrapper tab-content">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img src="../media/icons/orange.svg" class="star" alt="orange" />
+              <span>Домашнє завдання</span>
+            </h2>
+          </div>
+
+          <div class="lesson-content">
+            <h3 id="p4-1">Birthday Card</h3>
+
+            <p>
+              Ця вправа не пов'язана з Vocabulary Builder – вона лише для
+              практики <span class="accent-string">main()</span> і передачі
+              даних між функціями.
+            </p>
+
+            <details class="task" open>
+              <summary><h4>Що потрібно зробити:</h4></summary>
+              <div>
+                <p>
+                  Напиши програму з функцією
+                  <span class="accent-string">main()</span> на початку файлу і
+                  чотирма допоміжними функціями:
+                </p>
+                <ol style="line-height: 2">
+                  <li>
+                    <span class="bold">get_name()</span> – запитує ім'я
+                    користувача і повертає його.
+                  </li>
+                  <li>
+                    <span class="bold">get_age()</span> – запитує вік
+                    користувача і повертає його.
+                  </li>
+                  <li>
+                    <span class="bold">make_greeting(name, age)</span> – приймає
+                    ім'я та вік як аргументи і повертає відформатований
+                    рядок-привітання.
+                  </li>
+                  <li>
+                    <span class="bold">show_greeting(message)</span> – приймає
+                    готове привітання і виводить його на екран із декоративним
+                    контуром з якогось символа (наприклад:
+                    <span class="accent-string">print("-" * len(message))</span
+                    >).
+                  </li>
+                </ol>
+
+                <p>Текст для копіювання:</p>
+                <pre><code class="language-plaintext">What is your name? </code></pre>
+                <pre><code class="language-plaintext">How old are you? </code></pre>
+                <pre><code class="language-plaintext">🥳 Happy Birthday, [name]! You are [age] years old!</code></pre>
+
+                <p class="bold">Приклад роботи програми:</p>
+                <pre
+                  style="max-height: none"
+                ><code class="language-plaintext">What is your name? Anna
+How old are you? 32
+---------------------------------------------
+🥳 Happy Birthday, Anna! You are 32 years old!
+---------------------------------------------</code></pre>
+
+                <p class="bold" style="margin-top: 20px">
+                  Подумай над цими питаннями під час виконання:
+                </p>
+                <ul style="line-height: 1.8; list-style-type: square">
+                  <li>
+                    Скільки змінних потрібно всередині
+                    <span class="accent-string">main()</span>, щоб зберегти
+                    результати всіх викликів?
+                  </li>
+                  <li>
+                    Чому
+                    <span class="accent-string">make_greeting()</span> потребує
+                    двох параметрів, а
+                    <span class="accent-string">get_name()</span> і
+                    <span class="accent-string">get_age()</span> – жодного?
+                  </li>
+                  <li>
+                    Що станеться, якщо викликати
+                    <span class="accent-string">make_greeting()</span> раніше,
+                    ніж <span class="accent-string">get_name()</span> і
+                    <span class="accent-string">get_age()</span>?
+                  </li>
+                </ul>
+
+                <!-- <details class="answer">
+                  <summary>Answer key</summary>
+                  <pre><code class="language-python">def main():
+    name = get_name()
+    age = get_age()
+    greeting = make_greeting(name, age)
+    show_greeting(greeting)
+
+def get_name():
+    name = input("What is your name? ")
+    return name
+
+def get_age():
+    age = int(input("How old are you? "))
+    return age
+
+def make_greeting(name, age):
+    message = f"🥳 Happy Birthday, {name}! You are {age} years old!"
+    return message
+
+def show_greeting(message):
+    print("-" * len(message))
+    print(message)
+    print("-" * len(message))
+
+if __name__ == "__main__":
+    main()</code></pre>
+                </details> -->
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>🌷 🍓 🌿 Made by Olena Hapchyna 🌿 🍓 🌷</p>
+
+      <div class="footer-credits">
+        <span
+          >Fruit icons by
+          <a
+            href="https://www.svgrepo.com/collection/fruits-vectors/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >An Nguyen</a
+          ></span
+        >
+        |
+        <a href="../credits.html" target="_blank">Credits & Licenses</a>
+      </div>
+    </footer>
+
+    <button
+      id="scrollToTopBtn"
+      class="scroll-to-top"
+      aria-label="Scroll to top"
+    >
+      <img src="../media/icons/apple.svg" />
+    </button>
+
+    <dialog id="clear-confirm-dialog" class="custom-dialog">
+      <div class="dialog-content">
+        <h3>⚠️ Attention!</h3>
+        <p>Do you really want to delete ALL your answers and start over?</p>
+        <div class="dialog-actions">
+          <button type="button" id="dialog-cancel-btn">No</button>
+          <button type="button" id="dialog-confirm-btn">Yes, delete</button>
+        </div>
+      </div>
+    </dialog>
+  </body>
+</html>
