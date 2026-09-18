@@ -287,22 +287,57 @@ print(c)</code></pre>
 
             <hr />
 
-            <h3 id="p2-2">Приклад: конвеєр функцій</h3>
+            <h3 id="p2-2">Приклад 1: Математичний конвеєр</h3>
 
-            <pre><code class="language-python">def main():
-    number = get_number()
-    doubled = double_it(number)
-    show_result(doubled)
+            <p>
+              Уяви команду з трьох людей, які виконують обчислення по черзі:
+            </p>
+            <ul style="list-style-type: square; line-height: 1.6">
+              <li>
+                <span class="bold">Перша</span> людина додає два числа і передає
+                результат далі.
+              </li>
+              <li>
+                <span class="bold">Друга</span> бере цей результат, множить його
+                на інше число і теж передає результат.
+              </li>
+              <li>
+                <span class="bold">Третя</span> отримує обидва попередні
+                результати і підносить перше число до степеня другого!
+              </li>
+            </ul>
+            <p>
+              У коді функція <span class="accent-string">main()</span> працює як
+              їхній керівник: вона сама нічого не рахує, а лише "бере папірець
+              із результатом" у однієї функції і передає його іншим.
+            </p>
 
-def get_number():
-    number = int(input("Введи число: "))
-    return number
+            <pre
+              style="max-height: none"
+            ><code class="language-python">def main():
+    # 1. Додавання
+    sum_val = add(2, 3)
+    
+    # 2. Множення (беремо результат додавання)
+    mult_val = multiply(sum_val, 2)
+    
+    # 3. Піднесення до степеня (беремо обидва попередні результати)
+    final_val = power(sum_val, mult_val)
+    
+    # 4. Виведення
+    show_result(final_val)
 
-def double_it(number):
-    return number * 2
+def add(a, b):
+    return a + b
+
+def multiply(a, b):
+    return a * b
+
+def power(base, exponent):
+    return base ** exponent
 
 def show_result(result):
-    print(f"Подвоєне число: {result}")
+    print(f"Фінальний результат: {result}")
 
 if __name__ == "__main__":
     main()</code></pre>
@@ -312,20 +347,23 @@ if __name__ == "__main__":
               <div>
                 <ol style="line-height: 1.8">
                   <li>
-                    Що повертає <span class="accent-string">get_number()</span>?
-                    У яку змінну і в якому рядку ми це зберігаємо?
+                    Що поверне функція
+                    <span class="accent-string">add(2, 3)</span> і в яку змінну
+                    всередині
+                    <span class="accent-string">main()</span> збережеться цей
+                    результат?
                   </li>
                   <li>
-                    Куди йде змінна
-                    <span class="accent-string">number</span> далі? Звідки
-                    <span class="accent-string">double_it()</span> бере свій
-                    параметр number?
+                    Яке саме значення передається у функцію
+                    <span class="accent-string">multiply</span> замість змінної
+                    <span class="accent-string">sum_val</span>? Яким буде
+                    результат множення?
                   </li>
                   <li>
-                    А що робить
-                    <span class="accent-string">show_result()</span>? Вона щось
-                    повертає? Що вона виведе на екран, якщо користувач введе
-                    число 5?
+                    Подивись на рядок
+                    <span class="accent-string">power(sum_val, mult_val)</span>.
+                    Які два числа насправді туди потраплять під час виконання
+                    програми?
                   </li>
                 </ol>
                 <textarea
@@ -334,42 +372,6 @@ if __name__ == "__main__":
                 ></textarea>
               </div>
             </details>
-
-            <p>
-              Ще один приклад: міні-програма, яка генерує нікнейми для гри. Тут
-              чітко видно три етапи: ми отримуємо дані від користувача,
-              обробляємо їх (додаємо випадкові слова), а потім красиво виводимо
-              на екран.
-            </p>
-
-            <pre
-              style="max-height: none"
-            ><code class="language-python">import random
-
-def main():
-    user_name = get_name()  # 1. Отримуємо дані
-    nickname = generate_nickname(user_name)  # 2. Обробляємо їх
-    show_profile(nickname)  # 3. Виводимо результат
-
-def get_name():
-    return input("Enter your name: ").strip().capitalize()
-
-def generate_nickname(name):
-    adj = random.choice(["🔥 Epic", "😴 Sleepy", "🦉 Wise", "🍀 Lucky", "🥷 Sneaky"])
-    title = random.choice(["of the Shadows", "the Unstoppable", "the Mysterious", "from the Future"])
-    return f"{adj} {name} {title}"
-
-def show_profile(result):
-    print("=" * 40)
-    print("🎮 Your new gaming nickname:")
-    print(result)
-    print("=" * 40)
-
-if __name__ == "__main__":
-    main()
-</code></pre>
-
-            <img src="./images/lesson13/13-ex-1.png" alt="code result" />
 
             <hr />
 
@@ -411,6 +413,46 @@ if __name__ == "__main__":
                 нічого сам не запускай!"</span
               >
             </div>
+
+            <hr />
+
+            <h3 id="p2-4">Приклад 2: Генератор нікнеймів</h3>
+
+            <p>
+              Ще один приклад: міні-програма, яка генерує нікнейми для гри. Тут
+              чітко видно три етапи: ми отримуємо дані від користувача,
+              обробляємо їх (додаємо випадкові слова), а потім красиво виводимо
+              на екран.
+            </p>
+
+            <pre
+              style="max-height: none"
+            ><code class="language-python">import random
+
+def main():
+    user_name = get_name()  # 1. Отримуємо дані
+    nickname = generate_nickname(user_name)  # 2. Обробляємо їх
+    show_profile(nickname)  # 3. Виводимо результат
+
+def get_name():
+    return input("Enter your name: ").strip().capitalize()
+
+def generate_nickname(name):
+    adj = random.choice(["🔥 Epic", "😴 Sleepy", "🦉 Wise", "🍀 Lucky", "🥷 Sneaky"])
+    title = random.choice(["of the Shadows", "the Unstoppable", "the Mysterious", "from the Future"])
+    return f"{adj} {name} {title}"
+
+def show_profile(result):
+    print("=" * 40)
+    print("🎮 Your new gaming nickname:")
+    print(result)
+    print("=" * 40)
+
+if __name__ == "__main__":
+    main()
+</code></pre>
+
+            <img src="./images/lesson13/13-ex-1.png" alt="code result" />
           </div>
         </div>
       </section>
