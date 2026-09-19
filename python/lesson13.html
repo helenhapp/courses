@@ -287,7 +287,7 @@ print(c)</code></pre>
 
             <hr />
 
-            <h3 id="p2-2">Приклад 1: Математичний конвеєр</h3>
+            <h3 id="p2-2">Приклад: Математичний конвеєр</h3>
 
             <p>
               Уяви команду з трьох людей, які виконують обчислення по черзі:
@@ -413,46 +413,6 @@ if __name__ == "__main__":
                 нічого сам не запускай!"</span
               >
             </div>
-
-            <hr />
-
-            <h3 id="p2-4">Приклад 2: Генератор нікнеймів</h3>
-
-            <p>
-              Ще один приклад: міні-програма, яка генерує нікнейми для гри. Тут
-              чітко видно три етапи: ми отримуємо дані від користувача,
-              обробляємо їх (додаємо випадкові слова), а потім красиво виводимо
-              на екран.
-            </p>
-
-            <pre
-              style="max-height: none"
-            ><code class="language-python">import random
-
-def main():
-    user_name = get_name()  # 1. Отримуємо дані
-    nickname = generate_nickname(user_name)  # 2. Обробляємо їх
-    show_profile(nickname)  # 3. Виводимо результат
-
-def get_name():
-    return input("Enter your name: ").strip().capitalize()
-
-def generate_nickname(name):
-    adj = random.choice(["🔥 Epic", "😴 Sleepy", "🦉 Wise", "🍀 Lucky", "🥷 Sneaky"])
-    title = random.choice(["of the Shadows", "the Unstoppable", "the Mysterious", "from the Future"])
-    return f"{adj} {name} {title}"
-
-def show_profile(result):
-    print("=" * 40)
-    print("🎮 Your new gaming nickname:")
-    print(result)
-    print("=" * 40)
-
-if __name__ == "__main__":
-    main()
-</code></pre>
-
-            <img src="./images/lesson13/13-ex-1.png" alt="code result" />
           </div>
         </div>
       </section>
@@ -791,12 +751,50 @@ def choose_mode():
           </div>
 
           <div class="lesson-content">
-            <h3 id="p4-1">Birthday Card</h3>
+            <h3 id="p4-1">Приклад коду для повторення: Генератор нікнеймів</h3>
+
+            <p>
+              Це міні-програма, яка генерує нікнейми для гри. Тут чітко видно
+              три етапи: ми отримуємо дані від користувача, обробляємо їх
+              (додаємо випадкові слова), а потім красиво виводимо на екран.
+            </p>
+
+            <pre
+              style="max-height: none"
+            ><code class="language-python">import random
+
+def main():
+    user_name = get_name()  # 1. Отримуємо дані
+    nickname = generate_nickname(user_name)  # 2. Обробляємо їх
+    show_profile(nickname)  # 3. Виводимо результат
+
+def get_name():
+    return input("Enter your name: ").strip().capitalize()
+
+def generate_nickname(name):
+    adj = random.choice(["🔥 Epic", "😴 Sleepy", "🦉 Wise", "🍀 Lucky", "🥷 Sneaky"])
+    title = random.choice(["of the Shadows", "the Unstoppable", "the Mysterious", "from the Future"])
+    return f"{adj} {name} {title}"
+
+def show_profile(result):
+    print("=" * 40)
+    print("🎮 Your new gaming nickname:")
+    print(result)
+    print("=" * 40)
+
+if __name__ == "__main__":
+    main()
+</code></pre>
+
+            <img src="./images/lesson13/13-ex-1.png" alt="code result" />
+            <hr />
+
+            <h3 id="p4-2">Завдання: Birthday Card</h3>
 
             <p>
               Ця вправа не пов'язана з Vocabulary Builder – вона лише для
               практики <span class="accent-string">main()</span> і передачі
-              даних між функціями.
+              даних (естафети) між функціями.
             </p>
 
             <details class="task" open>
@@ -851,7 +849,7 @@ How old are you? 32
                   <li>
                     Скільки змінних потрібно всередині
                     <span class="accent-string">main()</span>, щоб зберегти
-                    результати всіх викликів?
+                    результати всіх викликів (естафетні палички)?
                   </li>
                   <li>
                     Чому
