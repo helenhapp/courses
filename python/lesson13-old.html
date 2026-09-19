@@ -730,7 +730,7 @@ def limit_words(words):
                   <li>просить користувача ввести "1" або "2"</li>
                   <li>
                     повертає його відповідь (очищену від зайвих пробілів за
-                    допомогою `.strip()`)
+                    допомогою <span class="accent-string">.strip()</span>)
                   </li>
                 </ul>
 
@@ -791,113 +791,182 @@ def choose_mode():
           </div>
 
           <div class="lesson-content">
-            <h3 id="p4-1">Birthday Card</h3>
+            <h3 id="p4-1">Як повернути кілька значень?</h3>
 
             <p>
-              Ця вправа не пов'язана з Vocabulary Builder – вона лише для
-              практики <span class="accent-string">main()</span> і передачі
-              даних між функціями.
+              Функція може повертати (<span class="accent-string">return</span>)
+              не одне значення, а одразу кілька. Для цього їх треба перерахувати
+              через кому (<span class="accent-string">return a, b, c</span>).
             </p>
 
-            <details class="task" open>
-              <summary><h4>Що потрібно зробити:</h4></summary>
-              <div>
-                <p>
-                  Напиши програму з функцією
-                  <span class="accent-string">main()</span> на початку файлу і
-                  чотирма допоміжними функціями:
-                </p>
-                <ol style="line-height: 2">
-                  <li>
-                    <span class="bold">get_name()</span> – запитує ім'я
-                    користувача і повертає його.
-                  </li>
-                  <li>
-                    <span class="bold">get_age()</span> – запитує вік
-                    користувача і повертає його.
-                  </li>
-                  <li>
-                    <span class="bold">make_greeting(name, age)</span> – приймає
-                    ім'я та вік як аргументи і повертає відформатований
-                    рядок-привітання.
-                  </li>
-                  <li>
-                    <span class="bold">show_greeting(message)</span> – приймає
-                    готове привітання і виводить його на екран із декоративним
-                    контуром з якогось символа (наприклад:
-                    <span class="accent-string">print("-" * len(message))</span
-                    >).
-                  </li>
-                </ol>
+            <p>
+              Коли ми викликаємо таку функцію, то так само "ловимо" результати у
+              відповідну кількість змінних, ставлячи між ними кому. Поглянь на
+              приклад із фруктами:
+            </p>
 
-                <p>Текст для копіювання:</p>
-                <pre><code class="language-plaintext">What is your name? </code></pre>
-                <pre><code class="language-plaintext">How old are you? </code></pre>
-                <pre><code class="language-plaintext">🥳 Happy Birthday, [name]! You are [age] years old!</code></pre>
+            <pre
+              style="max-height: none"
+            ><code class="language-python">FRUITS = [
+    {"name": "apple", "price": 20, "color": "red", "weight": 55},
+    {"name": "pear", "price": 24, "color": "green", "weight": 63},
+]
 
-                <p class="bold">Приклад роботи програми:</p>
-                <pre
-                  style="max-height: none"
-                ><code class="language-plaintext">What is your name? Anna
-How old are you? 32
----------------------------------------------
-🥳 Happy Birthday, Anna! You are 32 years old!
----------------------------------------------</code></pre>
+def main():
+    fruit1 = FRUITS[0]
 
-                <p class="bold" style="margin-top: 20px">
-                  Подумай над цими питаннями під час виконання:
-                </p>
-                <ul style="line-height: 1.8; list-style-type: square">
-                  <li>
-                    Скільки змінних потрібно всередині
-                    <span class="accent-string">main()</span>, щоб зберегти
-                    результати всіх викликів?
-                  </li>
-                  <li>
-                    Чому
-                    <span class="accent-string">make_greeting()</span> потребує
-                    двох параметрів, а
-                    <span class="accent-string">get_name()</span> і
-                    <span class="accent-string">get_age()</span> – жодного?
-                  </li>
-                  <li>
-                    Що станеться, якщо викликати
-                    <span class="accent-string">make_greeting()</span> раніше,
-                    ніж <span class="accent-string">get_name()</span> і
-                    <span class="accent-string">get_age()</span>?
-                  </li>
-                </ul>
+    # 🌻 2. Ловимо два результати у дві змінні:
+    n, p = get_name_price(fruit1)
 
-                <!-- <details class="answer">
-                  <summary>Answer key</summary>
-                  <pre><code class="language-python">def main():
-    name = get_name()
-    age = get_age()
-    greeting = make_greeting(name, age)
-    show_greeting(greeting)
+    print(f"Name: {n}")
+    print(f"Price: {p}")
 
-def get_name():
-    name = input("What is your name? ")
-    return name
+def get_name_price(fruit):
+    name = fruit.get("name")
+    price = fruit.get("price")
 
-def get_age():
-    age = int(input("How old are you? "))
-    return age
-
-def make_greeting(name, age):
-    message = f"🥳 Happy Birthday, {name}! You are {age} years old!"
-    return message
-
-def show_greeting(message):
-    print("-" * len(message))
-    print(message)
-    print("-" * len(message))
+    # 🌻 1. Повертаємо одразу два значення через кому:
+    return name, price
 
 if __name__ == "__main__":
     main()</code></pre>
-                </details> -->
-              </div>
-            </details>
+
+            <img src="./images/lesson13/hw-1.png" alt="code result" />
+
+            <hr />
+
+            <h3 id="p4-2">Vocabulary Builder – Крок 4</h3>
+
+            <p>
+              Зараз тобі потрібно написати функцію
+              <span class="accent-string">make_question</span>, яка буде
+              визначати, що саме показувати як запитання, а що – як правильну
+              відповідь (залежно від обраного користувачем режиму).
+            </p>
+
+            <p>
+              Але перш ніж застосовувати її до всього словника, її треба
+              <strong>протестувати</strong> на одному слові.
+            </p>
+
+            <h4>Очікуваний результат:</h4>
+            <p>
+              Якщо користувач ввів 1, то питання – англійське слово, а відповідь
+              – українське:
+            </p>
+            <img
+              src="./images/lesson13/hw-3.png"
+              alt="code result if mode is 1"
+            />
+            <p>Якщо користувач ввів 2, то навпаки:</p>
+            <img
+              src="./images/lesson13/hw-4.png"
+              alt="code result if mode is 2"
+            />
+
+            <h4>Завдання:</h4>
+
+            <p>
+              <span class="accent">❖</span> Продовжуй працювати із кодом,
+              написаним на уроці.
+            </p>
+
+            <p>
+              <span class="accent">❖</span> Для початку, повністю заміни свою
+              функцію <span class="accent-string">main()</span> на цей код:
+            </p>
+
+            <pre
+              style="max-height: none"
+            ><code class="language-python">def main():
+    # 1. 🌻 отримуємо перемішані слова та обмежуємо кількість слів
+    # practice_words = limit_words(get_practice_words())
+
+    # 2. 🌻 обираємо режим тренування
+    mode = choose_mode()
+
+    # 3. 🌻 тестування функції make_question:
+
+    # слово для тестування
+    word = {"eng": "function", "ukr": "функція"}
+
+    # виклик функції make_question та збереження результатів
+    question, answer = make_question(word, mode)
+
+    # вивід результатів для перевірки
+    print("\nПитання: ", question)
+    print("Відповідь: ", answer)</code></pre>
+
+            <p>
+              <span class="accent">❖</span> Всі інші функції залишаються без
+              змін (<span class="accent-string">get_practice_words()</span>,
+              <span class="accent-string">limit_words(words)</span> та
+              <span class="accent-string">choose_mode()</span>).
+            </p>
+
+            <p>
+              <span class="accent">❖</span> Після функції
+              <span class="accent-string">choose_mode()</span>, але перед
+              <span class="accent-string">if __name__ == "__main__"</span>,
+              створи нову функцію
+              <span class="accent-string">make_question(word, mode)</span>.
+            </p>
+
+            <p>
+              <span class="accent">❖</span> Ця функція приймає два параметри (ті
+              слова в дужках):
+            </p>
+            <ol style="margin-left: 25px; line-height: 1.6">
+              <li>
+                <span class="accent-string">word</span> – одне слово (словник {}
+                з ключами "eng" та "ukr").
+              </li>
+              <li>
+                <span class="accent-string">mode</span> – режим тренування (1
+                або 2).
+              </li>
+            </ol>
+
+            <p>
+              <span class="accent">❖</span> Ця функція повертає два значення:
+            </p>
+            <ol style="margin-left: 25px; line-height: 1.6">
+              <li>
+                <span class="accent-string">question</span> – слово, яке
+                потрібно перекласти.
+              </li>
+              <li>
+                <span class="accent-string">answer</span> – правильний переклад
+                цього слова.
+              </li>
+            </ol>
+
+            <p>
+              <span class="accent">❖</span> Якщо
+              <span class="accent-string">mode == "1"</span>:
+            </p>
+            <ol style="margin-left: 25px; line-height: 1.6">
+              <li>
+                <span class="accent-string">question</span> – англійське слово
+                (<span class="accent-string">word.get("eng")</span>).
+              </li>
+              <li>
+                <span class="accent-string">answer</span> – українське слово
+                (<span class="accent-string">word.get("ukr")</span>).
+              </li>
+            </ol>
+
+            <p>
+              <span class="accent">❖</span> Якщо
+              <span class="accent-string">mode == "2"</span>, то навпаки.
+            </p>
+
+            <p>
+              <span class="accent">❖</span> Виклик цієї функції вже є в
+              <span class="accent-string">main()</span>, тобі треба написати
+              лише саму функцію
+              <span class="accent-string">make_question()</span>.
+            </p>
           </div>
         </div>
       </section>
