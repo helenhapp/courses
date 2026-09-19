@@ -629,7 +629,8 @@ img {
   width: auto;
   height: auto;
   object-fit: contain;
-  margin: 15px auto;
+  /* margin: 15px auto; */
+  margin: 15px 0;
   border: 3px solid var(--code-border);
   border-radius: 6px;
   transition:
