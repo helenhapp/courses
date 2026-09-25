@@ -296,7 +296,6 @@ textarea {
   background: #173960;
 }
 
-
 details summary {
   cursor: pointer;
 }
@@ -577,9 +576,13 @@ p.topic {
   white-space: nowrap;
 }
 [data-theme="dark"] .accent-string {
-  background-color: rgb(47, 51, 54);
-  border: 1px solid rgb(17, 94, 117);
+  background-color: rgba(37, 149, 125, 0.2);
+  border: 1px solid rgb(14, 93, 65);
 }
+/* [data-theme="dark"] .accent-string {
+  background-color: rgba(149, 37, 145, 0.25);
+  border: 1px solid rgb(157, 46, 96);
+} */
 
 pre.accent-string {
   background-color: var(--panel-alt);

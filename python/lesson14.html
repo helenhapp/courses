@@ -1,0 +1,813 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Навчальні матеріали" />
+
+    <link rel="icon" type="image/svg+xml" href="../media/icons/carambola.svg" />
+
+    <title>Python Lesson 14</title>
+
+    <script>
+      const savedTheme = localStorage.getItem("lms_theme") || "light";
+      document.documentElement.setAttribute("data-theme", savedTheme);
+
+      const hljsThemeLink =
+        savedTheme === "dark"
+          ? "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css"
+          : "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css";
+
+      document.head.insertAdjacentHTML(
+        "beforeend",
+        `<link id="hljs-theme" rel="stylesheet" href="${hljsThemeLink}" />`,
+      );
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Fira+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Tektur:wght@400..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"
+    ></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.css"
+    />
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.js"
+    ></script>
+
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/javascript/javascript.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/xml/xml.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/css/css.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/htmlmixed/htmlmixed.min.js"
+    ></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/theme/dracula.min.css"
+    />
+
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/python/python.min.js"
+    ></script>
+
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt-stdlib.js"
+    ></script>
+
+    <link rel="stylesheet" href="../style.css?v=3.0" />
+    <script src="../script.js?v=3.0" defer></script>
+  </head>
+
+  <body>
+    <!-- transition curtain -->
+    <div class="transition-curtain"></div>
+
+    <!-- top-bar -->
+    <div id="nav-container">
+      <nav class="top-bar">
+        <div class="logo-container">
+          <img
+            src="../media/icons/carambola.svg"
+            alt="Logo"
+            class="site-logo"
+          />
+        </div>
+
+        <div class="top-bar__controls">
+          <label class="toggle-switch" aria-label="Перемикач теми">
+            <input type="checkbox" id="theme-checkbox" />
+            <span class="slider">
+              <span class="icon sun"
+                ><img src="../media/icons/stars.svg"
+              /></span>
+              <span class="icon moon"
+                ><img src="../media/icons/moon.svg"
+              /></span>
+            </span>
+          </label>
+          <button
+            id="dyslexia-mode-btn"
+            class="wide-toggle"
+            title="Шрифт для дислектиків"
+          >
+            Aa
+          </button>
+        </div>
+      </nav>
+    </div>
+
+    <!-- lesson header -->
+    <header>
+      <div class="title-container">
+        <h1 id="lesson-title">Python: 14</h1>
+      </div>
+
+      <p class="topic">Vocabulary App: Частина 2</p>
+
+      <hr class="pretty-divider" />
+    </header>
+
+    <!-- lesson content -->
+    <main>
+      <!-- tab buttons -->
+      <div class="tabs-nav">
+        <button class="tab-btn active" data-target="part-1">Структура</button>
+        <button class="tab-btn" data-target="part-2">Питання</button>
+        <button class="tab-btn" data-target="part-3">Вікторина</button>
+        <button class="tab-btn" data-target="part-4">Д/З</button>
+      </div>
+
+      <!-- 🍓 PART 1: Повторення -->
+      <section id="part-1" class="lesson-wrapper tab-content active show">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img
+                src="../media/icons/strawberry.svg"
+                class="star"
+                alt="strawberry"
+              />
+              <span>Повторення та структура програми</span>
+            </h2>
+          </div>
+
+          <div class="lesson-content">
+            <h3 id="p1-1">Як працює main() та "меню нижчого рівня"</h3>
+
+            <p>
+              Уяви функцію <span class="accent-string">main()</span> як головний
+              пульт управління програмою або директора фабрики. Вона сама не
+              виконує "брудної роботи" (не перемішує списки і не рахує бали), а
+              лише по черзі роздає команди іншим функціям. Це робить код дуже
+              читабельним: глянувши на
+              <span class="accent-string">main()</span>, ми одразу розуміємо
+              загальний сценарій.
+            </p>
+
+            <div class="callout2" style="margin: 20px 0">
+              Але інколи програма настільки велика, що "директору" потрібні
+              "менеджери". У програмуванні можна створювати функції, які теж
+              керують іншими, дрібнішими функціями.
+            </div>
+
+            <p>
+              У нашому проєкті таким менеджером буде функція
+              <span class="accent-string">run_quiz()</span>. Її завдання —
+              запустити власне саму вікторину. Вона буде циклом проходити по
+              словах і викликати собі на допомогу функції-помічники для
+              створення та перевірки питань та відповідей.
+            </p>
+
+            <p class="bold">Сьогодні ми будуємо таку структуру:</p>
+
+            <pre
+              style="max-height: none"
+            ><code class="language-plaintext nocopy">main()
+ ├── get_practice_words()
+ ├── limit_words()
+ ├── choose_mode()
+ ├── run_quiz()
+ │      ├── make_question()   ← викликається для кожного слова
+ │      └── ask_question()    ← викликається для кожного слова
+ └── show_result()</code></pre>
+
+            <!-- ЗАВДАННЯ 1 -->
+            <details class="task" open>
+              <summary><h4>Завдання 1: Основа проєкту</h4></summary>
+
+              <div>
+                <!-- <hr /> -->
+
+                <ol style="line-height: 1.8">
+                  <li>
+                    Створи новий файл для проєкту (<span class="accent-string"
+                      >vocab_app.py</span
+                    >).
+                  </li>
+                  <li>Скопіюй туди стартовий код (наведений нижче).</li>
+                  <li>
+                    Допиши функцію <span class="accent-string">main()</span>.
+                    Всередині неї виклич функції
+                    <span class="accent-string">get_practice_words</span>,
+                    <span class="accent-string">limit_words</span> та
+                    <span class="accent-string">choose_mode</span>, обов'язково
+                    зберігши їхній результат у відповідні змінні (наприклад,
+                    <span class="accent-string">practice_words</span> та
+                    <span class="accent-string">training_mode</span>).
+                  </li>
+                  <li>Запусти код і перевір, чи немає помилок.</li>
+                </ol>
+
+                <!-- <hr /> -->
+
+                <p class="bold" style="margin-top: 20px">
+                  Початковий код для копіювання:
+                </p>
+
+                <pre><code class="language-python">import random
+
+WORDS = [
+    {"eng": "always", "ukr": "завжди"},
+    {"eng": "usually", "ukr": "зазвичай"},
+    {"eng": "often", "ukr": "часто"},
+    {"eng": "sometimes", "ukr": "іноді"},
+    {"eng": "rarely", "ukr": "рідко"},
+    {"eng": "never", "ukr": "ніколи"},
+]
+
+# 🌻 Завдання 1 - для повторення, напиши функцію main()
+# ...
+
+def get_practice_words():
+    practice_words = WORDS.copy()
+    random.shuffle(practice_words)
+    return practice_words
+
+def limit_words(words):
+    print(f"\n📚 There are {len(words)} words in the list.")
+    limit = int(input("How many words would you like to practice? "))
+    return words[:limit]
+
+def choose_mode():
+    print("\nHow would you like to practice?")
+    print("1️⃣  English → Ukrainian")
+    print("2️⃣  Ukrainian → English")
+    mode = input("Choose mode (1 or 2): ")
+    return int(mode)
+
+# 🌻 Завдання 2a
+def make_question(word, mode):
+    pass
+
+# 🌻 Завдання 3a
+def ask_question(question, answer):
+    pass
+
+# 🌻 Завдання 4 - створи з нуля функцію run_quiz
+
+# 🌺 Домашнє завдання
+def show_result(words, score):
+    pass
+
+if __name__ == "__main__":
+    main()
+
+    # 🍀 Завдання 2b - протестуй make_question
+    # ...
+
+    # 🍀 Завдання 3b - протестуй ask_question
+    # запусти програму двічі, ввівши по-черзі правильний і неправильний переклад
+    # ...
+</code></pre>
+
+                <!-- ОЧІКУВАНИЙ КОД ДЛЯ ВЧИТЕЛЯ (MAIN)
+                def main():
+                    practice_words = get_practice_words()
+                    practice_words = limit_words(practice_words)
+                    training_mode = choose_mode()
+                -->
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- 🍉 PART 2: Нова тема -->
+      <section id="part-2" class="lesson-wrapper tab-content">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img
+                src="../media/icons/watermelon.svg"
+                class="star"
+                alt="watermelon"
+              />
+              <span>make_question(), ask_question() та тестування</span>
+            </h2>
+          </div>
+
+          <div class="lesson-content">
+            <h3 id="p2-1">Як повернути кілька значень одразу</h3>
+
+            <p>
+              У Python функції можуть повертати не лише одне значення, а одразу
+              кілька. Для цього їх достатньо просто перерахувати через кому
+              після
+              <span class="accent-string">return</span>. А щоб "зловити" ці
+              результати, ми ставимо таку саму кількість змінних через кому під
+              час виклику функції. Наприклад:
+            </p>
+
+            <pre><code class="language-python">import random
+
+def get_two_numbers():
+    num1 = random.randint(1, 6)
+    num2 = random.randint(1, 6)
+    return num1, num2 # 🌻 повертаємо два значення
+
+a, b = get_two_numbers() # 🌻 "ловимо" два значення у дві змінні</code></pre>
+
+            <!-- task 2 (a) -->
+            <details class="task" open>
+              <summary><h4>Завдання 2 (a): Створення питання</h4></summary>
+              <div>
+                <!-- <hr /> -->
+
+                <p>
+                  Напиши функцію
+                  <span class="accent-string">make_question(word, mode)</span>,
+                  яка:
+                </p>
+                <ul style="line-height: 1.8; list-style-type: square">
+                  <li>
+                    <span class="bold">Приймає:</span> одне слово (словник із
+                    ключами <span class="accent-string">"eng"</span> і
+                    <span class="accent-string">"ukr"</span>) та режим
+                    тренування.
+                  </li>
+                  <li>
+                    Дістає зі словника англійське і українське слово за
+                    допомогою ключів.
+                  </li>
+                  <li>
+                    Створює змінні
+                    <span class="accent-string">question</span> і
+                    <span class="accent-string">answer</span>. Якщо
+                    <span class="accent-string">mode == 1</span>, то питання —
+                    англійською, а відповідь — українською. Інакше — навпаки.
+                  </li>
+                  <li>
+                    <span class="bold">Повертає:</span> обидва значення через
+                    кому: <span class="accent-string">question, answer</span>.
+                  </li>
+                </ul>
+
+                <!-- ОЧІКУВАНИЙ КОД ДЛЯ ВЧИТЕЛЯ
+                def make_question(word, mode):
+                    if mode == 1:
+                        question = word.get("eng")
+                        answer = word.get("ukr")
+                    else:
+                        question = word.get("ukr")
+                        answer = word.get("eng")
+                    return question, answer
+                -->
+              </div>
+            </details>
+
+            <hr />
+
+            <h3 id="p2-2">Тестування</h3>
+
+            <p class="bold">Навіщо тестувати кожну функцію окремо?</p>
+
+            <p>
+              При написанні коду часто виникають помилки. Навіть професійні
+              програмісти не пишуть ідеальний робочий код із першої спроби. І
+              чим більше коду, тим більше накопичується помилок, і тим складніше
+              їх стає шукати та виправляти. Тому корисною звичкою є тестування
+              окремих функцій перед тим, як підключати їх у основний проєкт. Для
+              тестування часто вводяться тимчасові тестові дані.
+            </p>
+
+            <!-- task 2 (b) -->
+            <details class="task">
+              <summary><h4>Завдання 2 (b): Тестування</h4></summary>
+              <div>
+                <p>
+                  В самому низу файлу (там, де блок
+                  <span class="accent-string">if __name__ == "__main__":</span
+                  >):
+                </p>
+                <ol style="line-height: 1.8">
+                  <li>
+                    Тимчасово <span class="bold">закоментуй</span> виклик
+                    <span class="accent-string">main()</span>.
+                  </li>
+                  <li>
+                    Створи тестове слово
+                    <span class="accent-string">test_word</span> (наприклад,
+                    <span class="accent-string"
+                      >{"eng": "always", "ukr": "завжди"}</span
+                    >).
+                  </li>
+                  <li>
+                    Виклич свою нову функцію
+                    <span class="accent-string">make_question</span> із режимом
+                    <span class="accent-string">1</span> та виведи результати на
+                    екран.
+                  </li>
+                  <li>
+                    Зроби те саме для режиму
+                    <span class="accent-string">2</span>.
+                  </li>
+                </ol>
+
+                <p class="bold" style="margin-top: 20px">
+                  Текст для копіювання:
+                </p>
+                <pre><code class="language-python">f"Mode 1: {question1} - {answer1}"
+f"Mode 2: {question2} - {answer2}"</code></pre>
+
+                <!-- ОЧІКУВАНИЙ КОД ДЛЯ ВЧИТЕЛЯ
+                if __name__ == "__main__":
+                    # main()
+                    
+                    test_word = {"eng": "always", "ukr": "завжди"}
+                    question1, answer1 = make_question(test_word, 1)
+                    print(f"Mode 1: {question1} - {answer1}")
+                    
+                    question2, answer2 = make_question(test_word, 2)
+                    print(f"Mode 2: {question2} - {answer2}")
+                -->
+              </div>
+            </details>
+
+            <hr />
+
+            <h3 id="p2-3">Повторення: early return (раннє повернення)</h3>
+
+            <p>
+              Замість того, щоб створювати додаткову змінну, записувати в неї
+              результат через <span class="accent-string">if/else</span> і
+              повертати її в самому кінці функції, ми можемо використати підхід
+              <span class="bold">early return</span> (раннє повернення).
+            </p>
+
+            <p>
+              Коли Python зустрічає команду
+              <span class="accent-string">return</span>, він
+              <span class="bold">одразу зупиняє</span> виконання функції і
+              виходить із неї. Тому нам більше не потрібен блок
+              <span class="accent-string">else</span>: якщо умова в
+              <span class="accent-string">if</span> виконається, функція
+              завершить роботу достроково. Якщо ж ні — код просто піде далі.
+            </p>
+
+            <div
+              style="
+                display: flex;
+                gap: 8px;
+                flex-wrap: wrap;
+                margin-bottom: 20px;
+              "
+            >
+              <div style="flex: 1; min-width: 250px">
+                <p class="bold">Звичайний спосіб (з else):</p>
+                <pre
+                  style="max-height: none; font-size: 15px"
+                ><code class="language-python">def check_password(pwd):
+    if pwd == "1234":
+        print("correct")
+        return True
+    else:
+        print("wrong")
+        return False</code></pre>
+              </div>
+              <div style="flex: 1; min-width: 250px">
+                <p class="bold">Early return (без else):</p>
+                <pre
+                  style="max-height: none; font-size: 15px"
+                ><code class="language-python">def check_password(pwd):
+    if pwd == "1234":
+        print("correct")
+        return True  
+    
+    print("wrong")
+    return False</code></pre>
+              </div>
+            </div>
+
+            <!-- task 3 (a) -->
+            <details class="task" open>
+              <summary><h4>Завдання 3 (a): Запит у користувача</h4></summary>
+              <div>
+                <p>
+                  Напиши функцію
+                  <span class="accent-string"
+                    >ask_question(question, answer)</span
+                  >, яка:
+                </p>
+                <ul style="line-height: 1.8; list-style-type: square">
+                  <li>
+                    <span class="bold">Приймає:</span> питання та правильну
+                    відповідь (англійське та українське слово – те питання, яке
+                    повертає <span class="accent-string">make_question</span>).
+                  </li>
+                  <li>
+                    Виводить питання на екран (слово, яке треба перекласти).
+                  </li>
+                  <li>
+                    Зчитує відповідь користувача і зберігає її у змінну (<span
+                      class="accent-string"
+                      >user_input</span
+                    >).
+                  </li>
+                  <li>
+                    Порівнює введене слово із правильною відповіддю. Якщо
+                    правильно — друкує ✅, а якщо ні — друкує ❌ і показує
+                    правильний варіант.
+                  </li>
+                  <li>
+                    <span class="bold">Повертає:</span> логічне значення
+                    <span class="accent-string">True</span> (якщо відповідь
+                    правильна) або
+                    <span class="accent-string">False</span> (якщо ні),
+                    використовуючи підхід
+                    <span class="bold">early return</span>.
+                  </li>
+                </ul>
+
+                <p class="bold" style="margin-top: 20px">
+                  Текст для копіювання:
+                </p>
+                <pre><code class="language-python">f"\n📝 Translate: {question}"
+"> "
+"✅ Correct!"
+f"❌ Correct answer: {answer}"</code></pre>
+
+                <!-- ОЧІКУВАНИЙ КОД ДЛЯ ВЧИТЕЛЯ
+                def ask_question(question, answer):
+                    print(f"\n📝 Translate: {question}")
+                    user_input = input("> ")
+
+                    if user_input == answer:
+                        print("✅ Correct!")
+                        return True
+                    
+                    print(f"❌ Correct answer: {answer}")
+                    return False
+                -->
+              </div>
+            </details>
+
+            <!-- task 3 (b) -->
+            <details class="task">
+              <summary><h4>Завдання 3 (b): Тестування</h4></summary>
+              <div>
+                <ol style="line-height: 1.8">
+                  <li>
+                    Закоментуй попередній тест для
+                    <span class="accent-string">make_question</span>.
+                  </li>
+                  <li>
+                    Протестуй нову функцію
+                    <span class="accent-string">ask_question</span> (передай їй
+                    будь-яке тестове слово, наприклад
+                    <span class="accent-string">"always"</span> та
+                    <span class="accent-string">"завжди"</span>).
+                  </li>
+                  <li>
+                    Запусти програму двічі: перший раз навмисно введи правильну
+                    відповідь, а другий — неправильну, щоб перевірити обидва
+                    можливі сценарії.
+                  </li>
+                </ol>
+
+                <!-- ОЧІКУВАНИЙ КОД ДЛЯ ВЧИТЕЛЯ
+                if __name__ == "__main__":
+                    # main()
+                    
+                    # ... попередні тести закоментовані ...
+
+                    is_correct = ask_question("always", "завжди")
+                -->
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- 🍋 PART 3: Проєкт -->
+      <section id="part-3" class="lesson-wrapper tab-content">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img src="../media/icons/lemon.svg" class="star" alt="lemon" />
+              <span>run_quiz() та збирання проєкту</span>
+            </h2>
+          </div>
+
+          <div class="lesson-content">
+            <h3 id="p3-1">Менеджер другого рівня: run_quiz()</h3>
+
+            <p>
+              Настав час створити нашого "менеджера другого рівня" – функцію
+              <span class="accent-string">run_quiz</span>. Ця функція пройдеться
+              по черзі по кожному слову зі списку за допомогою циклу
+              <span class="accent-string">for</span> і для кожного слова сформує
+              питання, задасть його користувачу, перевірить його відповідь, і,
+              нарешті, порахує і поверне нам загальну кількість правильних
+              відповідей за все тренування. По суті, це основна логіка нашої
+              програми.
+            </p>
+
+            <details class="task" open>
+              <summary><h4>Завдання 4: Запуск вікторини</h4></summary>
+              <div>
+                <p>
+                  Напиши функцію
+                  <span class="accent-string">run_quiz(words, mode)</span>, яка:
+                </p>
+                <ul style="line-height: 1.8; list-style-type: square">
+                  <li>
+                    <span class="bold">Приймає:</span> список слів та обраний
+                    режим тренування.
+                  </li>
+                  <li>
+                    Створює змінну-лічильник
+                    <span class="accent-string">score = 0</span>.
+                  </li>
+                  <li>
+                    Циклом <span class="accent-string">for</span> проходить по
+                    кожному слову зі списку.
+                  </li>
+                  <li>
+                    Всередині циклу:
+                    <ol style="line-height: 1.6; margin-top: 5px">
+                      <li>
+                        Викликає
+                        <span class="accent-string">make_question</span>, щоб
+                        отримати пару "питання-відповідь".
+                      </li>
+                      <li>
+                        Передає їх у функцію
+                        <span class="accent-string">ask_question</span> та
+                        зберігає її результат (<span class="accent-string"
+                          >True</span
+                        >
+                        або <span class="accent-string">False</span>).
+                      </li>
+                      <li>
+                        Якщо відповідь була
+                        <span class="accent-string">True</span>, збільшує
+                        <span class="accent-string">score</span> на
+                        <span class="accent-string">1</span>.
+                      </li>
+                    </ol>
+                  </li>
+                  <li>
+                    <span class="bold">Повертає:</span> фінальний результат
+                    лічильника <span class="accent-string">score</span> після
+                    завершення циклу.
+                  </li>
+                </ul>
+
+                <!-- ОЧІКУВАНИЙ КОД ДЛЯ ВЧИТЕЛЯ
+                def run_quiz(words, mode):
+                    score = 0
+                    for word in words:
+                        question, answer = make_question(word, mode)
+                        is_correct = ask_question(question, answer)
+                        if is_correct:
+                            score += 1
+                    return score
+                -->
+              </div>
+            </details>
+
+            <hr />
+
+            <h3 id="p3-2">Збираємо все докупи</h3>
+            <p>
+              В кінці файлу закоментуй усі тестові блоки і
+              <span class="bold">розкоментуй</span> виклик
+              <span class="accent-string">main()</span>.
+            </p>
+            <p>
+              Всередині <span class="accent-string">main()</span> додай виклик
+              <span class="accent-string">run_quiz</span>, збережи його
+              результат у змінну
+              <span class="accent-string">final_score</span> та надрукуй
+              підсумок за допомогою команди нижче. Нарешті, запусти програму і
+              перевір, як все працює.
+            </p>
+
+            <pre><code class="language-python">print(f"\nScore: {final_score}/{len(practice_words)}")</code></pre>
+
+            <!-- ОЧІКУВАНИЙ КОД ДЛЯ ВЧИТЕЛЯ
+            def main():
+                practice_words = get_practice_words()
+                practice_words = limit_words(practice_words)
+                training_mode = choose_mode()
+                
+                final_score = run_quiz(practice_words, training_mode)
+                print(f"\nScore: {final_score}/{len(practice_words)}")
+            -->
+          </div>
+        </div>
+      </section>
+
+      <!-- 🍊 PART 4: Домашнє завдання -->
+      <section id="part-4" class="lesson-wrapper tab-content">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img src="../media/icons/orange.svg" class="star" alt="orange" />
+              <span>Домашнє завдання</span>
+            </h2>
+          </div>
+
+          <div class="lesson-content">
+            <h3>Фінальний штрих: show_result()</h3>
+
+            <p>
+              Зараз фінальний результат гри виводить звичайний
+              <span class="accent-string">print()</span> в кінці функції
+              <span class="accent-string">main()</span>. Твоє завдання — зробити
+              код ще чистішим і винести цей етап теж в окрему функцію із назвою
+              <span class="accent-string">show_result</span>. Подумай, які
+              параметри ця функція має приймати (яка зовнішню інформацію їй
+              потрібно передати) і як правильно викликати її в
+              <span class="accent-string">main</span> (зверни увагу, що вона
+              лише друкує текст, але нічого не повертає).
+            </p>
+
+            <p class="bold" style="margin-top: 20px">Текст для копіювання:</p>
+            <pre><code class="language-python">f"\n📊 You've got {набрані_бали}/{кількість_слів} correct!"</code></pre>
+
+            <!-- ОЧІКУВАНИЙ КОД ДЛЯ ВЧИТЕЛЯ
+            def show_result(words, score):
+                print(f"\n📊 You've got {score}/{len(words)} correct!")
+
+            def main():
+                practice_words = get_practice_words()
+                practice_words = limit_words(practice_words)
+                training_mode = choose_mode()
+                final_score = run_quiz(practice_words, training_mode)
+                show_result(practice_words, final_score)
+            -->
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>🌷 🍓 🌿 Made by Olena Hapchyna 🌿 🍓 🌷</p>
+
+      <div class="footer-credits">
+        <span
+          >Fruit icons by
+          <a
+            href="https://www.svgrepo.com/collection/fruits-vectors/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >An Nguyen</a
+          ></span
+        >
+        |
+        <a href="../credits.html" target="_blank">Credits & Licenses</a>
+      </div>
+    </footer>
+
+    <button
+      id="scrollToTopBtn"
+      class="scroll-to-top"
+      aria-label="Scroll to top"
+    >
+      <img src="../media/icons/apple.svg" />
+    </button>
+
+    <dialog id="clear-confirm-dialog" class="custom-dialog">
+      <div class="dialog-content">
+        <h3>⚠️ Attention!</h3>
+        <p>Do you really want to delete ALL your answers and start over?</p>
+        <div class="dialog-actions">
+          <button type="button" id="dialog-cancel-btn">No</button>
+          <button type="button" id="dialog-confirm-btn">Yes, delete</button>
+        </div>
+      </div>
+    </dialog>
+  </body>
+</html>
