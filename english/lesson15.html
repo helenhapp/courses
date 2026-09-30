@@ -1,0 +1,1405 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Навчальні матеріали" />
+
+    <link rel="icon" type="image/svg+xml" href="../media/icons/carambola.svg" />
+
+    <title>English Lesson 15</title>
+
+    <script>
+      const savedTheme = localStorage.getItem("lms_theme") || "light";
+      document.documentElement.setAttribute("data-theme", savedTheme);
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Fira+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Tektur:wght@400..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="../style.css?v=2.0" />
+    <script src="../script.js?v=2.0" defer></script>
+  </head>
+
+  <body>
+    <!-- transition curtain -->
+    <div class="transition-curtain"></div>
+
+    <!-- top-bar -->
+    <div id="nav-container">
+      <nav class="top-bar">
+        <div class="logo-container">
+          <img
+            src="../media/icons/carambola.svg"
+            alt="Logo"
+            class="site-logo"
+          />
+        </div>
+
+        <div class="top-bar__controls">
+          <label class="toggle-switch" aria-label="Перемикач теми">
+            <input type="checkbox" id="theme-checkbox" />
+            <span class="slider">
+              <span class="icon sun"
+                ><img src="../media/icons/stars.svg"
+              /></span>
+              <span class="icon moon"
+                ><img src="../media/icons/moon.svg"
+              /></span>
+            </span>
+          </label>
+          <button
+            id="dyslexia-mode-btn"
+            class="wide-toggle"
+            title="Шрифт для дислектиків"
+          >
+            Aa
+          </button>
+        </div>
+      </nav>
+    </div>
+
+    <!-- lesson header -->
+    <header>
+      <div class="title-container">
+        <h1 id="lesson-title">English: 15</h1>
+      </div>
+
+      <p class="topic">Prologue (Part 2/2)</p>
+
+      <hr class="pretty-divider" />
+    </header>
+
+    <!-- lesson content -->
+    <main>
+      <!-- tab buttons -->
+      <div class="tabs-nav">
+        <button class="tab-btn active" data-target="part-1">Vocabulary</button>
+        <button class="tab-btn" data-target="part-2">Grammar</button>
+        <button class="tab-btn" data-target="part-3">Speaking</button>
+        <!-- <button class="tab-btn" data-target="part-4">Homework</button> -->
+      </div>
+
+      <!-- 🍓 PART 1: VOCABULARY & READING -->
+      <section id="part-1" class="lesson-wrapper tab-content active show">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img
+                src="../media/icons/strawberry.svg"
+                class="star"
+                alt="an open book"
+              />
+              <span>Vocabulary & Reading</span>
+            </h2>
+          </div>
+
+          <div class="lesson-content">
+            <h3 id="p1-1">Vocabulary Warm-Up</h3>
+
+            <p class="task-description">
+              Translate the words from English to Ukrainian (skip the words you
+              don't know and try again after reading the text):
+            </p>
+
+            <div style="margin-bottom: 30px">
+              <ol style="line-height: 2.2">
+                <li>
+                  noise →
+                  <input
+                    type="text"
+                    id="l15-v-1"
+                    class="test-input"
+                    style="width: 150px"
+                  />
+                </li>
+                <li>
+                  strange / weird →
+                  <input
+                    type="text"
+                    id="l15-v-2"
+                    class="test-input"
+                    style="width: 150px"
+                  />
+                </li>
+                <li>
+                  to notice →
+                  <input
+                    type="text"
+                    id="l15-v-3"
+                    class="test-input"
+                    style="width: 150px"
+                  />
+                </li>
+                <li>
+                  a note →
+                  <input
+                    type="text"
+                    id="l15-v-4"
+                    class="test-input"
+                    style="width: 150px"
+                  />
+                </li>
+                <li>
+                  curious →
+                  <input
+                    type="text"
+                    id="l15-v-5"
+                    class="test-input"
+                    style="width: 150px"
+                  />
+                </li>
+                <li>
+                  to reach out (for smth) →
+                  <input
+                    type="text"
+                    id="l15-v-6"
+                    class="test-input"
+                    style="width: 150px"
+                  />
+                </li>
+                <li>
+                  to drop (smth) →
+                  <input
+                    type="text"
+                    id="l15-v-7"
+                    class="test-input"
+                    style="width: 150px"
+                  />
+                </li>
+                <li>
+                  pocket →
+                  <input
+                    type="text"
+                    id="l15-v-8"
+                    class="test-input"
+                    style="width: 150px"
+                  />
+                </li>
+                <li>
+                  to find out →
+                  <input
+                    type="text"
+                    id="l15-v-9"
+                    class="test-input"
+                    style="width: 150px"
+                  />
+                </li>
+                <li>
+                  to solve (a mystery) →
+                  <input
+                    type="text"
+                    id="l15-v-10"
+                    class="test-input"
+                    style="width: 150px"
+                  />
+                </li>
+              </ol>
+            </div>
+
+            <hr />
+
+            <h3 id="p1-2">Reading</h3>
+
+            <p style="color: var(--brand2); font-size: 15px">
+              <span class="bold">Завдання:</span> Читаючи текст, зупиняйся після
+              кожної виділеної (чорної) частини речення та визначай, який
+              граматичний час (або часи) у ній використано.
+            </p>
+
+            <div class="callout2">
+              <p>
+                Robin and Miss Lemon have already finished
+                <span class="gloss" data-tr="проводити інвентаризацію"
+                  >doing the inventory</span
+                >. Now they are having tea and
+                <span class="gloss" data-tr="печиво">biscuits</span> together.
+              </p>
+
+              <p>
+                <span style="color: var(--text-soft2)">"Robin, </span>I heard a
+                strange noise <span class="gloss" data-tr="раніше">earlier</span
+                ><span style="color: var(--text-soft2)"
+                  >," says Miss Lemon.</span
+                >
+                "What happened?"
+              </p>
+
+              <p>
+                <span style="color: var(--text-soft2)">"</span>While I was
+                organizing books on the top shelf, I noticed a small note behind
+                them<span style="color: var(--text-soft2)"
+                  >," Robin explains.</span
+                >
+                "I reached out for it, and I dropped
+                <span class="gloss" data-tr="кілька">a few</span> books on the
+                floor."
+              </p>
+
+              <p>
+                <span style="color: var(--text-soft2)">"A note? </span>Do you
+                <span class="gloss" data-tr="все ще/досі">still</span> have
+                it?<span style="color: var(--text-soft2)"
+                  >" asks Miss Lemon.</span
+                >
+                She has always been curious.
+              </p>
+
+              <p>
+                Robin
+                <span class="gloss" data-tr="витягує записку з"
+                  >pulls the note from</span
+                >
+                her pocket and shows it to Miss Lemon. They try to read it
+                together.
+                <span style="color: var(--text-soft2)"
+                  >Some letters are missing from the sentences.</span
+                >
+              </p>
+
+              <p>
+                <span style="color: var(--text-soft2)">"</span>This note is so
+                weird<span style="color: var(--text-soft2)"
+                  >," says Robin.</span
+                >
+                “I have just read it
+                <span class="gloss" data-tr="двічі">twice</span>, but I
+                <span class="gloss" data-tr="все ще/досі">still</span> don’t
+                understand it.”
+              </p>
+
+              <p>
+                <span style="color: var(--text-soft2)">"</span>It really is
+                strange<span style="color: var(--text-soft2)"
+                  >," Miss Lemon
+                  <span class="gloss" data-tr="погоджується">agrees</span
+                  >.</span
+                >
+                "I haven't found out what it means yet,
+                <span class="gloss" data-tr="теж (у заперечному реченні)"
+                  >either</span
+                >." She looks at the note again. "I want to know what it means.
+                Let's solve this
+                <span class="gloss" data-tr="таємниця">mystery</span> together!”
+              </p>
+            </div>
+
+            <hr />
+
+            <h3 id="p1-3">Check Your Understanding</h3>
+            <ol>
+              <li>What have Robin and Miss Lemon already finished?</li>
+              <li>How many times has Robin read the strange note?</li>
+              <li>Have they found out what the note means yet?</li>
+            </ol>
+
+            <hr />
+
+            <h3 id="p1-4">Pronunciation</h3>
+            <ul style="list-style-type: square">
+              <li>biscuit <span class="accent-string">/ˈbɪskɪt/</span></li>
+              <li>curious <span class="accent-string">/ˈkjʊəriəs/</span></li>
+              <li>weird <span class="accent-string">/wɪəd/</span></li>
+              <li>mystery <span class="accent-string">/ˈmɪstri/</span></li>
+              <li>earlier <span class="accent-string">/ˈɜːliə/</span></li>
+              <li>either <span class="accent-string">/ˈaɪðə/</span></li>
+              <li>notice <span class="accent-string">/ˈnəʊtɪs/</span></li>
+              <li>pocket <span class="accent-string">/ˈpɒkɪt/</span></li>
+              <li>genre <span class="accent-string">/ˈʒɒnrə/</span></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- 🍉 PART 2: GRAMMAR -->
+      <section id="part-2" class="lesson-wrapper tab-content">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img
+                src="../media/icons/watermelon.svg"
+                class="star"
+                alt="a watermelon slice"
+              />
+              <span>Grammar</span>
+            </h2>
+          </div>
+
+          <div class="lesson-content">
+            <!-- ===================== 1. PRESENT PERFECT vs PAST SIMPLE ===================== -->
+            <h3 id="p2-1">1. Present Perfect чи Past Simple?</h3>
+            <p>
+              На минулому уроці ми вивчили формулу Present Perfect:
+              <span class="bold">have/has + V3</span>. Сьогодні розберемося,
+              коли вона потрібна, а коли краще вжити
+              <span class="bold">Past Simple</span>.
+            </p>
+
+            <p class="bold">Головна ідея</p>
+            <p>
+              Past Simple розповідає про <span class="bold">минуле</span>.
+              Present Perfect
+              <span class="bold">з'єднує минуле з теперішнім</span>: дія сталася
+              раніше, але нас цікавлять наслідки
+              <span class="bold">зараз</span>.
+            </p>
+
+            <div class="tablecontainer">
+              <table>
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th>Past Simple</th>
+                    <th>Present Perfect</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="bold">Про що ми говоримо</td>
+                    <td>про подію в минулому</td>
+                    <td>про результат або ситуацію зараз</td>
+                  </tr>
+                  <tr>
+                    <td class="bold">Час</td>
+                    <td>названий, завершений (yesterday, ago...)</td>
+                    <td>не названий, або період ще триває</td>
+                  </tr>
+                  <tr>
+                    <td class="bold">Приклад</td>
+                    <td>
+                      <span class="italic">Robin dropped her pen.</span><br />
+                      Вона впустила ручку (і, можливо, вже підняла).
+                    </td>
+                    <td>
+                      <span class="italic">Robin has dropped her pen.</span
+                      ><br />
+                      Ручка лежить на підлозі просто зараз.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p class="bold">Коли використовувати Present Perfect</p>
+            <ul style="list-style-type: square">
+              <li>
+                <span class="bold">Результат, який видно зараз.</span> Не
+                важливо, коли саме це сталося — важливо, що ми маємо тепер.
+                <br />
+                <span class="italic">Robin has arranged the top shelf.</span>
+                (Тепер усі книги стоять акуратно.)
+                <br />
+                <span class="italic">Robin has found a strange note.</span>
+                (Тепер записка в неї, а не на полиці.)
+              </li>
+              <li>
+                <span class="bold">Досвід у житті</span> — ми не кажемо коли
+                саме, а лише чи було це взагалі.
+                <br />
+                <span class="italic"
+                  >Have you ever seen a cat in a library?</span
+                >
+                <br />
+                <span class="italic"
+                  >I have never noticed this door before.</span
+                >
+              </li>
+              <li>
+                <span class="bold">Дія почалася в минулому і триває досі.</span>
+                Це найчастіший випадок.
+                <br />
+                <span class="italic"
+                  >Miss Lemon has worked here for five years.</span
+                >
+                (Вона й зараз тут працює.)
+                <br />
+                <span class="italic">Robin has studied math since 2020.</span>
+                (Вона все ще її вивчає.)
+              </li>
+            </ul>
+
+            <div
+              class="soft-callout"
+              style="margin-bottom: 20px; font-size: 15px; border: none"
+            >
+              <span class="bold">for</span> + скільки часу:
+              <span class="italic">for five years, for two hours</span>
+              <br />
+              <span class="bold">since</span> + з якого моменту:
+              <span class="italic">since 2019, since lunch, since Monday</span>
+            </div>
+
+            <p class="bold">Коли використовувати Past Simple</p>
+            <p>
+              Коли ми називаємо
+              <span class="bold"
+                >конкретний момент або період, який вже закінчився</span
+              >. Навіть якщо це було п'ять хвилин тому.
+            </p>
+            <ul style="list-style-type: square">
+              <li>
+                <span class="italic">Robin found the note yesterday.</span>
+              </li>
+              <li>
+                <span class="italic"
+                  >We found out the truth five minutes ago.</span
+                >
+              </li>
+              <li>
+                <span class="italic">Miss Lemon started this job in 2019.</span>
+              </li>
+            </ul>
+
+            <p class="bold">Слова-підказки</p>
+            <div class="tablecontainer">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Past Simple</th>
+                    <th>Present Perfect</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>yesterday</td>
+                    <td>already</td>
+                  </tr>
+                  <tr>
+                    <td>last night / week / month / year</td>
+                    <td>just</td>
+                  </tr>
+                  <tr>
+                    <td>an hour ago, two days ago</td>
+                    <td>yet</td>
+                  </tr>
+                  <tr>
+                    <td>in 2020, on Monday</td>
+                    <td>ever, never, before</td>
+                  </tr>
+                  <tr>
+                    <td>when I was a child</td>
+                    <td>for, since</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p class="bold">Період, який ще триває</p>
+            <p>
+              Слова
+              <span class="italic"
+                >today, this week, this month, this year</span
+              >
+              можуть бути з Present Perfect, бо це час, який це не завершився.
+            </p>
+            <p>
+              Слова
+              <span class="italic">this morning / afternoon / evening</span>
+              можуть бути і з Past Simple, і з Present Perfect, залежно від
+              того,
+              <span class="bold">чи цей період вже закінчився, чи ні</span>.
+            </p>
+
+            <ul style="list-style-type: square">
+              <li>
+                Зараз 6 вечора:
+                <span class="italic">I saw Robin this morning.</span> (Past
+                Simple) — ранок вже минув.
+              </li>
+              <li>
+                Зараз 10 ранку:
+                <span class="italic">I have seen Robin this morning.</span>
+                (Present Perfect) — ранок ще триває.
+              </li>
+              <li>
+                <span class="italic"
+                  >Robin has noticed three strange things in the library this
+                  week.</span
+                >
+                — цей тиждень ще не закінчився.
+              </li>
+            </ul>
+
+            <p class="bold" style="margin-bottom: 10px">
+              🌻 Як сказати англійською?
+            </p>
+            <ul style="list-style-type: square; margin-top: 0">
+              <li>Він знайшов цю записку у своїй кишені вчора.</li>
+              <li>
+                Ми дізналися
+                <span class="gloss" data-tr="the truth">правду</span>
+                п'ять хвилин тому.
+              </li>
+              <li>Я ніколи раніше не чула цю пісню.</li>
+              <li>
+                Він не розгадав <span class="gloss" data-tr="any">жодної</span>
+                таємниці з 2020 року.
+              </li>
+            </ul>
+
+            <hr />
+
+            <!-- ===================== 2. ALREADY / JUST / YET ===================== -->
+            <h3 id="p2-2">2. Already, just, yet</h3>
+            <p>
+              Ці три слова дуже часто "супроводжують" Present Perfect. Вони
+              розповідають, <span class="bold">наскільки недавно</span> щось
+              сталося, або чи це <span class="bold">вже сталося</span>.
+            </p>
+
+            <div class="tablecontainer">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Слово</th>
+                    <th>Значення</th>
+                    <th>Де стоїть</th>
+                    <th>Приклад</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="bold">already</td>
+                    <td>вже (можливо, раніше, ніж очікували)</td>
+                    <td>
+                      між <span class="bold">have/has</span> і
+                      <span class="bold">V3</span>
+                    </td>
+                    <td>
+                      <span class="italic"
+                        >Robin has <span class="bold">already</span> found three
+                        notes.</span
+                      >
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="bold">just</td>
+                    <td>щойно (дуже недавно)</td>
+                    <td>
+                      між <span class="bold">have/has</span> і
+                      <span class="bold">V3</span>
+                    </td>
+                    <td>
+                      <span class="italic"
+                        >Miss Lemon has <span class="bold">just</span> noticed a
+                        tiny bird drawing on the note.</span
+                      >
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="bold">yet</td>
+                    <td>ще не (в запереченні)<br />вже? (в питанні)</td>
+                    <td><span class="bold">в кінці</span> речення</td>
+                    <td>
+                      <span class="italic"
+                        >They haven't solved the mystery
+                        <span class="bold">yet</span>.</span
+                      ><br />
+                      <span class="italic"
+                        >Have you found out what it means
+                        <span class="bold">yet</span>?</span
+                      >
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p>
+              <span class="bold">Запам'ятай:</span> already і just стоять
+              всередині речення, а yet — тільки в кінці й лише в запереченнях та
+              питаннях.
+            </p>
+
+            <div
+              class="soft-callout"
+              style="margin-bottom: 20px; font-size: 15px; border: none"
+            >
+              Ти можеш також почути слова
+              <span class="italic">recently</span> (нещодавно) та
+              <span class="italic">lately</span> (останнім часом). На відміну
+              від <span class="italic">just</span> (одна конкретна мить), вони
+              говорять про довший період — останні кілька днів чи тижнів.
+              Сьогодні ми їх не тренуємо — лише знай, що вони існують.
+            </div>
+
+            <p class="bold" style="margin-bottom: 10px">
+              🌻 Як сказати англійською?
+            </p>
+            <ul style="list-style-type: square; margin-top: 0">
+              <li>
+                Він щойно впустив книгу
+                <span class="gloss" data-tr="to the floor">на підлогу</span>.
+              </li>
+              <li>Я вже виконала всі завдання.</li>
+              <li>
+                Вони ще не дізналися
+                <span class="gloss" data-tr="the truth">правду</span>.
+              </li>
+            </ul>
+
+            <hr />
+
+            <!-- ===================== 3. PRESENT PERFECT WITH TO BE ===================== -->
+            <h3 id="p2-3">3. Present Perfect із дієсловом "to be"</h3>
+            <p>
+              Дієслово <em>to be</em> має три форми, які ми вже знаємо:
+              <span class="bold">is/are</span> (Present Simple) та
+              <span class="bold">was/were</span> (Past Simple). У Present
+              Perfect з'являється третя форма (V3) —
+              <span class="bold">been</span>.
+            </p>
+
+            <div class="tablecontainer">
+              <table>
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th>Формула</th>
+                    <th>Приклад</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="bold">+</td>
+                    <td>have/has + <span class="bold">been</span></td>
+                    <td>
+                      <span class="italic">She has been busy all day.</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="bold">−</td>
+                    <td>haven't/hasn't + <span class="bold">been</span></td>
+                    <td>
+                      <span class="italic"
+                        >She hasn't been here since Monday.</span
+                      >
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="bold">?</td>
+                    <td>Have/Has + підмет + <span class="bold">been</span>?</td>
+                    <td><span class="italic">Has she been here long?</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p>Після <em>been</em> може стояти:</p>
+            <ul style="list-style-type: square">
+              <li>
+                <span class="bold">іменник</span> (хто вона?):
+                <span class="italic"
+                  >She has been a librarian for six years.</span
+                >
+              </li>
+              <li>
+                <span class="bold">прикметник</span> (яка вона?):
+                <span class="italic">He has been busy all day.</span>
+              </li>
+              <li>
+                <span class="bold">місце</span> (де вона?):
+                <span class="italic"
+                  >Robin has been at the front desk since lunch.</span
+                >
+                (вона й досі там)
+              </li>
+            </ul>
+
+            <p>Порівняй усі три форми:</p>
+            <div class="tablecontainer">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Present Simple</th>
+                    <th>Past Simple</th>
+                    <th>Present Perfect</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Miss Lemon <span class="bold">is</span> curious.</td>
+                    <td>
+                      Miss Lemon <span class="bold">was</span> curious yesterday
+                      too.
+                    </td>
+                    <td>
+                      Miss Lemon <span class="bold">has been</span> curious her
+                      whole life.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Miss Lemon <span class="bold">is</span> a librarian.
+                    </td>
+                    <td>
+                      Before this job, she <span class="bold">was</span> a
+                      teacher.
+                    </td>
+                    <td>
+                      Miss Lemon <span class="bold">has been</span> a librarian
+                      since 2019.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Robin <span class="bold">is</span> at the front desk.
+                    </td>
+                    <td>
+                      Robin <span class="bold">was</span> at the front desk an
+                      hour ago.
+                    </td>
+                    <td>
+                      Robin <span class="bold">has been</span> at the front desk
+                      since lunch.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div
+              class="soft-callout"
+              style="margin-bottom: 20px; font-size: 15px; border: none"
+            >
+              Є ще фраза <em>have been to</em> (бути десь і повернутися, тобто
+              відвідати місце). Це окрема тема — сьогодні ми говоримо лише про
+              просте значення "бути кимось, якимось або десь".
+            </div>
+
+            <p class="bold" style="margin-bottom: 10px">
+              🌻 Як сказати англійською?
+            </p>
+            <ul style="list-style-type: square; margin-top: 0">
+              <li>Це завжди було таємницею.</li>
+              <li>Я завжди була допитливою.</li>
+              <li>Студенти сьогодні весь день у бібліотеці.</li>
+            </ul>
+
+            <hr />
+
+            <h3 id="p2-practice">Practice</h3>
+
+            <!-- exercise 1 -->
+            <details class="task" name="practice" open>
+              <summary><h4>Exercise 1</h4></summary>
+              <div>
+                <p class="task-description">
+                  Complete the sentences about Cinnamon the cat with the Present
+                  Perfect or Past Simple form of the verb in brackets.
+                </p>
+
+                <p style="line-height: 2.2">
+                  Cinnamon
+                  <input
+                    type="text"
+                    id="l15-p2-ex1-1"
+                    class="test-input"
+                    style="width: 130px"
+                    placeholder="live"
+                  />
+                  in this library for five years and she
+                  <input
+                    type="text"
+                    id="l15-p2-ex1-2"
+                    class="test-input"
+                    style="width: 140px"
+                    placeholder="find"
+                  />
+                  many cozy places to sleep since her first day here. She
+                  <input
+                    type="text"
+                    id="l15-p2-ex1-3"
+                    class="test-input"
+                    style="width: 170px"
+                    placeholder="never / sleep"
+                  />
+                  in a boring corner. For example, yesterday she
+                  <input
+                    type="text"
+                    id="l15-p2-ex1-4"
+                    class="test-input"
+                    style="width: 130px"
+                    placeholder="sleep"
+                  />
+                  on top of the highest shelf.
+                </p>
+
+                <p style="line-height: 2.2">
+                  Look! Robin
+                  <input
+                    type="text"
+                    id="l15-p2-ex1-5"
+                    class="test-input"
+                    style="width: 140px"
+                    placeholder="drop"
+                  />
+                  a biscuit. It's on the floor now. Last time, when Robin
+                  <input
+                    type="text"
+                    id="l15-p2-ex1-6"
+                    class="test-input"
+                    style="width: 130px"
+                    placeholder="drop"
+                  />
+                  some food, Cinnamon
+                  <input
+                    type="text"
+                    id="l15-p2-ex1-7"
+                    class="test-input"
+                    style="width: 130px"
+                    placeholder="take"
+                  />
+                  it and
+                  <input
+                    type="text"
+                    id="l15-p2-ex1-8"
+                    class="test-input"
+                    style="width: 130px"
+                    placeholder="run"
+                  />
+                  away with it.
+                </p>
+
+                <p style="line-height: 2.2">
+                  Cinnamon
+                  <input
+                    type="text"
+                    id="l15-p2-ex1-9"
+                    class="test-input"
+                    style="width: 170px"
+                    placeholder="not / break"
+                  />
+                  anything in the library yet. Though she almost
+                  <input
+                    type="text"
+                    id="l15-p2-ex1-10"
+                    class="test-input"
+                    style="width: 110px"
+                    placeholder="break"
+                  />
+                  an expensive vase last year.
+                </p>
+              </div>
+            </details>
+
+            <!-- exercise 2 -->
+            <details class="task" name="practice">
+              <summary><h4>Exercise 2</h4></summary>
+              <div>
+                <p class="task-description">
+                  This note from the front desk has 5 mistakes with verb forms.
+                  Find and correct them.
+                </p>
+
+                <div class="callout2">
+                  <p>
+                    Robin is working at the
+                    <span class="gloss" data-tr="стійка реєстрації"
+                      >front desk</span
+                    >
+                    today. The first student has come to the library at 9 AM to
+                    <span class="gloss" data-tr="взяти / позичити">borrow</span>
+                    a
+                    <span class="gloss" data-tr="детективний роман"
+                      >mystery novel</span
+                    >. She said she has never read anything from this
+                    <span class="gloss" data-tr="жанр">genre</span>. Robin
+                    showed her
+                    <span class="gloss" data-tr="потрібну полицю"
+                      >the right shelf</span
+                    >
+                    and recommended some books by Agatha Christie. "I have
+                    organized this shelf by the authors’ names yesterday, so the
+                    books
+                    <span class="gloss" data-tr="легко знайти"
+                      >are easy to find</span
+                    >," Robin explained.
+                  </p>
+
+                  <p>
+                    Later, another student returned a few
+                    <span class="gloss" data-tr="протерміновані">overdue</span>
+                    books. Then she went to the reading room to study, but she
+                    has forgot her library card on the front desk. Robin ran
+                    <span class="gloss" data-tr="за нею">after her</span> to
+                    return it. The student already took a seat
+                    <span class="gloss" data-tr="біля вікна">by the window</span
+                    >, and she
+                    <span class="gloss" data-tr="щойно">just</span> started
+                    reading.
+                  </p>
+                </div>
+
+                <p
+                  style="
+                    margin-top: 15px;
+                    font-size: 15px;
+                    color: var(--text-soft);
+                  "
+                >
+                  <span class="bold">Note:</span> Фраза
+                  <span class="italic">to take a seat</span>
+                  перекладається як "сісти" або "зайняти місце". Це трохи більш
+                  ввічлива альтернатива до <span class="italic">sit down</span>.
+                </p>
+
+                <textarea
+                  id="l15-p2-ex2"
+                  class="test-textarea"
+                  placeholder="..."
+                  rows="6"
+                ></textarea>
+              </div>
+            </details>
+
+            <!-- exercise 3 -->
+            <details class="task" name="practice">
+              <summary><h4>Exercise 3</h4></summary>
+              <div>
+                <p class="task-description">
+                  Write already, just or yet. The hint in brackets will help
+                  you.
+                </p>
+                <ol style="line-height: 2.2">
+                  <li>
+                    Smell that! Miss Lemon has
+                    <input
+                      type="text"
+                      id="l15-p2-ex3-1"
+                      class="test-input"
+                      style="width: 100px"
+                    />
+                    made tea. (a moment ago)
+                  </li>
+                  <li>
+                    "Please arrange these books." "I have
+                    <input
+                      type="text"
+                      id="l15-p2-ex3-2"
+                      class="test-input"
+                      style="width: 100px"
+                    />
+                    arranged them!" (earlier than expected)
+                  </li>
+                  <li>
+                    Robin hasn't opened the box
+                    <input
+                      type="text"
+                      id="l15-p2-ex3-3"
+                      class="test-input"
+                      style="width: 100px"
+                    />. (not done)
+                  </li>
+                  <li>
+                    Have you read the note
+                    <input
+                      type="text"
+                      id="l15-p2-ex3-4"
+                      class="test-input"
+                      style="width: 100px"
+                    />? (asking if it's done)
+                  </li>
+                  <li>
+                    It's only 9 AM, but Cinnamon has
+                    <input
+                      type="text"
+                      id="l15-p2-ex3-5"
+                      class="test-input"
+                      style="width: 100px"
+                    />
+                    found a sunny spot! (earlier than expected)
+                  </li>
+                  <li>
+                    Wow! I have
+                    <input
+                      type="text"
+                      id="l15-p2-ex3-6"
+                      class="test-input"
+                      style="width: 100px"
+                    />
+                    made a discovery! (a moment ago)
+                  </li>
+                </ol>
+              </div>
+            </details>
+
+            <!-- exercise 4 -->
+            <details class="task" name="practice">
+              <summary><h4>Exercise 4</h4></summary>
+              <div>
+                <p class="task-description">
+                  Complete the text about a university student with is, was or
+                  been.
+                </p>
+                <div class="callout2" style="line-height: 2.2">
+                  My name is Alex, and I have
+                  <input
+                    type="text"
+                    id="l15-p2-ex5-1"
+                    class="test-input"
+                    style="width: 80px"
+                  />
+                  a math student in this university for two years. Last year,
+                  the library
+                  <input
+                    type="text"
+                    id="l15-p2-ex5-2"
+                    class="test-input"
+                    style="width: 80px"
+                  />
+                  much quieter, and I miss it. Our math club
+                  <input
+                    type="text"
+                    id="l15-p2-ex5-3"
+                    class="test-input"
+                    style="width: 80px"
+                  />
+                  small now, but it has always
+                  <input
+                    type="text"
+                    id="l15-p2-ex5-4"
+                    class="test-input"
+                    style="width: 80px"
+                  />
+                  friendly. This week, I have
+                  <input
+                    type="text"
+                    id="l15-p2-ex5-5"
+                    class="test-input"
+                    style="width: 80px"
+                  />
+                  in the library almost every day after class. But yesterday the
+                  library
+                  <input
+                    type="text"
+                    id="l15-p2-ex5-6"
+                    class="test-input"
+                    style="width: 80px"
+                  />
+                  was closed because it
+                  <input
+                    type="text"
+                    id="l15-p2-ex5-7"
+                    class="test-input"
+                    style="width: 80px"
+                  />
+                  the inventory day.
+                </div>
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- 🍋 PART 3: SPEAKING -->
+      <section id="part-3" class="lesson-wrapper tab-content">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img
+                src="../media/icons/lemon.svg"
+                class="star"
+                alt="a lemon slice"
+              />
+              <span>Speaking</span>
+            </h2>
+          </div>
+
+          <div class="lesson-content">
+            <h3 id="p3-1">Part 1 — Yesterday's Mistake</h3>
+
+            <p>
+              Your tutor plays <span class="bold">Robin</span> and you play
+              <span class="bold">Miss Lemon</span>. Robin wants to talk about
+              yesterday's mistake with the books. Answer her questions — think
+              carefully about which tense fits best!
+            </p>
+
+            <div class="callout2" style="line-height: 1.6; margin-bottom: 20px">
+              <p>
+                <span class="accent">Robin:</span> Miss Lemon, can I ask you
+                something? Yesterday, I put the books in order by color, not by
+                the authors' names. Why was that wrong?
+              </p>
+              <p style="margin-bottom: 15px">
+                <span class="bold">Miss Lemon (you):</span> ...
+              </p>
+
+              <p>
+                <span class="accent">Robin:</span> I understand now. Have I
+                already fixed my mistake?
+              </p>
+              <p style="margin-bottom: 15px">
+                <span class="bold">Miss Lemon (you):</span> ... <br />
+                <span
+                  class="italic"
+                  style="color: var(--text-soft); font-size: 0.95em"
+                  >(Answer with already)</span
+                >
+              </p>
+
+              <p>
+                <span class="accent">Robin:</span> What did you do when you saw
+                my mistake yesterday?
+              </p>
+              <p style="margin-bottom: 15px">
+                <span class="bold">Miss Lemon (you):</span> ...
+              </p>
+
+              <p>
+                <span class="accent">Robin:</span> And have you found any new
+                mistakes today?
+              </p>
+              <p>
+                <span class="bold">Miss Lemon (you):</span> ... <br />
+                <span
+                  class="italic"
+                  style="color: var(--text-soft); font-size: 0.95em"
+                  >(Answer with yet)</span
+                >
+              </p>
+            </div>
+
+            <textarea
+              style="margin-top: 0"
+              id="l15-speaking-notes-1"
+              class="test-textarea"
+              placeholder="You can write some notes here..."
+            ></textarea>
+
+            <hr />
+
+            <h3 id="p3-2">Part 2 — Retell the Story</h3>
+
+            <p>
+              Now retell what happened this morning — in your own words! Use
+              each word from the list below <span class="bold">once</span>, in
+              this order. You can start with
+              <span class="italic">"This morning..."</span>
+            </p>
+
+            <div
+              style="
+                margin-bottom: 20px;
+                font-size: 15px;
+                color: var(--text-soft);
+              "
+            >
+              <ul style="list-style-type: square">
+                <li>
+                  Robin: "Have you ever organized the history books by color?"
+                </li>
+                <li>
+                  Miss Lemon: "No, I have never organized books by color."
+                </li>
+              </ul>
+            </div>
+
+            <p><span class="bold">Your keywords, in order:</span></p>
+            <ol style="line-height: 2">
+              <li>noise</li>
+              <li>to notice</li>
+              <li>a note</li>
+              <li>to reach out</li>
+              <li>to drop</li>
+              <li>pocket</li>
+              <li>curious</li>
+              <li>to find out</li>
+            </ol>
+
+            <textarea
+              id="l15-speaking-notes-2"
+              class="test-textarea"
+              placeholder="You can write some notes here..."
+            ></textarea>
+
+            <hr />
+
+            <h3 id="p3-3">Part 3 — What Do You Think?</h3>
+
+            <p>
+              Nobody has read the note yet — the letters are too strange! Before
+              we try to solve it next lesson, talk with Robin about what you
+              think it might mean.
+            </p>
+
+            <p>You can use these sentence starters if you need them:</p>
+
+            <ul style="list-style-type: square; margin-bottom: 20px">
+              <li><span class="italic">I think...</span></li>
+              <li><span class="italic">Maybe...</span></li>
+              <li><span class="italic">I have never seen...</span></li>
+            </ul>
+
+            <div class="callout2" style="line-height: 1.6; margin-bottom: 20px">
+              <p>
+                <span class="accent">Robin:</span> We haven't read the note yet.
+                What do you think it says?
+              </p>
+              <p style="margin-bottom: 15px">
+                <span class="bold">Miss Lemon (you):</span> ...
+              </p>
+
+              <p>
+                <span class="accent">Robin:</span> Do you think someone has left
+                it here on purpose?
+              </p>
+              <p style="margin-bottom: 15px">
+                <span class="bold">Miss Lemon (you):</span> ...
+              </p>
+
+              <p>
+                <span class="accent">Robin:</span> Have you ever found something
+                this strange before?
+              </p>
+              <p style="margin-bottom: 15px">
+                <span class="bold">Miss Lemon (you):</span> ...
+              </p>
+
+              <p>
+                <span class="accent">Robin:</span> Why do you think some letters
+                are missing?
+              </p>
+              <p>
+                <span class="bold">Miss Lemon (you):</span> ... <br />
+                <span
+                  class="italic"
+                  style="color: var(--text-soft); font-size: 0.95em"
+                  >(Finish the lesson: "I haven't found out what it means yet,
+                  but I will find out!")</span
+                >
+              </p>
+            </div>
+
+            <textarea
+              id="l15-speaking-notes-3"
+              class="test-textarea"
+              placeholder="You can write some notes here..."
+            ></textarea>
+
+            <hr />
+
+            <h3 id="p3-4">Translator</h3>
+
+            <!-- 🌍 BUILT-IN TRANSLATOR -->
+            <!-- prettier-ignore -->
+            <div class="translator-module" data-source-lang="en" data-target-lang="uk">
+              <div class="translator-lang-labels">
+                <span class="lang-source">Англійська</span>
+                <button class="swap-lang-btn" title="Swap languages">⇄</button>
+                <span class="lang-target">Українська</span>
+              </div>
+
+              <div class="translator-inputs">
+                <input type="text" class="translator-input" placeholder="Type a word..." />
+                <button class="translate-btn">Translate</button>
+              </div>
+
+              <div class="translator-output" style="display: none"></div>
+            </div>
+
+            <!-- optional notes -->
+            <textarea
+              style="margin-top: 0"
+              id="l15-speaking-notes-translator"
+              class="test-textarea"
+              placeholder="You can write some notes here..."
+            ></textarea>
+          </div>
+        </div>
+      </section>
+
+      <!-- 🍊 PART 4: HOMEWORK -->
+      <section id="part-4" class="lesson-wrapper tab-content">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img src="../media/icons/orange.svg" class="star" alt="orange" />
+              <span>Homework</span>
+            </h2>
+          </div>
+
+          <div class="lesson-content">
+            <h3 id="hw-1">Завдання</h3>
+            <p>
+              Уяви себе в ролі вчителя. Підготуй коротке пояснення своїми
+              словами, як будувати стверджувальні (+) речення в теперішньому
+              доконаному часі (Present Perfect). Для наочності підготуй 4
+              речення-приклади, два з яких використовують правильні дієслова, а
+              два – неправильні (irregular). Представ це пояснення усно вчителю
+              на початку наступного уроку.
+            </p>
+            <!-- optional notes -->
+            <textarea
+              style="margin-top: 0"
+              id="l14-homework-notes"
+              class="test-textarea"
+              placeholder="You can write some notes here..."
+            ></textarea>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>🌷 🍓 🌿 Made by Lena Hapchyna 🌿 🍓 🌷</p>
+
+      <div class="footer-credits">
+        <span
+          >Fruit icons by
+          <a
+            href="https://www.svgrepo.com/collection/fruits-vectors/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >An Nguyen</a
+          ></span
+        >
+        |
+        <a href="../credits.html" target="_blank">Credits & Licenses</a>
+      </div>
+    </footer>
+
+    <button
+      id="scrollToTopBtn"
+      class="scroll-to-top"
+      aria-label="Scroll to top"
+    >
+      <img src="../media/icons/apple.svg" />
+    </button>
+
+    <dialog id="clear-confirm-dialog" class="custom-dialog">
+      <div class="dialog-content">
+        <h3>⚠️ Attention!</h3>
+        <p>Do you really want to delete ALL your answers and start over?</p>
+        <div class="dialog-actions">
+          <button type="button" id="dialog-cancel-btn">No</button>
+          <button type="button" id="dialog-confirm-btn">Yes, delete</button>
+        </div>
+      </div>
+    </dialog>
+
+    <script>
+      document.querySelectorAll(".gloss").forEach(function (el) {
+        var pill = document.createElement("span");
+        pill.className = "tr-pill";
+        pill.textContent = el.getAttribute("data-tr");
+        el.insertAdjacentElement("afterend", pill);
+        function toggle() {
+          pill.classList.toggle("show");
+        }
+        el.addEventListener("click", toggle);
+        el.addEventListener("keydown", function (e) {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            toggle();
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

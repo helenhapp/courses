@@ -124,6 +124,7 @@ body.dyslexia-mode .objective {
 
   --text-main: #233329;
   --text-soft: #5b7566;
+  --text-soft2:rgb(3, 132, 57);
   --title: var(--brand1);
   --link-color: var(--brand2);
   --header-link-bg: transparent;
@@ -170,6 +171,7 @@ body.dyslexia-mode .objective {
 
   --text-main: #f3f3e1;
   --text-soft: #d5d0c3;
+  --text-soft2:rgb(135, 223, 172);
   --title: var(--brand5);
   --link-color: var(--brand3);
   --header-link-bg: transparent;
