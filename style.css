@@ -124,7 +124,7 @@ body.dyslexia-mode .objective {
 
   --text-main: #233329;
   --text-soft: #5b7566;
-  --text-soft2:rgb(3, 132, 57);
+  --text-soft2: rgb(3, 132, 57);
   --title: var(--brand1);
   --link-color: var(--brand2);
   --header-link-bg: transparent;
@@ -171,7 +171,7 @@ body.dyslexia-mode .objective {
 
   --text-main: #f3f3e1;
   --text-soft: #d5d0c3;
-  --text-soft2:rgb(135, 223, 172);
+  --text-soft2: rgb(135, 223, 172);
   --title: var(--brand5);
   --link-color: var(--brand3);
   --header-link-bg: transparent;
@@ -352,6 +352,26 @@ p code {
 [data-theme="dark"] .callout2 {
   border-left: 3px solid var(--brand7);
   background-color: rgb(20, 23, 23);
+}
+
+.kw-pill {
+  display: inline-block;
+  padding: 1px 12px;
+  margin: 2px 4px 2px 0;
+  border: 1px solid var(--brand2);
+  border-radius: 999px;
+  color: var(--brand2);
+  font-size: 14px;
+  line-height: 1.7;
+  white-space: nowrap;
+}
+.sm-card p {
+  margin: 0 0 8px;
+}
+.sm-card .sm-more {
+  margin: 10px 0 0;
+  font-size: 15px;
+  color: var(--text-soft);
 }
 
 .word-bank {
