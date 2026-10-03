@@ -164,13 +164,6 @@
           <div class="lesson-content">
             <h3 id="p1-1">Перевірка домашнього завдання: show_result()</h3>
 
-            <p>
-              Давай перевіримо, як ти реалізувала функцію
-              <span class="accent-string">show_result(words, score)</span>. Твій
-              код у функції <span class="accent-string">main()</span> має
-              виглядати приблизно так:
-            </p>
-
             <pre><code class="language-python">def main():
     practice_words = get_practice_words()
     practice_words = limit_words(practice_words)
@@ -199,52 +192,73 @@ def show_result(words, score):
               кілька помилок.
             </p>
 
-            <div class="callout2" style="margin: 20px 0">
-              <p class="bold" style="margin-bottom: 10px">
-                Що зараз не так з нашою програмою (UX-чеклист):
-              </p>
-              <ul style="list-style-type: square; margin-bottom: 0">
-                <li>
-                  Якщо ввести текст (наприклад,
-                  <span class="accent-string">"two"</span>) замість кількості
-                  слів — програма падає з помилкою
-                  <span class="accent-string">ValueError</span> і закривається.
-                </li>
-                <li>
-                  Якщо під час вибору режиму ввести
-                  <span class="accent-string">3</span> (або будь-яке інше число,
-                  крім 1) — програма працює так, ніби обрано режим 2, замість
-                  того, щоб перепитати (через те, що у нас написано просто
-                  <span class="accent-string">else</span>). А якщо ввести літери
-                  — взагалі падає з помилкою.
-                </li>
-                <li>
-                  Якщо під час відповіді просто випадково натиснути
-                  <span class="accent-string">Enter</span> (нічого не ввівши) —
-                  це зараховується як неправильна відповідь, хоча користувач міг
-                  просто схибити по клавіатурі.
-                </li>
-              </ul>
-            </div>
+            <h4>Що зараз не так з нашою програмою (UX-чеклист):</h4>
 
-            <p>Сьогодні ми навчимося це виправляти двома різними способами!</p>
+            <ul style="list-style-type: square; margin-bottom: 0">
+              <li>
+                Якщо ввести текст (наприклад,
+                <span class="accent-string">"two"</span>) замість кількості слів
+                — програма падає з помилкою
+                <span class="accent-string">ValueError</span> і закривається.
+              </li>
+              <li>
+                Якщо під час вибору режиму ввести
+                <span class="accent-string">3</span> (або будь-яке інше число,
+                крім 1) — програма працює так, ніби обрано режим 2, замість
+                того, щоб перепитати (через те, що у нас написано просто
+                <span class="accent-string">else</span>). А якщо ввести літери —
+                взагалі падає з помилкою.
+              </li>
+              <li>
+                Якщо під час відповіді (переклад слова) випадково натиснути
+                <span class="accent-string">Enter</span> (нічого не ввівши) — це
+                зараховується як неправильна відповідь, хоча користувач міг
+                просто схибити по клавіатурі.
+              </li>
+            </ul>
+
+            <p>
+              Сьогодні ми розглянемо два різні способи, як покращити UX дизайн
+              нашої програми.
+            </p>
 
             <hr />
 
             <h3 id="p1-3">Повторення: while + not in</h3>
 
             <p>
-              Цикл <span class="accent-string">while</span> виконує своє тіло
-              знову і знову, поки умова залишається
+              Цикл <span class="accent-string">while</span> дозволяє нам
+              повторювати певний блок коду знову і знову, поки умова залишається
               <span class="accent-string">True</span>. На відміну від
-              <span class="accent-string">for</span>, ми заздалегідь не знаємо,
-              скільки разів він повториться.
+              <span class="accent-string">for</span>, ми можемо заздалегідь не
+              знати, скільки разів він повториться.
             </p>
 
-            <pre><code class="language-python">count = 0
+            <p>
+              В циклі <span class="accent-string">while</span> обовʼязково має
+              бути умова зупинки. Є два варіанти, як це можна реалізувати:
+            </p>
+
+            <pre><code class="language-python"># Варіант 1
+
+count = 0
+
+while True:
+    print(count)
+    count += 1
+  
+    if count == 3:
+        break</code></pre>
+
+            <pre><code class="language-python"># Варіант 2
+              
+count = 0
+              
 while count < 3:
     print(count)
     count += 1</code></pre>
+
+            <h4>Як використати цикл while для перевірки вводу користувача</h4>
 
             <p style="margin-top: 15px">
               Коли варіантів відповіді скінченна кількість, можна перевірити, чи
@@ -274,17 +288,22 @@ while color not in ("red", "blue", "green"):
               пробіл або велику літеру.
             </p>
 
-            <div class="callout2" style="margin: 20px 0">
+            <p>
               Подібна ідея працює і для простішої перевірки — "питай, поки не
               введуть хоч що-небудь" (поки рядок пустий
               <span class="accent-string">""</span>):
-              <pre
-                style="margin-top: 10px; margin-bottom: 0"
-              ><code class="language-python">name = input("What is your name? ").strip()
+            </p>
+
+            <pre
+              style="margin-top: 10px; margin-bottom: 0"
+            ><code class="language-python">name = input("What is your name? ").strip()
 
 while name == "":
     name = input("Please, enter your name: ").strip()</code></pre>
-            </div>
+
+            <hr />
+
+            <h3 id="p1-tasks">Завдання</h3>
 
             <!-- ЗАВДАННЯ 1 -->
             <details class="task" open>
