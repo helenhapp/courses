@@ -666,6 +666,70 @@ print(price)</textarea
 
               <pre class="custom-editor-output">Очікування запуску...</pre>
             </div>
+
+            <hr />
+
+            <h3 id="p3-3">try/except + функції</h3>
+
+            <p>
+              Часто <span class="accent-string">try/except</span> використовують
+              всередині функцій, щоб зробити їх "безпечними". Якщо виникає
+              помилка, функція не ламає всю програму, а просто ловить її і
+              повертає безпечне значення за замовчуванням (наприклад,
+              <span class="accent-string">None</span> або
+              <span class="accent-string">0</span>).
+            </p>
+
+            <p>
+              Зверни увагу: ми можемо писати
+              <span class="accent-string">return</span> прямо всередині
+              <span class="accent-string">try</span>. Якщо дія успішна, функція
+              одразу поверне результат. Якщо ж під час дії (наприклад, ділення)
+              станеться помилка, <span class="accent-string">return</span> не
+              встигне спрацювати, і виконання миттєво перестрибне у блок
+              <span class="accent-string">except</span>.
+            </p>
+
+            <p>
+              Заміни ❓ у коді нижче, щоб створити "безпечну" функцію ділення,
+              яка ловить
+              <span class="accent-string">ZeroDivisionError</span> і повертає
+              <span class="accent-string">None</span>, якщо хтось намагається
+              поділити на нуль.
+            </p>
+
+            <!-- task 5 -->
+            <div
+              class="custom-editor-wrapper python-editor-wrapper"
+              id="l15-hw-5"
+            >
+              <div class="editor-header">
+                <span class="editor-title">Python3</span>
+                <div class="editor-actions">
+                  <button class="run-btn" title="Запустити код">▶️</button>
+                  <button
+                    class="reset-btn"
+                    title="Скинути до початкового стану"
+                  >
+                    🔁
+                  </button>
+                </div>
+              </div>
+
+              <textarea class="custom-editor-input">
+def safe_divide(a, b):
+    try:
+        return a / b
+    except ❓:
+        return ❓
+
+# Перевірка:
+print(safe_divide(10, 2)) # має повернути 5.0
+print(safe_divide(10, 0)) # має повернути None (замість помилки)</textarea
+              >
+
+              <pre class="custom-editor-output">Очікування запуску...</pre>
+            </div>
           </div>
         </div>
       </section>
