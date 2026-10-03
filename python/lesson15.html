@@ -258,11 +258,16 @@ while count < 3:
     print(count)
     count += 1</code></pre>
 
-            <h4>Як використати цикл while для перевірки вводу користувача</h4>
+            <hr />
+
+            <h3 id="p1-4">
+              Як використати цикл while для перевірки вводу користувача
+            </h3>
 
             <p style="margin-top: 15px">
-              Коли варіантів відповіді скінченна кількість, можна перевірити, чи
-              введене значення є серед дозволених — за допомогою
+              Коли є скінченна кількість правильних варіантів відповіді
+              (наприклад, три), можна перевірити, чи введене значення є серед
+              дозволених за допомогою
               <span class="accent-string">in</span>. У парі з
               <span class="accent-string">while</span> це дає цикл
               <span class="italic"
@@ -270,28 +275,34 @@ while count < 3:
               >:
             </p>
 
-            <pre><code class="language-python"># приклад з in
-color = input("Select a color: red, blue or green: ").strip().lower()
-print(color in ("red", "blue", "green")) # поверне True або False
+            <p><span class="accent-string">in</span>:</p>
 
-# приклад з while + not in
-color = input("Select a color: red, blue or green: ").strip().lower()
+            <pre><code class="language-python">color = input("Select a color: red, blue or green: ").strip().lower()
+print(color in ("red", "blue", "green")) # поверне True або False</code></pre>
 
-while color not in ("red", "blue", "green"):
-    color = input("Input red, blue or green: ").strip().lower()</code></pre>
+            <p><span class="accent-string">not in</span>:</p>
 
-            <p style="margin-top: 15px">
-              Функції <span class="accent-string">.strip()</span> (прибирає
-              зайві пробіли) та
-              <span class="accent-string">.lower()</span> (зменшує регістр) тут
-              дуже важливі, щоб програма не сварила користувача за випадковий
-              пробіл або велику літеру.
-            </p>
+            <pre><code class="language-python">color = input("Select a color: red, blue or green: ").strip().lower()
+print(color not in ("red", "blue", "green")) # поверне True або False</code></pre>
 
             <p>
-              Подібна ідея працює і для простішої перевірки — "питай, поки не
-              введуть хоч що-небудь" (поки рядок пустий
-              <span class="accent-string">""</span>):
+              <span class="accent-string">while</span> +
+              <span class="accent-string">not in</span>:
+            </p>
+
+            <pre><code class="language-python">color = input("Select a color: red, blue or green: ").strip().lower()
+
+# поки не введуть колір зі списку
+while color not in ("red", "blue", "green"):
+    # питаємо повторно
+    color = input("Input red, blue or green: ").strip().lower()</code></pre>
+
+            <p>
+              Подібна ідея працює і для простішої перевірки – "питай повторно,
+              поки не введуть хоч що-небудь" (поки рядок пустий
+              <span class="accent-string">""</span>), щоб передбачити випадок,
+              коли користувач ненароком натисне клавішу Enter до того, як введе
+              свою відповідь:
             </p>
 
             <pre
@@ -306,7 +317,7 @@ while name == "":
             <h3 id="p1-tasks">Завдання</h3>
 
             <!-- ЗАВДАННЯ 1 -->
-            <details class="task" open>
+            <details class="task" name="l15-1" open>
               <summary><h4>Завдання 1: Захисти choose_mode()</h4></summary>
 
               <div>
@@ -318,17 +329,6 @@ while name == "":
                   <span class="accent-string">"2"</span>. Якщо користувач введе
                   щось інше, програма має просити його повторити ввід.
                 </p>
-
-                <p class="bold" style="margin-top: 20px">Твій поточний код:</p>
-
-                <pre><code class="language-python">def choose_mode():
-    print("\nHow would you like to practice?")
-    print("1️⃣  English → Ukrainian")
-    print("2️⃣  Ukrainian → English")
-
-    mode = input("Choose mode (1 or 2): ").strip()
-
-    return int(mode)</code></pre>
 
                 <p>
                   Запусти програму і перевір, що станеться, якщо ввести
@@ -354,7 +354,7 @@ while name == "":
             </details>
 
             <!-- ЗАВДАННЯ 2 -->
-            <details class="task">
+            <details class="task" name="l15-1">
               <summary><h4>Завдання 2: Захисти ask_question()</h4></summary>
 
               <div>
@@ -364,38 +364,6 @@ while name == "":
                   <span class="accent-string">Enter</span>), а перепитувала,
                   поки користувач не введе хоч якийсь переклад.
                 </p>
-
-                <p class="bold" style="margin-top: 20px">Твій поточний код:</p>
-
-                <pre><code class="language-python">def ask_question(question, answer):
-    print(f"\n📝 Translate: {question}")
-
-    user_input = input("> ").lower().strip()
-
-    if user_input == answer.lower().strip():
-        print("✅ Correct!")
-        return True
-
-    print(f"❌ Correct answer: {answer}")
-    return False</code></pre>
-
-                <!-- ОЧІКУВАНИЙ КОД ДЛЯ ВЧИТЕЛЯ
-                def ask_question(question, answer):
-                    print(f"\n📝 Translate: {question}")
-
-                    user_input = input("> ").lower().strip()
-
-                    # keep asking until the user inputs something
-                    while user_input == "":
-                        user_input = input("> ").lower().strip()
-
-                    if user_input == answer.lower().strip():
-                        print("✅ Correct!")
-                        return True
-
-                    print(f"❌ Correct answer: {answer}")
-                    return False
-                -->
               </div>
             </details>
           </div>
