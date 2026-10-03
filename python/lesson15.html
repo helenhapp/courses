@@ -1,0 +1,750 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Навчальні матеріали" />
+
+    <link rel="icon" type="image/svg+xml" href="../media/icons/carambola.svg" />
+
+    <title>Python Lesson 15</title>
+
+    <script>
+      const savedTheme = localStorage.getItem("lms_theme") || "light";
+      document.documentElement.setAttribute("data-theme", savedTheme);
+
+      const hljsThemeLink =
+        savedTheme === "dark"
+          ? "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css"
+          : "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css";
+
+      document.head.insertAdjacentHTML(
+        "beforeend",
+        `<link id="hljs-theme" rel="stylesheet" href="${hljsThemeLink}" />`,
+      );
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Fira+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Tektur:wght@400..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"
+    ></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.css"
+    />
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.js"
+    ></script>
+
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/javascript/javascript.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/xml/xml.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/css/css.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/htmlmixed/htmlmixed.min.js"
+    ></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/theme/dracula.min.css"
+    />
+
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/python/python.min.js"
+    ></script>
+
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt-stdlib.js"
+    ></script>
+
+    <link rel="stylesheet" href="../style.css?v=3.0" />
+    <script src="../script.js?v=3.0" defer></script>
+  </head>
+
+  <body>
+    <!-- transition curtain -->
+    <div class="transition-curtain"></div>
+
+    <!-- top-bar -->
+    <div id="nav-container">
+      <nav class="top-bar">
+        <div class="logo-container">
+          <img
+            src="../media/icons/carambola.svg"
+            alt="Logo"
+            class="site-logo"
+          />
+        </div>
+
+        <div class="top-bar__controls">
+          <label class="toggle-switch" aria-label="Перемикач теми">
+            <input type="checkbox" id="theme-checkbox" />
+            <span class="slider">
+              <span class="icon sun"
+                ><img src="../media/icons/stars.svg"
+              /></span>
+              <span class="icon moon"
+                ><img src="../media/icons/moon.svg"
+              /></span>
+            </span>
+          </label>
+          <button
+            id="dyslexia-mode-btn"
+            class="wide-toggle"
+            title="Шрифт для дислектиків"
+          >
+            Aa
+          </button>
+        </div>
+      </nav>
+    </div>
+
+    <!-- lesson header -->
+    <header>
+      <div class="title-container">
+        <h1 id="lesson-title">Python: 15</h1>
+      </div>
+
+      <p class="topic">UX, Валідація (while) та try/except</p>
+
+      <hr class="pretty-divider" />
+    </header>
+
+    <!-- lesson content -->
+    <main>
+      <!-- tab buttons -->
+      <div class="tabs-nav">
+        <button class="tab-btn active" data-target="part-1">Частина 1</button>
+        <button class="tab-btn" data-target="part-2">Частина 2</button>
+        <button class="tab-btn" data-target="part-3">Д/З</button>
+      </div>
+
+      <!-- 🍓 PART 1: UX та цикли -->
+      <section id="part-1" class="lesson-wrapper tab-content active show">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img
+                src="../media/icons/strawberry.svg"
+                class="star"
+                alt="strawberry"
+              />
+              <span>UX та цикли</span>
+            </h2>
+          </div>
+
+          <div class="lesson-content">
+            <h3 id="p1-1">Перевірка домашнього завдання: show_result()</h3>
+
+            <p>
+              Давай перевіримо, як ти реалізувала функцію
+              <span class="accent-string">show_result(words, score)</span>. Твій
+              код у функції <span class="accent-string">main()</span> має
+              виглядати приблизно так:
+            </p>
+
+            <pre><code class="language-python">def main():
+    practice_words = get_practice_words()
+    practice_words = limit_words(practice_words)
+    mode = choose_mode()
+    score = run_quiz(practice_words, mode)
+
+    show_result(practice_words, score)
+
+def show_result(words, score):
+    print(f"\n📊 You've got {score}/{len(words)} correct!")</code></pre>
+
+            <hr />
+
+            <h3 id="p1-2">Що таке UX?</h3>
+
+            <p>
+              <span class="bold">UX (User Experience)</span> — це те, як людина
+              відчуває себе під час використання програми. Чи зрозуміло їй, що
+              робити? Чи ввічливо програма реагує на помилки? Чи не змушує
+              починати все заново через дрібницю?
+            </p>
+            <p>
+              Код може ідеально працювати "за задумом" розробника і водночас
+              мати жахливий UX. Давай подивимось на нашу програму. Запусти
+              <span class="accent-string">vocab_app.py</span> і спробуй зробити
+              кілька помилок.
+            </p>
+
+            <div class="callout2" style="margin: 20px 0">
+              <p class="bold" style="margin-bottom: 10px">
+                Що зараз не так з нашою програмою (UX-чеклист):
+              </p>
+              <ul style="list-style-type: square; margin-bottom: 0">
+                <li>
+                  Якщо ввести текст (наприклад,
+                  <span class="accent-string">"two"</span>) замість кількості
+                  слів — програма падає з помилкою
+                  <span class="accent-string">ValueError</span> і закривається.
+                </li>
+                <li>
+                  Якщо під час вибору режиму ввести
+                  <span class="accent-string">3</span> (або будь-яке інше число,
+                  крім 1) — програма працює так, ніби обрано режим 2, замість
+                  того, щоб перепитати (через те, що у нас написано просто
+                  <span class="accent-string">else</span>). А якщо ввести літери
+                  — взагалі падає з помилкою.
+                </li>
+                <li>
+                  Якщо під час відповіді просто випадково натиснути
+                  <span class="accent-string">Enter</span> (нічого не ввівши) —
+                  це зараховується як неправильна відповідь, хоча користувач міг
+                  просто схибити по клавіатурі.
+                </li>
+              </ul>
+            </div>
+
+            <p>Сьогодні ми навчимося це виправляти двома різними способами!</p>
+
+            <hr />
+
+            <h3 id="p1-3">Повторення: while + not in</h3>
+
+            <p>
+              Цикл <span class="accent-string">while</span> виконує своє тіло
+              знову і знову, поки умова залишається
+              <span class="accent-string">True</span>. На відміну від
+              <span class="accent-string">for</span>, ми заздалегідь не знаємо,
+              скільки разів він повториться.
+            </p>
+
+            <pre><code class="language-python">count = 0
+while count < 3:
+    print(count)
+    count += 1</code></pre>
+
+            <p style="margin-top: 15px">
+              Коли варіантів відповіді скінченна кількість, можна перевірити, чи
+              введене значення є серед дозволених — за допомогою
+              <span class="accent-string">in</span>. У парі з
+              <span class="accent-string">while</span> це дає цикл
+              <span class="italic"
+                >"питай, поки не введуть один із правильних варіантів"</span
+              >:
+            </p>
+
+            <pre><code class="language-python"># приклад з in
+color = input("Select a color: red, blue or green: ").strip().lower()
+print(color in ("red", "blue", "green")) # поверне True або False
+
+# приклад з while + not in
+color = input("Select a color: red, blue or green: ").strip().lower()
+
+while color not in ("red", "blue", "green"):
+    color = input("Input red, blue or green: ").strip().lower()</code></pre>
+
+            <p style="margin-top: 15px">
+              Функції <span class="accent-string">.strip()</span> (прибирає
+              зайві пробіли) та
+              <span class="accent-string">.lower()</span> (зменшує регістр) тут
+              дуже важливі, щоб програма не сварила користувача за випадковий
+              пробіл або велику літеру.
+            </p>
+
+            <div class="callout2" style="margin: 20px 0">
+              Подібна ідея працює і для простішої перевірки — "питай, поки не
+              введуть хоч що-небудь" (поки рядок пустий
+              <span class="accent-string">""</span>):
+              <pre
+                style="margin-top: 10px; margin-bottom: 0"
+              ><code class="language-python">name = input("What is your name? ").strip()
+
+while name == "":
+    name = input("Please, enter your name: ").strip()</code></pre>
+            </div>
+
+            <!-- ЗАВДАННЯ 1 -->
+            <details class="task" open>
+              <summary><h4>Завдання 1: Захисти choose_mode()</h4></summary>
+
+              <div>
+                <p>
+                  Онови функцію
+                  <span class="accent-string">choose_mode()</span> так, щоб вона
+                  не приймала нічого, крім
+                  <span class="accent-string">"1"</span> або
+                  <span class="accent-string">"2"</span>. Якщо користувач введе
+                  щось інше, програма має просити його повторити ввід.
+                </p>
+
+                <p class="bold" style="margin-top: 20px">Твій поточний код:</p>
+
+                <pre><code class="language-python">def choose_mode():
+    print("\nHow would you like to practice?")
+    print("1️⃣  English → Ukrainian")
+    print("2️⃣  Ukrainian → English")
+
+    mode = input("Choose mode (1 or 2): ").strip()
+
+    return int(mode)</code></pre>
+
+                <p>
+                  Запусти програму і перевір, що станеться, якщо ввести
+                  <span class="accent-string">3</span> або просто натиснути
+                  <span class="accent-string">Enter</span>.
+                </p>
+
+                <!-- ОЧІКУВАНИЙ КОД ДЛЯ ВЧИТЕЛЯ
+                def choose_mode():
+                    print("\nHow would you like to practice?")
+                    print("1️⃣  English → Ukrainian")
+                    print("2️⃣  Ukrainian → English")
+
+                    mode = input("Choose mode (1 or 2): ").strip()
+
+                    # keep asking until the user correctly inputs 1 or 2
+                    while mode not in ("1", "2"):
+                        mode = input("Please enter 1 or 2: ").strip()
+
+                    return int(mode)
+                -->
+              </div>
+            </details>
+
+            <!-- ЗАВДАННЯ 2 -->
+            <details class="task">
+              <summary><h4>Завдання 2: Захисти ask_question()</h4></summary>
+
+              <div>
+                <p>
+                  Та сама ідея, але інша перевірка: зроби так, щоб програма не
+                  приймала порожню відповідь (просто
+                  <span class="accent-string">Enter</span>), а перепитувала,
+                  поки користувач не введе хоч якийсь переклад.
+                </p>
+
+                <p class="bold" style="margin-top: 20px">Твій поточний код:</p>
+
+                <pre><code class="language-python">def ask_question(question, answer):
+    print(f"\n📝 Translate: {question}")
+
+    user_input = input("> ").lower().strip()
+
+    if user_input == answer.lower().strip():
+        print("✅ Correct!")
+        return True
+
+    print(f"❌ Correct answer: {answer}")
+    return False</code></pre>
+
+                <!-- ОЧІКУВАНИЙ КОД ДЛЯ ВЧИТЕЛЯ
+                def ask_question(question, answer):
+                    print(f"\n📝 Translate: {question}")
+
+                    user_input = input("> ").lower().strip()
+
+                    # keep asking until the user inputs something
+                    while user_input == "":
+                        user_input = input("> ").lower().strip()
+
+                    if user_input == answer.lower().strip():
+                        print("✅ Correct!")
+                        return True
+
+                    print(f"❌ Correct answer: {answer}")
+                    return False
+                -->
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- 🍉 PART 2: Нова тема -->
+      <section id="part-2" class="lesson-wrapper tab-content">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img
+                src="../media/icons/watermelon.svg"
+                class="star"
+                alt="watermelon"
+              />
+              <span>Нова тема: try / except</span>
+            </h2>
+          </div>
+
+          <div class="lesson-content">
+            <h3>Як "ловити" помилки</h3>
+
+            <p>
+              Пам'ятаєш демонстрацію на початку уроку — коли програма "падала",
+              якщо ввести не число?
+              <span class="accent-string">try / except</span> — це спосіб
+              "спіймати" таку помилку і дати програмі зреагувати на неї
+              спокійно, замість того, щоб одразу завершитись.
+            </p>
+            <p>
+              Усе, що ми хочемо "спробувати", пишемо в блоці
+              <span class="accent-string">try</span>, а те, що робити, якщо
+              станеться помилка — у блоці
+              <span class="accent-string">except</span>. Якщо все в
+              <span class="accent-string">try</span> пройшло без помилок —
+              <span class="accent-string">except</span> просто ігнорується.
+            </p>
+
+            <p class="bold" style="margin-top: 15px">Без try/except:</p>
+            <pre><code class="language-python">number = int("hello")
+print(number * 2)</code></pre>
+            <pre><code class="language-plaintext">Traceback (most recent call last):
+  ...
+ValueError: invalid literal for int() with base 10: 'hello'</code></pre>
+            <p>
+              Програма одразу завершується на цьому рядку — решта коду взагалі
+              не виконується.
+            </p>
+
+            <p class="bold" style="margin-top: 15px">З try/except:</p>
+            <pre><code class="language-python">number_input = input("Enter a decimal number: ")
+
+try:
+    number = float(number_input)
+except ValueError:
+    print("It is not a valid decimal number!")
+    number = 0.0
+
+print(number * 2)</code></pre>
+            <p style="margin-top: 15px">
+              Python спочатку намагається виконати код у
+              <span class="accent-string">try</span> — перетворити
+              <span class="accent-string">number_input</span> на
+              <span class="accent-string">float</span>. Якщо це неможливо (ввели
+              літери) — виникає <span class="accent-string">ValueError</span>,
+              виконання одразу перескакує в
+              <span class="accent-string">except</span>, друкується
+              повідомлення, і змінна отримує запасне значення
+              <span class="accent-string">0.0</span>. Програма не "падає" — вона
+              просто продовжує виконуватись із запасним значенням.
+            </p>
+
+            <p class="bold" style="margin-top: 20px">Типи помилок:</p>
+            <ul style="list-style-type: square; margin-bottom: 20px">
+              <li>
+                <span class="bold">ValueError</span> — коли тип даних
+                правильний, але значення не підходить (наприклад,
+                <span class="accent-string">int("hello")</span>).
+              </li>
+              <li>
+                <span class="bold">TypeError</span> — операція застосована до
+                непідходящого типу (додавання числа і тексту).
+              </li>
+              <li>
+                <span class="bold">ZeroDivisionError</span> — ділення на нуль.
+              </li>
+              <li>
+                <span class="bold">FileNotFoundError</span> — файл, який
+                намагаємось відкрити, не існує.
+              </li>
+            </ul>
+
+            <p>
+              Важливо: <span class="accent-string">except</span> ловить лише той
+              тип помилки, який ми вказали. Якщо вказати не той тип — програма
+              все одно "впаде":
+            </p>
+            <pre><code class="language-python">try:
+    number = int("hello")
+except ZeroDivisionError:  # не той тип помилки!
+    print("Цей рядок ніколи не виконається")
+
+# програма все одно впаде з ValueError, бо ми ловили не ту помилку</code></pre>
+
+            <p class="bold" style="margin-top: 20px">
+              Кілька except для одного try:
+            </p>
+            <p>
+              В одному блоці <span class="accent-string">try</span> може статись
+              одна з кількох різних помилок — тоді для кожної пишемо свій
+              окремий <span class="accent-string">except</span>:
+            </p>
+            <pre><code class="language-python">try:
+    number = int(input("Enter a number: "))
+    result = 10 / number
+    print(result)
+except ValueError:
+    print("That's not a number!")
+except ZeroDivisionError:
+    print("Can't divide by zero!")</code></pre>
+            <p>
+              Python перевіряє підряд: якщо сталась
+              <span class="accent-string">ValueError</span> — спрацює перший
+              <span class="accent-string">except</span>; якщо
+              <span class="accent-string">ZeroDivisionError</span> — другий.
+              Спрацює лише один із них, а решта коду в
+              <span class="accent-string">try</span> після рядка з помилкою —
+              пропускається.
+            </p>
+
+            <!-- task 3 -->
+            <details class="task" name="l15-2" open>
+              <summary><h4>Завдання 3: safe_int()</h4></summary>
+              <div>
+                <p>
+                  Перш ніж змінювати основний проєкт, потренуймося. Створи
+                  зовсім нову, окрему функцію
+                  <span class="accent-string">safe_int(text)</span>.
+                </p>
+                <ul style="line-height: 1.8; list-style-type: square">
+                  <li>
+                    Функція має спробувати перетворити
+                    <span class="accent-string">text</span> на ціле число (<span
+                      class="accent-string"
+                      >int</span
+                    >).
+                  </li>
+                  <li>Якщо вдається — повертає це число.</li>
+                  <li>
+                    Якщо не вдається — ловить
+                    <span class="accent-string">ValueError</span>, друкує
+                    повідомлення
+                    <span class="accent-string">"It's not an integer!"</span> і
+                    повертає <span class="accent-string">None</span>.
+                  </li>
+                </ul>
+
+                <!-- ОЧІКУВАНИЙ КОД ДЛЯ ВЧИТЕЛЯ
+                def safe_int(text):
+                    try:
+                        result = int(text)
+                    except ValueError:
+                        print("It's not an integer!")
+                        result = None
+                    return result
+                -->
+              </div>
+            </details>
+
+            <!-- task 4 -->
+            <details class="task" name="l15-2">
+              <summary><h4>Завдання 4: ValueError у limit_words</h4></summary>
+              <div>
+                <p>
+                  Онови функцію
+                  <span class="accent-string">limit_words()</span> у своєму
+                  проєкті. Якщо ввід користувача не є числом, програма не
+                  повинна ламатися. Натомість вона має вивести повідомлення
+                  <span class="accent-string"
+                    >"That's not a number, I'll use the full list
+                    instead."</span
+                  >
+                  і встановити ліміт рівним довжині всього списку слів.
+                </p>
+
+                <p class="bold" style="margin-top: 20px">Твій поточний код:</p>
+                <pre><code class="language-python">def limit_words(words):
+    print(f"\n📚 There are {len(words)} words in the list.")
+    limit = int(input("How many words would you like to practice? "))
+    return words[:limit]</code></pre>
+
+                <!-- ОЧІКУВАНИЙ КОД ДЛЯ ВЧИТЕЛЯ
+                def limit_words(words):
+                    print(f"\n📚 There are {len(words)} words in the list.")
+                    limit_input = input("How many words would you like to practice? ")
+
+                    # check: did user input a number?
+                    try:
+                        limit = int(limit_input)
+                    except ValueError:
+                        print("That's not a number, I'll use the full list instead.")
+                        limit = len(words)
+
+                    return words[:limit]
+                -->
+              </div>
+            </details>
+
+            <!-- task 5 -->
+            <details class="task" name="l15-2">
+              <summary><h4>Завдання 5: Перевірка діапазону</h4></summary>
+              <div>
+                <p>
+                  Тепер додай у
+                  <span class="accent-string">limit_words()</span> ще одну
+                  перевірку за допомогою <span class="accent-string">if</span>.
+                </p>
+                <p>
+                  Якщо введене ціле число, але воно
+                  <span class="bold">занадто мале</span> (менше або дорівнює 0)
+                  або <span class="bold">завелике</span> (більше за загальну
+                  кількість слів у списку), то виведи повідомлення
+                  <span class="accent-string"
+                    >"That's not a valid amount, I'll use the full list
+                    instead."</span
+                  >
+                  і теж використай весь список.
+                </p>
+
+                <p>
+                  Запусти програму і перевір, що станеться, якщо ввести
+                  <span class="accent-string">0</span>,
+                  <span class="accent-string">-5</span> та
+                  <span class="accent-string">100</span>.
+                </p>
+
+                <!-- ОЧІКУВАНИЙ КОД ДЛЯ ВЧИТЕЛЯ
+                def limit_words(words):
+                    print(f"\n📚 There are {len(words)} words in the list.")
+                    limit_input = input("How many words would you like to practice? ")
+
+                    try:
+                        limit = int(limit_input)
+                    except ValueError:
+                        print("That's not a number, I'll use the full list instead.")
+                        limit = len(words)
+
+                    # check: if it is a number, is it a valid amount?
+                    if limit <= 0 or limit > len(words):
+                        print("That's not a valid amount, I'll use the full list instead.")
+                        limit = len(words)
+
+                    return words[:limit]
+                -->
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- 🍊 PART 3: Домашнє завдання -->
+      <section id="part-3" class="lesson-wrapper tab-content">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img src="../media/icons/orange.svg" class="star" alt="orange" />
+              <span>Домашнє завдання</span>
+            </h2>
+          </div>
+
+          <div class="lesson-content">
+            <h3 id="p3-1">Бонус A: safe_divide(a, b)</h3>
+
+            <p>
+              Напиши функцію
+              <span class="accent-string">safe_divide(a, b)</span>, яка ділить
+              <span class="accent-string">a</span> на
+              <span class="accent-string">b</span>
+              без помилки при діленні на нуль.
+            </p>
+            <p>
+              Функція має ловити помилку
+              <span class="accent-string">ZeroDivisionError</span>. Якщо вона
+              стається, друкувати
+              <span class="accent-string">"You can't divide by zero!"</span> і
+              повертати <span class="accent-string">None</span>.
+            </p>
+
+            <!-- ОЧІКУВАНИЙ КОД ДЛЯ ВЧИТЕЛЯ
+            def safe_divide(a, b):
+                try:
+                    return a / b
+                except ZeroDivisionError:
+                    print("You can't divide by zero!")
+                    return None
+            -->
+
+            <hr />
+
+            <h3 id="p3-2">Бонус B: розшир safe_int()</h3>
+
+            <p>
+              Якщо потрібно ловити
+              <span class="bold">кілька типів помилок однаково</span>, їх можна
+              перелічити в дужках через кому, наприклад: <br /><span
+                class="accent-string"
+                >except (ErrorType1, ErrorType2):</span
+              >
+            </p>
+
+            <p>
+              Онови функцію <span class="accent-string">safe_int(text)</span> із
+              Завдання 3 так, щоб вона так само спокійно повертала
+              <span class="accent-string">None</span>, якщо їй передати відсутнє
+              значення <span class="accent-string">None</span> замість тексту.
+              Це викличе помилку <span class="accent-string">TypeError</span>, а
+              не ValueError. Злови їх обидві в одному блоці!
+            </p>
+
+            <!-- ОЧІКУВАНИЙ КОД ДЛЯ ВЧИТЕЛЯ
+            def safe_int(text):
+                try:
+                    return int(text)
+                except (ValueError, TypeError):
+                    print("It's not a valid integer!")
+                    return None
+            -->
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>🌷 🍓 🌿 Made by Olena Hapchyna 🌿 🍓 🌷</p>
+
+      <div class="footer-credits">
+        <span
+          >Fruit icons by
+          <a
+            href="https://www.svgrepo.com/collection/fruits-vectors/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >An Nguyen</a
+          ></span
+        >
+        |
+        <a href="../credits.html" target="_blank">Credits & Licenses</a>
+      </div>
+    </footer>
+
+    <button
+      id="scrollToTopBtn"
+      class="scroll-to-top"
+      aria-label="Scroll to top"
+    >
+      <img src="../media/icons/apple.svg" />
+    </button>
+
+    <dialog id="clear-confirm-dialog" class="custom-dialog">
+      <div class="dialog-content">
+        <h3>⚠️ Attention!</h3>
+        <p>Do you really want to delete ALL your answers and start over?</p>
+        <div class="dialog-actions">
+          <button type="button" id="dialog-cancel-btn">No</button>
+          <button type="button" id="dialog-confirm-btn">Yes, delete</button>
+        </div>
+      </div>
+    </dialog>
+  </body>
+</html>
