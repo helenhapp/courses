@@ -501,40 +501,171 @@ print(f"User's age: {age}")
           </div>
 
           <div class="lesson-content">
-            <h3 id="p2-2">Типи помилок</h3>
+            <h3 id="p3-1">Нагадування: try/except</h3>
 
-            <ul style="list-style-type: square; margin-bottom: 20px">
+            <p>
+              Заміни ❓ в коді нижче на слова, яких не вистачає. Тоді натисни
+              ▶️, щоб запустити програму. Якщо все правильно, виведеться текст
+              <span class="italic">"Not a valid number!"</span>.
+            </p>
+
+            <!-- task 1 -->
+            <div
+              class="custom-editor-wrapper python-editor-wrapper"
+              id="l15-hw-1"
+            >
+              <div class="editor-header">
+                <span class="editor-title">Python3</span>
+                <div class="editor-actions">
+                  <button class="run-btn" title="Запустити код">▶️</button>
+                  <button
+                    class="reset-btn"
+                    title="Скинути до початкового стану"
+                  >
+                    🔁
+                  </button>
+                </div>
+              </div>
+
+              <textarea class="custom-editor-input">
+❓:
+    number = int("hello")
+❓ ValueError:
+    print("Not a valid number!")</textarea
+              >
+
+              <pre class="custom-editor-output">Очікування запуску...</pre>
+            </div>
+
+            <p>
+              <span class="bold">Важливо:</span> хоча можна просто написати
+              <span class="accent-string">except:</span> без типу помилки,
+              потрібно завжди вказувати конкретний тип. Інакше програма
+              ігноруватиме абсолютно всі помилки (наприклад, одруківки в коді),
+              а не тільки <span class="accent-string">ValueError</span>.
+            </p>
+
+            <hr />
+
+            <h3 id="p3-2">Типи помилок</h3>
+
+            <p>
+              На уроці ми розглянули лише один тип помилки –
+              <span class="accent-string">ValueError</span>, що виникає, якщо
+              користувач введе неправильне значення (value). Насправді таких
+              типів є доволі багато. Розглянемо іще два з них:
+            </p>
+
+            <ul style="list-style-type: square">
               <li>
-                <span class="bold">ValueError</span> — коли тип даних
-                правильний, але значення не підходить (наприклад,
-                <span class="accent-string">int("hello")</span>).
+                <span class="accent-string">TypeError</span> виникає, коли дію
+                застосовують до типу даних, для якого вона не має сенсу.
               </li>
               <li>
-                <span class="bold">TypeError</span> — операція застосована до
-                непідходящого типу (додавання числа і тексту).
-              </li>
-              <li>
-                <span class="bold">ZeroDivisionError</span> — ділення на нуль.
-              </li>
-              <li>
-                <span class="bold">FileNotFoundError</span> — файл, який
-                намагаємось відкрити, не існує.
+                <span class="accent-string">ZeroDivisionError</span> виникає,
+                коли ми намагаємося поділити число на нуль.
               </li>
             </ul>
 
             <p>
-              Важливо: <span class="accent-string">except</span> ловить лише той
-              тип помилки, який ми вказали. Якщо вказати не той тип — програма
-              все одно "впаде":
+              У наступних завданнях, заміни ❓ на правильний тип помилки. Якщо
+              завдання виконане правильно, має вивестися слово
+              <span class="italic">None</span> і більше нічого.
             </p>
-            <pre><code class="language-python">try:
-    number = int("hello")
-except ZeroDivisionError:  # не той тип помилки!
-    print("Цей рядок ніколи не виконається")
 
-# програма все одно впаде з ValueError, бо ми ловили не ту помилку</code></pre>
+            <!-- task 2 -->
+            <div
+              class="custom-editor-wrapper python-editor-wrapper"
+              id="l15-hw-2"
+            >
+              <div class="editor-header">
+                <span class="editor-title">Python3</span>
+                <div class="editor-actions">
+                  <button class="run-btn" title="Запустити код">▶️</button>
+                  <button
+                    class="reset-btn"
+                    title="Скинути до початкового стану"
+                  >
+                    🔁
+                  </button>
+                </div>
+              </div>
 
-          
+              <textarea class="custom-editor-input">
+scores = []
+
+try:
+    average = sum(scores) / len(scores)
+except ❓:
+    average = None
+    
+print(average)</textarea
+              >
+
+              <pre class="custom-editor-output">Очікування запуску...</pre>
+            </div>
+
+            <!-- task 3 -->
+            <div
+              class="custom-editor-wrapper python-editor-wrapper"
+              id="l15-hw-3"
+            >
+              <div class="editor-header">
+                <span class="editor-title">Python3</span>
+                <div class="editor-actions">
+                  <button class="run-btn" title="Запустити код">▶️</button>
+                  <button
+                    class="reset-btn"
+                    title="Скинути до початкового стану"
+                  >
+                    🔁
+                  </button>
+                </div>
+              </div>
+
+              <textarea class="custom-editor-input">
+value = 12345
+                
+try:
+    length = len(value)
+except ❓:
+    length = None
+
+print(length)</textarea
+              >
+
+              <pre class="custom-editor-output">Очікування запуску...</pre>
+            </div>
+
+            <!-- task 4 -->
+            <div
+              class="custom-editor-wrapper python-editor-wrapper"
+              id="l15-hw-4"
+            >
+              <div class="editor-header">
+                <span class="editor-title">Python3</span>
+                <div class="editor-actions">
+                  <button class="run-btn" title="Запустити код">▶️</button>
+                  <button
+                    class="reset-btn"
+                    title="Скинути до початкового стану"
+                  >
+                    🔁
+                  </button>
+                </div>
+              </div>
+
+              <textarea class="custom-editor-input">
+try:
+    price = float("19,99")
+except ❓:
+    price = None
+    
+print(price)</textarea
+              >
+
+              <pre class="custom-editor-output">Очікування запуску...</pre>
+            </div>
           </div>
         </div>
       </section>
