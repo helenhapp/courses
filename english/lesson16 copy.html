@@ -1669,14 +1669,8 @@
 
             <h4>The receipt:</h4>
             <!-- Answers for the tutor:
-                 muffins 10 / $20 
-                 biscuits 10 / $15 · 
-                 1 l bottles 2 / $8 ·
-                 500 ml bottle 1 / $2 · 
-                 cup 1 / $1 · 
-                 total $46 · 
-                 change $4 
-                -->
+                 muffins 10 / $20 · biscuits 10 / $15 · 1 l bottles 2 / $8 ·
+                 500 ml bottle 1 / $2 · cup 1 / $1 · total $46 · change $4 -->
             <div class="tablecontainer">
               <table>
                 <thead>
@@ -1824,6 +1818,1043 @@
 
             <textarea
               id="l16-s1-notes"
+              class="test-textarea"
+              placeholder="Your notes / calculations..."
+            ></textarea>
+
+            <hr />
+
+            <h3 id="p3-2">Speaking 2: Decode the Bestsellers</h3>
+
+            <p>
+              Miss Lemon and Robin sold <span class="bold">40 books</span> in
+              total at the fair. But the sales list got wet in the rain, and
+              only some clues are readable.
+            </p>
+            <p>
+              Open the clues one by one. Read each clue aloud, explain your
+              maths out loud in English and fill in the table!
+            </p>
+
+            <div class="tablecontainer">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Genre</th>
+                    <th>How many books?</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- Answers for the tutor: fantasy 8 · sci-fi 4 · mystery 10 · adventure 12 · poetry 6 -->
+                  <tr>
+                    <td>Fantasy</td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l16-s2-f"
+                        class="test-input"
+                        style="width: 80px"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Science fiction (sci-fi)</td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l16-s2-s"
+                        class="test-input"
+                        style="width: 80px"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Mystery novels</td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l16-s2-m"
+                        class="test-input"
+                        style="width: 80px"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Adventure</td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l16-s2-a"
+                        class="test-input"
+                        style="width: 80px"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Poetry</td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l16-s2-p"
+                        class="test-input"
+                        style="width: 80px"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">Total</span></td>
+                    <td><span class="bold">40</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h4>The clues:</h4>
+
+            <details class="answer" style="margin-bottom: 10px">
+              <summary>
+                <span class="bold" style="color: var(--brand2)">Clue 1</span>
+              </summary>
+              <p>
+                <span class="gloss" data-tr="п'ята частина">A fifth</span> of
+                all the books were fantasy.
+              </p>
+            </details>
+
+            <details class="answer" style="margin-bottom: 10px">
+              <summary>
+                <span class="bold" style="color: var(--brand2)">Clue 2</span>
+              </summary>
+              <p>
+                They sold
+                <span class="gloss" data-tr="вдвічі менше">half as many</span>
+                sci-fi books as fantasy books.
+              </p>
+            </details>
+
+            <details class="answer" style="margin-bottom: 10px">
+              <summary>
+                <span class="bold" style="color: var(--brand2)">Clue 3</span>
+              </summary>
+              <p>A quarter of all the books were mystery novels.</p>
+            </details>
+
+            <details class="answer" style="margin-bottom: 10px">
+              <summary>
+                <span class="bold" style="color: var(--brand2)">Clue 4</span>
+              </summary>
+              <p>
+                They sold
+                <span class="gloss" data-tr="втричі більше"
+                  >three times as many</span
+                >
+                adventure books as sci-fi books.
+              </p>
+            </details>
+
+            <details class="answer" style="margin-bottom: 20px">
+              <summary>
+                <span class="bold" style="color: var(--brand2)">Clue 5</span>
+              </summary>
+              <p>
+                <span class="gloss" data-tr="решта">The rest</span> were poetry
+                books.
+              </p>
+            </details>
+
+            <div class="callout2" style="margin: 20px 0">
+              <p style="margin: 0">
+                <span class="bold">Check:</span> Add up your numbers. Do they
+                make 40?
+              </p>
+            </div>
+
+            <details class="answer" style="margin-bottom: 20px">
+              <summary>
+                <span class="bold" style="color: var(--brand2)">Glossary</span>
+              </summary>
+              <div class="tablecontainer" style="margin-top: 15px">
+                <table>
+                  <tbody>
+                    <tr>
+                      <td>fantasy</td>
+                      <td>фентезі</td>
+                    </tr>
+                    <tr>
+                      <td>science fiction (sci-fi)</td>
+                      <td>наукова фантастика</td>
+                    </tr>
+                    <tr>
+                      <td>mystery novel</td>
+                      <td>детектив</td>
+                    </tr>
+                    <tr>
+                      <td>adventure</td>
+                      <td>пригоди</td>
+                    </tr>
+                    <tr>
+                      <td>poetry</td>
+                      <td>поезія</td>
+                    </tr>
+                    <tr>
+                      <td>comics</td>
+                      <td>комікси</td>
+                    </tr>
+                    <tr>
+                      <td>science books</td>
+                      <td>книжки про науку</td>
+                    </tr>
+                    <tr>
+                      <td>history books</td>
+                      <td>книжки з історії</td>
+                    </tr>
+                    <tr>
+                      <td>the rest</td>
+                      <td>решта</td>
+                    </tr>
+                    <tr>
+                      <td>in total</td>
+                      <td>всього</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </details>
+
+            <details class="answer" style="margin-bottom: 20px">
+              <summary>
+                <span class="bold" style="color: var(--brand2)"
+                  >Phrase bank: fractions and comparisons</span
+                >
+              </summary>
+              <div class="tablecontainer" style="margin-top: 15px">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>English</th>
+                      <th>Українською</th>
+                      <th>Example</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><span class="bold">a half</span> of</td>
+                      <td>половина</td>
+                      <td>A half of forty is twenty.</td>
+                    </tr>
+                    <tr>
+                      <td><span class="bold">a third</span> of</td>
+                      <td>третина</td>
+                      <td>A third of sixty is twenty.</td>
+                    </tr>
+                    <tr>
+                      <td><span class="bold">a quarter</span> of</td>
+                      <td>чверть</td>
+                      <td>A quarter of forty is ten.</td>
+                    </tr>
+                    <tr>
+                      <td><span class="bold">a fifth</span> of</td>
+                      <td>п'ята частина</td>
+                      <td>A fifth of forty is eight.</td>
+                    </tr>
+                    <tr>
+                      <td><span class="bold">half as many … as</span></td>
+                      <td>вдвічі менше … ніж</td>
+                      <td>Four is half as many as eight.</td>
+                    </tr>
+                    <tr>
+                      <td><span class="bold">twice as many … as</span></td>
+                      <td>вдвічі більше … ніж</td>
+                      <td>Eight is twice as many as four.</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span class="bold">three times as many … as</span>
+                      </td>
+                      <td>втричі більше … ніж</td>
+                      <td>Twelve is three times as many as four.</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span class="bold">… more than / … fewer than</span>
+                      </td>
+                      <td>на … більше / менше ніж</td>
+                      <td>Six more than ten is sixteen.</td>
+                    </tr>
+                    <tr>
+                      <td><span class="bold">the rest</span></td>
+                      <td>решта</td>
+                      <td>The rest are poetry books.</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span class="bold"
+                          >the most popular / the least popular</span
+                        >
+                      </td>
+                      <td>найпопулярніший / найменш популярний</td>
+                      <td>Adventure was the most popular genre.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </details>
+
+            <details class="answer" style="margin-bottom: 20px">
+              <summary>
+                <span class="bold" style="color: var(--brand2)"
+                  >Sentence frames</span
+                >
+              </summary>
+              <div class="tablecontainer" style="margin-top: 15px">
+                <table>
+                  <tbody>
+                    <tr>
+                      <td>Reading the clue</td>
+                      <td>
+                        <span class="italic">The clue says that ___.</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Calculating</td>
+                      <td>
+                        <span class="italic"
+                          >A fifth of forty is eight, because forty divided by
+                          five is eight.</span
+                        >
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Answer</td>
+                      <td>
+                        <span class="italic"
+                          >So they sold ___ fantasy books.</span
+                        >
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Using a previous result</td>
+                      <td>
+                        <span class="italic"
+                          >Four is half of eight, so they sold four sci-fi
+                          books.</span
+                        >
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Asking for repetition</td>
+                      <td>
+                        <span class="italic"
+                          >Can you repeat the clue, please?</span
+                        >
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Checking</td>
+                      <td>
+                        <span class="italic"
+                          >Let's check: ___ plus ___ plus ___ is ___.</span
+                        >
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Comparing</td>
+                      <td>
+                        <span class="italic"
+                          >They sold more ___ than ___. / ___ was the most
+                          popular genre.</span
+                        >
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </details>
+
+            <textarea
+              id="l16-s2-notes"
+              class="test-textarea"
+              placeholder="Your notes / calculations..."
+            ></textarea>
+
+            <h4>Questions:</h4>
+            <p>When your table is ready, answer in full sentences:</p>
+            <ol>
+              <li>Which genre was the most popular?</li>
+              <li>Which genre was the least popular?</li>
+              <li>
+                How many more adventure books than poetry books did they sell?
+              </li>
+              <li>Did they sell more fantasy books or more mystery novels?</li>
+            </ol>
+
+            <h4>Your turn!</h4>
+            <div class="callout2" style="margin: 20px 0">
+              <p style="margin: 0">
+                Write
+                <span class="bold">one clue</span> of your own for your tutor
+                (for example: "A third of the poetry books were …"). Your tutor
+                will solve it out loud.
+              </p>
+            </div>
+            <textarea
+              id="l16-s2-own"
+              class="test-textarea"
+              placeholder="Your own clue..."
+            ></textarea>
+
+            <details class="answer" style="margin: 20px 0">
+              <summary>
+                <span class="bold" style="color: var(--brand2)"
+                  >⭐ Bonus puzzle (60 books)</span
+                >
+              </summary>
+              <p style="margin-top: 15px">
+                Another bookstall sold <span class="bold">60 books</span> in
+                total. Decode the table!
+              </p>
+              <!-- Answers for the tutor: mystery 20 · fantasy 10 · science 6 · comics 18 · history 6 -->
+              <div class="tablecontainer">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Genre</th>
+                      <th>How many books?</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Mystery novels</td>
+                      <td>
+                        <input
+                          type="text"
+                          id="l16-s2b-m"
+                          class="test-input"
+                          style="width: 80px"
+                        />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Fantasy</td>
+                      <td>
+                        <input
+                          type="text"
+                          id="l16-s2b-f"
+                          class="test-input"
+                          style="width: 80px"
+                        />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Science books</td>
+                      <td>
+                        <input
+                          type="text"
+                          id="l16-s2b-s"
+                          class="test-input"
+                          style="width: 80px"
+                        />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Comics</td>
+                      <td>
+                        <input
+                          type="text"
+                          id="l16-s2b-c"
+                          class="test-input"
+                          style="width: 80px"
+                        />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>History books</td>
+                      <td>
+                        <input
+                          type="text"
+                          id="l16-s2b-h"
+                          class="test-input"
+                          style="width: 80px"
+                        />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><span class="bold">Total</span></td>
+                      <td><span class="bold">60</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <ol>
+                <li>A third of all the books were mystery novels.</li>
+                <li>They sold half as many fantasy books as mystery novels.</li>
+                <li>They sold four fewer science books than fantasy books.</li>
+                <li>They sold three times as many comics as science books.</li>
+                <li>The rest were history books.</li>
+              </ol>
+            </details>
+
+            <hr />
+
+            <h3 id="p3-3">Translator</h3>
+
+            <!-- 🌍 BUILT-IN TRANSLATOR -->
+            <!-- prettier-ignore -->
+            <div class="translator-module" data-source-lang="en" data-target-lang="uk">
+              <div class="translator-lang-labels">
+                <span class="lang-source">Англійська</span>
+                <button class="swap-lang-btn" title="Swap languages">⇄</button>
+                <span class="lang-target">Українська</span>
+              </div>
+
+              <div class="translator-inputs">
+                <input type="text" class="translator-input" placeholder="Type a word..." />
+                <button class="translate-btn">Translate</button>
+              </div>
+
+              <div class="translator-output" style="display: none"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 🍋 PART 3: SPEAKING -->
+      <section id="part-4" class="lesson-wrapper tab-content">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img
+                src="../media/icons/lemon.svg"
+                class="star"
+                alt="a lemon slice"
+              />
+              <span>Speaking</span>
+            </h2>
+          </div>
+
+          <div class="lesson-content">
+            <h3 id="p3-1">Speaking 1: Fair Maths</h3>
+
+            <p>
+              Linda is a literature professor at the university. At the fair,
+              she sells <span class="gloss" data-tr="мафіни">muffins</span> with
+              <span class="gloss" data-tr="чорниця">blueberries</span>,
+              chocolate <span class="gloss" data-tr="печиво">biscuits</span> and
+              <span class="gloss" data-tr="домашній лимонад"
+                >homemade lemonade</span
+              >. Today a customer has made a big
+              <span class="gloss" data-tr="замовлення">order</span>.
+            </p>
+            <p>
+              Help Linda prepare the order! Your tutor will play Linda and ask
+              you questions.
+            </p>
+
+            <div class="tablecontainer" style="margin-top: 20px">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Item</th>
+                    <th>Order</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>blueberry muffins</td>
+                    <td><span class="bold">2 kg</span></td>
+                  </tr>
+                  <tr>
+                    <td>chocolate biscuits</td>
+                    <td><span class="bold">1 kg</span></td>
+                  </tr>
+                  <tr>
+                    <td>lemonade (to take home)</td>
+                    <td><span class="bold">2.5 l</span> (2500 ml)</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      lemonade
+                      <span class="gloss" data-tr="з собою, на виніс"
+                        >to go</span
+                      >
+                    </td>
+                    <td><span class="bold">1 cup</span> (250 ml)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h4>Linda's facts:</h4>
+            <div class="tablecontainer">
+              <table>
+                <tbody>
+                  <tr>
+                    <td>1 muffin weighs about</td>
+                    <td><span class="bold">200 g</span></td>
+                  </tr>
+                  <tr>
+                    <td>1 biscuit weighs about</td>
+                    <td><span class="bold">100 g</span></td>
+                  </tr>
+                  <tr>
+                    <td>1 box fits</td>
+                    <td>
+                      <span class="bold">6</span> muffins
+                      <span class="bold">or 12</span> biscuits
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1 muffin costs</td>
+                    <td><span class="bold">$2</span></td>
+                  </tr>
+                  <tr>
+                    <td>1 biscuit costs</td>
+                    <td><span class="bold">$1.50</span> (one dollar fifty)</td>
+                  </tr>
+                  <tr>
+                    <td>Lemonade</td>
+                    <td><span class="bold">$4 per litre</span></td>
+                  </tr>
+                  <tr>
+                    <td>Lemonade bottles</td>
+                    <td>
+                      <span class="bold">1 l</span> bottles, and only
+                      <span class="bold">one 500 ml</span> bottle
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="callout2" style="margin: 20px 0">
+              <p style="margin: 0">
+                <span class="bold">Remember:</span> 1 kg = 1000 g • 1 l = 1000
+                ml
+              </p>
+            </div>
+
+            <details class="answer" style="margin-bottom: 20px">
+              <summary>
+                <span class="bold" style="color: var(--brand2)"
+                  >Phrase bank (Numbers and calculations)</span
+                >
+              </summary>
+              <div class="tablecontainer" style="margin-top: 15px">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>English</th>
+                      <th>Українською</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Two kilograms is two thousand grams.</td>
+                      <td>2 кг — це 2000 грамів.</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        Two thousand <span class="bold">divided by</span> two
+                        hundred is ten.
+                      </td>
+                      <td>2000 ÷ 200 = 10</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        Ten <span class="bold">times</span> two dollars is
+                        twenty dollars.
+                      </td>
+                      <td>10 × 2 = 20</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        Twenty <span class="bold">plus</span> fifteen is
+                        thirty-five.
+                      </td>
+                      <td>20 + 15 = 35</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        Fifty <span class="bold">minus</span> forty-six is four.
+                      </td>
+                      <td>50 − 46 = 4</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        It is <span class="bold">about</span> two hundred grams.
+                      </td>
+                      <td>Це приблизно 200 г.</td>
+                    </tr>
+                    <tr>
+                      <td><span class="bold">In total / altogether</span></td>
+                      <td>всього, разом</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p>
+                <span class="bold">Money:</span> $1.50 =
+                <span class="italic">one dollar fifty</span> or
+                <span class="italic">one dollar and fifty cents</span> • $2.50 =
+                <span class="italic">two dollars fifty</span>
+              </p>
+
+              <h4>Questions Robin can ask Linda:</h4>
+              <ul style="list-style-type: square">
+                <li>How many muffins do we need?</li>
+                <li>How much does one biscuit weigh?</li>
+                <li>How much does it cost?</li>
+                <li>What is the total?</li>
+                <li>How much change do we give?</li>
+              </ul>
+              <p
+                class="small"
+                style="color: var(--text-soft); font-style: italic"
+              >
+                How many / How much? How many is for countable nouns (muffins,
+                boxes). How much is for uncountable nouns (lemonade, money,
+                change).
+              </p>
+            </details>
+
+            <details class="answer" style="margin-bottom: 20px">
+              <summary>
+                <span class="bold" style="color: var(--brand2)"
+                  >Sentence frames (for your answers)</span
+                >
+              </summary>
+              <div class="tablecontainer" style="margin-top: 15px">
+                <table>
+                  <tbody>
+                    <tr>
+                      <td>How many items</td>
+                      <td>
+                        <span class="italic"
+                          >We need ___ muffins / biscuits.</span
+                        >
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Explaining</td>
+                      <td>
+                        <span class="italic"
+                          >___ kilograms is ___ grams. ___ divided by ___ is
+                          ___.</span
+                        >
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Boxes</td>
+                      <td>
+                        <span class="italic"
+                          >We need ___ box(es) because ___ muffins don't fit
+                          into one box.</span
+                        >
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Price</td>
+                      <td>
+                        <span class="italic"
+                          >___ muffins cost ___ dollars. / The total is ___
+                          dollars.</span
+                        >
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Bottles</td>
+                      <td>
+                        <span class="italic"
+                          >We use ___ one-litre bottles and a 500-millilitre
+                          bottle.</span
+                        >
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Cups</td>
+                      <td>
+                        <span class="italic"
+                          >There are four cups in one litre.</span
+                        >
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Change</td>
+                      <td>
+                        <span class="italic"
+                          >The customer gives ___ dollars. The change is ___
+                          dollars.</span
+                        >
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </details>
+
+            <textarea
+              id="l16-s1-notes"
+              class="test-textarea"
+              placeholder="Your notes / calculations..."
+            ></textarea>
+
+            <hr />
+
+            <h3 id="p3-2">Speaking 2: Decode the Bestsellers</h3>
+
+            <p>
+              Miss Lemon and Robin sold a lot of books at the fair, but the
+              sales list got wet in the rain and only some clues are readable.
+              Your tutor will read the clues to you. Explain your math out loud
+              in English and fill in the table!
+            </p>
+
+            <div class="tablecontainer">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Genre</th>
+                    <th>How many books?</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Fantasy</td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l16-s2-f"
+                        class="test-input"
+                        style="width: 80px"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Science fiction (sci-fi)</td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l16-s2-s"
+                        class="test-input"
+                        style="width: 80px"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Mystery novels</td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l16-s2-m"
+                        class="test-input"
+                        style="width: 80px"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Adventure</td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l16-s2-a"
+                        class="test-input"
+                        style="width: 80px"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Poetry</td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l16-s2-p"
+                        class="test-input"
+                        style="width: 80px"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">Total</span></td>
+                    <td><span class="bold">40</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <details class="answer" style="margin-bottom: 20px">
+              <summary>
+                <span class="bold" style="color: var(--brand2)">Glossary</span>
+              </summary>
+              <div class="tablecontainer" style="margin-top: 15px">
+                <table>
+                  <tbody>
+                    <tr>
+                      <td>fantasy</td>
+                      <td>фентезі</td>
+                    </tr>
+                    <tr>
+                      <td>science fiction (sci-fi)</td>
+                      <td>наукова фантастика</td>
+                    </tr>
+                    <tr>
+                      <td>mystery novel</td>
+                      <td>детектив</td>
+                    </tr>
+                    <tr>
+                      <td>adventure</td>
+                      <td>пригоди</td>
+                    </tr>
+                    <tr>
+                      <td>poetry</td>
+                      <td>поезія</td>
+                    </tr>
+                    <tr>
+                      <td>the rest</td>
+                      <td>решта</td>
+                    </tr>
+                    <tr>
+                      <td>in total</td>
+                      <td>всього</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </details>
+
+            <details class="answer" style="margin-bottom: 20px">
+              <summary>
+                <span class="bold" style="color: var(--brand2)"
+                  >Phrase bank: fractions and comparisons</span
+                >
+              </summary>
+              <div class="tablecontainer" style="margin-top: 15px">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>English</th>
+                      <th>Українською</th>
+                      <th>Example</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><span class="bold">a half</span> of</td>
+                      <td>половина</td>
+                      <td>A half of forty is twenty.</td>
+                    </tr>
+                    <tr>
+                      <td><span class="bold">a third</span> of</td>
+                      <td>третина</td>
+                      <td>A third of sixty is twenty.</td>
+                    </tr>
+                    <tr>
+                      <td><span class="bold">a quarter</span> of</td>
+                      <td>чверть</td>
+                      <td>A quarter of forty is ten.</td>
+                    </tr>
+                    <tr>
+                      <td><span class="bold">a fifth</span> of</td>
+                      <td>п'ята частина</td>
+                      <td>A fifth of forty is eight.</td>
+                    </tr>
+                    <tr>
+                      <td><span class="bold">half as many … as</span></td>
+                      <td>вдвічі менше … ніж</td>
+                      <td>Four is half as many as eight.</td>
+                    </tr>
+                    <tr>
+                      <td><span class="bold">twice as many … as</span></td>
+                      <td>вдвічі більше … ніж</td>
+                      <td>Eight is twice as many as four.</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span class="bold">three times as many … as</span>
+                      </td>
+                      <td>втричі більше … ніж</td>
+                      <td>Twelve is three times as many as four.</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span class="bold">… more than / … fewer than</span>
+                      </td>
+                      <td>на … більше / менше ніж</td>
+                      <td>Six more than ten is sixteen.</td>
+                    </tr>
+                    <tr>
+                      <td><span class="bold">the rest</span></td>
+                      <td>решта</td>
+                      <td>The rest are poetry books.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </details>
+
+            <details class="answer" style="margin-bottom: 20px">
+              <summary>
+                <span class="bold" style="color: var(--brand2)"
+                  >Sentence frames</span
+                >
+              </summary>
+              <div class="tablecontainer" style="margin-top: 15px">
+                <table>
+                  <tbody>
+                    <tr>
+                      <td>Reading the clue</td>
+                      <td>
+                        <span class="italic">The clue says that ___.</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Calculating</td>
+                      <td>
+                        <span class="italic"
+                          >A fifth of forty is eight, because forty divided by
+                          five is eight.</span
+                        >
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Answer</td>
+                      <td>
+                        <span class="italic"
+                          >So they sold ___ fantasy books.</span
+                        >
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Using a previous result</td>
+                      <td>
+                        <span class="italic"
+                          >Four is half of eight, so they sold four sci-fi
+                          books.</span
+                        >
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Asking for repetition</td>
+                      <td>
+                        <span class="italic"
+                          >Can you repeat the clue, please?</span
+                        >
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Checking</td>
+                      <td>
+                        <span class="italic"
+                          >Let's check: ___ plus ___ plus ___ is ___.</span
+                        >
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </details>
+
+            <textarea
+              id="l16-s2-notes"
               class="test-textarea"
               placeholder="Your notes / calculations..."
             ></textarea>
