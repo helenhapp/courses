@@ -1,0 +1,1988 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Навчальні матеріали" />
+
+    <link rel="icon" type="image/svg+xml" href="../media/icons/carambola.svg" />
+
+    <title>English Lesson 16</title>
+
+    <script>
+      const savedTheme = localStorage.getItem("lms_theme") || "light";
+      document.documentElement.setAttribute("data-theme", savedTheme);
+
+      const hljsThemeLink =
+        savedTheme === "dark"
+          ? "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css"
+          : "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css";
+
+      document.head.insertAdjacentHTML(
+        "beforeend",
+        `<link id="hljs-theme" rel="stylesheet" href="${hljsThemeLink}" />`,
+      );
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Fira+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Tektur:wght@400..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="../style.css?v=3.0" />
+    <script src="../script.js?v=3.0" defer></script>
+  </head>
+
+  <body>
+    <!-- transition curtain -->
+    <div class="transition-curtain"></div>
+
+    <!-- top-bar -->
+    <div id="nav-container">
+      <nav class="top-bar">
+        <div class="logo-container">
+          <img
+            src="../media/icons/carambola.svg"
+            alt="Logo"
+            class="site-logo"
+          />
+        </div>
+
+        <div class="top-bar__controls">
+          <label class="toggle-switch" aria-label="Перемикач теми">
+            <input type="checkbox" id="theme-checkbox" />
+            <span class="slider">
+              <span class="icon sun"
+                ><img src="../media/icons/stars.svg"
+              /></span>
+              <span class="icon moon"
+                ><img src="../media/icons/moon.svg"
+              /></span>
+            </span>
+          </label>
+          <button
+            id="dyslexia-mode-btn"
+            class="wide-toggle"
+            title="Шрифт для дислектиків"
+          >
+            Aa
+          </button>
+        </div>
+      </nav>
+    </div>
+
+    <!-- lesson header -->
+    <header>
+      <div class="title-container">
+        <h1 id="lesson-title">English: 16</h1>
+      </div>
+
+      <p class="topic">Articles & "Weights, Volumes, Money" at the Book Fair</p>
+
+      <hr class="pretty-divider" />
+    </header>
+
+    <!-- lesson content -->
+    <main>
+      <!-- tab buttons -->
+      <div class="tabs-nav">
+        <button class="tab-btn active" data-target="part-1">Vocabulary</button>
+        <button class="tab-btn" data-target="part-2">Grammar</button>
+        <button class="tab-btn" data-target="part-3">Speaking</button>
+      </div>
+
+      <!-- 🍓 PART 1: VOCABULARY & READING -->
+      <section id="part-1" class="lesson-wrapper tab-content active show">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img
+                src="../media/icons/strawberry.svg"
+                class="star"
+                alt="strawberry"
+              />
+              <span>Vocabulary & Reading</span>
+            </h2>
+          </div>
+
+          <div class="lesson-content">
+            <h3 id="p1-1">1. Vocabulary</h3>
+
+            <p class="task-description">
+              Translate the words from English to Ukrainian (remember or guess).
+            </p>
+
+            <h4>Group 1: Weight</h4>
+            <p
+              class="small"
+              style="margin-bottom: 10px; color: var(--text-soft)"
+            >
+              1 kg = 1000 g
+            </p>
+            <div class="tablecontainer">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Word</th>
+                    <th>Transcription</th>
+                    <th>Translation</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="bold">kilogram (kg)</span></td>
+                    <td><span class="accent-string">/ˈkɪləɡræm/</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l16-v1-1"
+                        class="test-input"
+                        style="width: 150px"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">gram (g)</span></td>
+                    <td><span class="accent-string">/ɡræm/</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l16-v1-2"
+                        class="test-input"
+                        style="width: 150px"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">weight</span></td>
+                    <td><span class="accent-string">/weɪt/</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l16-v1-3"
+                        class="test-input"
+                        style="width: 150px"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">to weigh</span></td>
+                    <td><span class="accent-string">/weɪ/</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l16-v1-4"
+                        class="test-input"
+                        style="width: 150px"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">scale</span></td>
+                    <td><span class="accent-string">/skeɪl/</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l16-v1-5"
+                        class="test-input"
+                        style="width: 150px"
+                      />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h4>Group 2: Volume</h4>
+            <p
+              class="small"
+              style="margin-bottom: 10px; color: var(--text-soft)"
+            >
+              1 l = 1000 ml
+            </p>
+            <div class="tablecontainer">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Word</th>
+                    <th>Transcription</th>
+                    <th>Translation</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="bold">litre (l)</span></td>
+                    <td><span class="accent-string">/ˈliːtə/</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l16-v2-1"
+                        class="test-input"
+                        style="width: 150px"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">millilitre (ml)</span></td>
+                    <td><span class="accent-string">/ˈmɪliliːtə/</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l16-v2-2"
+                        class="test-input"
+                        style="width: 150px"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">volume</span></td>
+                    <td><span class="accent-string">/ˈvɒljuːm/</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l16-v2-3"
+                        class="test-input"
+                        style="width: 150px"
+                      />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h4>Group 3: Money and the fair</h4>
+            <div class="tablecontainer">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Word</th>
+                    <th>Transcription</th>
+                    <th>Translation</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="bold">to cost</span></td>
+                    <td><span class="accent-string">/kɒst/</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l16-v3-2"
+                        class="test-input"
+                        style="width: 150px"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">total</span></td>
+                    <td><span class="accent-string">/ˈtəʊtl/</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l16-v3-3"
+                        class="test-input"
+                        style="width: 150px"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">change</span> (money)</td>
+                    <td><span class="accent-string">/tʃeɪndʒ/</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l16-v3-4"
+                        class="test-input"
+                        style="width: 150px"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">receipt</span></td>
+                    <td><span class="accent-string">/rɪˈsiːt/</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l16-v3-5"
+                        class="test-input"
+                        style="width: 150px"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">fair</span></td>
+                    <td><span class="accent-string">/feə/</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l16-v3-6"
+                        class="test-input"
+                        style="width: 150px"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">stall</span></td>
+                    <td><span class="accent-string">/stɔːl/</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l16-v3-8"
+                        class="test-input"
+                        style="width: 150px"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">to host</span> (an event)</td>
+                    <td><span class="accent-string">/həʊst/</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l16-v3-9"
+                        class="test-input"
+                        style="width: 150px"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">to set (smth) up</span></td>
+                    <td><span class="accent-string">/set ʌp/</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l16-v3-10"
+                        class="test-input"
+                        style="width: 150px"
+                      />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <hr />
+
+            <h3 id="p1-3">2. Reading</h3>
+
+            <p class="task-description">
+              Прочитай текст вголос. Після кожної частини своїми словами
+              українською перекажи її загальний зміст, та дай відповідь на
+              запитання.
+            </p>
+
+            <h4 style="text-align: center; margin-top: 30px; font-size: 1.3rem">
+              A Busy Day at the Book Fair
+            </h4>
+
+            <div class="callout2" style="margin-bottom: 25px">
+              <p>
+                <span class="bold" style="color: var(--brand2)"
+                  >Scene 1: The stall (weight)</span
+                >
+              </p>
+              <p>
+                Today the university is hosting a book fair. Miss Lemon and
+                Robin are setting up their book stall. Robin
+                <span class="gloss" data-tr="несе">carries</span> a heavy box to
+                the stall. “How much does it weigh?” she asks. “<span
+                  class="gloss"
+                  data-tr="Приблизно"
+                  >About</span
+                >
+                ten kilograms,” says Miss Lemon. Robin takes one book out of the
+                box. “<span class="gloss" data-tr="Мені цікаво"
+                  >I’m curious</span
+                >
+                about the weight of this book,” she says. She goes to a
+                <span class="gloss" data-tr="сусіднього">nearby</span> stall
+                that sells food and
+                <span class="gloss" data-tr="позичає">borrows</span> a kitchen
+                scale. “Its weight is 452 grams!” Then she
+                <span class="gloss" data-tr="повертає">returns</span> the scale
+                <span class="gloss" data-tr="власнику">to the owner</span> and
+                <span class="gloss" data-tr="продовжує розпаковувати"
+                  >continues unpacking</span
+                >
+                the books.
+              </p>
+            </div>
+
+            <p>
+              1. How many books are in the 10 kg box if the
+              <span class="gloss" data-tr="середня">average</span> weight of a
+              book is 500 g?
+            </p>
+            <textarea
+              id="l16-r1-answer"
+              class="test-textarea"
+              placeholder="Your answer..."
+            ></textarea>
+
+            <div class="callout2" style="margin-top: 30px; margin-bottom: 25px">
+              <p>
+                <span class="bold" style="color: var(--brand2)"
+                  >Scene 2: Lunch (volume)</span
+                >
+              </p>
+              <p>
+                At noon, Robin goes for a walk around the fair. She is hungry,
+                so she buys a sandwich and an orange. Now she wants to buy some
+                apple juice. She can buy it in a bottle or in a small cup. “What
+                is the volume of the bottle and of one cup?” she asks. “The
+                bottle is one litre, and the cup is 250 millilitres,” the seller
+                <span class="gloss" data-tr="відповідає">replies</span>. Robin
+                <span class="gloss" data-tr="вирішує">decides</span> to buy the
+                bottle and
+                <span class="gloss" data-tr="поділитися">share</span> the juice
+                with Miss Lemon.
+              </p>
+            </div>
+
+            <p>2. How many cups are in one bottle?</p>
+            <textarea
+              id="l16-r2-answer"
+              class="test-textarea"
+              placeholder="Your answer..."
+            ></textarea>
+
+            <div class="callout2" style="margin-top: 30px; margin-bottom: 25px">
+              <p>
+                <span class="bold" style="color: var(--brand2)"
+                  >Scene 3: The receipt (money)</span
+                >
+              </p>
+              <p>
+                In the afternoon, a girl comes to the stall. She wants to buy a
+                map and 4 books. “The price of the map is 10 dollars,” says
+                Robin. “Those books cost 5 dollars
+                <span class="gloss" data-tr="кожна">each</span>. So the total is
+                30 dollars.” The girl gives Robin some money, and Robin gives
+                her 20 dollars in change and a receipt.
+              </p>
+            </div>
+
+            <p>
+              3. How much money did the girl give Robin to get 20 dollars in
+              change?
+            </p>
+            <textarea
+              id="l16-r3-answer"
+              class="test-textarea"
+              placeholder="Your answer..."
+            ></textarea>
+          </div>
+        </div>
+      </section>
+
+      <!-- 🍉 PART 2: GRAMMAR -->
+      <section id="part-2" class="lesson-wrapper tab-content">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img
+                src="../media/icons/watermelon.svg"
+                class="star"
+                alt="watermelon"
+              />
+              <span>Grammar</span>
+            </h2>
+          </div>
+
+          <div class="lesson-content">
+            <h3 id="g-block-1">Countable & Uncountable Nouns + "some"</h3>
+
+            <p>
+              <span class="bold">Злічувані іменники (countable)</span>: це все,
+              що можна <span class="bold">порахувати</span> поштучно:
+              <span class="italic">one book, two books, three books</span
+              >.<br />
+              Вони мають однину і множину:
+              <span class="italic"
+                >a coin → coins, an egg → eggs, a book → books</span
+              >.
+            </p>
+
+            <p>
+              <span class="bold">Незлічувані іменники (uncountable)</span>: це
+              те, що ми <span class="bold">не рахуємо поштучно</span>, а
+              <span class="bold">вимірюємо</span> (кілограмами, літрами,
+              годинами, аркушами тощо):
+              <span class="italic"
+                >milk, water, flour, juice, sugar, paper, money, time,
+                weight</span
+              >.<br />
+              Вони <span class="bold">не мають</span> множини. Не кажемо
+              <span class="italic">two milks</span>. Кажемо:
+              <span class="bold">two litres of milk</span>,
+              <span class="bold">a kilogram of flour</span>.
+            </p>
+
+            <div class="tablecontainer">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Категорія</th>
+                    <th>Приклади незлічуваних іменників</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="bold">Рідини</span> (liquids)</td>
+                    <td>water, milk, juice, tea, oil</td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">Їжа</span> (food)</td>
+                    <td>flour, sugar, bread, rice, cheese, butter</td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">Матеріали</span> (materials)</td>
+                    <td>paper, glass, wood, gold, plastic</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span class="bold">Величини та гроші</span> (quantities,
+                      money)
+                    </td>
+                    <td>weight, volume, time, money</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span class="bold">Абстрактні поняття</span> (ideas)
+                    </td>
+                    <td>information, advice, homework, music</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="soft-callout" style="margin-top: 15px">
+              <p style="margin: 0">
+                <span class="bold">Як їх «порахувати»:</span> використовуємо
+                <span class="bold">контейнери та міри</span>:
+                <span class="italic"
+                  >a cup of tea, a loaf of bread, a piece of paper, a slice of
+                  cheese, a kilogram of flour</span
+                >.
+              </p>
+            </div>
+
+            <p style="margin-top: 25px">
+              Слово <span class="bold">some</span> означає «трохи / кілька /
+              якась кількість». Ми вживаємо його:
+            </p>
+            <ul style="list-style-type: square">
+              <li>
+                з <span class="bold">незлічуваними</span>:
+                <span class="italic">some milk, some juice</span>;
+              </li>
+              <li>
+                з <span class="bold">множиною злічуваних</span>:
+                <span class="italic">some books, some coins</span>.
+              </li>
+            </ul>
+            <p
+              class="small"
+              style="color: var(--text-soft); font-style: italic"
+            >
+              (Нотатка: some вживаємо у ствердженнях; в запитаннях і
+              запереченнях зазвичай ставимо any).
+            </p>
+
+            <p class="bold">Як сказати англійською:</p>
+            <ol>
+              <li>В мене є лимон і трохи цукру.</li>
+              <li>Мені потрібен кілограм борошна і десять яєць.</li>
+              <li>Вона купила пляшку води і трохи печива.</li>
+            </ol>
+
+            <!-- Exercise 1 -->
+            <details class="task" open>
+              <summary><h4>Exercise 1</h4></summary>
+              <div>
+                <p class="task-description" style="margin-bottom: 15px">
+                  Count it or measure it? Sort the words into the correct
+                  columns.
+                </p>
+
+                <div
+                  class="sorting-game-module"
+                  data-game-id="count_uncount_ex"
+                >
+                  <script type="application/json" class="sorting-data">
+                    {
+                      "categories": [
+                        {
+                          "id": "cat_count",
+                          "title": "Countable",
+                          "hint": "(a, an, two...)"
+                        },
+                        {
+                          "id": "cat_uncount",
+                          "title": "Uncountable",
+                          "hint": "(some, a lot of...)"
+                        }
+                      ],
+                      "items": [
+                        {
+                          "id": "i1",
+                          "text": "coin",
+                          "correctCategory": "cat_count"
+                        },
+                        {
+                          "id": "i2",
+                          "text": "milk",
+                          "correctCategory": "cat_uncount"
+                        },
+                        {
+                          "id": "i3",
+                          "text": "orange",
+                          "correctCategory": "cat_count"
+                        },
+                        {
+                          "id": "i4",
+                          "text": "flour",
+                          "correctCategory": "cat_uncount"
+                        },
+                        {
+                          "id": "i5",
+                          "text": "book",
+                          "correctCategory": "cat_count"
+                        },
+                        {
+                          "id": "i6",
+                          "text": "juice",
+                          "correctCategory": "cat_uncount"
+                        },
+                        {
+                          "id": "i7",
+                          "text": "egg",
+                          "correctCategory": "cat_count"
+                        },
+                        {
+                          "id": "i8",
+                          "text": "money",
+                          "correctCategory": "cat_uncount"
+                        },
+                        {
+                          "id": "i9",
+                          "text": "bottle",
+                          "correctCategory": "cat_count"
+                        },
+                        {
+                          "id": "i10",
+                          "text": "sugar",
+                          "correctCategory": "cat_uncount"
+                        },
+                        {
+                          "id": "i11",
+                          "text": "receipt",
+                          "correctCategory": "cat_count"
+                        },
+                        {
+                          "id": "i12",
+                          "text": "paper",
+                          "correctCategory": "cat_uncount"
+                        }
+                      ]
+                    }
+                  </script>
+
+                  <div class="sorting-header">
+                    <h4>Drag and Drop</h4>
+                    <button type="button" class="sorting-reset-btn">
+                      Start Over
+                    </button>
+                  </div>
+                  <div class="sorting-bank"></div>
+                  <div class="sorting-zones-container"></div>
+                  <div class="sorting-feedback"></div>
+                </div>
+              </div>
+            </details>
+
+            <hr />
+
+            <h3 id="g-block-2">The indefinite article a/an</h3>
+
+            <p>
+              <span class="bold">1. Коли a/an?</span> Лише з
+              <span class="bold">однією злічуваною</span> річчю:
+              <span class="italic">a book, an egg</span> (але не
+              <span class="italic">a milk</span> та не
+              <span class="italic">a books</span>).
+            </p>
+
+            <p>
+              <span class="bold">2. a чи an?</span> Вирішує
+              <span class="bold">звук</span>, а не літера!
+            </p>
+
+            <ul style="list-style-type: square; margin-left: 25px">
+              <li>
+                <span class="bold">a</span> перед
+                <span class="bold">приголосним звуком</span>:
+                <span class="italic">a book, a map, a year, a university</span>.
+              </li>
+              <li>
+                <span class="bold">an</span> перед
+                <span class="bold">голосним звуком</span>:
+                <span class="italic">an orange, an egg, an hour</span>.
+              </li>
+            </ul>
+
+            <p>
+              <span class="bold">3.</span> Використовується, щоб сказати,
+              <span class="bold">що це</span> за річ або
+              <span class="bold">ким хтось працює</span>:
+            </p>
+            <ul style="list-style-type: square; margin-left: 25px">
+              <li>
+                It is <span class="bold">a</span> map. It is
+                <span class="bold">an</span> orange.
+              </li>
+              <li>
+                Miss Lemon is <span class="bold">a</span> librarian. Robin is
+                <span class="bold">an</span> assistant.
+              </li>
+            </ul>
+
+            <p>
+              <span class="bold"
+                >4. З множиною і незлічуваними a/an не вживаємо</span
+              >: замість цього можна використати
+              <span class="bold">some</span> або нічого:
+            </p>
+            <ul style="list-style-type: square; margin-left: 25px">
+              <li>
+                ❌ <span class="italic">a juice</span> → ✅
+                <span class="bold">some</span> juice
+              </li>
+              <li>
+                ❌ <span class="italic">a books</span> → ✅
+                <span class="bold">some</span> books
+              </li>
+            </ul>
+
+            <p>
+              <span class="bold">5. Прикметник + іменник:</span> якщо після
+              прикметника є іменник, a/an залежить від
+              <span class="bold">першого звука прикметника</span>:
+            </p>
+            <ul style="list-style-type: square; margin-left: 25px">
+              <li>
+                <span class="bold">a</span> cheap book,
+                <span class="bold">a</span> yellow box,
+                <span class="bold">an</span> expensive map,
+                <span class="bold">an</span> honest person
+              </li>
+            </ul>
+
+            <p>
+              6. Якщо після прикметника
+              <span class="bold">немає іменника</span>, a/an
+              <span class="bold">не ставимо</span>:
+            </p>
+            <ul style="list-style-type: square; margin-left: 25px">
+              <li>
+                ✅ The map is <span class="bold">expensive</span>. ❌
+                <span class="italic">The map is an expensive.</span>
+              </li>
+            </ul>
+
+            <p class="bold">Як сказати англійською:</p>
+            <ol>
+              <li>Міс Лемон – бібліотекарка, а Робін – асистентка.</li>
+              <li>
+                Це книжковий ярмарок. Це
+                <span class="gloss" data-tr="stall">стенд</span> з лимонадом.
+              </li>
+              <li>
+                Мені потрібні олівець та
+                <span class="gloss" data-tr="eraser">гумка</span>.
+              </li>
+            </ol>
+
+            <!-- Exercise 2 -->
+            <details class="task" open>
+              <summary><h4>Exercise 2</h4></summary>
+              <div>
+                <p class="task-description">
+                  Step 1: Fill in <strong>a / an / some / –</strong> (no
+                  article)
+                </p>
+                <ol style="line-height: 2.2">
+                  <li>
+                    He needs
+                    <input
+                      type="text"
+                      id="l16-g2-1a"
+                      class="test-input"
+                      style="width: 80px"
+                    />
+                    map of the city and
+                    <input
+                      type="text"
+                      id="l16-g2-1b"
+                      class="test-input"
+                      style="width: 80px"
+                    />
+                    umbrella.
+                  </li>
+                  <li>
+                    For the soup we need
+                    <input
+                      type="text"
+                      id="l16-g2-2a"
+                      class="test-input"
+                      style="width: 80px"
+                    />
+                    onion,
+                    <input
+                      type="text"
+                      id="l16-g2-2b"
+                      class="test-input"
+                      style="width: 80px"
+                    />
+                    rice and
+                    <input
+                      type="text"
+                      id="l16-g2-2c"
+                      class="test-input"
+                      style="width: 80px"
+                    />
+                    carrots.
+                  </li>
+                  <li>
+                    She studies at
+                    <input
+                      type="text"
+                      id="l16-g2-3a"
+                      class="test-input"
+                      style="width: 80px"
+                    />
+                    university in
+                    <input
+                      type="text"
+                      id="l16-g2-3b"
+                      class="test-input"
+                      style="width: 80px"
+                    />
+                    old city.
+                  </li>
+                  <li>
+                    It takes her
+                    <input
+                      type="text"
+                      id="l16-g2-4a"
+                      class="test-input"
+                      style="width: 80px"
+                    />
+                    hour and
+                    <input
+                      type="text"
+                      id="l16-g2-4b"
+                      class="test-input"
+                      style="width: 80px"
+                    />
+                    half to get to the university by bus.
+                  </li>
+                  <li>
+                    I want to buy
+                    <input
+                      type="text"
+                      id="l16-g2-5a"
+                      class="test-input"
+                      style="width: 80px"
+                    />
+                    yellow bookmark and
+                    <input
+                      type="text"
+                      id="l16-g2-5b"
+                      class="test-input"
+                      style="width: 80px"
+                    />
+                    orange one.
+                  </li>
+                </ol>
+              </div>
+            </details>
+
+            <hr />
+
+            <h3 id="g-block-3">Block 3: The definite article "the"</h3>
+
+            <p><span class="bold">🔊 Вимова слова the</span></p>
+            <p>
+              Слово <span class="bold">the</span> читається
+              <span class="bold">по-різному</span>, залежно від того,
+              <span class="bold">з якого звука</span> починається наступне
+              слово:
+            </p>
+            <div class="tablecontainer">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Наступний звук</th>
+                    <th>Вимова the</th>
+                    <th>Приклади</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="bold">приголосний</span></td>
+                    <td>
+                      <span class="accent-string">/ðə/</span>
+                    </td>
+                    <td>
+                      the table, the book, the map,
+                      <span class="bold">the university</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">голосний</span></td>
+                    <td>
+                      <span class="accent-string">/ði/</span>
+                    </td>
+                    <td>
+                      the apple, the egg, the orange,
+                      <span class="bold">the hour</span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p style="margin-top: 20px">
+              <span class="bold">the</span> ставимо зі злічуваними (однина й
+              множина) та незлічуваними іменниками. Воно означає: «<span
+                class="bold"
+                >той самий / конкретний</span
+              >» (ми знаємо, про що саме йде мова).
+            </p>
+
+            <p><span class="bold">Коли вживаємо the:</span></p>
+
+            <p>
+              <span class="bold"
+                >1. Коли річ вже згадувалася в розмові (2+ згадка).</span
+              >
+              Спочатку <span class="bold">a/an</span>, потім
+              <span class="bold">the</span>:
+            </p>
+            <ul style="list-style-type: square; margin-left: 25px">
+              <li>
+                Robin has just sold <span class="bold">a</span> map.
+                <span class="bold">The</span> map was very beautiful.
+              </li>
+              <li>
+                She has <span class="bold">an</span> orange and
+                <span class="bold">some</span> apple juice.
+                <span class="bold">The</span> orange is sweet, and
+                <span class="bold">the</span> juice is sour.
+              </li>
+            </ul>
+
+            <p>
+              <span class="bold"
+                >2. Коли з контексту зрозуміло, про яку саме річ мова:</span
+              >
+            </p>
+            <ul style="list-style-type: square; margin-left: 25px">
+              <li>
+                Can you open <span class="bold">the</span> door?
+                <span class="italic">(у кімнаті одні двері)</span>
+              </li>
+              <li>
+                Where is <span class="bold">the</span> receipt?
+                <span class="italic"
+                  >(конкретний чек після якоїсь покупки)</span
+                >
+              </li>
+            </ul>
+
+            <p>
+              <span class="bold">3. Унікальні речі:</span>
+              <span class="bold">the</span> sun,
+              <span class="bold">the</span> moon,
+              <span class="bold">the</span> Earth,
+              <span class="bold">the</span> sky,
+              <span class="bold">the</span> world,
+              <span class="bold">the</span> Pantheon.
+            </p>
+
+            <p>
+              <span class="bold">4. Частини дня:</span>
+              <span class="bold"
+                >in the morning, in the afternoon, in the evening.</span
+              >
+              (❌ <span class="italic">in a morning</span>, ❌
+              <span class="italic">in morning</span>)<br />
+              ⚠️ Але: <span class="bold">at night, at noon</span>: без the.
+            </p>
+
+            <p class="bold">Як сказати англійською:</p>
+            <ol>
+              <li>Робін купила нову книгу. Книга має 520 сторінок.</li>
+              <li>Небо блакитне. Земля кругла.</li>
+              <li>Вранці я п'ю каву, а ввечері чай.</li>
+            </ol>
+
+            <!-- Exercise 3 -->
+            <details class="task" open>
+              <summary><h4>Exercise 3</h4></summary>
+              <div>
+                <p class="task-description">
+                  Story gap-fill: fill in <strong>a / an / the / some</strong>.
+                </p>
+                <div class="callout2" style="line-height: 2.2">
+                  At noon, Robin left her stall to get lunch. She got
+                  <input
+                    type="text"
+                    id="l16-g3-2"
+                    class="test-input"
+                    style="width: 80px"
+                  />
+                  sandwich and
+                  <input
+                    type="text"
+                    id="l16-g3-3"
+                    class="test-input"
+                    style="width: 80px"
+                  />
+                  orange. She ate
+                  <input
+                    type="text"
+                    id="l16-g3-4"
+                    class="test-input"
+                    style="width: 80px"
+                  />
+                  sandwich, but left
+                  <input
+                    type="text"
+                    id="l16-g3-5"
+                    class="test-input"
+                    style="width: 80px"
+                  />
+                  orange for later. She also bought
+                  <input
+                    type="text"
+                    id="l16-g3-6"
+                    class="test-input"
+                    style="width: 80px"
+                  />
+                  apple juice. On her way back to
+                  <input
+                    type="text"
+                    id="l16-g3-7"
+                    class="test-input"
+                    style="width: 80px"
+                  />
+                  stall, she saw
+                  <input
+                    type="text"
+                    id="l16-g3-8"
+                    class="test-input"
+                    style="width: 80px"
+                  />
+                  pretty bookmark and bought it. She will use
+                  <input
+                    type="text"
+                    id="l16-g3-10"
+                    class="test-input"
+                    style="width: 80px"
+                  />
+                  bookmark for her new novel.
+                  <input
+                    type="text"
+                    id="l16-g3-9"
+                    class="test-input"
+                    style="width: 80px"
+                  />
+                  novel's genre is fantasy.
+                </div>
+              </div>
+            </details>
+
+            <hr />
+
+            <h3 id="g-block-4">Block 4: When we do NOT use "the"</h3>
+
+            <p><span class="bold">Без the, коли:</span></p>
+
+            <p>
+              <span class="bold"
+                >1. Говоримо про щось загалом (множина або незлічуване):</span
+              >
+            </p>
+            <ul style="list-style-type: square">
+              <li>
+                <span class="bold">Books</span> are interesting.
+                <span class="italic">(усі книжки загалом)</span> vs.
+                <span class="bold">The books</span> on this table are old.
+                <span class="italic">(конкретні книжки)</span>
+              </li>
+            </ul>
+
+            <p>
+              <span class="bold"
+                >2. Власні назви (імена, міста, країни, континенти):</span
+              >
+              <span class="italic"
+                >Robin, Miss Lemon, Lviv, Ukraine, Europe</span
+              >.
+            </p>
+
+            <p>
+              <span class="bold">3. Прийоми їжі:</span>
+              <span class="italic">have breakfast, have lunch, have dinner</span
+              >.
+            </p>
+
+            <p>
+              <span class="bold">4. Спорт та ігри:</span>
+              <span class="italic"
+                >play tennis, play basketball, play chess</span
+              >.
+            </p>
+
+            <p>
+              <span class="bold"
+                >5. Разом зі словами, які вже вказують на конкретну річ:</span
+              >
+              це <span class="bold">this/that/these/those</span>,
+              <span class="bold">присвійні займенники</span> (<span
+                class="italic"
+                >my, your, his, her, our, their</span
+              >) та <span class="bold">присвійний відмінок</span> (<span
+                class="italic"
+                >Robin's</span
+              >). Артикль the <span class="bold">не ставимо</span>:
+            </p>
+            <ul style="list-style-type: square">
+              <li>✅ this map, those books</li>
+              <li>✅ my book, her stall, Robin's bag</li>
+              <li>
+                ❌ <span class="italic">the this map</span>,
+                <span class="italic">the my book</span>,
+                <span class="italic">the Robin's bag</span>
+              </li>
+            </ul>
+
+            <p class="bold">Як сказати англійською:</p>
+            <ol>
+              <li>
+                Діти люблять шоколад. А шоколад, який Робін купила на ярмарку,
+                дуже смачний.
+              </li>
+              <li>Вони зазвичай грають у футбол після обіду.</li>
+              <li>Моє улюблене місто — Львів. Це місто дуже гарне.</li>
+            </ol>
+
+            <!-- Exercise 4 -->
+            <details class="task" open>
+              <summary><h4>Exercise 4</h4></summary>
+              <div>
+                <p class="task-description">
+                  Article or nothing? Fill in
+                  <strong>a / an / the / –</strong> (no article)
+                </p>
+                <ol style="line-height: 2.2">
+                  <li>
+                    <input
+                      type="text"
+                      id="l16-g4-1a"
+                      class="test-input"
+                      style="width: 50px"
+                    />
+                    Robin usually has
+                    <input
+                      type="text"
+                      id="l16-g4-1b"
+                      class="test-input"
+                      style="width: 50px"
+                    />
+                    dinner at 8 PM. But
+                    <input
+                      type="text"
+                      id="l16-g4-1c"
+                      class="test-input"
+                      style="width: 50px"
+                    />
+                    this evening she had it at 9 PM.
+                  </li>
+                  <li>
+                    I had
+                    <input
+                      type="text"
+                      id="l16-g4-2a"
+                      class="test-input"
+                      style="width: 50px"
+                    />
+                    apple for
+                    <input
+                      type="text"
+                      id="l16-g4-2b"
+                      class="test-input"
+                      style="width: 50px"
+                    />
+                    breakfast today.
+                    <input
+                      type="text"
+                      id="l16-g4-2c"
+                      class="test-input"
+                      style="width: 50px"
+                    />
+                    apples and
+                    <input
+                      type="text"
+                      id="l16-g4-2d"
+                      class="test-input"
+                      style="width: 50px"
+                    />
+                    pears are
+                    <input
+                      type="text"
+                      id="l16-g4-2e"
+                      class="test-input"
+                      style="width: 50px"
+                    />
+                    fruits.
+                  </li>
+                  <li>
+                    One of
+                    <input
+                      type="text"
+                      id="l16-g4-3a"
+                      class="test-input"
+                      style="width: 50px"
+                    />
+                    stalls at
+                    <input
+                      type="text"
+                      id="l16-g4-3b"
+                      class="test-input"
+                      style="width: 50px"
+                    />
+                    fair sells
+                    <input
+                      type="text"
+                      id="l16-g4-3c"
+                      class="test-input"
+                      style="width: 50px"
+                    />
+                    apples.
+                  </li>
+                  <li>
+                    Sometimes
+                    <input
+                      type="text"
+                      id="l16-g4-4a"
+                      class="test-input"
+                      style="width: 50px"
+                    />
+                    Miss Lemon and Robin play
+                    <input
+                      type="text"
+                      id="l16-g4-4b"
+                      class="test-input"
+                      style="width: 50px"
+                    />
+                    chess together.
+                  </li>
+                  <li>
+                    Robin put
+                    <input
+                      type="text"
+                      id="l16-g4-5a"
+                      class="test-input"
+                      style="width: 50px"
+                    />
+                    book on
+                    <input
+                      type="text"
+                      id="l16-g4-5b"
+                      class="test-input"
+                      style="width: 50px"
+                    />
+                    table.
+                    <input
+                      type="text"
+                      id="l16-g4-5c"
+                      class="test-input"
+                      style="width: 50px"
+                    />
+                    book was heavy.
+                  </li>
+                  <li>
+                    We watched
+                    <input
+                      type="text"
+                      id="l16-g4-6a"
+                      class="test-input"
+                      style="width: 50px"
+                    />
+                    basketball match yesterday.
+                    <input
+                      type="text"
+                      id="l16-g4-6b"
+                      class="test-input"
+                      style="width: 50px"
+                    />
+                    match was exciting.
+                  </li>
+                  <li>
+                    <input
+                      type="text"
+                      id="l16-g4-7a"
+                      class="test-input"
+                      style="width: 50px"
+                    />
+                    my favourite book is on
+                    <input
+                      type="text"
+                      id="l16-g4-7b"
+                      class="test-input"
+                      style="width: 50px"
+                    />
+                    shelf near
+                    <input
+                      type="text"
+                      id="l16-g4-7c"
+                      class="test-input"
+                      style="width: 50px"
+                    />
+                    window.
+                  </li>
+                </ol>
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- 🍋 PART 3: SPEAKING -->
+      <section id="part-3" class="lesson-wrapper tab-content">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img
+                src="../media/icons/lemon.svg"
+                class="star"
+                alt="a lemon slice"
+              />
+              <span>Speaking</span>
+            </h2>
+          </div>
+
+          <div class="lesson-content">
+            <h3 id="p3-1">Speaking 1: Fair Maths</h3>
+
+            <p>
+              Linda is a literature professor at the university. At the fair,
+              she sells <span class="gloss" data-tr="мафіни">muffins</span> with
+              <span class="gloss" data-tr="чорниця">blueberries</span>,
+              chocolate <span class="gloss" data-tr="печиво">biscuits</span> and
+              <span class="gloss" data-tr="домашній лимонад"
+                >homemade lemonade</span
+              >. Today a customer has made a big
+              <span class="gloss" data-tr="замовлення">order</span>.
+            </p>
+            <p>
+              Help Linda prepare the order! Your tutor will play Linda and ask
+              you questions.
+            </p>
+
+            <div class="tablecontainer" style="margin-top: 20px">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Item</th>
+                    <th>Order</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>blueberry muffins</td>
+                    <td><span class="bold">2 kg</span></td>
+                  </tr>
+                  <tr>
+                    <td>chocolate biscuits</td>
+                    <td><span class="bold">1 kg</span></td>
+                  </tr>
+                  <tr>
+                    <td>lemonade (to take home)</td>
+                    <td><span class="bold">2.5 l</span> (2500 ml)</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      lemonade
+                      <span class="gloss" data-tr="з собою, на виніс"
+                        >to go</span
+                      >
+                    </td>
+                    <td><span class="bold">1 cup</span> (250 ml)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h4>Linda's facts:</h4>
+            <div class="tablecontainer">
+              <table>
+                <tbody>
+                  <tr>
+                    <td>1 muffin weighs about</td>
+                    <td><span class="bold">200 g</span></td>
+                  </tr>
+                  <tr>
+                    <td>1 biscuit weighs about</td>
+                    <td><span class="bold">100 g</span></td>
+                  </tr>
+                  <tr>
+                    <td>1 box fits</td>
+                    <td>
+                      <span class="bold">6</span> muffins
+                      <span class="bold">or 12</span> biscuits
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1 muffin costs</td>
+                    <td><span class="bold">$2</span></td>
+                  </tr>
+                  <tr>
+                    <td>1 biscuit costs</td>
+                    <td><span class="bold">$1.50</span> (one dollar fifty)</td>
+                  </tr>
+                  <tr>
+                    <td>Lemonade</td>
+                    <td><span class="bold">$4 per litre</span></td>
+                  </tr>
+                  <tr>
+                    <td>Lemonade bottles</td>
+                    <td>
+                      <span class="bold">1 l</span> bottles, and only
+                      <span class="bold">one 500 ml</span> bottle
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="callout2" style="margin: 20px 0">
+              <p style="margin: 0">
+                <span class="bold">Remember:</span> 1 kg = 1000 g • 1 l = 1000
+                ml
+              </p>
+            </div>
+
+            <details class="answer" style="margin-bottom: 20px">
+              <summary>
+                <span class="bold" style="color: var(--brand2)"
+                  >Phrase bank (Numbers and calculations)</span
+                >
+              </summary>
+              <div class="tablecontainer" style="margin-top: 15px">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>English</th>
+                      <th>Українською</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Two kilograms is two thousand grams.</td>
+                      <td>2 кг — це 2000 грамів.</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        Two thousand <span class="bold">divided by</span> two
+                        hundred is ten.
+                      </td>
+                      <td>2000 ÷ 200 = 10</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        Ten <span class="bold">times</span> two dollars is
+                        twenty dollars.
+                      </td>
+                      <td>10 × 2 = 20</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        Twenty <span class="bold">plus</span> fifteen is
+                        thirty-five.
+                      </td>
+                      <td>20 + 15 = 35</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        Fifty <span class="bold">minus</span> forty-six is four.
+                      </td>
+                      <td>50 − 46 = 4</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        It is <span class="bold">about</span> two hundred grams.
+                      </td>
+                      <td>Це приблизно 200 г.</td>
+                    </tr>
+                    <tr>
+                      <td><span class="bold">In total / altogether</span></td>
+                      <td>всього, разом</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p>
+                <span class="bold">Money:</span> $1.50 =
+                <span class="italic">one dollar fifty</span> or
+                <span class="italic">one dollar and fifty cents</span> • $2.50 =
+                <span class="italic">two dollars fifty</span>
+              </p>
+
+              <h4>Questions Robin can ask Linda:</h4>
+              <ul style="list-style-type: square">
+                <li>How many muffins do we need?</li>
+                <li>How much does one biscuit weigh?</li>
+                <li>How much does it cost?</li>
+                <li>What is the total?</li>
+                <li>How much change do we give?</li>
+              </ul>
+              <p
+                class="small"
+                style="color: var(--text-soft); font-style: italic"
+              >
+                How many / How much? How many is for countable nouns (muffins,
+                boxes). How much is for uncountable nouns (lemonade, money,
+                change).
+              </p>
+            </details>
+
+            <details class="answer" style="margin-bottom: 20px">
+              <summary>
+                <span class="bold" style="color: var(--brand2)"
+                  >Sentence frames (for your answers)</span
+                >
+              </summary>
+              <div class="tablecontainer" style="margin-top: 15px">
+                <table>
+                  <tbody>
+                    <tr>
+                      <td>How many items</td>
+                      <td>
+                        <span class="italic"
+                          >We need ___ muffins / biscuits.</span
+                        >
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Explaining</td>
+                      <td>
+                        <span class="italic"
+                          >___ kilograms is ___ grams. ___ divided by ___ is
+                          ___.</span
+                        >
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Boxes</td>
+                      <td>
+                        <span class="italic"
+                          >We need ___ box(es) because ___ muffins don't fit
+                          into one box.</span
+                        >
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Price</td>
+                      <td>
+                        <span class="italic"
+                          >___ muffins cost ___ dollars. / The total is ___
+                          dollars.</span
+                        >
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Bottles</td>
+                      <td>
+                        <span class="italic"
+                          >We use ___ one-litre bottles and a 500-millilitre
+                          bottle.</span
+                        >
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Cups</td>
+                      <td>
+                        <span class="italic"
+                          >There are four cups in one litre.</span
+                        >
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Change</td>
+                      <td>
+                        <span class="italic"
+                          >The customer gives ___ dollars. The change is ___
+                          dollars.</span
+                        >
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </details>
+
+            <textarea
+              id="l16-s1-notes"
+              class="test-textarea"
+              placeholder="Your notes / calculations..."
+            ></textarea>
+
+            <hr />
+
+            <h3 id="p3-2">Speaking 2: Decode the Bestsellers</h3>
+
+            <p>
+              Miss Lemon and Robin sold a lot of books at the fair, but the
+              sales list got wet in the rain and only some clues are readable.
+              Your tutor will read the clues to you. Explain your math out loud
+              in English and fill in the table!
+            </p>
+
+            <div class="tablecontainer">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Genre</th>
+                    <th>How many books?</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Fantasy</td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l16-s2-f"
+                        class="test-input"
+                        style="width: 80px"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Science fiction (sci-fi)</td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l16-s2-s"
+                        class="test-input"
+                        style="width: 80px"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Mystery novels</td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l16-s2-m"
+                        class="test-input"
+                        style="width: 80px"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Adventure</td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l16-s2-a"
+                        class="test-input"
+                        style="width: 80px"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Poetry</td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l16-s2-p"
+                        class="test-input"
+                        style="width: 80px"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">Total</span></td>
+                    <td><span class="bold">40</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <details class="answer" style="margin-bottom: 20px">
+              <summary>
+                <span class="bold" style="color: var(--brand2)">Glossary</span>
+              </summary>
+              <div class="tablecontainer" style="margin-top: 15px">
+                <table>
+                  <tbody>
+                    <tr>
+                      <td>fantasy</td>
+                      <td>фентезі</td>
+                    </tr>
+                    <tr>
+                      <td>science fiction (sci-fi)</td>
+                      <td>наукова фантастика</td>
+                    </tr>
+                    <tr>
+                      <td>mystery novel</td>
+                      <td>детектив</td>
+                    </tr>
+                    <tr>
+                      <td>adventure</td>
+                      <td>пригоди</td>
+                    </tr>
+                    <tr>
+                      <td>poetry</td>
+                      <td>поезія</td>
+                    </tr>
+                    <tr>
+                      <td>the rest</td>
+                      <td>решта</td>
+                    </tr>
+                    <tr>
+                      <td>in total</td>
+                      <td>всього</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </details>
+
+            <details class="answer" style="margin-bottom: 20px">
+              <summary>
+                <span class="bold" style="color: var(--brand2)"
+                  >Phrase bank: fractions and comparisons</span
+                >
+              </summary>
+              <div class="tablecontainer" style="margin-top: 15px">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>English</th>
+                      <th>Українською</th>
+                      <th>Example</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><span class="bold">a half</span> of</td>
+                      <td>половина</td>
+                      <td>A half of forty is twenty.</td>
+                    </tr>
+                    <tr>
+                      <td><span class="bold">a third</span> of</td>
+                      <td>третина</td>
+                      <td>A third of sixty is twenty.</td>
+                    </tr>
+                    <tr>
+                      <td><span class="bold">a quarter</span> of</td>
+                      <td>чверть</td>
+                      <td>A quarter of forty is ten.</td>
+                    </tr>
+                    <tr>
+                      <td><span class="bold">a fifth</span> of</td>
+                      <td>п'ята частина</td>
+                      <td>A fifth of forty is eight.</td>
+                    </tr>
+                    <tr>
+                      <td><span class="bold">half as many … as</span></td>
+                      <td>вдвічі менше … ніж</td>
+                      <td>Four is half as many as eight.</td>
+                    </tr>
+                    <tr>
+                      <td><span class="bold">twice as many … as</span></td>
+                      <td>вдвічі більше … ніж</td>
+                      <td>Eight is twice as many as four.</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span class="bold">three times as many … as</span>
+                      </td>
+                      <td>втричі більше … ніж</td>
+                      <td>Twelve is three times as many as four.</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <span class="bold">… more than / … fewer than</span>
+                      </td>
+                      <td>на … більше / менше ніж</td>
+                      <td>Six more than ten is sixteen.</td>
+                    </tr>
+                    <tr>
+                      <td><span class="bold">the rest</span></td>
+                      <td>решта</td>
+                      <td>The rest are poetry books.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </details>
+
+            <details class="answer" style="margin-bottom: 20px">
+              <summary>
+                <span class="bold" style="color: var(--brand2)"
+                  >Sentence frames</span
+                >
+              </summary>
+              <div class="tablecontainer" style="margin-top: 15px">
+                <table>
+                  <tbody>
+                    <tr>
+                      <td>Reading the clue</td>
+                      <td>
+                        <span class="italic">The clue says that ___.</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Calculating</td>
+                      <td>
+                        <span class="italic"
+                          >A fifth of forty is eight, because forty divided by
+                          five is eight.</span
+                        >
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Answer</td>
+                      <td>
+                        <span class="italic"
+                          >So they sold ___ fantasy books.</span
+                        >
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Using a previous result</td>
+                      <td>
+                        <span class="italic"
+                          >Four is half of eight, so they sold four sci-fi
+                          books.</span
+                        >
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Asking for repetition</td>
+                      <td>
+                        <span class="italic"
+                          >Can you repeat the clue, please?</span
+                        >
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Checking</td>
+                      <td>
+                        <span class="italic"
+                          >Let's check: ___ plus ___ plus ___ is ___.</span
+                        >
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </details>
+
+            <textarea
+              id="l16-s2-notes"
+              class="test-textarea"
+              placeholder="Your notes / calculations..."
+            ></textarea>
+
+            <hr />
+
+            <h3 id="p3-3">Translator</h3>
+
+            <!-- 🌍 BUILT-IN TRANSLATOR -->
+            <!-- prettier-ignore -->
+            <div class="translator-module" data-source-lang="en" data-target-lang="uk">
+              <div class="translator-lang-labels">
+                <span class="lang-source">Англійська</span>
+                <button class="swap-lang-btn" title="Swap languages">⇄</button>
+                <span class="lang-target">Українська</span>
+              </div>
+
+              <div class="translator-inputs">
+                <input type="text" class="translator-input" placeholder="Type a word..." />
+                <button class="translate-btn">Translate</button>
+              </div>
+
+              <div class="translator-output" style="display: none"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>🌷 🍓 🌿 Made by Olena Hapchyna 🌿 🍓 🌷</p>
+
+      <div class="footer-credits">
+        <span
+          >Fruit icons by
+          <a
+            href="https://www.svgrepo.com/collection/fruits-vectors/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >An Nguyen</a
+          ></span
+        >
+        |
+        <a href="../credits.html" target="_blank">Credits & Licenses</a>
+      </div>
+    </footer>
+
+    <button
+      id="scrollToTopBtn"
+      class="scroll-to-top"
+      aria-label="Scroll to top"
+    >
+      <img src="../media/icons/apple.svg" />
+    </button>
+
+    <dialog id="clear-confirm-dialog" class="custom-dialog">
+      <div class="dialog-content">
+        <h3>⚠️ Attention!</h3>
+        <p>Do you really want to delete ALL your answers and start over?</p>
+        <div class="dialog-actions">
+          <button type="button" id="dialog-cancel-btn">No</button>
+          <button type="button" id="dialog-confirm-btn">Yes, delete</button>
+        </div>
+      </div>
+    </dialog>
+
+    <script>
+      document.querySelectorAll(".gloss").forEach(function (el) {
+        var pill = document.createElement("span");
+        pill.className = "tr-pill";
+        pill.textContent = el.getAttribute("data-tr");
+        el.insertAdjacentElement("afterend", pill);
+        function toggle() {
+          pill.classList.toggle("show");
+        }
+        el.addEventListener("click", toggle);
+        el.addEventListener("keydown", function (e) {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            toggle();
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
