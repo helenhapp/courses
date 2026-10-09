@@ -1,0 +1,671 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Навчальні матеріали" />
+
+    <link rel="icon" type="image/svg+xml" href="../media/icons/carambola.svg" />
+
+    <title>Python Lesson 16</title>
+
+    <script>
+      const savedTheme = localStorage.getItem("lms_theme") || "light";
+      document.documentElement.setAttribute("data-theme", savedTheme);
+
+      const hljsThemeLink =
+        savedTheme === "dark"
+          ? "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css"
+          : "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css";
+
+      document.head.insertAdjacentHTML(
+        "beforeend",
+        `<link id="hljs-theme" rel="stylesheet" href="${hljsThemeLink}" />`,
+      );
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Fira+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Tektur:wght@400..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"
+    ></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.css"
+    />
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.js"
+    ></script>
+
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/javascript/javascript.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/xml/xml.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/css/css.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/htmlmixed/htmlmixed.min.js"
+    ></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/theme/dracula.min.css"
+    />
+
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/python/python.min.js"
+    ></script>
+
+    <link rel="stylesheet" href="../style.css?v=3.0" />
+    <script src="../script.js?v=3.0" defer></script>
+  </head>
+
+  <body>
+    <!-- transition curtain -->
+    <div class="transition-curtain"></div>
+
+    <!-- top-bar -->
+    <div id="nav-container">
+      <nav class="top-bar">
+        <div class="logo-container">
+          <img
+            src="../media/icons/carambola.svg"
+            alt="Logo"
+            class="site-logo"
+          />
+        </div>
+
+        <div class="top-bar__controls">
+          <label class="toggle-switch" aria-label="Перемикач теми">
+            <input type="checkbox" id="theme-checkbox" />
+            <span class="slider">
+              <span class="icon sun"
+                ><img src="../media/icons/stars.svg"
+              /></span>
+              <span class="icon moon"
+                ><img src="../media/icons/moon.svg"
+              /></span>
+            </span>
+          </label>
+          <button
+            id="dyslexia-mode-btn"
+            class="wide-toggle"
+            title="Шрифт для дислектиків"
+          >
+            Aa
+          </button>
+        </div>
+      </nav>
+    </div>
+
+    <!-- lesson header -->
+    <header>
+      <div class="title-container">
+        <h1 id="lesson-title">Python: 16</h1>
+      </div>
+
+      <p class="topic">Робота з JSON-файлами</p>
+
+      <hr class="pretty-divider" />
+    </header>
+
+    <!-- lesson content -->
+    <main>
+      <!-- tab buttons -->
+      <div class="tabs-nav">
+        <button class="tab-btn active" data-target="part-1">Частина 1</button>
+        <button class="tab-btn" data-target="part-2">Частина 2</button>
+        <button class="tab-btn" data-target="part-3">Частина 3</button>
+        <button class="tab-btn" data-target="part-4">Частина 4</button>
+      </div>
+
+      <!-- 🍓 PART 1: Основи JSON -->
+      <section id="part-1" class="lesson-wrapper tab-content active show">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img
+                src="../media/icons/strawberry.svg"
+                class="star"
+                alt="strawberry"
+              />
+              <span>Основи JSON та читання файлів</span>
+            </h2>
+          </div>
+
+          <div class="lesson-content">
+            <h3 id="p1-1">Що таке JSON?</h3>
+
+            <p>
+              <span class="bold">JSON (JavaScript Object Notation)</span> – це
+              найпопулярніший у світі текстовий формат для зберігання даних та
+              обміну даними. З ним працюють вебсайти, мобільні додатки та
+              сервери.
+            </p>
+            <p>
+              Він дуже схожий на словники та списки в Python, але має кілька
+              суворих правил:
+            </p>
+            <ul style="list-style-type: square; margin-bottom: 15px">
+              <li>
+                Ключі завжди беруться у <span class="bold">подвійні лапки</span>
+                <span class="accent-string">" "</span>. Одинарні лапки
+                <span class="accent-string">' '</span> використовувати
+                заборонено.
+              </li>
+              <li>Текст (рядки) теж завжди у подвійних лапках.</li>
+              <li>
+                Останній елемент у списку чи словнику не повинен мати після себе
+                коми.
+              </li>
+            </ul>
+            <p>
+              Ось приклад типового JSON-файлу (<span class="accent-string"
+                >scores.json</span
+              >), який зберігає дані гравців:
+            </p>
+            <pre><code class="language-json">[
+    {"name": "Robin", "score": 100},
+    {"name": "Linda", "score": 85},
+    {"name": "Beatrice", "score": 120}
+]</code></pre>
+
+            <!-- ЗАВДАННЯ 1 -->
+            <details class="task" open>
+              <summary><h4>Завдання 1</h4></summary>
+              <div>
+                <ol>
+                  <li>
+                    Відкрий папку із цим проєктом у своєму редакторі коду (File
+                    → Open Folder).
+                  </li>
+                  <li>
+                    Поруч із твоїм файлом з кодом, створи новий файл і назви
+                    його
+                    <span class="accent-string">words.json</span>.
+                  </li>
+                  <li>
+                    Перемісти список слів зі змінної
+                    <span class="accent-string">WORDS</span> у файл
+                    <span class="accent-string">words.json</span>. Видали ту
+                    змінну із коду.
+                  </li>
+                </ol>
+              </div>
+            </details>
+
+            <hr />
+
+            <h3 id="p1-2">Як читати JSON-файли у Python</h3>
+
+            <p>
+              Щоб Python зрозумів формат JSON, нам потрібен спеціальний
+              вбудований інструмент – модуль
+              <span class="accent-string">json</span>. Його треба імпортувати на
+              початку файлу.
+            </p>
+            <p>
+              Для відкриття файлів використовується конструкція
+              <span class="accent-string">with open(...) as file:</span>. Вона
+              зручна тим, що автоматично закриває файл після того, як ми
+              закінчили з ним працювати.
+            </p>
+            <p>
+              Ще один критично важливий момент: оскільки наші слова містять
+              українські літери (кирилицю), нам обов'язково треба вказати
+              Python, як саме читати ці символи. Для цього використовується
+              параметр <span class="accent-string">encoding="utf-8"</span>.
+            </p>
+
+            <p>
+              Ось приклад того, як ми б читали файл
+              <span class="accent-string">scores.json</span>:
+            </p>
+            <pre><code class="language-python">import json
+
+with open("scores.json", "r", encoding="utf-8") as file:
+    data = json.load(file)
+
+print(data)</code></pre>
+            <img src="./images/lesson16/json_load.png" alt="json_load" />
+
+            <p>Пояснення:</p>
+            <ul style="list-style-type: square">
+              <li>
+                <span class="accent-string">"scores.json"</span> – назва файлу,
+                який треба відкрити
+              </li>
+              <li>
+                <span class="accent-string">"r"</span> – від слова read, тобто
+                файл відкривається лише для читання
+              </li>
+              <li>
+                <span class="accent-string">json.load(file)</span> – повертає
+                нам вміст файлу (у цьому випадку як список зі словниками), який
+                можна зберегти у змінну
+              </li>
+            </ul>
+
+            <!-- ЗАВДАННЯ 2 -->
+            <!-- 
+Expected result:
+
+import json
+
+with open("words.json", "r", encoding="utf-8") as file:
+    words = json.load(file)
+
+print(words)
+-->
+            <details class="task" open>
+              <summary><h4>Завдання 2</h4></summary>
+              <div>
+                <ol>
+                  <li>
+                    Створи новий файл для цього та кількох наступних завдань.
+                  </li>
+                  <li>
+                    Імпортуй бібліотеку <span class="accent-string">json</span>.
+                  </li>
+                  <li>
+                    Спираючись на приклад коду вище, відкрий файл
+                    <span class="accent-string">words.json</span> та завантаж
+                    дані із нього у змінну
+                    <span class="accent-string">words</span>.
+                  </li>
+                  <li>Виведи цю змінну, щоб перевірити результат.</li>
+                </ol>
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- 🍉 PART 2: Безпечний код -->
+      <section id="part-2" class="lesson-wrapper tab-content">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img
+                src="../media/icons/watermelon.svg"
+                class="star"
+                alt="watermelon"
+              />
+              <span>Обробка помилок та функція load_words()</span>
+            </h2>
+          </div>
+
+          <div class="lesson-content">
+            <h3 id="p2-1">Ловимо FileNotFoundError</h3>
+
+            <p>
+              Що станеться, якщо ми передамо функції назву файлу, якого не
+              існує? Або якщо користувач випадково видалить
+              <span class="accent-string">words.json</span>? Програма видасть
+              помилку <span class="accent-string">FileNotFoundError</span> і
+              зупиниться.
+            </p>
+
+            <pre><code class="language-python">import json
+
+with open("bad_name.json", "r", encoding="utf-8") as file:
+    data = json.load(file)
+
+print(data)
+</code></pre>
+            <img
+              src="./images/lesson16/FileNotFoundError.png"
+              alt="FileNotFoundError"
+            />
+
+            <p>
+              Щоб цього уникнути, можна використати
+              <span class="accent-string">try/except</span>. Ми можемо
+              спробувати відкрити файл, а якщо його немає, вивести зрозуміле
+              повідомлення і зберегти у змінній
+              <span class="accent-string">data</span> порожній список.
+            </p>
+
+            <p>Ось приклад для файлу з налаштуваннями:</p>
+            <pre><code class="language-python">import json
+
+try:
+    with open("bad_name.json", "r", encoding="utf-8") as file:
+        data = json.load(file)
+except FileNotFoundError:
+    print("File not found.")
+    data = []
+
+print(data)</code></pre>
+            <img src="./images/lesson16/try_except.png" alt="try_except" />
+
+            <hr />
+
+            <h3 id="p2-2">Кілька except та помилки формату</h3>
+
+            <p>
+              Що робити, якщо файл існує, але всередині нього допущена
+              синтаксична помилка (наприклад, десь пропущена кома або лапки)?
+            </p>
+            <p>
+              У такому випадку файл успішно відкриється, але коли функція
+              <span class="accent-string">json.load()</span> спробує його
+              прочитати, вона не зможе цього зробити і програма видасть помилку
+              <span class="accent-string">json.JSONDecodeError</span>.
+            </p>
+            <p>
+              Один блок <span class="accent-string">try</span> може мати кілька
+              блоків <span class="accent-string">except</span>. Це дозволяє нам
+              по-різному реагувати на різні типи помилок:
+            </p>
+
+            <pre><code class="language-python">import json
+
+try:
+    with open("bad_name.json", "r", encoding="utf-8") as file:
+        data = json.load(file)
+except FileNotFoundError:
+    print("File not found.")
+    data = []
+except json.JSONDecodeError:
+    print("There is a syntax error in the file.")
+    data = []
+
+print(data)</code></pre>
+
+            <p>
+              Хорошою практикою є враховувати обидві ці помилки при роботі з
+              JSON-файлами.
+            </p>
+
+            <!-- ЗАВДАННЯ 3 -->
+            <!-- 
+Expected result:
+
+import json
+
+try:
+    with open("words.json", "r", encoding="utf-8") as file:
+        words = json.load(file)
+except FileNotFoundError:
+    print("File not found.")
+    words = []
+except json.JSONDecodeError:
+    print("There is a syntax error in the file.")
+    words = []
+
+print(words)
+-->
+            <details class="task" open>
+              <summary><h4>Завдання 3</h4></summary>
+              <div>
+                <p>
+                  Відредагуй попередній код, додавши
+                  <span class="accent-string">try</span> та два
+                  <span class="accent-string">except</span>.
+                </p>
+                <p>
+                  Тоді протестуй, чи все працює (наприклад, спершу навмисно
+                  зміни назву файлу на неправильну, і подивись, що вийде, тоді
+                  верни правильну назву, але зітри у файлі зі словами якусь
+                  кому).
+                </p>
+              </div>
+            </details>
+
+            <!-- ЗАВДАННЯ 4 -->
+            <!-- 
+Expected result:
+
+import json
+
+
+def load_words(file_name):
+    try:
+        with open(file_name, "r", encoding="utf-8") as file:
+            words = json.load(file)
+    except FileNotFoundError:
+        print("File not found.")
+        words = []
+    except json.JSONDecodeError:
+        print("There is a syntax error in the file.")
+        words = []
+
+    return words
+
+
+words = load_words("words.json")
+print(words)
+-->
+            <details class="task" open>
+              <summary><h4>Завдання 4</h4></summary>
+              <div>
+                <p>
+                  У тебе вже є код, який читає слова із файлу. Але щоб
+                  використати цей код в основному проєкті, треба перетворити
+                  його на функцію, яка приймає назву файлу, і повертає список
+                  слів (або порожній список в разі помилки).
+                </p>
+                <p>
+                  Перероби поточний код на функцію
+                  <span class="accent-string">load_words(file_name)</span>.
+                </p>
+                <p>
+                  Для перевірки: виклич функцію, збережи її результат у змінну
+                  <span class="accent-string">words</span>, та надрукуй цю
+                  змінну.
+                </p>
+                <p>
+                  Якщо все працює, перенеси цю нову функцію у файл із проєктом
+                  (одразу після функції
+                  <span class="accent-string">main()</span>), а її виклик –
+                  всередину <span class="accent-string">main()</span>.
+                </p>
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- 🍊 PART 3: Рефакторинг -->
+      <section id="part-3" class="lesson-wrapper tab-content">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img src="../media/icons/orange.svg" class="star" alt="orange" />
+              <span>Рефакторинг основного проєкту</span>
+            </h2>
+          </div>
+
+          <div class="lesson-content">
+            <h3 id="p4-1">Відмова від глобальних змінних</h3>
+
+            <p>
+              До цього моменту функція
+              <span class="accent-string">get_practice_words()</span> брала дані
+              напряму з глобальної змінної
+              <span class="accent-string">WORDS</span>, яка знаходилася поза
+              всіма іншими функціями. Наявність таких глобальних змінних
+              вважається поганою практикою.
+            </p>
+
+            <p>
+              Хороші функції мають бути незалежними: вони повинні працювати
+              тільки з тими даними, які ми передаємо їм у дужках (через
+              аргументи).
+            </p>
+
+            <p>Подивись на різницю:</p>
+            <pre><code class="language-python"># ❌ Погано (залежить від глобальної змінної PLAYERS):
+def print_first_player():
+    print(PLAYERS[0])
+
+# ✅ Добре (працює з будь-яким списком, який їй передадуть):
+def print_first_player(player_list):
+    print(player_list[0])</code></pre>
+
+            <p>
+              Крім того, після того як ми перенести слова у JSON-файл, змінної
+              <span class="accent-string">WORDS</span> більше не існує. Замість
+              неї ми маємо нову змінну
+              <span class="accent-string">words</span> всередині
+              <span class="accent-string">main()</span>, в якій зберігається
+              результат функції
+              <span class="accent-string">load_words()</span> (список слів із
+              файлу).
+            </p>
+
+            <!-- ЗАВДАННЯ 5 -->
+            <details class="task" open>
+              <summary>
+                <h4>Завдання 5</h4>
+              </summary>
+              <div>
+                <p>
+                  Відредагуй функцію
+                  <span class="accent-string">get_practice_words()</span>, щоб
+                  вона приймала список слів як параметр (наприклад,
+                  <span class="accent-string">word_list</span>), та працювала
+                  далі з ним, а не з глобальною змінною.
+                </p>
+                <p>
+                  Також потрібно дещо змінити виклик цієї функції в
+                  <span class="accent-string">main()</span>.
+                </p>
+              </div>
+            </details>
+
+            <hr />
+
+            <h3 id="p4-2">Раннє повернення</h3>
+
+            <p>
+              Що робити, якщо <span class="accent-string">load_words()</span> не
+              знайшла файл і повернула порожній список
+              <span class="accent-string">[]</span>? Якщо ми просто пустимо цей
+              порожній список далі по програмі, вона почне питати "Скільки слів
+              хочете тренувати?" (0 слів у списку), проситиме обрати режим, а
+              потім просто миттєво закінчиться. Це поганий UX дизайн.
+            </p>
+
+            <p>
+              Якщо даних немає, програму треба зупинити ще до того, як вона
+              почне щось робити. Для цього можна використати умову
+              <span class="accent-string">if</span> та порожній
+              <span class="accent-string">return</span> всередині
+              <span class="accent-string">main()</span>.
+            </p>
+
+            <p>
+              Коли ми пишемо просто
+              <span class="accent-string">return</span> без нічого всередині
+              функції (навіть якщо це функція
+              <span class="accent-string">main</span>), вона
+              <span class="bold">негайно завершує свою роботу</span>.
+            </p>
+
+            <p>Ось приклад гри, яка не запускається, якщо немає гравців:</p>
+            <pre><code class="language-python">def start_game(players):
+    if len(players) == 0:
+        print("No players. Exiting...")
+        return  # Функція зупиняється тут і не йде далі
+
+    print("You can start the game!")
+
+
+players_list1 = []
+start_game(players_list1)  # -> No players. Exiting...
+
+players_list2 = ["Mike", "Sandy"]
+start_game(players_list2)  # -> You can start the game!</code></pre>
+
+            <!-- ЗАВДАННЯ 6 -->
+            <details class="task" open>
+              <summary><h4>Завдання 6</h4></summary>
+              <div>
+                <p>
+                  Всередині функції <span class="accent-string">main()</span>, у
+                  потрібному місці, додай перевірку: якщо слів немає (тобто,
+                  довжина списку слів дорівнює нулю), надрукуй повідомлення
+                  <span class="italic"
+                    >"There are no words to practice. Exiting..."</span
+                  >
+                  і додай порожній <span class="accent-string">return</span>.
+                </p>
+
+                <p>
+                  Перевір, як це працює: навмисно зміни назву файлу в
+                  <span class="accent-string">main()</span> на неправильну
+                  (наприклад, <span class="accent-string">"word.json"</span>) і
+                  запусти програму. Вона має м'яко повідомити про відсутність
+                  файлу і завершитися, не задаючи зайвих питань. Після
+                  тестування поверни правильну назву файлу.
+                </p>
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- 🍋 PART 4: Запис у JSON -->
+      <section id="part-4" class="lesson-wrapper tab-content">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img src="../media/icons/lemon.svg" class="star" alt="lemon" />
+              <span>Запис даних: json.dump()</span>
+            </h2>
+          </div>
+
+          <div class="lesson-content"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>🌷 🍓 🌿 Made by Olena Hapchyna 🌿 🍓 🌷</p>
+
+      <div class="footer-credits">
+        <span
+          >Fruit icons by
+          <a
+            href="https://www.svgrepo.com/collection/fruits-vectors/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >An Nguyen</a
+          ></span
+        >
+        |
+        <a href="../credits.html" target="_blank">Credits & Licenses</a>
+      </div>
+    </footer>
+
+    <button
+      id="scrollToTopBtn"
+      class="scroll-to-top"
+      aria-label="Scroll to top"
+    >
+      <img src="../media/icons/apple.svg" />
+    </button>
+  </body>
+</html>

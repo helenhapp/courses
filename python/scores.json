@@ -1,0 +1,38 @@
+[
+    {
+        "name": "Robin",
+        "score": 100
+    },
+    {
+        "name": "Linda",
+        "score": 85
+    },
+    {
+        "name": "Beatrice",
+        "score": 120
+    },
+    {
+        "name": "Sam",
+        "score": 99
+    },
+    {
+        "name": "Sam",
+        "score": 99
+    },
+    {
+        "name": "Olena",
+        "score": 1000
+    },
+    {
+        "name": "Maria",
+        "score": 50
+    },
+    {
+        "name": "Nick",
+        "score": 12
+    },
+    {
+        "name": "Den",
+        "score": null
+    }
+]
