@@ -622,6 +622,31 @@ start_game(players_list2)  # -> You can start the game!</code></pre>
                 </p>
               </div>
             </details>
+
+            <hr />
+
+            <h3 id="final-touch">Що ще можна додати</h3>
+
+            <p>
+              У функції <span class="accent-string">limit_words</span> не
+              вистачає перевірки, чи введений ліміт не є меншим за нуль або
+              більшим за кількість слів у списку. Цю перевірку можна виконати з
+              допомогою <span class="accent-string">if</span>.
+            </p>
+
+            <pre><code class="language-python">def limit_words(words):
+    print(f"\n📚 There are {len(words)} words in the list.")
+    limit_input = input("How many words would you like to practice? ")
+
+    try:
+        limit = int(limit_input)
+    except ValueError:
+        print("That's not an integer, I'll use the full list instead.")
+        limit = len(words)
+
+    # ⭐️ додай перевірку тут
+
+    return words[:limit]</code></pre>
           </div>
         </div>
       </section>
