@@ -631,9 +631,9 @@ start_game(players_list2)  # -> You can start the game!</code></pre>
 
             <p>
               У функції <span class="accent-string">limit_words</span> не
-              вистачає перевірки, чи введений ліміт не є меншим за нуль або
-              більшим за кількість слів у списку. Цю перевірку можна виконати з
-              допомогою <span class="accent-string">if</span>.
+              вистачає перевірки, чи введений ліміт не є нульовим, відʼємним,
+              або більшим за кількість слів у списку. Цю перевірку можна
+              виконати з допомогою <span class="accent-string">if</span>.
             </p>
 
             <pre><code class="language-python">def limit_words(words):
