@@ -265,6 +265,17 @@ print(data)</code></pre>
               </li>
             </ul>
 
+            <p>
+              Зверни увагу: в
+              <span class="accent-string">open("scores.json", ...)</span>
+              вказано лише назву файлу, без шляху (де конкретно на комп'ютері
+              цей файл знаходиться). Тоді Python шукає його
+              <span class="bold">в тій папці, яку відкрито у VS Code</span>
+              (саме тому в Завданні 1 ми відкривали папку проєкту через File →
+              Open Folder). Якщо файл лежить в іншій папці, Python його не
+              знайде і видасть помилку.
+            </p>
+
             <!-- ЗАВДАННЯ 2 -->
             <!-- 
 Expected result:
@@ -381,7 +392,7 @@ print(data)</code></pre>
             <pre><code class="language-python">import json
 
 try:
-    with open("bad_name.json", "r", encoding="utf-8") as file:
+    with open("scores.json", "r", encoding="utf-8") as file:
         data = json.load(file)
 except FileNotFoundError:
     print("File not found.")
@@ -497,7 +508,7 @@ print(words)
           </div>
 
           <div class="lesson-content">
-            <h3 id="p4-1">Відмова від глобальних змінних</h3>
+            <h3 id="p3-1">Відмова від глобальних змінних</h3>
 
             <p>
               До цього моменту функція
@@ -558,7 +569,7 @@ def print_first_player(player_list):
 
             <hr />
 
-            <h3 id="p4-2">Раннє повернення</h3>
+            <h3 id="p3-2">Раннє повернення</h3>
 
             <p>
               Що робити, якщо <span class="accent-string">load_words()</span> не
@@ -631,9 +642,17 @@ start_game(players_list2)  # -> You can start the game!</code></pre>
 
             <p>
               У функції <span class="accent-string">limit_words</span> не
-              вистачає перевірки, чи введений ліміт не є нульовим, відʼємним,
+              вистачає перевірки, чи введений ліміт не є нульовим, від'ємним,
               або більшим за кількість слів у списку. Цю перевірку можна
-              виконати з допомогою <span class="accent-string">if</span>.
+              виконати з допомогою <span class="accent-string">if</span>, і,
+              наприклад, вивести повідомлення
+              <span class="italic"
+                >"That's not a valid limit, I'll use the full list
+                instead."</span
+              >
+              і використати увесь список (<span class="accent-string"
+                >limit = len(words)</span
+              >).
             </p>
 
             <pre><code class="language-python">def limit_words(words):
