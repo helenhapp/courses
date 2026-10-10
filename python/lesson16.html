@@ -710,21 +710,8 @@ print(pets[2])   # hamster</code></pre>
               <span class="accent-string">len(pets)</span> повертає довжину
               списку (тут <span class="accent-string">3</span>), а
               <span class="accent-string">range(3)</span> дає числа
-              <span class="accent-string">0, 1, 2</span>. Тому можна пройтися по
-              всіх індексах:
-            </p>
-
-            <pre><code class="language-python">pets = ["cat", "dog", "hamster"]
-
-for i in range(len(pets)):
-    print(i, pets[i])</code></pre>
-
-            <pre><code class="language-text">0 cat
-1 dog
-2 hamster</code></pre>
-
-            <p>
-              Але люди рахують з 1, а не з 0. Тому при виведенні додаємо
+              <span class="accent-string">0, 1, 2</span>. Але люди рахують з 1,
+              а не з 0. Тому при виведенні додаємо
               <span class="accent-string">+ 1</span> до номера:
             </p>
 
@@ -787,8 +774,6 @@ print("Your answer:", answer)</code></pre>
             <h3 id="p4-4">Функція, яка отримує список і повертає результат</h3>
 
             <pre><code class="language-python">def ask_color(colors_list):
-    print(colors_list)
-    
     answer = input("Choose a color from the list: ")
 
     while answer not in colors_list:
@@ -798,9 +783,8 @@ print("Your answer:", answer)</code></pre>
 
 
 my_colors = ["red", "green", "blue"]
-
+print(my_colors)
 result = ask_color(my_colors) # виклик функції зі списком my_colors
-
 print("You chose:", result)</code></pre>
 
             <img
