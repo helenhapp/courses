@@ -76,6 +76,15 @@
       src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/python/python.min.js"
     ></script>
 
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt-stdlib.js"
+    ></script>
+
     <link rel="stylesheet" href="../style.css?v=3.0" />
     <script src="../script.js?v=3.0" defer></script>
   </head>
@@ -136,6 +145,7 @@
         <button class="tab-btn active" data-target="part-1">Частина 1</button>
         <button class="tab-btn" data-target="part-2">Частина 2</button>
         <button class="tab-btn" data-target="part-3">Частина 3</button>
+        <button class="tab-btn" data-target="part-4">Д/з</button>
       </div>
 
       <!-- 🍓 PART 1: Основи JSON -->
@@ -642,10 +652,10 @@ start_game(players_list2)  # -> You can start the game!</code></pre>
 
             <p>
               У функції <span class="accent-string">limit_words</span> не
-              вистачає перевірки, чи введений ліміт не є нульовим, від'ємним
-              або більшим за кількість слів у списку. Цю перевірку можна
-              виконати з допомогою <span class="accent-string">if</span>, і,
-              наприклад, вивести повідомлення
+              вистачає перевірки, чи введений ліміт не є нульовим, від'ємним або
+              більшим за кількість слів у списку. Цю перевірку можна виконати з
+              допомогою <span class="accent-string">if</span>, і, наприклад,
+              вивести повідомлення
               <span class="italic"
                 >"That's not a valid limit, I'll use the full list
                 instead."</span
@@ -668,6 +678,218 @@ start_game(players_list2)  # -> You can start the game!</code></pre>
     # ⭐️ додай перевірку тут
 
     return words[:limit]</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- 🍎 PART 4: Домашнє завдання -->
+      <section id="part-4" class="lesson-wrapper tab-content">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img src="../media/icons/apple.svg" class="star" alt="apple" />
+              <span>Домашнє завдання: Book Fair 📚</span>
+            </h2>
+          </div>
+
+          <div class="lesson-content">
+            <h3 id="p4-1">Нумерований список: range(len(...))</h3>
+
+            <p>
+              Кожен елемент списку має свій номер (індекс), і
+              <span class="bold">нумерація починається з 0</span>:
+            </p>
+
+            <pre><code class="language-python">pets = ["cat", "dog", "hamster"]
+#         0      1       2
+
+print(pets[0])   # cat
+print(pets[2])   # hamster</code></pre>
+
+            <p>
+              <span class="accent-string">len(pets)</span> повертає довжину
+              списку (тут <span class="accent-string">3</span>), а
+              <span class="accent-string">range(3)</span> дає числа
+              <span class="accent-string">0, 1, 2</span>. Тому можна пройтися по
+              всіх індексах:
+            </p>
+
+            <pre><code class="language-python">pets = ["cat", "dog", "hamster"]
+
+for i in range(len(pets)):
+    print(i, pets[i])</code></pre>
+
+            <pre><code class="language-text">0 cat
+1 dog
+2 hamster</code></pre>
+
+            <p>
+              Але люди рахують з 1, а не з 0. Тому при виведенні додаємо
+              <span class="accent-string">+ 1</span> до номера:
+            </p>
+
+            <pre><code class="language-python">for i in range(len(pets)):
+    print(f"{i + 1}. {pets[i]}")</code></pre>
+
+            <pre><code class="language-text">1. cat
+2. dog
+3. hamster</code></pre>
+
+            <hr />
+
+            <h3 id="p4-2">Перевірка in та not in</h3>
+
+            <p>
+              <span class="accent-string">in</span> перевіряє, чи є значення у
+              списку. Результат – <span class="accent-string">True</span> або
+              <span class="accent-string">False</span>:
+            </p>
+
+            <pre><code class="language-python">colors = ["red", "green", "blue"]
+
+print("red" in colors)        # True
+print("pink" in colors)       # False
+print("pink" not in colors)   # True</code></pre>
+
+            <hr />
+
+            <h3 id="p4-3">Повторюємо запитання через while</h3>
+
+            <p>
+              Якщо користувач ввів щось неправильне, треба спитати ще раз. Для
+              цього:
+            </p>
+            <ol>
+              <li>питаємо один раз <span class="bold">до</span> циклу;</li>
+              <li>
+                поки відповідь неправильна, питаємо знову
+                <span class="bold">всередині</span> циклу.
+              </li>
+            </ol>
+
+            <pre><code class="language-python">answer = input("Do you like pizza? (yes / no): ")
+
+while answer not in ["yes", "no"]:
+    answer = input("Please type yes or no: ")
+
+print("Your answer:", answer)</code></pre>
+
+            <p>
+              Коли користувач нарешті введе
+              <span class="accent-string">yes</span> або
+              <span class="accent-string">no</span>, умова
+              <span class="accent-string">answer not in [...]</span> стане
+              <span class="accent-string">False</span>, і цикл закінчиться.
+            </p>
+
+            <hr />
+
+            <h3 id="p4-4">Функція, яка отримує список і повертає результат</h3>
+
+            <pre><code class="language-python">def ask_color(colors_list):
+    print(colors_list)
+    
+    answer = input("Choose a color from the list: ")
+
+    while answer not in colors_list:
+        answer = input("Try again: ")
+
+    return answer  # повертаємо правильну відповідь
+
+
+my_colors = ["red", "green", "blue"]
+
+result = ask_color(my_colors) # виклик функції зі списком my_colors
+
+print("You chose:", result)</code></pre>
+
+            <img
+              src="./images/lesson16/choose_a_color.png"
+              alt="choose_a_color"
+            />
+
+            <p>
+              Зверни увагу: функція працює з
+              <span class="bold">будь-яким</span> списком, який їй передали, а
+              <span class="accent-string">return</span> віддає значення назовні,
+              і ми зберігаємо його у змінну
+              <span class="accent-string">result</span>.
+            </p>
+
+            <hr />
+
+            <h3 id="task">Завдання</h3>
+
+            <!-- ЗАВДАННЯ (єдине) -->
+            <details class="task" open>
+              <summary>
+                <h4>Завдання. Жанри на ярмарку</h4>
+              </summary>
+              <div>
+                <p>
+                  На книжковому ярмарку кожен жанр має свій стенд. Допоможемо
+                  відвідувачу обрати жанр.
+                </p>
+                <p>У коді нижче є дві функції:</p>
+                <ul style="list-style-type: square; margin-bottom: 15px">
+                  <li>
+                    <span class="accent-string">print_list(items)</span> –
+                    виводить усі жанри з номерами;
+                  </li>
+                  <li>
+                    <span class="accent-string">choose_genre(genres_list)</span>
+                    – питає жанр, доки користувач не введе правильний, і
+                    <span class="bold">повертає</span> його.
+                  </li>
+                </ul>
+                <p>Заміни ❓ в коді на слова, яких не вистачає.</p>
+
+                <!-- code editor -->
+                <div
+                  class="custom-editor-wrapper python-editor-wrapper"
+                  id="l16-hw-1"
+                >
+                  <div class="editor-header">
+                    <span class="editor-title">Python3</span>
+                    <div class="editor-actions">
+                      <button class="run-btn" title="Запустити код">▶️</button>
+                      <button
+                        class="reset-btn"
+                        title="Скинути до початкового стану"
+                      >
+                        🔁
+                      </button>
+                    </div>
+                  </div>
+
+                  <textarea class="custom-editor-input">
+def print_list(items):
+    for i in ❓(❓(items)):
+        print(f"{❓}. {items[❓]}")
+
+def choose_genre(genres_list):
+    choice = input("Choose a genre: ")
+
+    ❓ choice ❓ genres_list:
+        choice = input("Choose a different genre: ")
+
+    ❓ choice
+
+genres = ["fantasy", "adventure", "mystery", "sci-fi"]
+
+print_list(❓)
+choice = choose_genre(❓)
+
+print(f"Your choice: {choice}")</textarea
+                  >
+
+                  <pre class="custom-editor-output">Очікування запуску...</pre>
+                </div>
+
+                <p>Очікуваний результат:</p>
+                <img src="./images/lesson16/hw.png" alt="expected result" />
+              </div>
+            </details>
           </div>
         </div>
       </section>
