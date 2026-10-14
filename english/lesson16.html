@@ -31,8 +31,8 @@
       rel="stylesheet"
     />
 
-    <link rel="stylesheet" href="../style.css?v=3.0" />
-    <script src="../script.js?v=3.0" defer></script>
+    <link rel="stylesheet" href="../style.css?v=4.0" />
+    <script src="../script.js?v=4.0" defer></script>
   </head>
 
   <body>
@@ -51,6 +51,26 @@
         </div>
 
         <div class="top-bar__controls">
+          <button
+            id="translator-toggle-btn"
+            class="top-bar-btn"
+            type="button"
+            title="Translator"
+            aria-expanded="false"
+          >
+            🌍 <span class="btn-label">Translator</span>
+          </button>
+
+          <button
+            id="notes-toggle-btn"
+            class="top-bar-btn"
+            type="button"
+            title="Lesson Notes"
+            aria-expanded="false"
+          >
+            📝 <span class="btn-label">Notes</span>
+          </button>
+
           <label class="toggle-switch" aria-label="Перемикач теми">
             <input type="checkbox" id="theme-checkbox" />
             <span class="slider">
@@ -71,6 +91,60 @@
           </button>
         </div>
       </nav>
+    </div>
+
+    <!-- 🌍 TRANSLATOR POP-UP -->
+    <div id="translator-popup" class="top-popup" hidden>
+      <div class="top-popup__header">
+        <h4>🌍 Translator</h4>
+        <button type="button" class="top-popup__close" aria-label="Close">
+          ✕
+        </button>
+      </div>
+
+      <div
+        class="translator-module"
+        data-source-lang="en"
+        data-target-lang="uk"
+      >
+        <div class="translator-lang-labels">
+          <span class="lang-source">Англійська</span>
+          <button type="button" class="swap-lang-btn" title="Swap languages">
+            ⇄
+          </button>
+          <span class="lang-target">Українська</span>
+        </div>
+
+        <div class="translator-inputs">
+          <input
+            type="text"
+            class="translator-input"
+            placeholder="Type a word..."
+          />
+          <button type="button" class="translate-btn">Translate</button>
+        </div>
+
+        <div class="translator-output" style="display: none"></div>
+      </div>
+    </div>
+
+    <!-- 📝 NOTES POP-UP -->
+    <div id="notes-popup" class="top-popup" hidden>
+      <div class="top-popup__header">
+        <h4>📝 Lesson Notes</h4>
+        <div class="top-popup__actions">
+          <span id="notes-status" class="notes-status">Saved</span>
+          <button type="button" class="top-popup__close" aria-label="Close">
+            ✕
+          </button>
+        </div>
+      </div>
+
+      <textarea
+        id="lesson-notes-textarea"
+        class="notes-textarea"
+        placeholder="Write your notes here... They are saved automatically."
+      ></textarea>
     </div>
 
     <!-- lesson header -->
@@ -1392,7 +1466,7 @@
           </div>
 
           <div class="lesson-content">
-            <h3 id="p3-1">Fair Maths</h3>
+            <h3>Fair Maths</h3>
 
             <p>
               Linda is a literature professor at the university. At the fair,
@@ -1690,27 +1764,6 @@
                   </tr>
                 </tbody>
               </table>
-            </div>
-
-            <hr />
-
-            <h3 id="p3-3">Translator</h3>
-
-            <!-- 🌍 BUILT-IN TRANSLATOR -->
-            <!-- prettier-ignore -->
-            <div class="translator-module" data-source-lang="en" data-target-lang="uk">
-              <div class="translator-lang-labels">
-                <span class="lang-source">Англійська</span>
-                <button class="swap-lang-btn" title="Swap languages">⇄</button>
-                <span class="lang-target">Українська</span>
-              </div>
-
-              <div class="translator-inputs">
-                <input type="text" class="translator-input" placeholder="Type a word..." />
-                <button class="translate-btn">Translate</button>
-              </div>
-
-              <div class="translator-output" style="display: none"></div>
             </div>
           </div>
         </div>

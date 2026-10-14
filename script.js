@@ -2249,6 +2249,112 @@
   }
 
   // -----------------------------------------
+  // 🛠️ TOP BAR TOOLS MANAGER (Translator & Notes)
+  // -----------------------------------------
+  class TopBarToolsManager {
+    constructor() {
+      this.translatorBtn = document.getElementById("translator-toggle-btn");
+      this.notesBtn = document.getElementById("notes-toggle-btn");
+      this.translatorPopup = document.getElementById("translator-popup");
+      this.notesPopup = document.getElementById("notes-popup");
+      this.notesTextarea = document.getElementById("lesson-notes-textarea");
+      this.notesStatus = document.getElementById("notes-status");
+
+      // Saves notes per lesson page. Change to "lms_notes_global" if you want one shared notebook across all lessons.
+      this.pageId = window.location.pathname.replace(/[^a-zA-Z0-9]/g, "_");
+      this.storageKey = `lms_notes_${this.pageId}`;
+      this.statusTimeout = null;
+
+      this.init();
+    }
+
+    init() {
+      // 1. Toggle buttons
+      if (this.translatorBtn && this.translatorPopup) {
+        this.translatorBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          this.togglePopup(this.translatorPopup, this.translatorBtn);
+        });
+      }
+
+      if (this.notesBtn && this.notesPopup) {
+        this.notesBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          this.togglePopup(this.notesPopup, this.notesBtn);
+        });
+      }
+
+      // 2. Close buttons (✕)
+      document.querySelectorAll(".top-popup__close").forEach((btn) => {
+        btn.addEventListener("click", () => this.closeAll());
+      });
+
+      // 3. Close on Escape key
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") this.closeAll();
+      });
+
+      // 4. Close when clicking outside the pop-up
+      document.addEventListener("click", (e) => {
+        const clickedInsidePopup = e.target.closest(".top-popup");
+        const clickedToggleBtn = e.target.closest(".top-bar-btn");
+        if (!clickedInsidePopup && !clickedToggleBtn) {
+          this.closeAll();
+        }
+      });
+
+      // 5. Load & Auto-Save Notes in localStorage
+      if (this.notesTextarea) {
+        const savedNotes = localStorage.getItem(this.storageKey);
+        if (savedNotes !== null) {
+          this.notesTextarea.value = savedNotes;
+        }
+
+        this.notesTextarea.addEventListener("input", () => {
+          localStorage.setItem(this.storageKey, this.notesTextarea.value);
+          this.showSavedIndicator();
+        });
+      }
+    }
+
+    togglePopup(popup, btn) {
+      const isOpening = popup.hasAttribute("hidden");
+      this.closeAll();
+
+      if (isOpening) {
+        popup.removeAttribute("hidden");
+        btn.classList.add("active");
+        btn.setAttribute("aria-expanded", "true");
+
+        // Auto-focus the input or textarea when opened
+        const focusTarget = popup.querySelector("input, textarea");
+        if (focusTarget) setTimeout(() => focusTarget.focus(), 50);
+      }
+    }
+
+    closeAll() {
+      [this.translatorPopup, this.notesPopup].forEach((popup) => {
+        if (popup) popup.setAttribute("hidden", "");
+      });
+      [this.translatorBtn, this.notesBtn].forEach((btn) => {
+        if (btn) {
+          btn.classList.remove("active");
+          btn.setAttribute("aria-expanded", "false");
+        }
+      });
+    }
+
+    showSavedIndicator() {
+      if (!this.notesStatus) return;
+      this.notesStatus.classList.add("show");
+      clearTimeout(this.statusTimeout);
+      this.statusTimeout = setTimeout(() => {
+        this.notesStatus.classList.remove("show");
+      }, 1500);
+    }
+  }
+
+  // -----------------------------------------
   // 🏁 8. INITIALIZATION (The Engine)
   // -----------------------------------------
   document.addEventListener("DOMContentLoaded", () => {
@@ -2257,6 +2363,9 @@
     new CodeManager();
     new GlobalEvents(themeManager, uiManager);
     new PronunciationManager();
+
+    new PronunciationManager();
+    new TopBarToolsManager();
 
     // Iніціалізуємо КОЖНУ форму на сторінці окремо
     document.querySelectorAll(".homework-form").forEach((form) => {
