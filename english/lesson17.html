@@ -1,0 +1,1213 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Навчальні матеріали" />
+
+    <link rel="icon" type="image/svg+xml" href="../media/icons/carambola.svg" />
+
+    <title>English Lesson 17</title>
+
+    <script>
+      const savedTheme = localStorage.getItem("lms_theme") || "light";
+      document.documentElement.setAttribute("data-theme", savedTheme);
+
+      const hljsThemeLink =
+        savedTheme === "dark"
+          ? "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css"
+          : "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css";
+
+      document.head.insertAdjacentHTML(
+        "beforeend",
+        `<link id="hljs-theme" rel="stylesheet" href="${hljsThemeLink}" />`,
+      );
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Fira+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Tektur:wght@400..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="../style.css?v=4.0" />
+    <script src="../script.js?v=4.0" defer></script>
+  </head>
+
+  <body>
+    <!-- transition curtain -->
+    <div class="transition-curtain"></div>
+
+    <!-- top-bar -->
+    <div id="nav-container">
+      <nav class="top-bar">
+        <div class="logo-container">
+          <img
+            src="../media/icons/carambola.svg"
+            alt="Logo"
+            class="site-logo"
+          />
+        </div>
+
+        <div class="top-bar__controls">
+          <button
+            id="translator-toggle-btn"
+            class="top-bar-btn"
+            type="button"
+            title="Translator"
+            aria-expanded="false"
+          >
+            🌍 <span class="btn-label">Translator</span>
+          </button>
+
+          <button
+            id="notes-toggle-btn"
+            class="top-bar-btn"
+            type="button"
+            title="Lesson Notes"
+            aria-expanded="false"
+          >
+            📝 <span class="btn-label">Notes</span>
+          </button>
+
+          <label class="toggle-switch" aria-label="Перемикач теми">
+            <input type="checkbox" id="theme-checkbox" />
+            <span class="slider">
+              <span class="icon sun"
+                ><img src="../media/icons/stars.svg"
+              /></span>
+              <span class="icon moon"
+                ><img src="../media/icons/moon.svg"
+              /></span>
+            </span>
+          </label>
+          <button
+            id="dyslexia-mode-btn"
+            class="wide-toggle"
+            title="Шрифт для дислектиків"
+          >
+            Aa
+          </button>
+        </div>
+      </nav>
+    </div>
+
+    <!-- 🌍 TRANSLATOR POP-UP -->
+    <div id="translator-popup" class="top-popup" hidden>
+      <div class="top-popup__header">
+        <h4>🌍 Translator</h4>
+        <button type="button" class="top-popup__close" aria-label="Close">
+          ✕
+        </button>
+      </div>
+
+      <div
+        class="translator-module"
+        data-source-lang="en"
+        data-target-lang="uk"
+      >
+        <div class="translator-lang-labels">
+          <span class="lang-source">Англійська</span>
+          <button type="button" class="swap-lang-btn" title="Swap languages">
+            ⇄
+          </button>
+          <span class="lang-target">Українська</span>
+        </div>
+
+        <div class="translator-inputs">
+          <input
+            type="text"
+            class="translator-input"
+            placeholder="Type a word..."
+          />
+          <button type="button" class="translate-btn">Translate</button>
+        </div>
+
+        <div class="translator-output" style="display: none"></div>
+      </div>
+    </div>
+
+    <!-- 📝 NOTES POP-UP -->
+    <div id="notes-popup" class="top-popup" hidden>
+      <div class="top-popup__header">
+        <h4>📝 Lesson Notes</h4>
+        <div class="top-popup__actions">
+          <span id="notes-status" class="notes-status">Saved</span>
+          <button type="button" class="top-popup__close" aria-label="Close">
+            ✕
+          </button>
+        </div>
+      </div>
+
+      <textarea
+        id="lesson-notes-textarea"
+        class="notes-textarea"
+        placeholder="Write your notes here... They are saved automatically."
+      ></textarea>
+    </div>
+
+    <!-- lesson header -->
+    <header>
+      <div class="title-container">
+        <h1 id="lesson-title">English: 17</h1>
+      </div>
+
+      <p class="topic">Mapleton &amp; Quantifiers</p>
+
+      <hr class="pretty-divider" />
+    </header>
+
+    <!-- lesson content -->
+    <main>
+      <!-- tab buttons -->
+      <div class="tabs-nav">
+        <button class="tab-btn active" data-target="part-1">Vocabulary</button>
+        <button class="tab-btn" data-target="part-2">Grammar</button>
+        <button class="tab-btn" data-target="part-3">Puzzle</button>
+      </div>
+
+      <!-- 🍓 PART 1: VOCABULARY -->
+      <section id="part-1" class="lesson-wrapper tab-content active show">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img
+                src="../media/icons/strawberry.svg"
+                class="star"
+                alt="strawberry"
+              />
+              <span>Vocabulary</span>
+            </h2>
+          </div>
+
+          <div class="lesson-content">
+            <h3>Vocabulary Warm-Up</h3>
+
+            <p class="task-description">
+              Translate the words from English to Ukrainian (remember or guess).
+            </p>
+
+            <div class="tablecontainer">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Word</th>
+                    <th>Transcription</th>
+                    <th>Translation</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="bold">🍁 maple</span> (tree)</td>
+                    <td><span class="accent-string">/ˈmeɪpl/</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l17-v-1"
+                        class="test-input"
+                        style="width: 100%; min-width: 220px; margin: 0"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">sightseeing</span></td>
+                    <td><span class="accent-string">/ˈsaɪtsiːɪŋ/</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l17-v-2"
+                        class="test-input"
+                        style="width: 100%; min-width: 220px; margin: 0"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">shopping mall</span></td>
+                    <td><span class="accent-string">/ˈʃɒpɪŋ mɔːl/</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l17-v-3"
+                        class="test-input"
+                        style="width: 100%; min-width: 220px; margin: 0"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">pastries</span></td>
+                    <td><span class="accent-string">/ˈpeɪstriz/</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l17-v-5"
+                        class="test-input"
+                        style="width: 100%; min-width: 220px; margin: 0"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">cinnamon roll</span></td>
+                    <td><span class="accent-string">/ˈsɪnəmən rəʊl/</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l17-v-6"
+                        class="test-input"
+                        style="width: 100%; min-width: 220px; margin: 0"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">locals</span></td>
+                    <td><span class="accent-string">/ˈləʊklz/</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l17-v-7"
+                        class="test-input"
+                        style="width: 100%; min-width: 220px; margin: 0"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">duck</span></td>
+                    <td><span class="accent-string">/dʌk/</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l17-v-8"
+                        class="test-input"
+                        style="width: 100%; min-width: 220px; margin: 0"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">to feed</span></td>
+                    <td><span class="accent-string">/fiːd/</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l17-v-9"
+                        class="test-input"
+                        style="width: 100%; min-width: 220px; margin: 0"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">cyclist</span></td>
+                    <td><span class="accent-string">/ˈsaɪklɪst/</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l17-v-10"
+                        class="test-input"
+                        style="width: 100%; min-width: 220px; margin: 0"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">autumn</span></td>
+                    <td><span class="accent-string">/ˈɔːtəm/</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l17-v-13"
+                        class="test-input"
+                        style="width: 100%; min-width: 220px; margin: 0"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">to belong (to)</span></td>
+                    <td><span class="accent-string">/bɪˈlɒŋ/</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l17-v-15"
+                        class="test-input"
+                        style="width: 100%; min-width: 220px; margin: 0"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">rumour</span> (rumor)</td>
+                    <td><span class="accent-string">/ˈruːmə/</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l17-v-16"
+                        class="test-input"
+                        style="width: 100%; min-width: 220px; margin: 0"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">invitation</span></td>
+                    <td><span class="accent-string">/ˌɪnvɪˈteɪʃn/</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l17-v-17"
+                        class="test-input"
+                        style="width: 100%; min-width: 220px; margin: 0"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">ordinary</span></td>
+                    <td><span class="accent-string">/ˈɔːdnri/</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l17-v-18"
+                        class="test-input"
+                        style="width: 100%; min-width: 220px; margin: 0"
+                      />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 🍉 PART 2: GRAMMAR -->
+      <section id="part-2" class="lesson-wrapper tab-content">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img
+                src="../media/icons/watermelon.svg"
+                class="star"
+                alt="watermelon"
+              />
+              <span>Grammar</span>
+            </h2>
+          </div>
+
+          <div class="lesson-content">
+            <!-- INTRO CALLOUT -->
+            <h3 id="intro">Intro</h3>
+
+            <p>
+              Previously, Robin found a strange note while doing inventory. The
+              note is actually a page from the
+              <span class="italic">Mapleton Sightseeing Guide</span> (Mapleton is
+              the town where Miss Lemon and Robin live). Some words on the page
+              are <span class="gloss" data-tr="стерті">erased</span>, so Miss
+              Lemon and Robin cannot read it. Help them fill in the missing
+              words.
+            </p>
+
+            <hr />
+
+            <!-- ===================== BLOCK A ===================== -->
+            <h3 id="g-block-a">Block A: some, any and no</h3>
+
+            <ul style="list-style-type: square">
+              <li>
+                used with <span class="bold">uncountable</span> nouns (sugar,
+                flour) and <span class="bold">plural countable</span> nouns
+                (parks, trees)<br />
+                <span class="italic">some sugar, some trees</span>
+              </li>
+              <li>
+                <span class="bold">some</span> means “трохи/кілька” and is used
+                in positive (+) sentences<br />
+                <span class="italic">We need some flour for the cake.</span
+                ><br />
+                <span class="italic">There are some parks in this town.</span>
+              </li>
+              <li>
+                <span class="bold">any</span> is used in questions (?) and
+                negative (-) sentences
+                <br />
+                <span class="italic">Is there any sugar in your tea?</span>
+                <br />
+                <span class="italic">Are there any apples on this tree?</span>
+                <br />
+                <span class="italic">Do you have any plans today?</span>
+                <br />
+                <span class="italic">I do not have any plans today.</span>
+              </li>
+              <li>
+                we can use <span class="bold">no</span> instead of
+                <span class="bold">not any</span> in negative sentences<br />
+                <span class="italic">There is no sugar in my tea.</span><br />
+                <span class="italic">There are no biscuits on this plate.</span>
+              </li>
+              <li>
+                we use <span class="bold">some</span> in questions (?) when we
+                make an offer or a request<br />
+                <span class="italic">Would you like some biscuits?</span><br />
+                <span class="italic">Can I have some tea, please?</span>
+              </li>
+            </ul>
+
+            <div class="tablecontainer" style="margin-top: 20px">
+              <table>
+                <thead>
+                  <tr>
+                    <th>+</th>
+                    <th>-</th>
+                    <th>?</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>some</td>
+                    <td>not any / no</td>
+                    <td>any / some</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Exercise 1a -->
+            <details class="task" name="lesson17" open>
+              <summary><h4>Exercise 1a</h4></summary>
+              <div>
+                <p class="task-description">
+                  Fill in the gaps with <strong>some / any / no</strong>.
+                </p>
+
+                <div
+                  class="callout2"
+                  style="line-height: 2.2; margin-bottom: 15px"
+                >
+                  <p style="margin-top: 0">
+                    <span class="bold" style="color: var(--brand2)"
+                      >Welcome to Mapleton!</span
+                    >
+                    Mapleton is a small university town, and it got its name
+                    from the many maple trees in its streets and parks.<br />
+                    Walk around the town and you can see
+                    <input
+                      type="text"
+                      id="l17-ex1a-1"
+                      class="test-input"
+                      style="width: 100px"
+                    />
+                    old houses with pink, blue and yellow walls. But don't look
+                    for big city things here. There are
+                    <input
+                      type="text"
+                      id="l17-ex1a-2"
+                      class="test-input"
+                      style="width: 85px"
+                    />
+                    shopping malls in Mapleton, and there aren't
+                    <input
+                      type="text"
+                      id="l17-ex1a-3"
+                      class="test-input"
+                      style="width: 85px"
+                    />
+                    tall buildings.
+                  </p>
+                </div>
+
+                <div class="callout2" style="line-height: 2.2">
+                  <p style="margin-bottom: 0">
+                    Are there
+                    <input
+                      type="text"
+                      id="l17-ex1a-4"
+                      class="test-input"
+                      style="width: 85px"
+                    />
+                    places to eat? Of course! For example, you can visit Miss
+                    Snow's bakery. Every morning, there is
+                    <input
+                      type="text"
+                      id="l17-ex1a-5"
+                      class="test-input"
+                      style="width: 85px"
+                    />
+                    fresh bread
+                    <span class="gloss" data-tr="на вітрині">in the window</span
+                    >, and there are
+                    <input
+                      type="text"
+                      id="l17-ex1a-6"
+                      class="test-input"
+                      style="width: 85px"
+                    />
+                    warm cinnamon rolls too. A
+                    <span class="gloss" data-tr="вивіска / табличка">sign</span>
+                    on the door says: "Would you like
+                    <input
+                      type="text"
+                      id="l17-ex1a-7"
+                      class="test-input"
+                      style="width: 85px"
+                    />
+                    hot chocolate with your pastries? Come in!" The locals say
+                    there is
+                    <input
+                      type="text"
+                      id="l17-ex1a-8"
+                      class="test-input"
+                      style="width: 85px"
+                    />
+                    place with better hot chocolate than Miss Snow's.
+                  </p>
+                </div>
+              </div>
+            </details>
+
+            <!-- Exercise 1b -->
+            <details class="task" name="lesson17">
+              <summary><h4>Exercise 1b</h4></summary>
+              <div>
+                <p class="task-description">How do you say in English?</p>
+                <ol>
+                  <li>У Мейплтоні є кілька кав'ярень.</li>
+                  <li>
+                    Чи є в Мейплтоні якісь
+                    <span class="gloss" data-tr="fast-food places"
+                      >фастфуд-заклади</span
+                    >?
+                  </li>
+                  <li>Ні, там немає жодних фастфуд-закладів.</li>
+                </ol>
+                <textarea
+                  id="l17-ex1b"
+                  class="test-textarea"
+                  placeholder="1. ...&#10;2. ...&#10;3. ..."
+                ></textarea>
+              </div>
+            </details>
+
+            <hr />
+
+            <!-- ===================== BLOCK B ===================== -->
+            <h3 id="g-block-b">Block B: a lot of, much and many</h3>
+
+            <ul style="list-style-type: square">
+              <li>
+                <span class="bold">a lot of</span> means “багато” and is used in
+                positive (+) sentences with
+                <span class="bold">uncountable</span> and
+                <span class="bold">plural countable</span> nouns<br />
+                <span class="italic"
+                  >There is a lot of bread on that shelf.</span
+                ><br />
+                <span class="italic"
+                  >There are a lot of apples on that plate.</span
+                ><br />
+                <span class="italic">We have a lot of homework today.</span>
+              </li>
+              <li>
+                we drop <span class="bold">of</span> if there's no noun after
+                <span class="bold">a lot</span><br />
+                <span class="italic">She studies a lot.</span><br />
+                <span class="italic">They travel a lot.</span>
+              </li>
+              <li>
+                <span class="bold">much</span> and
+                <span class="bold">many</span> also mean “багато”, but they are
+                usually used in questions (?) and negations (-). Much is used
+                with <span class="bold">uncountable</span> nouns and many – with
+                <span class="bold">countable</span> nouns<br />
+                <span class="italic"
+                  >Is there much sugar in this recipe? We don't have much sugar
+                  left.</span
+                ><br />
+                <span class="italic"
+                  >Are there many apples in this recipe? We don't have many
+                  apples.</span
+                >
+              </li>
+              <li>
+                we use <span class="bold">how much</span> and
+                <span class="bold">how many</span> to ask “Скільки?”<br />
+                <span class="italic"
+                  >How much homework <span class="bold">do</span> you have
+                  today?</span
+                ><br />
+                <span class="italic"
+                  >How much <span class="bold">does</span> this cake cost?</span
+                ><br />
+                <span class="italic"
+                  >How many parks <span class="bold">are</span> there in
+                  Mapleton?</span
+                ><br />
+                <span class="italic"
+                  >How many years <span class="bold">has</span> she worked
+                  here?</span
+                >
+              </li>
+              <li>
+                <span class="bold">too many</span> and
+                <span class="bold">too much</span> are used to say there's
+                “надто багато” of something<br />
+                <span class="italic"
+                  >There are too many people in this park.</span
+                ><br />
+                <span class="italic">There is too much noise.</span>
+              </li>
+            </ul>
+
+            <div class="tablecontainer" style="margin-top: 20px">
+              <table>
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th>+</th>
+                    <th>-</th>
+                    <th>?</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="bold">countable</span></td>
+                    <td>a lot of</td>
+                    <td>many</td>
+                    <td>(how) many</td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">uncountable</span></td>
+                    <td>a lot of</td>
+                    <td>much</td>
+                    <td>(how) much</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Exercise 2a -->
+            <details class="task" name="lesson17">
+              <summary><h4>Exercise 2a</h4></summary>
+              <div>
+                <p class="task-description">
+                  Fill in the gaps with
+                  <strong>a lot of / much / many</strong> (or
+                  <strong>a lot</strong> where there is no noun).
+                </p>
+
+                <div
+                  class="callout2"
+                  style="line-height: 2.2; margin-bottom: 15px"
+                >
+                  <p style="margin-top: 0">
+                    Mapleton has
+                    <input
+                      type="text"
+                      id="l17-ex2a-1"
+                      class="test-input"
+                      style="width: 100px"
+                    />
+                    parks. One of the parks has a
+                    <span class="gloss" data-tr="озеро">lake</span> in the
+                    middle. When the weather is warm,
+                    <input
+                      type="text"
+                      id="l17-ex2a-2"
+                      class="test-input"
+                      style="width: 100px"
+                    />
+                    ducks swim in it. How
+                    <input
+                      type="text"
+                      id="l17-ex2a-3"
+                      class="test-input"
+                      style="width: 90px"
+                    />
+                    ducks live there? Nobody knows! But the locals say there can
+                    never be too
+                    <input
+                      type="text"
+                      id="l17-ex2a-4"
+                      class="test-input"
+                      style="width: 90px"
+                    />
+                    ducks. People come to the park every day just to feed them,
+                    but please don't bring too
+                    <input
+                      type="text"
+                      id="l17-ex2a-5"
+                      class="test-input"
+                      style="width: 90px"
+                    />
+                    bread. It isn't good for them.
+                  </p>
+                </div>
+
+                <div class="callout2" style="line-height: 2.2">
+                  <p style="margin-bottom: 0">
+                    There aren't
+                    <input
+                      type="text"
+                      id="l17-ex2a-6"
+                      class="test-input"
+                      style="width: 90px"
+                    />
+                    locals in Mapleton, but there are
+                    <input
+                      type="text"
+                      id="l17-ex2a-7"
+                      class="test-input"
+                      style="width: 100px"
+                    />
+                    students from the
+                    <span class="gloss" data-tr="сусідній">nearby</span> towns.
+                    They come to study maths and programming at Mapleton
+                    University. The students have
+                    <input
+                      type="text"
+                      id="l17-ex2a-8"
+                      class="test-input"
+                      style="width: 100px"
+                    />
+                    homework, so they study
+                    <input
+                      type="text"
+                      id="l17-ex2a-9"
+                      class="test-input"
+                      style="width: 90px"
+                    />
+                    and they don't have
+                    <input
+                      type="text"
+                      id="l17-ex2a-10"
+                      class="test-input"
+                      style="width: 90px"
+                    />
+                    free time.
+                  </p>
+                </div>
+              </div>
+            </details>
+
+            <!-- Exercise 2b -->
+            <details class="task" name="lesson17">
+              <summary><h4>Exercise 2b</h4></summary>
+              <div>
+                <p class="task-description">How do you say in English?</p>
+                <ol>
+                  <li>
+                    У місті не так багато
+                    <span class="gloss" data-tr="traffic">транспорту</span>.
+                  </li>
+                  <li>
+                    Зате в парках багато
+                    <span class="gloss" data-tr="cyclists">велосипедистів</span
+                    >.
+                  </li>
+                  <li>Скільки кленових дерев у цьому містечку?</li>
+                  <li>
+                    Їх занадто багато,
+                    <span class="gloss" data-tr="to count">щоб порахувати</span
+                    >.
+                  </li>
+                  <li>Але тут небагато інших типів дерев.</li>
+                </ol>
+                <textarea
+                  id="l17-ex2b"
+                  class="test-textarea"
+                  placeholder="1. ...&#10;2. ...&#10;3. ...&#10;4. ...&#10;5. ..."
+                ></textarea>
+              </div>
+            </details>
+
+            <hr />
+
+            <!-- ===================== BLOCK C ===================== -->
+            <h3 id="g-block-c">Block C: few, little, a few and a little</h3>
+
+            <ul style="list-style-type: square">
+              <li>
+                we use <span class="bold">few</span> and
+                <span class="bold">little</span> to say “мало / небагато / майже
+                немає”. <span class="bold">few</span> is used with plural
+                countable nouns, and <span class="bold">little</span> is used
+                with uncountable nouns<br />
+                <span class="italic"
+                  >There are few visitors in the library today.</span
+                ><br />
+                <span class="italic"
+                  >We have little time until we need to close the library.</span
+                >
+              </li>
+              <li>
+                we can use <span class="bold">very</span> for emphasis<br />
+                <span class="italic"
+                  >We have very few biscuits and very little tea. That's not
+                  enough for all of us.</span
+                >
+              </li>
+              <li>
+                we use <span class="bold">a few</span> and
+                <span class="bold">a little</span> to say “трохи / кілька”.
+                Their meaning is similar to <span class="bold">some</span><br />
+                <span class="italic"
+                  >We have a few apples. We can make some apple juice.</span
+                ><br />
+                <span class="italic"
+                  >I have a little time. I can read one more chapter of this
+                  book.</span
+                >
+              </li>
+              <li>
+                compare <span class="bold">few/little</span> and
+                <span class="bold">a few/a little</span>:<br />
+                <span class="italic"
+                  >I have few apples, so I can't bake an apple pie.</span
+                ><br />
+                <span class="italic"
+                  >I have a few apples, so I'll use them to bake an apple
+                  pie.</span
+                ><br />
+                <span class="italic"
+                  >I have little time, so I can't finish my homework.</span
+                ><br />
+                <span class="italic"
+                  >I have a little time, so I can finish my homework.</span
+                >
+              </li>
+              <li>
+                we can also use <span class="bold">a little</span> before
+                adjectives and adverbs to say “трохи / дещо”. You can say
+                <span class="bold">a bit</span> instead of
+                <span class="bold">a little</span>. We don't use
+                <span class="bold">few</span> or
+                <span class="bold">little</span> (without
+                <span class="bold">a</span>) in this way<br />
+                <span class="italic"
+                  >It is a little cold today. It is a bit cold today.</span
+                ><br />
+                <span class="italic">I feel a little tired.</span><br />
+                <span class="italic">She speaks a little slowly.</span>
+              </li>
+            </ul>
+
+            <div class="tablecontainer" style="margin-top: 20px">
+              <table>
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th>трохи</th>
+                    <th>мало</th>
+                    <th>дуже мало</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="bold">countable</span></td>
+                    <td>a few</td>
+                    <td>few</td>
+                    <td>very few</td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">uncountable</span></td>
+                    <td>a little</td>
+                    <td>little</td>
+                    <td>very little</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Exercise 3a -->
+            <details class="task" name="lesson17">
+              <summary><h4>Exercise 3a</h4></summary>
+              <div>
+                <p class="task-description">
+                  Fill in the gaps with
+                  <strong>few / little / a few / a little</strong>. You can add
+                  <em>very</em>. The Ukrainian word shows the meaning:
+                  <em>трохи</em> = a few / a little, <em>мало</em> = few /
+                  little, <em>дуже мало</em> = very few / very little.
+                </p>
+
+                <div
+                  class="callout2"
+                  style="line-height: 2.2; margin-bottom: 15px"
+                >
+                  <p style="margin-top: 0">
+                    Now let's
+                    <span class="gloss" data-tr="пройтися">walk down</span>
+                    Maple Street. This street is short, but there are
+                    <input
+                      type="text"
+                      id="l17-ex3a-1"
+                      class="test-input"
+                      style="width: 110px"
+                      placeholder="трохи"
+                    />
+                    shops on it. There is also a gallery here. It is small and
+                    has
+                    <input
+                      type="text"
+                      id="l17-ex3a-2"
+                      class="test-input"
+                      style="width: 110px"
+                      placeholder="мало"
+                    />
+                    paintings, but each painting is beautiful. Miss Snow's
+                    bakery is on this street too. It is very busy in the
+                    morning, so by lunch there is
+                    <input
+                      type="text"
+                      id="l17-ex3a-3"
+                      class="test-input"
+                      style="width: 125px"
+                      placeholder="дуже мало"
+                    />
+                    bread left.
+                  </p>
+                </div>
+
+                <div
+                  class="callout2"
+                  style="line-height: 2.2; margin-bottom: 15px"
+                >
+                  <p>
+                    In autumn, the weather is usually
+                    <input
+                      type="text"
+                      id="l17-ex3a-4"
+                      class="test-input"
+                      style="width: 110px"
+                      placeholder="трохи"
+                    />
+                    rainy, but it is still a good time for a walk. The leaves on
+                    the maple trees
+                    <span class="gloss" data-tr="стають">turn</span> yellow,
+                    orange and red, and the whole town looks like a painting.<br />
+                    In winter,
+                    <input
+                      type="text"
+                      id="l17-ex3a-5"
+                      class="test-input"
+                      style="width: 120px"
+                      placeholder="дуже мало"
+                    />
+                    tourists visit the town, and the streets are quiet. It is a
+                    good time to visit the bookshop on Maple Street, because it
+                    offers the visitors warm coffee and tea for free.
+                  </p>
+                </div>
+
+                <div class="callout2" style="line-height: 2.2">
+                  <p style="margin-bottom: 0">
+                    The bookshop belongs to Mr. and Mrs. Bennett. On Friday
+                    evenings, it hosts a book club for students. But
+                    <span class="gloss" data-tr="ходить чутка"
+                      >a rumour says</span
+                    >
+                    there is another book club, a secret one. You need a special
+                    invitation to join it.
+                    <input
+                      type="text"
+                      id="l17-ex3a-6"
+                      class="test-input"
+                      style="width: 110px"
+                      placeholder="мало"
+                    />
+                    people know about it, and there is
+                    <input
+                      type="text"
+                      id="l17-ex3a-7"
+                      class="test-input"
+                      style="width: 110px"
+                      placeholder="мало"
+                    />
+                    information on how to get the invitation.
+                  </p>
+                </div>
+              </div>
+            </details>
+
+            <!-- Exercise 3b -->
+            <details class="task" name="lesson17">
+              <summary><h4>Exercise 3b</h4></summary>
+              <div>
+                <p class="task-description">How do you say in English?</p>
+                <ol>
+                  <li>
+                    У книгарні є кілька
+                    <span class="gloss" data-tr="free tables"
+                      >вільних столиків</span
+                    >.
+                  </li>
+                  <li>Вранці в книгарні мало відвідувачів.</li>
+                  <li>Ти можеш додати трохи молока до кави.</li>
+                  <li>
+                    У книгарні мало
+                    <span class="gloss" data-tr="space">місця</span>, але там
+                    <span class="gloss" data-tr="cozy">затишно</span>.
+                  </li>
+                </ol>
+                <textarea
+                  id="l17-ex3b"
+                  class="test-textarea"
+                  placeholder="1. ...&#10;2. ...&#10;3. ...&#10;4. ..."
+                ></textarea>
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- 🍋 PART 3: PUZZLE -->
+      <section id="part-3" class="lesson-wrapper tab-content">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img
+                src="../media/icons/lemon.svg"
+                class="star"
+                alt="a lemon slice"
+              />
+              <span>Puzzle</span>
+            </h2>
+          </div>
+
+          <div class="lesson-content">
+            <h3>Questions about the texts</h3>
+
+            <div class="callout2" style="margin-bottom: 20px">
+              <p style="margin: 0">
+                At the bottom of the note, someone wrote five questions in
+                pencil. Miss Lemon reads them slowly. "This is not an
+                <span class="gloss" data-tr="звичайний">ordinary</span> guide,"
+                she says. "It looks like a piece of a puzzle."
+              </p>
+            </div>
+
+            <p class="task-description">
+              Answer each question with a full sentence (say it aloud). Use the
+              grammar from today's lesson. Then write down the short answer to
+              the <span class="bold">first</span> question in each pair in the
+              box below (1 or 2 words, without <em>a / an / the</em> at the
+              start). Write each answer on a new line.
+            </p>
+
+            <ol style="line-height: 2">
+              <li>
+                Which place on Maple Street has some beautiful things? Are there many of
+                them?
+              </li>
+              <li>
+                What do people have
+                <span class="gloss" data-tr="замість">instead of</span> facts
+                about the secret book club? Do many people know about this club?
+              </li>
+              <li>
+                In which season does the whole town look like a painting? Is
+                there much colour in the streets during this season?
+              </li>
+              <li>
+                What do the students study at Mapleton University,
+                <span class="gloss" data-tr="окрім">besides</span> maths? How much free time do they have?
+              </li>
+              <li>
+                A sign in Miss Snow's bakery offers you something to drink. What
+                is it? Make the offer using this drink's name: "Would you like
+                ...?"
+              </li>
+            </ol>
+
+            <textarea
+              id="l17-puzzle-answers"
+              class="test-textarea"
+              placeholder="1. ...&#10;2. ...&#10;3. ...&#10;4. ...&#10;5. ..."
+            ></textarea>
+
+            <p style="margin-top: 25px">
+              Look at the first letters of your five short answers, in order.
+              They make a word. What is it?
+            </p>
+
+            <p>
+              <span class="bold">Secret word:</span>
+              <input
+                type="text"
+                id="l17-secret-word"
+                class="test-input"
+                style="width: 160px; font-weight: bold"
+              />
+            </p>
+
+            <p
+              class="small"
+              style="color: var(--text-soft); font-style: italic"
+            >
+              (Don't know this word? Use the translator in the top bar.)
+            </p>
+
+            <div class="soft-callout" style="margin-top: 25px">
+              <p style="margin: 0">
+                The rest of the note says:
+                <span class="italic"
+                  >"If you find an app with this name on the library computer,
+                  you'll get your next clue."</span
+                >
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>🌷 🍓 🌿 Made by Olena Hapchyna 🌿 🍓 🌷</p>
+
+      <div class="footer-credits">
+        <span
+          >Fruit icons by
+          <a
+            href="https://www.svgrepo.com/collection/fruits-vectors/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >An Nguyen</a
+          ></span
+        >
+        |
+        <a href="../credits.html" target="_blank">Credits &amp; Licenses</a>
+      </div>
+    </footer>
+
+    <button
+      id="scrollToTopBtn"
+      class="scroll-to-top"
+      aria-label="Scroll to top"
+    >
+      <img src="../media/icons/apple.svg" />
+    </button>
+
+    <dialog id="clear-confirm-dialog" class="custom-dialog">
+      <div class="dialog-content">
+        <h3>⚠️ Attention!</h3>
+        <p>Do you really want to delete ALL your answers and start over?</p>
+        <div class="dialog-actions">
+          <button type="button" id="dialog-cancel-btn">No</button>
+          <button type="button" id="dialog-confirm-btn">Yes, delete</button>
+        </div>
+      </div>
+    </dialog>
+
+    <script>
+      document.querySelectorAll(".gloss").forEach(function (el) {
+        var pill = document.createElement("span");
+        pill.className = "tr-pill";
+        pill.textContent = el.getAttribute("data-tr");
+        el.insertAdjacentElement("afterend", pill);
+        function toggle() {
+          pill.classList.toggle("show");
+        }
+        el.addEventListener("click", toggle);
+        el.addEventListener("keydown", function (e) {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            toggle();
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
