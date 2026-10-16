@@ -85,8 +85,8 @@
       src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt-stdlib.js"
     ></script>
 
-    <link rel="stylesheet" href="../style.css?v=5.0" />
-    <script src="../script.js?v=5.0" defer></script>
+    <link rel="stylesheet" href="../style.css?v=6.0" />
+    <script src="../script.js?v=6.0" defer></script>
   </head>
 
   <body>
@@ -447,19 +447,6 @@ window.mainloop()</code></pre>
             <h3 id="p1-5">Практика</h3>
 
             <!-- ЗАВДАННЯ 1 -->
-            <!-- 
-Expected result:
-
-from tkinter import *
-
-window = Tk()
-window.title("Secret App")
-window.geometry("300x200")
-window.config(bg="lightblue")
-window.eval("tk::PlaceWindow . center")
-
-window.mainloop()
--->
             <details class="task" open>
               <summary><h4>Завдання 1</h4></summary>
               <div>
@@ -529,6 +516,7 @@ label = Label(
     font=("Georgia", 18, "bold"),
     bg="lavender",
     fg="indigo",
+    wraplength=300,
 )
 
 # Крок 2: Розміщуємо його у вікні
@@ -563,6 +551,10 @@ label.pack(pady=20)</code></pre>
                 до країв вікна чи один до одного. Також існує
                 <span class="accent-string">padx</span>, який додає відступи
                 зліва і справа.
+              </li>
+              <li>
+                <span class="accent-string">wraplength=300</span> – коли текст
+                перевищить ширину 300 пікселів, він перенесеться на новий рядок.
               </li>
             </ul>
 
@@ -639,27 +631,6 @@ label.pack(pady=20)</code></pre>
             <h3 id="p2-3">Практика</h3>
 
             <!-- ЗАВДАННЯ 2 -->
-            <!-- 
-Expected result:
-
-from tkinter import *
-
-window = Tk()
-window.geometry("300x200")
-window.config(bg="lightblue")
-window.eval("tk::PlaceWindow . center")
-
-label = Label(
-    window,
-    text="Clicks: 0",
-    font=("Arial", 20, "bold"),
-    background="lightblue",
-    foreground="blue",
-)
-label.pack(pady=10)
-
-window.mainloop()
--->
             <details class="task" open>
               <summary><h4>Завдання 2</h4></summary>
               <div>
@@ -808,7 +779,7 @@ btn.pack()</code></pre>
               Що як всередині функції, яку викликає кнопка, нам потрібно змінити
               і використати якусь зовнішню змінну (яка створена поза цією
               функцією)? Якщо спробувати це зробити, як у прикладі нижче,
-              виникне помилка.
+              виникне помилка (в терміналі; після того, як натиснути кнопку).
             </p>
             <pre><code class="language-python">label = Label(window, text="2")
 label.pack()
@@ -868,7 +839,17 @@ btn.pack()</code></pre>
                   <span class="italic"
                     >"Clicks: 0" → "Clicks: 1" → "Clicks: 2"...</span
                   >
+                  Можеш використати той
+                  <span class="accent-string">Label</span>, що вже є, або додати
+                  ще один.
                 </p>
+
+                <p>Приклад, як може виглядати результат:</p>
+                <div class="image-gallery3">
+                  <img src="./images/lesson17/1.png" alt="example1" />
+                  <img src="./images/lesson17/2.png" alt="example2" />
+                  <img src="./images/lesson17/3.png" alt="example3" />
+                </div>
               </div>
             </details>
 

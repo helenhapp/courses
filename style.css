@@ -3263,6 +3263,20 @@ code.long-code .hljs-ln td.hljs-ln-code {
   }
 }
 
+.image-gallery3 {
+  display: flex;
+  justify-content: center;
+}
+
+.image-gallery3 img {
+  width: auto;
+  height: 150px;
+  object-fit: contain;
+  padding: 0;
+  margin: 0;
+  border: none;
+}
+
 /* ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ */
 /* 🛠️ TOP BAR TOOLS (TRANSLATOR & NOTES) */
 /* ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ */
