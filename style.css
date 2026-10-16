@@ -615,6 +615,19 @@ pre.accent-string {
   padding: 10px 20px;
 }
 
+.circle {
+  display: inline-block;
+  width: 17px;
+  height: 17px;
+  background-color: white;
+  border-radius: 50%;
+  border: 1px solid black;
+}
+[data-theme="dark"] .circle {
+  background-color: black;
+  border: 1px solid white;
+}
+
 /* ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ */
 /* 🌺 5. ПОСИЛАННЯ ТА ЗОБРАЖЕННЯ */
 /* ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ - ✦ */

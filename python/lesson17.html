@@ -1,0 +1,919 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Навчальні матеріали" />
+
+    <link rel="icon" type="image/svg+xml" href="../media/icons/carambola.svg" />
+
+    <title>Python Lesson 17</title>
+
+    <script>
+      const savedTheme = localStorage.getItem("lms_theme") || "light";
+      document.documentElement.setAttribute("data-theme", savedTheme);
+
+      const hljsThemeLink =
+        savedTheme === "dark"
+          ? "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css"
+          : "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css";
+
+      document.head.insertAdjacentHTML(
+        "beforeend",
+        `<link id="hljs-theme" rel="stylesheet" href="${hljsThemeLink}" />`,
+      );
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Fira+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Tektur:wght@400..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"
+    ></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.css"
+    />
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.js"
+    ></script>
+
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/javascript/javascript.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/xml/xml.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/css/css.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/htmlmixed/htmlmixed.min.js"
+    ></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/theme/dracula.min.css"
+    />
+
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/python/python.min.js"
+    ></script>
+
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt-stdlib.js"
+    ></script>
+
+    <link rel="stylesheet" href="../style.css?v=3.0" />
+    <script src="../script.js?v=3.0" defer></script>
+  </head>
+
+  <body>
+    <!-- transition curtain -->
+    <div class="transition-curtain"></div>
+
+    <!-- top-bar -->
+    <div id="nav-container">
+      <nav class="top-bar">
+        <div class="logo-container">
+          <img
+            src="../media/icons/carambola.svg"
+            alt="Logo"
+            class="site-logo"
+          />
+        </div>
+
+        <div class="top-bar__controls">
+          <label class="toggle-switch" aria-label="Перемикач теми">
+            <input type="checkbox" id="theme-checkbox" />
+            <span class="slider">
+              <span class="icon sun"
+                ><img src="../media/icons/stars.svg"
+              /></span>
+              <span class="icon moon"
+                ><img src="../media/icons/moon.svg"
+              /></span>
+            </span>
+          </label>
+          <button
+            id="dyslexia-mode-btn"
+            class="wide-toggle"
+            title="Шрифт для дислектиків"
+          >
+            Aa
+          </button>
+        </div>
+      </nav>
+    </div>
+
+    <!-- lesson header -->
+    <header>
+      <div class="title-container">
+        <h1 id="lesson-title">Python: 17</h1>
+      </div>
+
+      <p class="topic">Вступ до Tkinter: Вікна, Текст та Кнопки</p>
+
+      <hr class="pretty-divider" />
+    </header>
+
+    <!-- lesson content -->
+    <main>
+      <!-- tab buttons -->
+      <div class="tabs-nav">
+        <button class="tab-btn active" data-target="part-1">Частина 1</button>
+        <button class="tab-btn" data-target="part-2">Частина 2</button>
+        <button class="tab-btn" data-target="part-3">Частина 3</button>
+        <button class="tab-btn" data-target="part-4">Частина 4</button>
+      </div>
+
+      <!-- 🍓 PART 1: Вікна та Кольори -->
+      <section id="part-1" class="lesson-wrapper tab-content active show">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img
+                src="../media/icons/strawberry.svg"
+                class="star"
+                alt="strawberry"
+                width="60"
+                height="60"
+              />
+              <span>Вікна та кольори</span>
+            </h2>
+          </div>
+
+          <div class="lesson-content">
+            <h3 id="p1-1">Tkinter</h3>
+            <p>
+              До цього моменту всі наші програми працювали в консолі: ми
+              виводили текст через <span class="accent-string">print()</span> і
+              вводили дані через <span class="accent-string">input()</span>.
+            </p>
+            <p>
+              Сьогодні ми переходимо до
+              <span class="bold">GUI (Graphical User Interface)</span> –
+              графічного інтерфейсу користувача. Для цього ми використаємо
+              вбудовану в Python бібліотеку
+              <span class="accent-string">tkinter</span>.
+            </p>
+            <p>Будь-яка графічна програма складається з двох головних речей:</p>
+            <ul style="list-style-type: square; margin-bottom: 15px">
+              <li>
+                <span class="bold">Віджети (Widgets)</span> – це всі
+                <span class="bold">елементи</span> програми: текст, картинки,
+                кнопки тощо.
+              </li>
+              <li>
+                <span class="bold">Вікно (Window)</span> – це
+                <span class="bold">контейнер</span>, в якому знаходяться всі ті
+                елементи.
+              </li>
+            </ul>
+
+            <hr />
+
+            <h3 id="p1-2">from ... import *</h3>
+            <p>Раніше ми підключали модулі так:</p>
+            <pre><code class="language-python">import random
+number = random.randint(1, 10)</code></pre>
+            <p>
+              Якби ми так само написали
+              <span class="accent-string">import tkinter</span>, то перед
+              <span class="bold">кожною</span> командою чи віджетом довелося б
+              писати слово <span class="accent-string">tkinter</span>. Щоб цього
+              уникнути, можна натомість імпортувати модуль так:
+            </p>
+            <pre><code class="language-python">from random import *
+number = randint(1, 10)</code></pre>
+            <p>
+              Так само можна імпортувати
+              <span class="accent-string">tkinter</span>:
+            </p>
+            <pre><code class="language-python">from tkinter import *</code></pre>
+            <p>
+              Зірочка <span class="accent-string">*</span> означає
+              <span class="bold">"все"</span> (<span class="italic"
+                >"з модуля tkinter імпортуй всі інструменти напряму"</span
+              >).
+            </p>
+
+            <hr />
+
+            <h3 id="p1-3">Головне вікно</h3>
+            <p>Розглянемо код, який створює порожнє вікно програми:</p>
+            <pre><code class="language-python">from tkinter import *
+
+window = Tk()
+
+window.title("My First GUI App")
+window.geometry("400x250")
+window.config(bg="mistyrose")
+
+# "Магічний" рядок, щоб розмістити вікно рівно по центру екрана
+window.eval("tk::PlaceWindow . center")
+
+window.mainloop()</code></pre>
+            <p>Пояснення:</p>
+            <ul style="list-style-type: square; margin-bottom: 15px">
+              <li>
+                <span class="accent-string">window = Tk()</span> – створює
+                головне вікно-контейнер і зберігає його у змінну
+                <span class="accent-string">window</span>.
+              </li>
+              <li>
+                <span class="accent-string">window.title("...")</span> – задає
+                назву вікна у верхній смужці.
+              </li>
+              <li>
+                <span class="accent-string">window.geometry("400x250")</span> –
+                задає розмір вікна у пікселях:
+                <span class="accent-string">"ШиринаxВисота"</span>. Між числами
+                стоїть маленька англійська літера
+                <span class="accent-string">x</span>, без пробілів.
+              </li>
+              <li>
+                <span class="accent-string">window.config(...)</span>
+                – дозволяє змінити різні налаштування вікна (наприклад, колір
+                фону).
+              </li>
+              <li>
+                <span class="accent-string">bg="..."</span>
+                – колір фону (background).
+              </li>
+              <li>
+                <span class="accent-string">window.mainloop()</span> –
+                найважливіший рядок, який
+                <span class="bold">завжди має бути в самому кінці файлу</span>.
+                Поки що можеш сприймати його як команду, яка
+                <span class="bold">відображає вікно на екрані</span> і не дає
+                програмі миттєво закритися, доки ти сама не натиснеш на хрестик.
+              </li>
+            </ul>
+
+            <hr />
+
+            <h3 id="p1-4">Кольори</h3>
+
+            <p>Є два основні способи задати колір в Tkinter:</p>
+            <h4>1. За назвою кольору англійською.</h4>
+            <p>Таблиця красивих кольорів:</p>
+            <table>
+              <thead>
+                <tr>
+                  <th>Базові кольори</th>
+                  <th>Світлі (для фону)</th>
+                  <th>Темні (для тексту)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- 1 -->
+                <tr>
+                  <td>
+                    <span class="circle" style="background: white"></span>
+                    <span class="accent-string">"white"</span>
+                  </td>
+                  <td>
+                    <span class="circle" style="background: lightblue"></span>
+                    <span class="accent-string">"lightblue"</span>
+                  </td>
+                  <td>
+                    <span class="circle" style="background: darkblue"></span>
+                    <span class="accent-string">"darkblue"</span>
+                  </td>
+                </tr>
+                <!-- 2 -->
+                <tr>
+                  <td>
+                    <span class="circle" style="background: black"></span>
+                    <span class="accent-string">"black"</span>
+                  </td>
+                  <td>
+                    <span class="circle" style="background: lightgreen"></span>
+                    <span class="accent-string">"lightgreen"</span>
+                  </td>
+                  <td>
+                    <span class="circle" style="background: darkgreen"></span>
+                    <span class="accent-string">"darkgreen"</span>
+                  </td>
+                </tr>
+                <!-- 3 -->
+                <tr>
+                  <td>
+                    <span class="circle" style="background: red"></span>
+                    <span class="accent-string">"red"</span>
+                  </td>
+                  <td>
+                    <span class="circle" style="background: lightyellow"></span>
+                    <span class="accent-string">"lightyellow"</span>
+                  </td>
+                  <td>
+                    <span class="circle" style="background: crimson"></span>
+                    <span class="accent-string">"crimson"</span>
+                  </td>
+                </tr>
+                <!-- 4 -->
+                <tr>
+                  <td>
+                    <span class="circle" style="background: blue"></span>
+                    <span class="accent-string">"blue"</span>
+                  </td>
+                  <td>
+                    <span class="circle" style="background: lavender"></span>
+                    <span class="accent-string">"lavender"</span>
+                  </td>
+                  <td>
+                    <span class="circle" style="background: purple"></span>
+                    <span class="accent-string">"purple"</span>
+                  </td>
+                </tr>
+                <!-- 5 -->
+                <tr>
+                  <td>
+                    <span class="circle" style="background: green"></span>
+                    <span class="accent-string">"green"</span>
+                  </td>
+                  <td>
+                    <span class="circle" style="background: mistyrose"></span>
+                    <span class="accent-string">"mistyrose"</span>
+                  </td>
+                  <td>
+                    <span class="circle" style="background: indigo"></span>
+                    <span class="accent-string">"indigo"</span>
+                  </td>
+                </tr>
+                <!-- 6 -->
+                <tr>
+                  <td>
+                    <span class="circle" style="background: yellow"></span>
+                    <span class="accent-string">"yellow"</span>
+                  </td>
+                  <td>
+                    <span class="circle" style="background: peachpuff"></span>
+                    <span class="accent-string">"peachpuff"</span>
+                  </td>
+                  <td>
+                    <span class="circle" style="background: teal"></span>
+                    <span class="accent-string">"teal"</span>
+                  </td>
+                </tr>
+                <!-- 7 -->
+                <tr>
+                  <td>
+                    <span class="circle" style="background: orange"></span>
+                    <span class="accent-string">"orange"</span>
+                  </td>
+                  <td>
+                    <span class="circle" style="background: aliceblue"></span>
+                    <span class="accent-string">"aliceblue"</span>
+                  </td>
+                  <td>
+                    <span
+                      class="circle"
+                      style="background: darkslateblue"
+                    ></span>
+                    <span class="accent-string">"darkslateblue"</span>
+                  </td>
+                </tr>
+                <!-- 8 -->
+                <tr>
+                  <td>
+                    <span class="circle" style="background: pink"></span>
+                    <span class="accent-string">"pink"</span>
+                  </td>
+                  <td>
+                    <span class="circle" style="background: honeydew"></span>
+                    <span class="accent-string">"honeydew"</span>
+                  </td>
+                  <td>
+                    <span class="circle" style="background: chocolate"></span>
+                    <span class="accent-string">"chocolate"</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <h4 style="margin-top: 20px">2. За допомогою HEX-коду.</h4>
+            <p>
+              У дизайні та програмуванні кольори часто записують у форматі
+              <span class="accent-string">#RRGGBB</span>, наприклад:
+              <span class="accent-string">"#ff5733"</span> або
+              <span class="accent-string">"#4a90e2"</span>.
+            </p>
+            <ul style="list-style-type: square; margin-bottom: 15px">
+              <li>
+                Код завжди починається з решітки
+                <span class="accent-string">#</span>, після якої йдуть 6
+                символів (цифри <span class="accent-string">0-9</span> та літери
+                <span class="accent-string">a-f</span>).
+              </li>
+              <li>
+                Перші два символи відповідають за кількість червоного (<span
+                  class="bold"
+                  >R</span
+                >ed), середні два – зеленого (<span class="bold">G</span>reen),
+                останні два – синього (<span class="bold">B</span>lue). Разом це
+                дозволяє закодувати понад 16 мільйонів відтінків!
+              </li>
+            </ul>
+            <p>
+              Оскільки HEX-код – це насправді число, ми можемо згенерувати
+              випадковий колір за допомогою такого рядка:
+            </p>
+            <pre><code class="language-python">color = f"#{random.randint(0, 0xFFFFFF):06x}"</code></pre>
+
+            <hr />
+
+            <h3 id="p1-5">Практика</h3>
+
+            <!-- ЗАВДАННЯ 1 -->
+            <!-- 
+Expected result:
+
+from tkinter import *
+
+window = Tk()
+window.title("Secret App")
+window.geometry("300x200")
+window.config(bg="lightblue")
+window.eval("tk::PlaceWindow . center")
+
+window.mainloop()
+-->
+            <details class="task" open>
+              <summary><h4>Завдання 1</h4></summary>
+              <div>
+                <ol>
+                  <li>
+                    Створи новий файл у VS Code та імпортуй усе з бібліотеки
+                    <span class="accent-string">tkinter</span>.
+                  </li>
+                  <li>
+                    Створи вікно розміром
+                    <span class="accent-string">"300x200"</span> та задай йому
+                    якийсь колір фону.
+                  </li>
+                  <li>Додай рядок для центрування вікна на екрані.</li>
+                  <li>
+                    Не забудь викликати
+                    <span class="accent-string">mainloop()</span>.
+                  </li>
+                </ol>
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- 🍉 PART 2: Label та Шрифти -->
+      <section id="part-2" class="lesson-wrapper tab-content">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img
+                src="../media/icons/watermelon.svg"
+                class="star"
+                alt="watermelon"
+                width="60"
+                height="60"
+              />
+              <span>Текстовий віджет Label та шрифти</span>
+            </h2>
+          </div>
+
+          <div class="lesson-content">
+            <h3 id="p2-1">Додаємо текст у вікно</h3>
+            <p>
+              Щоб додати текст у вікно, використовують віджет
+              <span class="accent-string">Label</span> (напис / текстова мітка).
+            </p>
+            <p>
+              Додавання будь-якого віджета завжди складається з
+              <span class="bold">двох кроків</span>:
+            </p>
+            <ol>
+              <li>
+                <span class="bold">Створити та налаштувати</span> віджет
+                (вказати, в якому вікні він лежить, який у нього текст, колір
+                тощо).
+              </li>
+              <li>
+                <span class="bold">Розмістити</span> його у вікні за допомогою
+                методу <span class="accent-string">.pack()</span>.
+              </li>
+            </ol>
+            <pre><code class="language-python"># Крок 1: Створюємо Label
+label = Label(
+    window,
+    text="Welcome to Tkinter!",
+    font=("Georgia", 18, "bold"),
+    bg="lavender",
+    fg="indigo",
+)
+
+# Крок 2: Розміщуємо його у вікні
+label.pack(pady=20)</code></pre>
+            <p>Пояснення параметрів:</p>
+            <ul style="list-style-type: square; margin-bottom: 15px">
+              <li>
+                <span class="accent-string">window</span> – перший аргумент
+                завжди вказує, у який саме контейнер ми кладемо цей віджет.
+              </li>
+              <li>
+                <span class="accent-string">text</span> – текст, який буде
+                написано.
+              </li>
+              <li>
+                <span class="accent-string">font=(...)</span> – налаштування
+                вигляду тексту (шрифт, розмір, стиль).
+              </li>
+              <li>
+                <span class="accent-string">bg</span> – колір фону. Якщо не
+                вказати для <span class="accent-string">Label</span> колір фону,
+                як у вікна, навколо тексту залишиться сірий прямокутник.
+              </li>
+              <li>
+                <span class="accent-string">fg</span> – колір тексту
+                (foreground).
+              </li>
+              <li>
+                <span class="accent-string">pady=20</span> всередині
+                <span class="accent-string">.pack()</span> – додає вертикальні
+                відступи (зверху та знизу) у пікселях, щоб елементи не прилипали
+                до країв вікна чи один до одного. Також існує
+                <span class="accent-string">padx</span>, який додає відступи
+                зліва і справа.
+              </li>
+            </ul>
+
+            <hr />
+
+            <h3 id="p2-2">Налаштування тексту</h3>
+            <p>
+              Параметр <span class="accent-string">font</span> записується у
+              круглих дужках:
+              <span class="accent-string">("Назва шрифту", розмір)</span> або
+              <span class="accent-string"
+                >("Назва шрифту", розмір, "стиль")</span
+              >. Стиль може бути
+              <span class="accent-string">"bold"</span> (жирний) або
+              <span class="accent-string">"italic"</span> (курсив).
+            </p>
+            <p>
+              Шрифт – це, по суті, вигляд літер. Ось таблиця шрифтів, які
+              працюють і на Windows, і на macOS:
+            </p>
+            <table>
+              <thead>
+                <tr>
+                  <th>Назва шрифту</th>
+                  <th>Як виглядає</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="accent-string">"Arial"</span></td>
+                  <td style="font-family: Arial">Чистий сучасний шрифт</td>
+                </tr>
+                <tr>
+                  <td><span class="accent-string">"Verdana"</span></td>
+                  <td style="font-family: Verdana">Широкий, легко читається</td>
+                </tr>
+                <tr>
+                  <td><span class="accent-string">"Trebuchet MS"</span></td>
+                  <td style="font-family: Trebuchet MS">
+                    Стильний м'який шрифт для заголовків
+                  </td>
+                </tr>
+                <tr>
+                  <td><span class="accent-string">"Comic Sans MS"</span></td>
+                  <td style="font-family: Comic Sans MS">
+                    Неформальний, схожий на комікс
+                  </td>
+                </tr>
+                <tr>
+                  <td><span class="accent-string">"Georgia"</span></td>
+                  <td style="font-family: Georgia">
+                    Елегантний книжковий шрифт
+                  </td>
+                </tr>
+                <tr>
+                  <td><span class="accent-string">"Times New Roman"</span></td>
+                  <td style="font-family: Times New Roman">Класичний шрифт</td>
+                </tr>
+                <tr>
+                  <td><span class="accent-string">"Courier New"</span></td>
+                  <td style="font-family: Courier New">
+                    Моноширинний (як друкарська машинка)
+                  </td>
+                </tr>
+                <tr>
+                  <td><span class="accent-string">"Impact"</span></td>
+                  <td style="font-family: Impact">Дуже товстий шрифт</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <hr />
+
+            <h3 id="p2-3">Практика</h3>
+
+            <!-- ЗАВДАННЯ 2 -->
+            <!-- 
+Expected result:
+
+from tkinter import *
+
+window = Tk()
+window.geometry("300x200")
+window.config(bg="lightblue")
+window.eval("tk::PlaceWindow . center")
+
+label = Label(
+    window,
+    text="Clicks: 0",
+    font=("Arial", 20, "bold"),
+    background="lightblue",
+    foreground="blue",
+)
+label.pack(pady=10)
+
+window.mainloop()
+-->
+            <details class="task" open>
+              <summary><h4>Завдання 2</h4></summary>
+              <div>
+                <p>Доповни свій код із Завдання 1:</p>
+                <ol>
+                  <li>Додай якийсь текст.</li>
+                  <li>Зміни його шрифт, розмір та стиль.</li>
+                  <li>
+                    Зміни колір літер на який хочеш, а колір фону – на такий, як
+                    у вікна.
+                  </li>
+                  <li>
+                    Розмісти напис у вікні з відступом
+                    <span class="accent-string">pady=10</span>.
+                  </li>
+                </ol>
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- 🍇 PART 3: Кнопки, .config() -->
+      <section id="part-3" class="lesson-wrapper tab-content">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img
+                src="../media/icons/grapes.svg"
+                class="star"
+                alt="grapes"
+                width="60"
+                height="60"
+              />
+              <span>Кнопки</span>
+            </h2>
+          </div>
+
+          <div class="lesson-content">
+            <h3 id="p3-1">Кнопки</h3>
+            <p>
+              Щоб програма реагувала на кліки, використовують віджет
+              <span class="accent-string">Button</span>.
+            </p>
+            <p>
+              Коли ми натискаємо на кнопку, вона має викликати певну функцію.
+              Для цього ми створюємо функцію через
+              <span class="accent-string">def</span>, а тоді передаємо її назву
+              в параметр кнопки <span class="accent-string">command</span>.
+            </p>
+            <pre><code class="language-python">def do_smth():
+    print("button clicked")
+
+btn = Button(
+    window,
+    text="Click me",
+    command=do_smth,  # назва функції БЕЗ дужок ()!
+    font=("Arial", 12),
+    fg="darkblue",
+    activeforeground="crimson",
+)
+btn.pack(pady=10)</code></pre>
+            <p>Важливі деталі про кнопки:</p>
+            <ul style="list-style-type: square; margin-bottom: 15px">
+              <li>
+                <span class="bold">Жодних круглих дужок в command!</span> Ми
+                пишемо <span class="accent-string">command=function_name</span>.
+                Якщо написати дужки,
+                <span class="accent-string">function_name()</span>, функція
+                виконається один раз одразу під час запуску програми, а кнопка
+                потім не працюватиме.
+              </li>
+              <li>
+                <span class="accent-string">activeforeground</span> – колір
+                тексту на кнопці в ту мить, коли ти затискаєш її мишкою (на
+                Windows також можна змінювати фон кнопки через
+                <span class="accent-string">bg</span> та
+                <span class="accent-string">activebackground</span>).
+              </li>
+            </ul>
+
+            <hr />
+
+            <h3 id="p3-2">Зміна вікна та віджетів</h3>
+            <p>
+              В попередньому прикладі кнопка просто виводила текст у консоль.
+              Але можна створювати кнопки, які змінюють вигляд вікна програми та
+              віджетів, що у ньому розміщені (наприклад, їхній текст або колір).
+              Для цього використовуємо метод
+              <span class="accent-string">.config()</span>, і в дужках
+              перераховуємо всі зміни.
+            </p>
+            <pre
+              style="max-height: none"
+            ><code class="language-python">label = Label(window, text="Some text", fg="orange")
+label.pack()
+
+def change_label():
+    label.config(text="Different text", fg="green")
+
+btn = Button(window, text="Change", command=change_label)
+btn.pack()</code></pre>
+
+            <hr />
+
+            <h3 id="p3-3">Практика</h3>
+
+            <!-- ЗАВДАННЯ 3 -->
+            <details class="task" open>
+              <summary><h4>Завдання 3</h4></summary>
+              <div>
+                <p>
+                  Додай до програми із попередніх завдань кнопку, яка змінює
+                  колір фону вікна та фону текстового віджета на випадковий.
+                </p>
+                <p>Генерація випадкового кольору:</p>
+                <pre><code class="language-python">color = f"#{random.randint(0, 0xFFFFFF):06x}"</code></pre>
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- 🍋 PART 4: global -->
+      <section id="part-4" class="lesson-wrapper tab-content">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img
+                src="../media/icons/lemon.svg"
+                class="star"
+                alt="lemon"
+                width="60"
+                height="60"
+              />
+              <span>Глобальні змінні</span>
+            </h2>
+          </div>
+
+          <div class="lesson-content">
+            <h3 id="p4-1">Область видимості та global</h3>
+
+            <p>
+              Що як всередині функції, яку викликає кнопка, нам потрібно змінити
+              і використати якусь зовнішню змінну (яка створена поза цією
+              функцією)? Якщо спробувати це зробити, як у прикладі нижче,
+              виникне помилка.
+            </p>
+            <pre><code class="language-python">label = Label(window, text="2")
+label.pack()
+
+power = 2
+
+def change_label():
+    label.config(text=f"{2 ** power}")
+    power += 1
+
+btn = Button(window, text="2^n", command=change_label)
+btn.pack()</code></pre>
+            <p>Чому виникає помилка? У Python змінні діляться на два види:</p>
+            <ul style="list-style-type: square; margin-bottom: 15px">
+              <li>
+                <span class="bold">Локальні змінні</span> – створюються
+                всередині функції та існують тільки там.
+              </li>
+              <li>
+                <span class="bold">Глобальні змінні</span> – створюються в
+                основній частині програми (поза всіма функціями). Функції можуть
+                їх читати, але за замовчуванням
+                <span class="bold">не мають права їх змінювати</span> (це захист
+                від випадкових помилок).
+              </li>
+            </ul>
+
+            <p>
+              Щоб дозволити функції змінювати якусь глобальну змінну, на першому
+              рядку всередині функції треба написати ключове слово
+              <span class="accent-string">global</span> та назву тієї змінної:
+            </p>
+            <pre><code class="language-python">label = Label(window, text="2")
+label.pack()
+
+power = 2
+
+def change_label():
+    global power
+    label.config(text=f"{2 ** power}")
+    power += 1
+
+btn = Button(window, text="2^n", command=change_label)
+btn.pack()</code></pre>
+
+            <hr />
+
+            <h3 id="p4-2">Практика</h3>
+
+            <!-- ЗАВДАННЯ 4 -->
+            <details class="task" open>
+              <summary><h4>Завдання 4</h4></summary>
+              <div>
+                <p>
+                  Додай ще одну кнопку, яка рахує, скільки разів її натиснули, і
+                  оновлює текст на екрані:
+                  <span class="italic"
+                    >"Clicks: 0" → "Clicks: 1" → "Clicks: 2"...</span
+                  >
+                </p>
+              </div>
+            </details>
+
+            <details class="answer">
+              <summary style="color: gray">Підказка</summary>
+              <p style="margin: 0">
+                Кількість кліків має зберігатися в глобальній змінній (<span
+                  class="accent-string"
+                  >clicks = 0</span
+                >), значення якої змінюється всередині функції (<span
+                  class="accent-string"
+                  >clicks += 1</span
+                >), після чого треба змінити текст на екрані (<span
+                  class="accent-string"
+                  >label.config(text=...)</span
+                >).
+              </p>
+            </details>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>🌷 🍓 🌿 Made by Olena Hapchyna 🌿 🍓 🌷</p>
+
+      <div class="footer-credits">
+        <span
+          >Fruit icons by
+          <a
+            href="https://www.svgrepo.com/collection/fruits-vectors/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >An Nguyen</a
+          ></span
+        >
+        |
+        <a href="../credits.html" target="_blank">Credits & Licenses</a>
+      </div>
+    </footer>
+
+    <button
+      id="scrollToTopBtn"
+      class="scroll-to-top"
+      aria-label="Scroll to top"
+    >
+      <img src="../media/icons/apple.svg" />
+    </button>
+  </body>
+</html>
