@@ -890,48 +890,7 @@ btn.pack()</code></pre>
           </div>
 
           <div class="lesson-content">
-            <h3 id="p5-1">Зберігання кольорів у змінних</h3>
-            <p>
-              Якщо у твоїй програмі є багато елементів, які мають однаковий
-              колір фону або тексту, то замість того, щоб писати назву кольору
-              для кожного з них, краще зберегти цей колір у змінній, і
-              використовувати цю змінну:
-            </p>
-            <pre
-              style="max-height: none"
-            ><code class="language-python">main_bg = "lavender" # основний колір фону
-main_fg = "indigo" # основний колір тексту
-
-window = Tk()
-window.config(bg=main_bg)
-
-label1 = Label(
-  window, 
-  text="Some text", 
-  bg=main_bg, 
-  fg=main_fg,
-)
-label1.pack(pady=10)
-
-label2 = Label(
-  window, 
-  text="Some other text", 
-  bg=main_bg, 
-  fg=main_fg,
-)
-label2.pack(pady=10)</code></pre>
-            <p>
-              Чому це зручно? Якщо ти захочеш змінити дизайн програми
-              (наприклад, замінити
-              <span class="accent-string">"lavender"</span> на
-              <span class="accent-string">"mistyrose"</span>), достатньо буде
-              змінити лише <span class="bold">один рядок</span> на початку
-              програми.
-            </p>
-
-            <hr />
-
-            <h3 id="p5-2">Домашнє завдання</h3>
+            <h3>Домашнє завдання</h3>
 
             <!-- ЗАВДАННЯ -->
             <details class="task" open>
