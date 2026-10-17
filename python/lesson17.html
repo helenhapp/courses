@@ -85,8 +85,8 @@
       src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt-stdlib.js"
     ></script>
 
-    <link rel="stylesheet" href="../style.css?v=6.0" />
-    <script src="../script.js?v=6.0" defer></script>
+    <link rel="stylesheet" href="../style.css?v=7.0" />
+    <script src="../script.js?v=7.0" defer></script>
   </head>
 
   <body>
@@ -142,10 +142,11 @@
     <main>
       <!-- tab buttons -->
       <div class="tabs-nav">
-        <button class="tab-btn active" data-target="part-1">Частина 1</button>
-        <button class="tab-btn" data-target="part-2">Частина 2</button>
-        <button class="tab-btn" data-target="part-3">Частина 3</button>
-        <button class="tab-btn" data-target="part-4">Частина 4</button>
+        <button class="tab-btn active" data-target="part-1">Window</button>
+        <button class="tab-btn" data-target="part-2">Label</button>
+        <button class="tab-btn" data-target="part-3">Button</button>
+        <button class="tab-btn" data-target="part-4">global</button>
+        <button class="tab-btn" data-target="part-5">Д/з</button>
       </div>
 
       <!-- 🍓 PART 1: Вікна та Кольори -->
@@ -867,6 +868,100 @@ btn.pack()</code></pre>
                   >label.config(text=...)</span
                 >).
               </p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- 🍎 PART 5: Домашнє завдання -->
+      <section id="part-5" class="lesson-wrapper tab-content">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img
+                src="../media/icons/apple.svg"
+                class="star"
+                alt="apple"
+                width="60"
+                height="60"
+              />
+              <span>Домашнє завдання: Light & Dark Theme 🌓</span>
+            </h2>
+          </div>
+
+          <div class="lesson-content">
+            <h3 id="p5-1">Зберігання кольорів у змінних</h3>
+            <p>
+              Якщо у твоїй програмі є багато елементів, які мають однаковий
+              колір фону або тексту, то замість того, щоб писати назву кольору
+              для кожного з них, краще зберегти цей колір у змінній, і
+              використовувати цю змінну:
+            </p>
+            <pre
+              style="max-height: none"
+            ><code class="language-python">main_bg = "lavender" # основний колір фону
+main_fg = "indigo" # основний колір тексту
+
+window = Tk()
+window.config(bg=main_bg)
+
+label1 = Label(
+  window, 
+  text="Some text", 
+  bg=main_bg, 
+  fg=main_fg,
+)
+label1.pack(pady=10)
+
+label2 = Label(
+  window, 
+  text="Some other text", 
+  bg=main_bg, 
+  fg=main_fg,
+)
+label2.pack(pady=10)</code></pre>
+            <p>
+              Чому це зручно? Якщо ти захочеш змінити дизайн програми
+              (наприклад, замінити
+              <span class="accent-string">"lavender"</span> на
+              <span class="accent-string">"mistyrose"</span>), достатньо буде
+              змінити лише <span class="bold">один рядок</span> на початку
+              програми.
+            </p>
+
+            <hr />
+
+            <h3 id="p5-2">Практика</h3>
+
+            <!-- ЗАВДАННЯ -->
+            <details class="task" open>
+              <summary><h4>Завдання: Світла та темна тема</h4></summary>
+              <div>
+                <p>
+                  Створи програму, у якій можна перемикатися між світлою та
+                  темною темою за допомогою двох кнопок:
+                  <span class="accent">"Light 🏙️</span>" та
+                  <span class="accent">"Dark 🌃"</span>. За замовчуванням,
+                  додаток одразу відкривається зі світлою темою. Кольори та
+                  шрифти можеш обрати які хочеш. Зверни увагу, що також
+                  змінюється текст:
+                  <span class="italic">"Theme: Light"</span> та
+                  <span class="italic">"Theme: Dark"</span>.
+                </p>
+
+                <div class="image-gallery3">
+                  <img
+                    style="height: 200px"
+                    src="./images/lesson17/light.png"
+                    alt="light theme"
+                  />
+                  <img
+                    style="height: 200px"
+                    src="./images/lesson17/dark.png"
+                    alt="dark theme"
+                  />
+                </div>
+              </div>
             </details>
           </div>
         </div>

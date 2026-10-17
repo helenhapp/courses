@@ -483,25 +483,29 @@
         const iframeOutput = wrapper.querySelector(".html-editor-output");
         const turtleCanvas = wrapper.querySelector("#turtle-canvas-target");
 
+        let tkPreview = wrapper.querySelector(".tk-preview-area");
+        if (isPythonEditor && !tkPreview && outputDisplay) {
+          tkPreview = document.createElement("div");
+          tkPreview.className = "tk-preview-area";
+          wrapper.insertBefore(tkPreview, outputDisplay);
+        }
+
         if (isHtmlEditor && iframeOutput) iframeOutput.srcdoc = cm.getValue();
 
         if (runBtn) {
           runBtn.addEventListener("click", () => {
-            // Захист від подвійного кліку
             if (runBtn.disabled) return;
-
             const code = cm.getValue();
 
             if (isHtmlEditor && iframeOutput) {
               iframeOutput.srcdoc = code;
             } else if (isPythonEditor && outputDisplay) {
-              runBtn.disabled = true; // Блокуємо кнопку
+              runBtn.disabled = true;
               runBtn.style.opacity = "0.5";
-
               outputDisplay.textContent = "Запуск Python...\n";
 
-              this.runPythonCode(code, outputDisplay).finally(() => {
-                runBtn.disabled = false; // Розблоковуємо кнопку
+              this.runPythonCode(code, outputDisplay, tkPreview).finally(() => {
+                runBtn.disabled = false;
                 runBtn.style.opacity = "1";
               });
             } else if (outputDisplay) {
@@ -517,6 +521,10 @@
             cm.setValue(initialValue);
             if (isHtmlEditor && iframeOutput)
               iframeOutput.srcdoc = initialValue;
+            if (tkPreview) {
+              tkPreview.innerHTML = "";
+              tkPreview.classList.remove("active");
+            }
             if (outputDisplay)
               outputDisplay.textContent = "Очікування запуску...";
           });
@@ -525,15 +533,368 @@
     }
 
     // Runs Python Console with input() support
-    runPythonCode(codeToRun, outputDisplay) {
+    // runPythonCode(codeToRun, outputDisplay) {
+    //   outputDisplay.textContent = ""; // Clear console
+
+    //   Sk.configure({
+    //     // 1. Handles print() statements
+    //     output: function (text) {
+    //       outputDisplay.appendChild(document.createTextNode(text));
+    //     },
+    //     // 2. Handles internal Python files
+    //     read: function (x) {
+    //       if (
+    //         Sk.builtinFiles === undefined ||
+    //         Sk.builtinFiles["files"][x] === undefined
+    //       ) {
+    //         throw "File not found: '" + x + "'";
+    //       }
+    //       return Sk.builtinFiles["files"][x];
+    //     },
+    //     // 3. Handles input() statements dynamically!
+    //     inputfun: function (prompt) {
+    //       return new Promise((resolve) => {
+    //         // Print the prompt text (e.g., "What is your name?")
+    //         outputDisplay.appendChild(document.createTextNode(prompt));
+
+    //         // Create an interactive text field directly in the console
+    //         const inputField = document.createElement("input");
+    //         inputField.type = "text";
+
+    //         // Style it to look like a glowing terminal cursor
+    //         inputField.style.background = "transparent";
+    //         inputField.style.border = "none";
+    //         inputField.style.borderBottom = "2px solid var(--accent-pop)";
+    //         inputField.style.color = "var(--accent-pop)";
+    //         inputField.style.outline = "none";
+    //         inputField.style.fontFamily = "inherit";
+    //         inputField.style.fontSize = "inherit";
+    //         inputField.style.width = "50%";
+    //         inputField.style.marginLeft = "5px";
+
+    //         outputDisplay.appendChild(inputField);
+    //         inputField.focus();
+
+    //         // Wait for the student to press "Enter"
+    //         inputField.addEventListener("keydown", (e) => {
+    //           if (e.key === "Enter") {
+    //             const val = inputField.value;
+    //             inputField.remove(); // Remove the input box
+    //             outputDisplay.appendChild(document.createTextNode(val + "\n")); // Convert their typing to plain text
+    //             resolve(val); // Send the value back into Python
+    //           }
+    //         });
+    //       });
+    //     },
+    //   });
+
+    //   // Run the code asynchronously
+    //   const myPromise = Sk.misceval.asyncToPromise(() => {
+    //     return Sk.importMainWithBody("<stdin>", false, codeToRun, true);
+    //   });
+
+    //   myPromise.then(
+    //     () => {
+    //       if (outputDisplay.textContent === "") {
+    //         outputDisplay.textContent =
+    //           "Код виконано успішно (немає виводу в консоль).";
+    //       }
+    //     },
+    //     (error) => {
+    //       outputDisplay.appendChild(
+    //         document.createTextNode("\nПомилка: " + error.toString()),
+    //       );
+    //     },
+    //   );
+
+    //   return myPromise;
+    // }
+
+    injectTkinterModule(tkPreview, outputDisplay) {
+      if (typeof Sk === "undefined" || !Sk.builtinFiles) return;
+
+      window.__tkState = {
+        preview: tkPreview,
+        output: outputDisplay,
+        widgets: {},
+        nextId: 1,
+        hasWindow: false,
+      };
+
+      // 1. JS-міст для роботи з DOM-елементами Tkinter
+      Sk.builtinFiles["files"]["src/lib/_tk_dom.js"] = `
+        var $builtinmodule = function (name) {
+          var mod = {};
+          var state = window.__tkState;
+
+          function applyStyle(el, key, val, isWindow) {
+            if (key === "bg" || key === "background") {
+              el.style.backgroundColor = val;
+              el.dataset.normalBg = val;
+            } else if (key === "fg" || key === "foreground") {
+              el.style.color = val;
+              el.dataset.normalFg = val;
+            } else if (key === "activeforeground") {
+              el.dataset.activeFg = val;
+            } else if (key === "activebackground") {
+              el.dataset.activeBg = val;
+            } else if (key === "text") {
+              el.textContent = String(val);
+            } else if (key === "font" && Array.isArray(val)) {
+              var family = val[0] || "Arial";
+              var size = val[1] ? Math.abs(Number(val[1])) + "px" : "14px";
+              var styleStr = String(val[2] || "").toLowerCase();
+              el.style.fontFamily = '"' + family + '", sans-serif';
+              el.style.fontSize = size;
+              el.style.fontWeight = styleStr.includes("bold") ? "bold" : "normal";
+              el.style.fontStyle = styleStr.includes("italic") ? "italic" : "normal";
+            } else if (key === "width" && !isWindow) {
+              el.style.width = (Number(val) * 8) + "px";
+            } else if (key === "padx") {
+              el.style.paddingLeft = val + "px";
+              el.style.paddingRight = val + "px";
+            } else if (key === "pady") {
+              el.style.paddingTop = val + "px";
+              el.style.paddingBottom = val + "px";
+            }
+          }
+
+          mod.create_window = new Sk.builtin.func(function () {
+            var id = state.nextId++;
+            state.hasWindow = true;
+            if (state.preview) {
+              state.preview.innerHTML = "";
+              state.preview.classList.add("active");
+
+              var osWin = document.createElement("div");
+              osWin.className = "tk-os-window";
+
+              var titleBar = document.createElement("div");
+              titleBar.className = "tk-titlebar";
+              var titleText = document.createElement("span");
+              titleText.textContent = "tk";
+              var controls = document.createElement("span");
+              controls.className = "tk-titlebar-controls";
+              controls.textContent = "— □ ✕";
+              titleBar.appendChild(titleText);
+              titleBar.appendChild(controls);
+
+              var body = document.createElement("div");
+              body.className = "tk-window-body";
+
+              osWin.appendChild(titleBar);
+              osWin.appendChild(body);
+              state.preview.appendChild(osWin);
+
+              state.widgets[id] = { el: body, titleEl: titleText, isWindow: true };
+            }
+            return new Sk.builtin.int_(id);
+          });
+
+          mod.set_title = new Sk.builtin.func(function (idPy, titlePy) {
+            var w = state.widgets[Sk.ffi.remapToJs(idPy)];
+            if (w && w.titleEl) w.titleEl.textContent = Sk.ffi.remapToJs(titlePy);
+          });
+
+          mod.set_geometry = new Sk.builtin.func(function (idPy, geoPy) {
+            var w = state.widgets[Sk.ffi.remapToJs(idPy)];
+            var geo = String(Sk.ffi.remapToJs(geoPy));
+            var parts = geo.split("+")[0].split("x");
+            if (w && parts.length === 2) {
+              w.el.style.width = parts[0] + "px";
+              w.el.style.minHeight = parts[1] + "px";
+            }
+          });
+
+          mod.create_widget = new Sk.builtin.func(function (parentIdPy, typePy) {
+            var id = state.nextId++;
+            var parentId = Sk.ffi.remapToJs(parentIdPy);
+            var type = Sk.ffi.remapToJs(typePy);
+            var parent = state.widgets[parentId];
+            var el;
+
+            if (type === "Label") {
+              el = document.createElement("div");
+              el.className = "tk-widget-label";
+            } else if (type === "Button") {
+              el = document.createElement("button");
+              el.type = "button";
+              el.className = "tk-widget-button";
+
+              var activate = function () {
+                if (el.dataset.activeBg) el.style.backgroundColor = el.dataset.activeBg;
+                if (el.dataset.activeFg) el.style.color = el.dataset.activeFg;
+              };
+              var deactivate = function () {
+                el.style.backgroundColor = el.dataset.normalBg || "";
+                el.style.color = el.dataset.normalFg || "";
+              };
+              el.addEventListener("pointerdown", activate);
+              el.addEventListener("pointerup", deactivate);
+              el.addEventListener("pointerleave", deactivate);
+            } else if (type === "Entry") {
+              el = document.createElement("input");
+              el.type = "text";
+              el.className = "tk-widget-entry";
+            } else {
+              el = document.createElement("div");
+            }
+
+            el.style.display = "none";
+            if (parent && parent.el) parent.el.appendChild(el);
+            state.widgets[id] = { el: el, isWindow: false, command: null };
+            return new Sk.builtin.int_(id);
+          });
+
+          mod.set_prop = new Sk.builtin.func(function (idPy, keyPy, valPy) {
+            var w = state.widgets[Sk.ffi.remapToJs(idPy)];
+            if (!w) return;
+            var key = Sk.ffi.remapToJs(keyPy);
+
+            if (key === "command") {
+              w.el.onclick = function () {
+                if (valPy && valPy !== Sk.builtin.none.none$) {
+                  Sk.misceval.asyncToPromise(function () {
+                    return Sk.misceval.callsimAsync(null, valPy);
+                  }).catch(function (err) {
+                    if (state.output) {
+                      state.output.appendChild(
+                        document.createTextNode("\\nПомилка: " + err.toString())
+                      );
+                    }
+                  });
+                }
+              };
+            } else {
+              applyStyle(w.el, key, Sk.ffi.remapToJs(valPy), w.isWindow);
+            }
+          });
+
+          mod.pack_widget = new Sk.builtin.func(function (idPy, padyPy, padxPy) {
+            var w = state.widgets[Sk.ffi.remapToJs(idPy)];
+            if (!w) return;
+            var pady = Sk.ffi.remapToJs(padyPy);
+            var padx = Sk.ffi.remapToJs(padxPy);
+            w.el.style.display = "";
+            w.el.style.marginTop = pady + "px";
+            w.el.style.marginBottom = pady + "px";
+            w.el.style.marginLeft = padx + "px";
+            w.el.style.marginRight = padx + "px";
+          });
+
+          mod.entry_get = new Sk.builtin.func(function (idPy) {
+            var w = state.widgets[Sk.ffi.remapToJs(idPy)];
+            return new Sk.builtin.str(w && w.el ? w.el.value : "");
+          });
+
+          mod.entry_delete = new Sk.builtin.func(function (idPy, firstPy, lastPy) {
+            var w = state.widgets[Sk.ffi.remapToJs(idPy)];
+            if (!w || !w.el) return;
+            var first = Sk.ffi.remapToJs(firstPy);
+            var last = Sk.ffi.remapToJs(lastPy);
+            var val = w.el.value;
+            var endIdx = (last === "end" || last === null) ? val.length : Number(last);
+            w.el.value = val.slice(0, Number(first)) + val.slice(endIdx);
+          });
+
+          mod.entry_insert = new Sk.builtin.func(function (idPy, idxPy, textPy) {
+            var w = state.widgets[Sk.ffi.remapToJs(idPy)];
+            if (!w || !w.el) return;
+            var idx = Sk.ffi.remapToJs(idxPy);
+            var text = String(Sk.ffi.remapToJs(textPy));
+            var val = w.el.value;
+            var pos = (idx === "end") ? val.length : Number(idx);
+            w.el.value = val.slice(0, pos) + text + val.slice(pos);
+          });
+
+          return mod;
+        };
+      `;
+
+      // 2. Python-обгортка модуля tkinter
+      Sk.builtinFiles["files"]["src/lib/tkinter.py"] = `
+import _tk_dom
+
+END = "end"
+
+class _BaseWidget:
+    def __init__(self, master, wtype, **kwargs):
+        parent_id = master._id if master is not None else 1
+        self._id = _tk_dom.create_widget(parent_id, wtype)
+        self.config(**kwargs)
+
+    def config(self, **kwargs):
+        for k, v in kwargs.items():
+            _tk_dom.set_prop(self._id, k, v)
+
+    configure = config
+
+    def pack(self, pady=0, padx=0, **kwargs):
+        _tk_dom.pack_widget(self._id, pady, padx)
+
+class Tk:
+    def __init__(self):
+        self._id = _tk_dom.create_window()
+
+    def title(self, text):
+        _tk_dom.set_title(self._id, text)
+
+    def geometry(self, size):
+        _tk_dom.set_geometry(self._id, size)
+
+    def config(self, **kwargs):
+        for k, v in kwargs.items():
+            _tk_dom.set_prop(self._id, k, v)
+
+    configure = config
+
+    def eval(self, cmd):
+        pass
+
+    def mainloop(self):
+        pass
+
+class Label(_BaseWidget):
+    def __init__(self, master=None, **kwargs):
+        _BaseWidget.__init__(self, master, "Label", **kwargs)
+
+class Button(_BaseWidget):
+    def __init__(self, master=None, **kwargs):
+        _BaseWidget.__init__(self, master, "Button", **kwargs)
+
+class Entry(_BaseWidget):
+    def __init__(self, master=None, **kwargs):
+        _BaseWidget.__init__(self, master, "Entry", **kwargs)
+
+    def get(self):
+        return _tk_dom.entry_get(self._id)
+
+    def delete(self, first, last=None):
+        _tk_dom.entry_delete(self._id, first, last)
+
+    def insert(self, index, string):
+        _tk_dom.entry_insert(self._id, index, string)
+
+class Frame(_BaseWidget):
+    def __init__(self, master=None, **kwargs):
+        _BaseWidget.__init__(self, master, "Frame", **kwargs)
+`;
+    }
+
+    // Runs Python Console with input() and Tkinter GUI support
+    runPythonCode(codeToRun, outputDisplay, tkPreview = null) {
       outputDisplay.textContent = ""; // Clear console
+      if (tkPreview) {
+        tkPreview.innerHTML = "";
+        tkPreview.classList.remove("active");
+      }
+
+      this.injectTkinterModule(tkPreview, outputDisplay);
 
       Sk.configure({
-        // 1. Handles print() statements
         output: function (text) {
           outputDisplay.appendChild(document.createTextNode(text));
         },
-        // 2. Handles internal Python files
         read: function (x) {
           if (
             Sk.builtinFiles === undefined ||
@@ -543,17 +904,11 @@
           }
           return Sk.builtinFiles["files"][x];
         },
-        // 3. Handles input() statements dynamically!
         inputfun: function (prompt) {
           return new Promise((resolve) => {
-            // Print the prompt text (e.g., "What is your name?")
             outputDisplay.appendChild(document.createTextNode(prompt));
-
-            // Create an interactive text field directly in the console
             const inputField = document.createElement("input");
             inputField.type = "text";
-
-            // Style it to look like a glowing terminal cursor
             inputField.style.background = "transparent";
             inputField.style.border = "none";
             inputField.style.borderBottom = "2px solid var(--accent-pop)";
@@ -567,20 +922,18 @@
             outputDisplay.appendChild(inputField);
             inputField.focus();
 
-            // Wait for the student to press "Enter"
             inputField.addEventListener("keydown", (e) => {
               if (e.key === "Enter") {
                 const val = inputField.value;
-                inputField.remove(); // Remove the input box
-                outputDisplay.appendChild(document.createTextNode(val + "\n")); // Convert their typing to plain text
-                resolve(val); // Send the value back into Python
+                inputField.remove();
+                outputDisplay.appendChild(document.createTextNode(val + "\n"));
+                resolve(val);
               }
             });
           });
         },
       });
 
-      // Run the code asynchronously
       const myPromise = Sk.misceval.asyncToPromise(() => {
         return Sk.importMainWithBody("<stdin>", false, codeToRun, true);
       });
@@ -589,7 +942,9 @@
         () => {
           if (outputDisplay.textContent === "") {
             outputDisplay.textContent =
-              "Код виконано успішно (немає виводу в консоль).";
+              window.__tkState && window.__tkState.hasWindow
+                ? "Вікно Tkinter запущено ☝️ (тут з'являтимуться повідомлення print або помилки)."
+                : "Код виконано успішно (немає виводу в консоль).";
           }
         },
         (error) => {
