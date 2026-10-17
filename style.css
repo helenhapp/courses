@@ -578,7 +578,8 @@ p.topic {
 }
 
 .accent {
-  color: var(--accent-pop);
+  /* color: var(--accent-pop); */
+  color: var(--brand3);
   font-weight: 500;
 }
 
