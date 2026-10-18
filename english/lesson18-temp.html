@@ -1,0 +1,2639 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Навчальні матеріали" />
+
+    <link rel="icon" type="image/svg+xml" href="../media/icons/carambola.svg" />
+
+    <title>English Lesson 18</title>
+
+    <script>
+      const savedTheme = localStorage.getItem("lms_theme") || "light";
+      document.documentElement.setAttribute("data-theme", savedTheme);
+
+      const hljsThemeLink =
+        savedTheme === "dark"
+          ? "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css"
+          : "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css";
+
+      document.head.insertAdjacentHTML(
+        "beforeend",
+        `<link id="hljs-theme" rel="stylesheet" href="${hljsThemeLink}" />`,
+      );
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Fira+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Tektur:wght@400..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="../style.css?v=4.0" />
+    <script src="../script.js?v=4.0" defer></script>
+
+    <!-- 🎨 LESSON 18 CUSTOM STYLES: GRAMMAR VISUALS & "GRAPH" APP WIDGET -->
+    <style>
+      /* --- 1. Compact Grammar Visual Aids --- */
+      .prep-visual-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 14px;
+        margin: 18px 0;
+      }
+
+      .prep-card {
+        background-color: var(--panel-alt);
+        border: 1px solid var(--accordion-border);
+        border-radius: 8px;
+        padding: 12px 14px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .prep-card__scene {
+        font-size: 26px;
+        line-height: 1.2;
+        background-color: var(--panel);
+        border: 1px dashed var(--accent);
+        border-radius: 8px;
+        padding: 8px 16px;
+        min-width: 110px;
+      }
+
+      .prep-card__title {
+        font-family: "Tektur", sans-serif;
+        font-weight: 700;
+        color: var(--brand2);
+        font-size: 0.95rem;
+      }
+
+      .prep-card__caption {
+        font-size: 0.88rem;
+        color: var(--text-soft);
+        line-height: 1.35;
+      }
+
+      /* Mini Wall & Floor Scene for Above / Below / Under / Next to */
+      .room-diagram {
+        background-color: var(--panel-alt);
+        border: 2px solid var(--accordion-border);
+        border-radius: 10px;
+        padding: 18px;
+        margin: 18px auto;
+        max-width: 560px;
+      }
+
+      .room-diagram__wall {
+        background-color: var(--panel);
+        border: 1px dashed var(--accent);
+        border-radius: 8px 8px 0 0;
+        padding: 14px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .room-diagram__floor {
+        background-color: var(--soft-callout);
+        border: 1px solid var(--accordion-border);
+        border-top: 3px solid var(--brand2);
+        border-radius: 0 0 8px 8px;
+        padding: 12px 14px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 24px;
+        flex-wrap: wrap;
+      }
+
+      .diagram-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background-color: var(--panel);
+        border: 1px solid var(--accordion-border);
+        border-radius: 999px;
+        padding: 3px 11px;
+        font-size: 0.86rem;
+      }
+
+      /* --- 2. Interactive "GRAPH.exe" App Widget --- */
+      .app-window {
+        background-color: var(--panel);
+        border: 2px solid var(--accordion-border);
+        border-radius: 10px;
+        overflow: hidden;
+        margin: 25px 0;
+        box-shadow: var(--code-shadow);
+      }
+
+      .app-titlebar {
+        background-color: var(--panel-alt);
+        border-bottom: 2px solid var(--accordion-border);
+        padding: 10px 16px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .app-titlebar-left {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-family: "Tektur", sans-serif;
+        font-weight: 600;
+        font-size: 0.95rem;
+        color: var(--brand2);
+      }
+
+      .app-dots {
+        display: inline-flex;
+        gap: 6px;
+      }
+
+      .app-dot {
+        width: 11px;
+        height: 11px;
+        border-radius: 50%;
+        display: inline-block;
+      }
+
+      .app-dot.red {
+        background-color: #ff5f56;
+      }
+      .app-dot.yellow {
+        background-color: #ffbd2e;
+      }
+      .app-dot.green {
+        background-color: #27c93f;
+      }
+
+      .app-body {
+        padding: 20px;
+      }
+
+      .coord-controls {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .coord-btn {
+        padding: 6px 13px;
+        font-size: 12px;
+        border-radius: 6px;
+        font-family: "Tektur", sans-serif;
+        font-weight: 600;
+      }
+
+      .coord-btn.check-btn {
+        background-color: var(--brand2);
+        color: #ffffff;
+        border-color: var(--brand1);
+      }
+
+      [data-theme="dark"] .coord-btn.check-btn {
+        background-color: var(--brand7);
+        color: var(--text-main);
+        border-color: var(--brand2);
+      }
+
+      /* Symbol Bank (Toolbar) */
+      .symbol-bank-wrapper {
+        background-color: var(--soft-callout);
+        border: 2px dashed var(--accent);
+        border-radius: 8px;
+        padding: 12px 15px;
+        margin-bottom: 18px;
+      }
+
+      .symbol-bank-title {
+        font-size: 0.9rem;
+        color: var(--text-soft);
+        margin-bottom: 8px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .symbol-bank {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        min-height: 52px;
+        align-items: center;
+      }
+
+      .map-token {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 46px;
+        height: 46px;
+        font-size: 26px;
+        background-color: var(--panel);
+        border: 2px solid var(--brand2);
+        border-radius: 10px;
+        cursor: grab;
+        user-select: none;
+        transition:
+          transform 0.15s ease,
+          border-color 0.2s ease,
+          box-shadow 0.2s ease,
+          background-color 0.2s ease;
+        box-shadow: 0 2px 5px var(--shadow-accent);
+      }
+
+      .map-token:hover {
+        transform: translateY(-2px) scale(1.05);
+        border-color: var(--accent-pop);
+      }
+
+      .map-token:active {
+        cursor: grabbing;
+      }
+
+      .map-token.selected-token {
+        border-color: var(--accent-pop);
+        background-color: var(--hover-bg);
+        box-shadow: 0 0 0 3px rgba(230, 74, 88, 0.3);
+        transform: scale(1.08);
+      }
+
+      /* Workspace: Clues on Left, Grid on Right */
+      .coord-workspace {
+        display: grid;
+        grid-template-columns: 1fr 1.15fr;
+        gap: 22px;
+        align-items: start;
+      }
+
+      @media (max-width: 920px) {
+        .coord-workspace {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* Scrollable Clues Panel */
+      .clues-panel {
+        background-color: var(--panel-alt);
+        border: 1px solid var(--accordion-border);
+        border-radius: 8px;
+        padding: 15px 18px;
+        max-height: 540px;
+        overflow-y: auto;
+      }
+
+      .clues-panel h5 {
+        font-family: "Tektur", sans-serif;
+        color: var(--brand2);
+        margin-bottom: 10px;
+        font-size: 1rem;
+      }
+
+      .clues-list {
+        margin: 0;
+        padding-left: 18px;
+        font-size: 0.95rem;
+        line-height: 1.65;
+      }
+
+      .clues-list li {
+        margin-bottom: 10px;
+        padding-bottom: 8px;
+        border-bottom: 1px dashed rgba(128, 128, 128, 0.25);
+      }
+
+      .clues-list li:last-child {
+        border-bottom: none;
+        margin-bottom: 0;
+      }
+
+      /* Coordinate Grid Board */
+      .grid-board-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+      }
+
+      .coord-status-bar {
+        width: 100%;
+        max-width: 500px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-family: "Fira Code", monospace;
+        font-size: 13px;
+        color: var(--text-soft);
+        margin-bottom: 8px;
+        padding: 5px 12px;
+        background-color: var(--soft-callout);
+        border-radius: 6px;
+      }
+
+      .coord-board-wrapper {
+        position: relative;
+        width: 100%;
+        max-width: 500px;
+        aspect-ratio: 1 / 1;
+        background-color: var(--code-bg);
+        border: 2px solid var(--accent);
+        border-radius: 8px;
+        padding: 28px;
+        box-shadow: inset 0 0 12px var(--shadow-accent);
+        user-select: none;
+      }
+
+      /* Compass Badges */
+      .compass-badge {
+        position: absolute;
+        font-family: "Tektur", sans-serif;
+        font-size: 11px;
+        font-weight: 700;
+        color: var(--brand2);
+        background-color: var(--panel-alt);
+        border: 1px solid var(--accordion-border);
+        padding: 1px 8px;
+        border-radius: 999px;
+        pointer-events: none;
+        z-index: 4;
+      }
+
+      .compass-n {
+        top: 4px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      .compass-s {
+        bottom: 4px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      .compass-e {
+        right: 4px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      .compass-w {
+        left: 4px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      /* Quadrant Watermarks */
+      .quadrant-watermark {
+        position: absolute;
+        font-family: "Tektur", sans-serif;
+        font-size: clamp(0.7rem, 1.6vw, 0.9rem);
+        font-weight: 700;
+        color: var(--text-soft);
+        opacity: 0.22;
+        pointer-events: none;
+        z-index: 1;
+        letter-spacing: 1px;
+      }
+
+      .q-1 {
+        top: 16%;
+        right: 13%;
+      }
+      .q-2 {
+        top: 16%;
+        left: 13%;
+      }
+      .q-3 {
+        bottom: 16%;
+        left: 13%;
+      }
+      .q-4 {
+        bottom: 16%;
+        right: 13%;
+      }
+
+      /* 11x11 Intersection Grid (-5 to +5) — locked track sizes */
+      .coord-plane-grid {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: grid;
+        grid-template-columns: repeat(11, minmax(0, 1fr));
+        grid-template-rows: repeat(11, minmax(0, 1fr));
+        z-index: 2;
+      }
+
+      .coord-cell {
+        position: relative;
+        cursor: pointer;
+      }
+
+      /* Grid Lines passing through the exact center of each cell */
+      .coord-cell::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        height: 1px;
+        background-color: var(--accordion-border);
+        opacity: 0.35;
+        pointer-events: none;
+      }
+
+      .coord-cell::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 1px;
+        background-color: var(--accordion-border);
+        opacity: 0.35;
+        pointer-events: none;
+      }
+
+      /* Bold X and Y Axes */
+      .coord-cell.x-axis-cell::before {
+        height: 2.5px;
+        background-color: var(--brand2);
+        opacity: 0.95;
+      }
+
+      .coord-cell.y-axis-cell::after {
+        width: 2.5px;
+        background-color: var(--brand2);
+        opacity: 0.95;
+      }
+
+      /* Axis Number Labels */
+      .axis-num-x,
+      .axis-num-y {
+        position: absolute;
+        font-family: "Fira Code", monospace;
+        font-size: 10px;
+        color: var(--text-soft);
+        pointer-events: none;
+        z-index: 3;
+        font-weight: 600;
+      }
+
+      .axis-num-x {
+        top: 56%;
+        left: 53%;
+      }
+
+      .axis-num-y {
+        right: 56%;
+        top: 6%;
+      }
+
+      /* Intersection Point Dot — absolutely centered so it never shifts grid tracks */
+      .point-dot {
+        position: absolute;
+        inset: 0;
+        margin: auto;
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background-color: var(--accordion-border);
+        opacity: 0.55;
+        transition:
+          transform 0.15s ease,
+          background-color 0.15s ease,
+          opacity 0.15s ease,
+          box-shadow 0.15s ease;
+        z-index: 3;
+        pointer-events: none;
+      }
+
+      /* Hide the dot completely when an item is placed on the cell */
+      .coord-cell:has(.map-token) .point-dot {
+        display: none;
+      }
+
+      /* Only scale the dot when hovering an empty cell or dragging over */
+      .coord-cell:not(:has(.map-token)):hover .point-dot,
+      .coord-cell.drag-over .point-dot {
+        transform: scale(1.85);
+        background-color: var(--accent-pop);
+        opacity: 0.9;
+        box-shadow: 0 0 6px var(--accent-pop);
+      }
+
+      /* Fixed Origin Marker */
+      .fixed-origin-token {
+        position: absolute;
+        inset: 0;
+        margin: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 21px;
+        z-index: 5;
+        cursor: help;
+        filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.25));
+      }
+
+      /* Token when placed on the Grid — absolutely centered */
+      .coord-cell .map-token {
+        position: absolute;
+        inset: 0;
+        margin: auto;
+        width: 35px;
+        height: 35px;
+        font-size: 20px;
+        border-radius: 50%;
+        z-index: 6;
+        padding: 0;
+      }
+
+      .coord-cell .map-token:hover {
+        transform: scale(1.08);
+      }
+
+      .coord-cell .map-token.correct-spot {
+        border-color: #2e8b57;
+        background-color: rgba(46, 139, 87, 0.2);
+        box-shadow: 0 0 0 3px rgba(46, 139, 87, 0.35);
+      }
+
+      .coord-cell .map-token.wrong-spot {
+        border-color: tomato;
+        background-color: rgba(255, 99, 71, 0.22);
+        animation: shake 0.4s ease-in-out;
+      }
+
+      .coord-feedback-banner {
+        margin-top: 12px;
+        font-weight: 600;
+        text-align: center;
+        min-height: 24px;
+        color: var(--brand2);
+      }
+
+      /* 🔔 Secret Computer Pop-Up & 8-Icon Selector */
+      .graph-secret-reveal {
+        margin-top: 22px;
+        animation: popupSlideIn 0.35s ease-out;
+      }
+
+      .graph-secret-reveal[hidden],
+      .painting-story-box[hidden] {
+        display: none !important;
+      }
+
+      .computer-modal-box {
+        background-color: var(--code-bg);
+        border: 2px solid var(--brand2);
+        border-radius: 8px;
+        padding: 18px 20px;
+        margin-bottom: 18px;
+        box-shadow: 0 6px 18px var(--shadow-accent);
+      }
+
+      .computer-modal-header {
+        font-family: "Tektur", sans-serif;
+        font-weight: 700;
+        color: var(--brand2);
+        font-size: 1rem;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .clue-selector-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        align-items: center;
+        margin: 14px 0;
+      }
+
+      .clue-choice-btn {
+        width: 46px;
+        height: 46px;
+        font-size: 24px;
+        padding: 0;
+        border-radius: 10px;
+        background-color: var(--panel);
+        border: 2px solid var(--accordion-border);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      .clue-choice-btn:hover {
+        transform: translateY(-2px);
+        border-color: var(--brand2);
+      }
+
+      .clue-choice-btn.active-choice {
+        border-color: var(--accent-pop);
+        background-color: var(--hover-bg);
+        box-shadow: 0 0 0 3px rgba(230, 74, 88, 0.28);
+        transform: scale(1.08);
+      }
+
+      .confirm-choice-btn {
+        padding: 9px 18px;
+        font-size: 13px;
+        background-color: var(--brand2);
+        color: #ffffff;
+        border-color: var(--brand1);
+        font-weight: 600;
+      }
+
+      [data-theme="dark"] .confirm-choice-btn {
+        background-color: var(--brand7);
+        color: var(--text-main);
+        border-color: var(--brand2);
+      }
+
+      .choice-feedback-msg {
+        font-size: 0.92rem;
+        font-weight: 600;
+        margin-top: 8px;
+        min-height: 22px;
+      }
+
+      .painting-story-box {
+        animation: popupSlideIn 0.35s ease-out;
+      }
+
+      @media (max-width: 520px) {
+        .coord-board-wrapper {
+          padding: 18px;
+        }
+        .coord-cell .map-token {
+          width: 28px;
+          height: 28px;
+          font-size: 16px;
+        }
+        .axis-num-x,
+        .axis-num-y {
+          font-size: 8px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- transition curtain -->
+    <div class="transition-curtain"></div>
+
+    <!-- top-bar -->
+    <div id="nav-container">
+      <nav class="top-bar">
+        <div class="logo-container">
+          <img
+            src="../media/icons/carambola.svg"
+            alt="Logo"
+            class="site-logo"
+          />
+        </div>
+
+        <div class="top-bar__controls">
+          <button
+            id="translator-toggle-btn"
+            class="top-bar-btn"
+            type="button"
+            title="Translator"
+            aria-expanded="false"
+          >
+            🌍 <span class="btn-label">Translator</span>
+          </button>
+
+          <button
+            id="notes-toggle-btn"
+            class="top-bar-btn"
+            type="button"
+            title="Lesson Notes"
+            aria-expanded="false"
+          >
+            📝 <span class="btn-label">Notes</span>
+          </button>
+
+          <label class="toggle-switch" aria-label="Перемикач теми">
+            <input type="checkbox" id="theme-checkbox" />
+            <span class="slider">
+              <span class="icon sun"
+                ><img src="../media/icons/stars.svg"
+              /></span>
+              <span class="icon moon"
+                ><img src="../media/icons/moon.svg"
+              /></span>
+            </span>
+          </label>
+          <button
+            id="dyslexia-mode-btn"
+            class="wide-toggle"
+            title="Шрифт для дислектиків"
+          >
+            Aa
+          </button>
+        </div>
+      </nav>
+    </div>
+
+    <!-- 🌍 TRANSLATOR POP-UP -->
+    <div id="translator-popup" class="top-popup" hidden>
+      <div class="top-popup__header">
+        <h4>🌍 Translator</h4>
+        <button type="button" class="top-popup__close" aria-label="Close">
+          ✕
+        </button>
+      </div>
+
+      <div
+        class="translator-module"
+        data-source-lang="en"
+        data-target-lang="uk"
+      >
+        <div class="translator-lang-labels">
+          <span class="lang-source">Англійська</span>
+          <button type="button" class="swap-lang-btn" title="Swap languages">
+            ⇄
+          </button>
+          <span class="lang-target">Українська</span>
+        </div>
+
+        <div class="translator-inputs">
+          <input
+            type="text"
+            class="translator-input"
+            placeholder="Type a word..."
+          />
+          <button type="button" class="translate-btn">Translate</button>
+        </div>
+
+        <div class="translator-output" style="display: none"></div>
+      </div>
+    </div>
+
+    <!-- 📝 NOTES POP-UP -->
+    <div id="notes-popup" class="top-popup" hidden>
+      <div class="top-popup__header">
+        <h4>📝 Lesson Notes</h4>
+        <div class="top-popup__actions">
+          <span id="notes-status" class="notes-status">Saved</span>
+          <button type="button" class="top-popup__close" aria-label="Close">
+            ✕
+          </button>
+        </div>
+      </div>
+
+      <textarea
+        id="lesson-notes-textarea"
+        class="notes-textarea"
+        placeholder="Write your notes here... They are saved automatically."
+      ></textarea>
+    </div>
+
+    <!-- lesson header -->
+    <header>
+      <div class="title-container">
+        <h1 id="lesson-title">English: 18</h1>
+      </div>
+
+      <p class="topic">
+        Prepositions of Place, Directions &amp; The Library Map
+      </p>
+
+      <hr class="pretty-divider" />
+    </header>
+
+    <!-- lesson content -->
+    <main>
+      <!-- tab buttons -->
+      <div class="tabs-nav">
+        <button class="tab-btn active" data-target="part-1">Vocabulary</button>
+        <button class="tab-btn" data-target="part-2">Grammar</button>
+        <button class="tab-btn" data-target="part-3">Puzzle</button>
+        <button class="tab-btn" data-target="part-4">Homework</button>
+      </div>
+
+      <!-- 🍓 PART 1: VOCABULARY -->
+      <section id="part-1" class="lesson-wrapper tab-content active show">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img
+                src="../media/icons/strawberry.svg"
+                class="star"
+                alt="strawberry"
+              />
+              <span>Vocabulary</span>
+            </h2>
+          </div>
+
+          <div class="lesson-content">
+            <h3>Vocabulary Warm-Up</h3>
+
+            <p class="task-description">
+              Translate the words from English to Ukrainian (remember or guess).
+            </p>
+
+            <h4>Group 1: Directions, Position &amp; Rooms</h4>
+            <div class="tablecontainer">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Word</th>
+                    <th>Transcription</th>
+                    <th>Translation</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="bold">⬆️ north</span></td>
+                    <td><span class="accent-string">/nɔːθ/</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l18-v-1"
+                        class="test-input"
+                        style="width: 100%; min-width: 220px; margin: 0"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">⬇️ south</span></td>
+                    <td><span class="accent-string">/saʊθ/</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l18-v-2"
+                        class="test-input"
+                        style="width: 100%; min-width: 220px; margin: 0"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">➡️ east</span></td>
+                    <td><span class="accent-string">/iːst/</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l18-v-3"
+                        class="test-input"
+                        style="width: 100%; min-width: 220px; margin: 0"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">⬅️ west</span></td>
+                    <td><span class="accent-string">/west/</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l18-v-4"
+                        class="test-input"
+                        style="width: 100%; min-width: 220px; margin: 0"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">⬆️ straight ahead</span></td>
+                    <td><span class="accent-string">/streɪt əˈhed/</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l18-v-5"
+                        class="test-input"
+                        style="width: 100%; min-width: 220px; margin: 0"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">🔄 opposite</span> (across from)</td>
+                    <td><span class="accent-string">/ˈɒpəzɪt/</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l18-v-6"
+                        class="test-input"
+                        style="width: 100%; min-width: 220px; margin: 0"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">↔️ halfway between</span></td>
+                    <td>
+                      <span class="accent-string">/ˌhɑːfˈweɪ bɪˈtwiːn/</span>
+                    </td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l18-v-7"
+                        class="test-input"
+                        style="width: 100%; min-width: 220px; margin: 0"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">🛋️ armchair</span></td>
+                    <td><span class="accent-string">/ˈɑːmtʃeə/</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l18-v-8"
+                        class="test-input"
+                        style="width: 100%; min-width: 220px; margin: 0"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">📦 storage room</span></td>
+                    <td><span class="accent-string">/ˈstɔːrɪdʒ ruːm/</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l18-v-9"
+                        class="test-input"
+                        style="width: 100%; min-width: 220px; margin: 0"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">🚪 entrance</span></td>
+                    <td><span class="accent-string">/ˈentrəns/</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l18-v-10"
+                        class="test-input"
+                        style="width: 100%; min-width: 220px; margin: 0"
+                      />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h4>Group 2: Coordinate Grid Mini-Vocab (for the Puzzle)</h4>
+            <div class="tablecontainer">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Word</th>
+                    <th>Transcription</th>
+                    <th>Translation</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <span class="bold">📈 coordinate plane</span> /
+                      <span class="bold">grid</span>
+                    </td>
+                    <td>
+                      <span class="accent-string">/kəʊˈɔːdɪnət pleɪn/</span>
+                    </td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l18-v-11"
+                        class="test-input"
+                        style="width: 100%; min-width: 220px; margin: 0"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span class="bold">➕ axis</span> (plural:
+                      <span class="bold">axes</span>)
+                    </td>
+                    <td>
+                      <span class="accent-string">/ˈæksɪs/</span> (pl.
+                      <span class="accent-string">/ˈæksiːz/</span>)
+                    </td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l18-v-12"
+                        class="test-input"
+                        style="width: 100%; min-width: 220px; margin: 0"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">🎯 the origin</span> (0, 0)</td>
+                    <td><span class="accent-string">/ˈɒrɪdʒɪn/</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l18-v-13"
+                        class="test-input"
+                        style="width: 100%; min-width: 220px; margin: 0"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span class="bold">🔲 quadrant</span> (I, II, III, IV)
+                    </td>
+                    <td><span class="accent-string">/ˈkwɒdrənt/</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l18-v-14"
+                        class="test-input"
+                        style="width: 100%; min-width: 220px; margin: 0"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">📍 coordinates</span> (x, y)</td>
+                    <td><span class="accent-string">/kəʊˈɔːdɪnəts/</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l18-v-15"
+                        class="test-input"
+                        style="width: 100%; min-width: 220px; margin: 0"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">📏 unit</span> (e.g. 4 units)</td>
+                    <td><span class="accent-string">/ˈjuːnɪt/</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l18-v-16"
+                        class="test-input"
+                        style="width: 100%; min-width: 220px; margin: 0"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">⏸️ parallel (to)</span></td>
+                    <td><span class="accent-string">/ˈpærəlel/</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l18-v-17"
+                        class="test-input"
+                        style="width: 100%; min-width: 220px; margin: 0"
+                      />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 🍉 PART 2: GRAMMAR -->
+      <section id="part-2" class="lesson-wrapper tab-content">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img
+                src="../media/icons/watermelon.svg"
+                class="star"
+                alt="watermelon"
+              />
+              <span>Grammar</span>
+            </h2>
+          </div>
+
+          <div class="lesson-content">
+            <!-- ===================== BLOCK A ===================== -->
+            <h3 id="g-block-a">1. Prepositions of Place: IN, ON, AT</h3>
+
+            <p>
+              Три головні прийменники місця — <span class="bold">in</span>,
+              <span class="bold">on</span> та <span class="bold">at</span> —
+              показують, як ми сприймаємо простір: як
+              <span class="bold">замкнений об'єм</span>, як
+              <span class="bold">поверхню</span> чи як
+              <span class="bold">конкретну точку</span>.
+            </p>
+
+            <!-- Mini Visual Cards for IN / ON / AT -->
+            <div class="prep-visual-grid">
+              <div class="prep-card">
+                <div class="prep-card__scene">📦🐱</div>
+                <div class="prep-card__title">IN (усередині)</div>
+                <div class="prep-card__caption">
+                  кімнати, будівлі, коробки, міста, країни, куток кімнати
+                </div>
+              </div>
+              <div class="prep-card">
+                <div class="prep-card__scene">🐱<br />🪑</div>
+                <div class="prep-card__title">ON (на поверхні)</div>
+                <div class="prep-card__caption">
+                  стіл, підлога, стіна, полиця, сторінка, поверх, лінія
+                </div>
+              </div>
+              <div class="prep-card">
+                <div class="prep-card__scene">🚪🚶‍♀️</div>
+                <div class="prep-card__title">AT (у точці / біля)</div>
+                <div class="prep-card__caption">
+                  двері, робочий стіл, вхід, зупинка, конкретна точка
+                </div>
+              </div>
+            </div>
+
+            <div class="tablecontainer">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Preposition</th>
+                    <th>When we use it</th>
+                    <th>Examples</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="bold">IN</span></td>
+                    <td>
+                      усередині замкненого простору, кімнати, будівлі, міста чи
+                      в кутку кімнати
+                    </td>
+                    <td>
+                      <span class="bold">in</span> a box,
+                      <span class="bold">in</span> the storage room,
+                      <span class="bold">in</span> the library,
+                      <span class="bold">in</span> Mapleton,
+                      <span class="bold">in</span> the corner
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">ON</span></td>
+                    <td>
+                      на горизонтальній чи вертикальній поверхні, на поверсі
+                      будівлі, на сторінці
+                    </td>
+                    <td>
+                      <span class="bold">on</span> the table,
+                      <span class="bold">on</span> the wall,
+                      <span class="bold">on</span> the top shelf,
+                      <span class="bold">on</span> the second floor,
+                      <span class="bold">on</span> the map
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">AT</span></td>
+                    <td>
+                      біля конкретного об'єкта/точки або коли важлива функція
+                      місця
+                    </td>
+                    <td>
+                      <span class="bold">at</span> the door,
+                      <span class="bold">at</span> the computer desk,
+                      <span class="bold">at</span> the entrance,
+                      <span class="bold">at</span> the bus stop,
+                      <span class="bold">at</span> university
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="soft-callout">
+              <p style="margin: 0">
+                <span class="bold">💡 Порівняй:</span><br />
+                • Robin is sitting <span class="bold">at</span> the desk.
+                <span class="italic"
+                  >(Вона сидить за столом — це її робоча точка).</span
+                ><br />
+                • There is a dictionary <span class="bold">on</span> the desk,
+                and some pens <span class="bold">in</span> the desk drawer.
+                <span class="italic"
+                  >(Словник лежить на поверхні столу, а ручки — всередині
+                  шухляди).</span
+                >
+              </p>
+            </div>
+
+            <!-- Exercise 1 -->
+            <details class="task" name="lesson18" open>
+              <summary><h4>Exercise 1</h4></summary>
+              <div>
+                <p class="task-description" style="margin-bottom: 15px">
+                  Sort the places and phrases into the correct column:
+                  <strong>IN</strong>, <strong>ON</strong>, or
+                  <strong>AT</strong>.
+                </p>
+
+                <div
+                  class="sorting-game-module"
+                  data-game-id="l18_in_on_at_places"
+                >
+                  <script type="application/json" class="sorting-data">
+                    {
+                      "categories": [
+                        {
+                          "id": "cat_in",
+                          "title": "IN",
+                          "hint": "(inside a space / room / town)"
+                        },
+                        {
+                          "id": "cat_on",
+                          "title": "ON",
+                          "hint": "(on a surface / wall / floor)"
+                        },
+                        {
+                          "id": "cat_at",
+                          "title": "AT",
+                          "hint": "(specific point / desk / door)"
+                        }
+                      ],
+                      "items": [
+                        {
+                          "id": "p1",
+                          "text": "the storage room",
+                          "correctCategory": "cat_in"
+                        },
+                        {
+                          "id": "p2",
+                          "text": "the wall",
+                          "correctCategory": "cat_on"
+                        },
+                        {
+                          "id": "p3",
+                          "text": "the front door",
+                          "correctCategory": "cat_at"
+                        },
+                        {
+                          "id": "p4",
+                          "text": "the top shelf",
+                          "correctCategory": "cat_on"
+                        },
+                        {
+                          "id": "p5",
+                          "text": "a heavy box",
+                          "correctCategory": "cat_in"
+                        },
+                        {
+                          "id": "p6",
+                          "text": "the information desk",
+                          "correctCategory": "cat_at"
+                        },
+                        {
+                          "id": "p7",
+                          "text": "the second floor",
+                          "correctCategory": "cat_on"
+                        },
+                        {
+                          "id": "p8",
+                          "text": "the corner of the room",
+                          "correctCategory": "cat_in"
+                        },
+                        {
+                          "id": "p9",
+                          "text": "the bus stop",
+                          "correctCategory": "cat_at"
+                        }
+                      ]
+                    }
+                  </script>
+
+                  <div class="sorting-header">
+                    <h4>Drag and Drop</h4>
+                    <button type="button" class="sorting-reset-btn">
+                      Start Over
+                    </button>
+                  </div>
+                  <div class="sorting-bank"></div>
+                  <div class="sorting-zones-container"></div>
+                  <div class="sorting-feedback"></div>
+                </div>
+              </div>
+            </details>
+
+            <hr />
+
+            <!-- ===================== BLOCK B ===================== -->
+            <h3 id="g-block-b">2. Relative Position (Where Things Are)</h3>
+
+            <p>
+              Щоб описати розташування предметів відносно одне одного,
+              подивимось на цю маленьку схему кімнати в бібліотеці:
+            </p>
+
+            <!-- CSS + Emoji Room Diagram -->
+            <div class="room-diagram">
+              <div class="room-diagram__wall">
+                <div style="font-size: 26px">🕰️</div>
+                <span class="diagram-tag"
+                  >🕰️ The clock is <strong>above</strong> the painting</span
+                >
+                <div style="font-size: 30px; margin: 4px 0">🖼️</div>
+                <span class="diagram-tag"
+                  >🖼️ The painting is <strong>below</strong> the clock &amp;
+                  <strong>on</strong> the wall</span
+                >
+              </div>
+              <div class="room-diagram__floor">
+                <div style="text-align: center">
+                  <div style="font-size: 28px">🪴 &nbsp; 🛋️ &nbsp; 🏮</div>
+                  <span class="diagram-tag"
+                    >🛋️ <strong>between</strong> the plant and the lamp</span
+                  >
+                </div>
+                <div style="text-align: center">
+                  <div style="font-size: 24px">🪑 ➡️ 🐾</div>
+                  <span class="diagram-tag"
+                    >🐾 <strong>under</strong> the chair</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <h4>A. Vertical Position: above / over vs. below / under</h4>
+            <ul style="list-style-type: square">
+              <li>
+                <span class="bold">above</span> («вище за рівням») — коли один
+                предмет знаходиться вище за інший (наприклад, на стіні або у
+                списку), і не обов'язково рівно над ним:<br />
+                <span class="italic"
+                  >The wall clock is <span class="bold">above</span> the
+                  painting.</span
+                >
+              </li>
+              <li>
+                <span class="bold">over</span> («прямо над / поверх») — коли
+                щось висить прямо над головою/предметом, накриває його або
+                рухається через нього:<br />
+                <span class="italic"
+                  >There is a bright lamp hanging
+                  <span class="bold">over</span> the table. She put a blanket
+                  <span class="bold">over</span> the cat.</span
+                >
+              </li>
+              <li>
+                <span class="bold">below</span> («нижче за рівнем», антонім до
+                <span class="italic">above</span>):<br />
+                <span class="italic"
+                  >The painting hangs <span class="bold">below</span> the wall
+                  clock.</span
+                >
+              </li>
+              <li>
+                <span class="bold">under</span> («прямо під», часто сховане під
+                чимось, антонім до <span class="italic">over</span>):<br />
+                <span class="italic"
+                  >Cinnamon is sleeping <span class="bold">under</span> the
+                  armchair. The note was hidden
+                  <span class="bold">under</span> a pile of books.</span
+                >
+              </li>
+            </ul>
+
+            <h4>
+              B. Horizontal Position: next to, between, in front of, behind,
+              opposite
+            </h4>
+            <div class="prep-visual-grid">
+              <div class="prep-card">
+                <div class="prep-card__scene">🛋️🪴</div>
+                <div class="prep-card__title">next to / beside</div>
+                <div class="prep-card__caption">
+                  поруч, збоку від чогось (<span class="italic">near</span> =
+                  просто неподалік)
+                </div>
+              </div>
+              <div class="prep-card">
+                <div class="prep-card__scene">🪴 🛋️ 🏮</div>
+                <div class="prep-card__title">between A and B</div>
+                <div class="prep-card__caption">
+                  між двома предметами (<span class="italic"
+                    >halfway between</span
+                  >
+                  = рівно посередині)
+                </div>
+              </div>
+              <div class="prep-card">
+                <div class="prep-card__scene">🧍‍♀️ ➡️ 🖼️</div>
+                <div class="prep-card__title">in front of / behind</div>
+                <div class="prep-card__caption">
+                  <span class="bold">in front of</span> = попереду;<br />
+                  <span class="bold">behind</span> = позаду / за чимось
+                </div>
+              </div>
+              <div class="prep-card">
+                <div class="prep-card__scene">🛋️ ↔️ 📺</div>
+                <div class="prep-card__title">opposite (across from)</div>
+                <div class="prep-card__caption">
+                  навпроти (через стіл, коридор, кімнату або вулицю)
+                </div>
+              </div>
+            </div>
+
+            <div class="soft-callout">
+              <p style="margin: 0">
+                <span class="bold"
+                  >⚠️ Не плутай <em>in front of</em> та <em>opposite</em>:</span
+                ><br />
+                • Якщо ти стоїш у черзі <span class="bold">перед</span> кимось
+                (спиною до нього) — ти
+                <span class="bold">in front of</span> him.<br />
+                • Якщо ви сидите за столом чи в кімнаті
+                <span class="bold">навпроти</span>
+                одне одного (обличчям до обличчя) — ти сидиш
+                <span class="bold">opposite</span> him!
+              </p>
+            </div>
+
+            <!-- Exercise 2 -->
+            <details class="task" name="lesson18" open>
+              <summary><h4>Exercise 2</h4></summary>
+              <div>
+                <p class="task-description">
+                  Fill in the gaps with
+                  <strong
+                    >above / under / next to / between / behind /
+                    opposite</strong
+                  >.
+                </p>
+
+                <div class="callout2" style="line-height: 2.2">
+                  <p style="margin: 0">
+                    1. Cinnamon likes warm places, so he often hides
+                    <input
+                      type="text"
+                      id="l18-ex2-1"
+                      class="test-input"
+                      style="width: 100px"
+                    />
+                    Miss Lemon's desk, right near her feet.<br />
+                    2. There is a small tea table
+                    <input
+                      type="text"
+                      id="l18-ex2-2"
+                      class="test-input"
+                      style="width: 100px"
+                    />
+                    the two armchairs — one armchair is on the left, and the
+                    other is on the right.<br />
+                    3. Look at the wall: the wooden clock hangs high up, right
+                    <input
+                      type="text"
+                      id="l18-ex2-3"
+                      class="test-input"
+                      style="width: 100px"
+                    />
+                    the bookshelf.<br />
+                    4. Miss Lemon and Robin are having tea. Miss Lemon is
+                    sitting on one side of the table, and Robin is sitting
+                    <input
+                      type="text"
+                      id="l18-ex2-4"
+                      class="test-input"
+                      style="width: 100px"
+                    />
+                    her on the other side.<br />
+                    5. Someone taped a secret note to the back of the painting,
+                    so it was hidden
+                    <input
+                      type="text"
+                      id="l18-ex2-5"
+                      class="test-input"
+                      style="width: 100px"
+                    />
+                    the painting.<br />
+                    6. Put the floor lamp right
+                    <input
+                      type="text"
+                      id="l18-ex2-6"
+                      class="test-input"
+                      style="width: 100px"
+                    />
+                    the armchair so it is easy to read in the evening.
+                  </p>
+                </div>
+              </div>
+            </details>
+
+            <hr />
+
+            <!-- ===================== BLOCK C ===================== -->
+            <h3 id="g-block-c">
+              3. Prepositions of Movement &amp; Giving Directions
+            </h3>
+
+            <p>
+              Коли ми описуємо <span class="bold">рух</span> (куди або як хтось
+              іде), ми використовуємо прийменники напрямку:
+            </p>
+
+            <!-- Movement Visual Cards -->
+            <div class="prep-visual-grid">
+              <div class="prep-card">
+                <div class="prep-card__scene">🚶‍♀️➡️🚪</div>
+                <div class="prep-card__title">into ↔ out of</div>
+                <div class="prep-card__caption">
+                  <span class="bold">into</span> = всередину;<br />
+                  <span class="bold">out of</span> = назовні з
+                </div>
+              </div>
+              <div class="prep-card">
+                <div class="prep-card__scene">🚶‍♀️〰️➡️🛣️</div>
+                <div class="prep-card__title">along</div>
+                <div class="prep-card__caption">
+                  вздовж лінії, вулиці, коридору або полиць
+                </div>
+              </div>
+              <div class="prep-card">
+                <div class="prep-card__scene">🚶‍♀️⏭️🕰️</div>
+                <div class="prep-card__title">past</div>
+                <div class="prep-card__caption">
+                  повз щось (<span class="italic">walk past the clock</span>)
+                </div>
+              </div>
+              <div class="prep-card">
+                <div class="prep-card__scene">🌉🚶‍♀️ / 🌳🚶‍♀️🌳</div>
+                <div class="prep-card__title">across vs. through</div>
+                <div class="prep-card__caption">
+                  <span class="bold">across</span> = через поверхню/вулицю;<br />
+                  <span class="bold">through</span> = крізь двері/парк/тунель
+                </div>
+              </div>
+            </div>
+
+            <h4>Useful Phrases for Giving Directions</h4>
+            <ul style="list-style-type: square">
+              <li>
+                <span class="bold">Go straight ahead</span> — іди прямо вперед.
+              </li>
+              <li>
+                <span class="bold">Turn left / Turn right</span> — поверни
+                ліворуч / праворуч.
+              </li>
+              <li>
+                <span class="bold">Go past</span> the information desk — пройди
+                повз стіл інформації.
+              </li>
+              <li>
+                <span class="bold">Walk along</span> the corridor /
+                <span class="bold">Walk across</span> the hall — пройди вздовж
+                коридору / перейди через зал.
+              </li>
+              <li>
+                It is <span class="bold">on your left / on your right</span> —
+                це буде ліворуч / праворуч від тебе.
+              </li>
+              <li>
+                <span class="bold"
+                  >Compass directions (north, south, east, west):</span
+                ><br />
+                • Коли кажемо, <span class="bold">куди рухатися</span> (дієслово
+                руху):
+                <span class="italic"
+                  >Walk 4 steps <span class="bold">north</span>. Move
+                  <span class="bold">east</span>.</span
+                >
+                (без прийменника!).<br />
+                • Коли кажемо,
+                <span class="bold">де щось розташоване відносно іншого</span>:
+                додаємо <span class="bold">of</span> →
+                <span class="italic"
+                  >The shelf is <span class="bold">east of</span> the
+                  clock.</span
+                >
+              </li>
+            </ul>
+
+            <!-- Exercise 3 -->
+            <details class="task" name="lesson18" open>
+              <summary><h4>Exercise 3</h4></summary>
+              <div>
+                <p class="task-description">
+                  Complete Robin's directions to a new student using:
+                  <strong>into / out of / along / past / across / of</strong>.
+                </p>
+
+                <div class="callout2" style="line-height: 2.2">
+                  <p style="margin: 0">
+                    “Excuse me, where is the Art History room?”<br />
+                    “It's easy to find! First, walk
+                    <input
+                      type="text"
+                      id="l18-ex3-1"
+                      class="test-input"
+                      style="width: 90px"
+                    />
+                    this reading room into the main corridor. Then walk
+                    <input
+                      type="text"
+                      id="l18-ex3-2"
+                      class="test-input"
+                      style="width: 90px"
+                    />
+                    the corridor towards the big windows. Go
+                    <input
+                      type="text"
+                      id="l18-ex3-3"
+                      class="test-input"
+                      style="width: 90px"
+                    />
+                    the water fountain and the old clock — don't stop there!
+                    Next, walk
+                    <input
+                      type="text"
+                      id="l18-ex3-4"
+                      class="test-input"
+                      style="width: 90px"
+                    />
+                    the main hall to the other side, and go
+                    <input
+                      type="text"
+                      id="l18-ex3-5"
+                      class="test-input"
+                      style="width: 90px"
+                    />
+                    the room with the green door. It is in the northern part of
+                    the building, just north
+                    <input
+                      type="text"
+                      id="l18-ex3-6"
+                      class="test-input"
+                      style="width: 75px"
+                    />
+                    the library café!”
+                  </p>
+                </div>
+              </div>
+            </details>
+
+            <hr />
+
+            <!-- ===================== BLOCK D (MINI-TOPIC) ===================== -->
+            <h3 id="g-block-d">
+              4. Mini-Guide: How to Talk About a Coordinate Grid
+            </h3>
+
+            <p>
+              У сьогоднішній загадці на бібліотечному комп'ютері карта
+              намальована на
+              <span class="bold">координатній площині (coordinate plane)</span>.
+              Ось як ми описуємо точки на ній англійською:
+            </p>
+
+            <div class="callout2">
+              <ul style="list-style-type: square; margin-top: 0">
+                <li>
+                  <span class="bold">AT + exact coordinates:</span>
+                  <span class="italic"
+                    ><span class="bold">at</span> the origin
+                    <span class="bold">at</span> (0, 0), plotted
+                    <span class="bold">at</span> (-3, 3)</span
+                  >.<br />
+                  <span class="small" style="color: var(--text-soft)"
+                    >(Читаємо спочатку <strong>x</strong>, потім
+                    <strong>y</strong>:
+                    <span class="accent-string">(-3, 3)</span> = “negative
+                    three, three” або “minus three, three”).</span
+                  >
+                </li>
+                <li>
+                  <span class="bold">ON + an axis or a line:</span>
+                  <span class="italic"
+                    ><span class="bold">on</span> the x-axis,
+                    <span class="bold">on</span> the y-axis,
+                    <span class="bold">on</span> a line
+                    <span class="bold">parallel to</span> the x-axis</span
+                  >.
+                </li>
+                <li>
+                  <span class="bold">IN + a quadrant:</span>
+                  <span class="italic"
+                    ><span class="bold">in</span> Quadrant I (+, +),
+                    <span class="bold">in</span> Quadrant II (-, +),
+                    <span class="bold">in</span> Quadrant III (-, -),
+                    <span class="bold">in</span> Quadrant IV (+, -)</span
+                  >.<br />
+                  <span class="small" style="color: var(--text-soft)"
+                    >(Квадранти рахуються проти годинникової стрілки, починаючи
+                    з правого верхнього кута. Якщо одна з координат дорівнює
+                    <span class="accent-string">0</span>, точка лежить
+                    <strong>on</strong> the x-axis або y-axis!)</span
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 🍋 PART 3: PUZZLE -->
+      <section id="part-3" class="lesson-wrapper tab-content">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img
+                src="../media/icons/lemon.svg"
+                class="star"
+                alt="a lemon slice"
+              />
+              <span>Puzzle</span>
+            </h2>
+          </div>
+
+          <div class="lesson-content">
+            <h3 id="p3-part1">
+              Part 1: The "GRAPH" App on the Library Computer
+            </h3>
+
+            <div class="callout2" style="margin-bottom: 20px">
+              <p style="margin: 0">
+                At the end of the last lesson, Miss Lemon and Robin found the
+                secret word <span class="bold">GRAPH</span> on the old tourist
+                guide. Robin opens the <span class="bold">GRAPH</span> app on
+                the library computer! On the screen, she sees a coordinate plane
+                of the library with the computer (💻) at
+                <span class="bold">the origin (0, 0)</span>, eight symbols at
+                the top, and eight clues on the left.
+              </p>
+            </div>
+
+            <p class="task-description">
+              Read the <strong>8 Clues</strong> carefully. Decide
+              <strong>which symbol</strong> matches each library object and
+              <strong>find its coordinates</strong>. Drag each symbol onto the
+              correct point on the grid (or click a symbol and click the grid
+              point). When all 8 symbols are in place, click
+              <strong>✓ Check Map</strong>!
+            </p>
+
+            <!-- 🖥️ INTERACTIVE "GRAPH" APP WIDGET -->
+            <div class="app-window" id="mapleton-coord-widget">
+              <div class="app-titlebar">
+                <div class="app-titlebar-left">
+                  <span class="app-dots">
+                    <span class="app-dot red"></span>
+                    <span class="app-dot yellow"></span>
+                    <span class="app-dot green"></span>
+                  </span>
+                  <span>🍁 GRAPH.exe — Mapleton Library Map</span>
+                </div>
+                <div class="coord-controls">
+                  <button
+                    type="button"
+                    id="check-map-btn"
+                    class="coord-btn check-btn"
+                  >
+                    ✓ Check
+                  </button>
+                  <button type="button" id="reset-map-btn" class="coord-btn">
+                    ↺ Reset
+                  </button>
+                </div>
+              </div>
+
+              <div class="app-body">
+                <!-- Draggable Symbol Bank -->
+                <div class="symbol-bank-wrapper">
+                  <div class="symbol-bank-title">
+                    <span
+                      ><strong>App Symbols</strong> (Drag onto the grid or click
+                      to select):</span
+                    >
+                    <span
+                      id="selected-token-hint"
+                      style="color: var(--accent-pop); font-weight: 600"
+                    ></span>
+                  </div>
+                  <div class="symbol-bank" id="symbol-bank">
+                    <div
+                      class="map-token"
+                      draggable="true"
+                      data-symbol="🍀"
+                      data-target="4,-2"
+                    >
+                      🍀
+                    </div>
+                    <div
+                      class="map-token"
+                      draggable="true"
+                      data-symbol="🛋️"
+                      data-target="-3,-3"
+                    >
+                      🛋️
+                    </div>
+                    <div
+                      class="map-token"
+                      draggable="true"
+                      data-symbol="📚"
+                      data-target="4,4"
+                    >
+                      📚
+                    </div>
+                    <div
+                      class="map-token"
+                      draggable="true"
+                      data-symbol="🗝️"
+                      data-target="-1,-3"
+                    >
+                      🗝️
+                    </div>
+                    <div
+                      class="map-token"
+                      draggable="true"
+                      data-symbol="🕰️"
+                      data-target="0,4"
+                    >
+                      🕰️
+                    </div>
+                    <div
+                      class="map-token"
+                      draggable="true"
+                      data-symbol="🐾"
+                      data-target="2,-2"
+                    >
+                      🐾
+                    </div>
+                    <div
+                      class="map-token"
+                      draggable="true"
+                      data-symbol="🖼️"
+                      data-target="-3,3"
+                    >
+                      🖼️
+                    </div>
+                    <div
+                      class="map-token"
+                      draggable="true"
+                      data-symbol="☕"
+                      data-target="-3,0"
+                    >
+                      ☕
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Clues + Grid Workspace -->
+                <div class="coord-workspace">
+                  <!-- Left Column: Deductive Clues -->
+                  <div class="clues-panel">
+                    <h5>📜 Clues from the GRAPH App:</h5>
+                    <ol class="clues-list">
+                      <li>
+                        Start <span class="bold">at the origin (0, 0)</span>,
+                        where the library computer (💻) is. Move
+                        <span class="bold">4 units north</span> along the
+                        y-axis. There is a <span class="bold">wall clock</span>
+                        here.
+                      </li>
+                      <li>
+                        A
+                        <span class="bold">bookshelf with sci-fi books</span> is
+                        <span class="bold">in Quadrant I</span>. The line from
+                        the wall clock to this bookshelf is
+                        <span class="bold">parallel to the x-axis</span>, and
+                        they are <span class="bold">4 units</span> apart.
+                      </li>
+                      <li>
+                        There is a <span class="bold">green plant</span> by the
+                        window <span class="bold">in Quadrant IV</span>. It lies
+                        on a line
+                        <span class="bold">parallel to the y-axis</span> from
+                        the sci-fi bookshelf, and it is
+                        <span class="bold">2 units below</span> the x-axis.
+                      </li>
+                      <li>
+                        <span class="bold">Cinnamon's bed</span> is
+                        <span class="bold">halfway between</span> the
+                        <span class="bold">y-axis</span> and the green plant.
+                      </li>
+                      <li>
+                        A <span class="bold">table with tea and coffee</span> is
+                        <span class="bold">on the x-axis</span>,
+                        <span class="bold">3 units west of</span> the origin.
+                      </li>
+                      <li>
+                        An
+                        <span class="bold">old painting of Mapleton</span> hangs
+                        <span class="bold">in Quadrant II</span>,
+                        <span class="bold">3 units north of</span> the tea
+                        table.
+                      </li>
+                      <li>
+                        A <span class="bold">big red armchair</span> is
+                        <span class="bold">in Quadrant III</span>,
+                        <span class="bold">directly opposite</span> the old
+                        painting <span class="bold">across the x-axis</span>.
+                      </li>
+                      <li>
+                        Finally, there is a
+                        <span class="bold">locked door</span> to an old storage
+                        room. It is <span class="bold">2 units east of</span>
+                        the red armchair.
+                      </li>
+                    </ol>
+                  </div>
+
+                  <!-- Right Column: Interactive Grid -->
+                  <div class="grid-board-container">
+                    <div class="coord-status-bar">
+                      <span>💻 (0, 0) = Library Computer</span>
+                      <span id="hover-coord-readout">Point: (0, 0)</span>
+                    </div>
+
+                    <div class="coord-board-wrapper">
+                      <!-- Compass Labels -->
+                      <span class="compass-badge compass-n">N ↑ (+y)</span>
+                      <span class="compass-badge compass-s">S ↓ (-y)</span>
+                      <span class="compass-badge compass-e">E → (+x)</span>
+                      <span class="compass-badge compass-w">W ← (-x)</span>
+
+                      <!-- Quadrant Watermarks -->
+                      <span class="quadrant-watermark q-1">QUADRANT I</span>
+                      <span class="quadrant-watermark q-2">QUADRANT II</span>
+                      <span class="quadrant-watermark q-3">QUADRANT III</span>
+                      <span class="quadrant-watermark q-4">QUADRANT IV</span>
+
+                      <!-- 11x11 Grid Container generated by JS -->
+                      <div class="coord-plane-grid" id="coord-plane-grid"></div>
+                    </div>
+
+                    <div
+                      class="coord-feedback-banner"
+                      id="coord-feedback"
+                    ></div>
+                  </div>
+                </div>
+
+                <!-- 🔔 STAGE 1 POP-UP: Math Hint + 8-Icon Selector (Appears when all 8 symbols are checked & correct) -->
+                <div id="graph-secret-popup" class="graph-secret-reveal" hidden>
+                  <div class="computer-modal-box">
+                    <div class="computer-modal-header">
+                      <span>🔔 New Message from GRAPH.exe:</span>
+                    </div>
+                    <p style="margin: 0 0 10px 0">
+                      "Map complete! Note: the locked door at
+                      <strong>(-1, -3)</strong> is just an old library storage
+                      room. Your next clue is hidden
+                      <strong>behind one of the items on this map</strong>! Its
+                      coordinates
+                      <span class="accent-string">(x, y)</span> satisfy both
+                      conditions:"
+                    </p>
+                    <p
+                      style="
+                        margin: 0 0 12px 0;
+                        font-size: 1.1rem;
+                        text-align: center;
+                      "
+                    >
+                      <span class="accent-string">x &lt; 0</span>
+                      &nbsp;and&nbsp;
+                      <span class="accent-string">y = -x</span>
+                    </p>
+                    <p class="small" style="margin: 0; color: var(--text-soft)">
+                      Select the correct symbol below and click
+                      <strong>Confirm</strong>:
+                    </p>
+
+                    <div class="clue-selector-row" id="clue-selector-row">
+                      <button
+                        type="button"
+                        class="clue-choice-btn"
+                        data-choice="🍀"
+                      >
+                        🍀
+                      </button>
+                      <button
+                        type="button"
+                        class="clue-choice-btn"
+                        data-choice="🛋️"
+                      >
+                        🛋️
+                      </button>
+                      <button
+                        type="button"
+                        class="clue-choice-btn"
+                        data-choice="📚"
+                      >
+                        📚
+                      </button>
+                      <button
+                        type="button"
+                        class="clue-choice-btn"
+                        data-choice="🗝️"
+                      >
+                        🗝️
+                      </button>
+                      <button
+                        type="button"
+                        class="clue-choice-btn"
+                        data-choice="🕰️"
+                      >
+                        🕰️
+                      </button>
+                      <button
+                        type="button"
+                        class="clue-choice-btn"
+                        data-choice="🐾"
+                      >
+                        🐾
+                      </button>
+                      <button
+                        type="button"
+                        class="clue-choice-btn"
+                        data-choice="🖼️"
+                      >
+                        🖼️
+                      </button>
+                      <button
+                        type="button"
+                        class="clue-choice-btn"
+                        data-choice="☕"
+                      >
+                        ☕
+                      </button>
+
+                      <button
+                        type="button"
+                        id="confirm-clue-btn"
+                        class="confirm-choice-btn"
+                      >
+                        Confirm
+                      </button>
+                    </div>
+
+                    <div
+                      id="choice-feedback-msg"
+                      class="choice-feedback-msg"
+                    ></div>
+                  </div>
+
+                  <!-- 📖 STAGE 2 REVEAL: Story Paragraph (Appears only after 🖼️ is confirmed) -->
+                  <div
+                    id="painting-story-reveal"
+                    class="callout2 painting-story-box"
+                    style="margin: 0"
+                    hidden
+                  >
+                    <p style="margin: 0">
+                      Robin and Miss Lemon walk over to the old painting of
+                      Mapleton at <span class="bold">(-3, 3)</span> and
+                      carefully look <span class="bold">behind</span> the
+                      <span class="gloss" data-tr="рамка">frame</span>.
+                      <span class="gloss" data-tr="Приклеєну скотчем"
+                        >Taped</span
+                      >
+                      to the back of the painting, they find a small note with
+                      some letters and numbers:
+                      <span class="accent-string">MPL-409-B</span>.<br />
+                      “It looks like a book code!” says Robin. “Let's
+                      <span class="gloss" data-tr="пошукати його"
+                        >search for it</span
+                      >
+                      in the library
+                      <span class="gloss" data-tr="база даних">database</span>
+                      to get the book's name and location!”<br />
+                      Miss Lemon looks up at the wall clock and
+                      <span class="gloss" data-tr="позіхає">yawns</span>. “It is
+                      already late, Robin, and we are both tired. Let's go home
+                      now and check the database tomorrow.”
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <hr />
+
+            <h3 id="p3-part2">Part 2: Relative Positions (Speaking)</h3>
+
+            <p class="task-description">
+              Look at your completed map and answer these questions aloud in
+              full sentences. Use prepositions of place and directions (<em
+                >at, on, in, north/south/east/west of, halfway between,
+                opposite, above, below, next to, parallel to</em
+              >).
+            </p>
+
+            <ol style="line-height: 2">
+              <li>
+                Look at the <span class="bold">old painting</span> (🖼️), the
+                <span class="bold">tea table</span> (☕), and the
+                <span class="bold">red armchair</span> (🛋️). Which axis is their
+                line <span class="bold">parallel to</span>? Which of the three
+                items is <span class="bold">halfway between</span> the other
+                two?
+              </li>
+              <li>
+                Which symbols lie <span class="bold">on the x-axis</span> or
+                <span class="bold">on the y-axis</span>? Why don't they belong
+                to any quadrant?
+              </li>
+              <li>
+                Compare the <span class="bold">sci-fi bookshelf</span> (📚) and
+                the <span class="bold">green plant</span> (🍀). How many
+                <span class="bold">units</span> apart are they? Which one is
+                <span class="bold">north of</span> the other?
+              </li>
+              <li>
+                Compare <span class="bold">Cinnamon's bed</span> (🐾) and the
+                <span class="bold">locked storage room door</span> (🗝️). Which
+                one is further <span class="bold">south</span>, and which one is
+                further <span class="bold">east</span>?
+              </li>
+              <li>
+                Imagine Robin walks from the
+                <span class="bold">red armchair</span> (🛋️) to
+                <span class="bold">Cinnamon's bed</span> (🐾), passing through
+                <span class="bold">the origin (0, 0)</span> along the grid
+                lines. Give her step-by-step directions!
+              </li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <!-- 🍊 PART 4: HOMEWORK -->
+      <section id="part-4" class="lesson-wrapper tab-content">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img
+                src="../media/icons/orange.svg"
+                class="star"
+                alt="an orange"
+              />
+              <span>Homework</span>
+            </h2>
+          </div>
+
+          <div class="lesson-content">
+            <h3>Завдання: Inside the Library Storage Room</h3>
+            <p>
+              На карті бібліотеки є замкнені двері (🗝️) до старої бібліотечної
+              комори (<span class="bold">storage room</span>). Таємний книжковий
+              клуб розташований зовсім не там (він у задній кімнаті книгарні
+              містера і місіс Беннетт!), а тут бібліотекарі просто зберігають
+              різні цікаві та старі речі.
+            </p>
+            <p>
+              Уяви, як виглядає ця комора всередині, які предмети там
+              зберігаються (наприклад:
+              <span class="italic"
+                >old boxes, dusty books, a globe, a wooden ladder, a lamp, maps,
+                shelves, an old armchair, a mirror</span
+              >) і де саме вони знаходяться. Напиши
+              <span class="bold">6–8 речень англійською мовою</span> з описом
+              цієї кімнати.
+            </p>
+
+            <p class="bold">
+              Використай прийменники місця з сьогоднішнього уроку:
+            </p>
+            <ul style="list-style-type: square">
+              <li>
+                <span class="accent">in</span>, <span class="accent">on</span>,
+                <span class="accent">at</span> (наприклад:
+                <span class="italic"
+                  >in the corner, on the shelf, at the door</span
+                >);
+              </li>
+              <li>
+                принаймні 4 з цих прийменників:
+                <span class="accent">above</span>,
+                <span class="accent">below</span>,
+                <span class="accent">under</span>,
+                <span class="accent">next to / beside</span>,
+                <span class="accent">between</span>,
+                <span class="accent">in front of</span>,
+                <span class="accent">behind</span>,
+                <span class="accent">opposite</span>.
+              </li>
+            </ul>
+
+            <textarea
+              style="margin-top: 10px"
+              id="l18-homework-notes"
+              class="test-textarea"
+              placeholder="Write your description of the storage room here..."
+            ></textarea>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>🌷 🍓 🌿 Made by Olena Hapchyna 🌿 🍓 🌷</p>
+
+      <div class="footer-credits">
+        <span
+          >Fruit icons by
+          <a
+            href="https://www.svgrepo.com/collection/fruits-vectors/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >An Nguyen</a
+          ></span
+        >
+        |
+        <a href="../credits.html" target="_blank">Credits &amp; Licenses</a>
+      </div>
+    </footer>
+
+    <button
+      id="scrollToTopBtn"
+      class="scroll-to-top"
+      aria-label="Scroll to top"
+    >
+      <img src="../media/icons/apple.svg" />
+    </button>
+
+    <dialog id="clear-confirm-dialog" class="custom-dialog">
+      <div class="dialog-content">
+        <h3>⚠️ Attention!</h3>
+        <p>Do you really want to delete ALL your answers and start over?</p>
+        <div class="dialog-actions">
+          <button type="button" id="dialog-cancel-btn">No</button>
+          <button type="button" id="dialog-confirm-btn">Yes, delete</button>
+        </div>
+      </div>
+    </dialog>
+
+    <!-- Gloss Tooltip Script + Coordinate Grid Controller -->
+    <script>
+      // 1. Gloss translation pills
+      document.querySelectorAll(".gloss").forEach(function (el) {
+        var pill = document.createElement("span");
+        pill.className = "tr-pill";
+        pill.textContent = el.getAttribute("data-tr");
+        el.insertAdjacentElement("afterend", pill);
+        function toggle() {
+          pill.classList.toggle("show");
+        }
+        el.addEventListener("click", toggle);
+        el.addEventListener("keydown", function (e) {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            toggle();
+          }
+        });
+      });
+
+      // 2. Interactive Coordinate Plane Drag & Drop + 2-Stage Pop-Up Controller
+      document.addEventListener("DOMContentLoaded", () => {
+        const gridEl = document.getElementById("coord-plane-grid");
+        const bankEl = document.getElementById("symbol-bank");
+        const hoverReadout = document.getElementById("hover-coord-readout");
+        const feedbackEl = document.getElementById("coord-feedback");
+        const selectedHintEl = document.getElementById("selected-token-hint");
+        const checkBtn = document.getElementById("check-map-btn");
+        const resetBtn = document.getElementById("reset-map-btn");
+
+        const secretPopup = document.getElementById("graph-secret-popup");
+        const choiceBtns = Array.from(
+          document.querySelectorAll(".clue-choice-btn"),
+        );
+        const confirmClueBtn = document.getElementById("confirm-clue-btn");
+        const choiceFeedbackMsg = document.getElementById(
+          "choice-feedback-msg",
+        );
+        const paintingStoryReveal = document.getElementById(
+          "painting-story-reveal",
+        );
+
+        if (!gridEl || !bankEl) return;
+
+        const STORAGE_KEY = "lms_lesson18_coord_map_state";
+        const UNLOCKED_KEY = "lms_lesson18_coord_map_unlocked";
+        const STORY_SOLVED_KEY = "lms_lesson18_painting_solved";
+
+        let draggedToken = null;
+        let selectedToken = null;
+        let selectedClueIcon = null;
+
+        // Build 11x11 Grid: y from 5 down to -5, x from -5 up to 5
+        for (let y = 5; y >= -5; y--) {
+          for (let x = -5; x <= 5; x++) {
+            const cell = document.createElement("div");
+            cell.className = "coord-cell";
+            if (y === 0) cell.classList.add("x-axis-cell");
+            if (x === 0) cell.classList.add("y-axis-cell");
+
+            const coordStr = `${x},${y}`;
+            cell.setAttribute("data-coord", coordStr);
+
+            // Axis number labels
+            if (y === 0 && x !== 0) {
+              const numX = document.createElement("span");
+              numX.className = "axis-num-x";
+              numX.textContent = x;
+              cell.appendChild(numX);
+            }
+            if (x === 0 && y !== 0) {
+              const numY = document.createElement("span");
+              numY.className = "axis-num-y";
+              numY.textContent = y;
+              cell.appendChild(numY);
+            }
+
+            // Center dot or Fixed Origin (0,0)
+            if (x === 0 && y === 0) {
+              const originMarker = document.createElement("span");
+              originMarker.className = "fixed-origin-token";
+              originMarker.textContent = "💻";
+              originMarker.title = "The Origin (0, 0): Library Computer";
+              cell.appendChild(originMarker);
+            } else {
+              const dot = document.createElement("span");
+              dot.className = "point-dot";
+              cell.appendChild(dot);
+            }
+
+            // Hover coordinate readout
+            cell.addEventListener("mouseenter", () => {
+              hoverReadout.textContent = `Point: (${x}, ${y})`;
+            });
+
+            // Drag & Drop onto cell
+            cell.addEventListener("dragover", (e) => {
+              if (x === 0 && y === 0) return;
+              e.preventDefault();
+              cell.classList.add("drag-over");
+            });
+
+            cell.addEventListener("dragleave", () => {
+              cell.classList.remove("drag-over");
+            });
+
+            cell.addEventListener("drop", (e) => {
+              e.preventDefault();
+              cell.classList.remove("drag-over");
+              if (x === 0 && y === 0) return;
+              if (draggedToken) {
+                placeTokenInCell(draggedToken, cell);
+                clearSelection();
+              }
+            });
+
+            // Click-to-place onto cell
+            cell.addEventListener("click", (e) => {
+              if (x === 0 && y === 0) return;
+              const clickedToken = e.target.closest(".map-token");
+              if (clickedToken && !selectedToken) {
+                selectToken(clickedToken);
+                return;
+              }
+              if (selectedToken) {
+                placeTokenInCell(selectedToken, cell);
+                clearSelection();
+              }
+            });
+
+            gridEl.appendChild(cell);
+          }
+        }
+
+        const allTokens = Array.from(bankEl.querySelectorAll(".map-token"));
+
+        allTokens.forEach((token) => {
+          token.addEventListener("dragstart", (e) => {
+            draggedToken = token;
+            token.classList.remove("correct-spot", "wrong-spot");
+            e.dataTransfer.setData("text/plain", token.dataset.symbol);
+          });
+
+          token.addEventListener("dragend", () => {
+            draggedToken = null;
+          });
+
+          token.addEventListener("click", (e) => {
+            e.stopPropagation();
+            if (selectedToken === token) {
+              clearSelection();
+            } else {
+              selectToken(token);
+            }
+          });
+
+          token.addEventListener("dblclick", (e) => {
+            e.stopPropagation();
+            token.classList.remove("correct-spot", "wrong-spot");
+            bankEl.appendChild(token);
+            clearSelection();
+            feedbackEl.textContent = "";
+            hideSecretPopup();
+            saveMapState();
+          });
+        });
+
+        // Allow dropping back into the Symbol Bank
+        bankEl.parentElement.addEventListener("dragover", (e) => {
+          e.preventDefault();
+        });
+
+        bankEl.parentElement.addEventListener("drop", (e) => {
+          e.preventDefault();
+          if (draggedToken) {
+            draggedToken.classList.remove("correct-spot", "wrong-spot");
+            bankEl.appendChild(draggedToken);
+            clearSelection();
+            feedbackEl.textContent = "";
+            hideSecretPopup();
+            saveMapState();
+          }
+        });
+
+        // 8-Icon Selector inside the Pop-up
+        choiceBtns.forEach((btn) => {
+          btn.addEventListener("click", () => {
+            choiceBtns.forEach((b) => b.classList.remove("active-choice"));
+            btn.classList.add("active-choice");
+            selectedClueIcon = btn.getAttribute("data-choice");
+            if (choiceFeedbackMsg) choiceFeedbackMsg.textContent = "";
+          });
+        });
+
+        if (confirmClueBtn) {
+          confirmClueBtn.addEventListener("click", () => {
+            if (!selectedClueIcon) {
+              choiceFeedbackMsg.style.color = "tomato";
+              choiceFeedbackMsg.textContent =
+                "Click one of the 8 symbols first!";
+              return;
+            }
+
+            if (selectedClueIcon === "🖼️") {
+              choiceFeedbackMsg.style.color = "var(--brand2)";
+              choiceFeedbackMsg.textContent =
+                "✅ Correct! At (-3, 3), x = -3 (< 0) and y = -(-3) = 3!";
+              if (paintingStoryReveal) {
+                paintingStoryReveal.removeAttribute("hidden");
+                localStorage.setItem(STORY_SOLVED_KEY, "true");
+                paintingStoryReveal.scrollIntoView({
+                  behavior: "smooth",
+                  block: "nearest",
+                });
+              }
+            } else {
+              choiceFeedbackMsg.style.color = "var(--accent-pop)";
+              choiceFeedbackMsg.textContent = `❌ Not ${selectedClueIcon}! Check its (x, y) coordinates: is x < 0 AND y = -x?`;
+              if (paintingStoryReveal) {
+                paintingStoryReveal.setAttribute("hidden", "");
+              }
+              localStorage.removeItem(STORY_SOLVED_KEY);
+            }
+          });
+        }
+
+        function selectToken(token) {
+          allTokens.forEach((t) => t.classList.remove("selected-token"));
+          selectedToken = token;
+          token.classList.add("selected-token");
+          selectedHintEl.textContent = `Selected ${token.dataset.symbol} — now click any (x, y) point on the grid!`;
+        }
+
+        function clearSelection() {
+          allTokens.forEach((t) => t.classList.remove("selected-token"));
+          selectedToken = null;
+          selectedHintEl.textContent = "";
+        }
+
+        function hideSecretPopup() {
+          if (secretPopup) secretPopup.setAttribute("hidden", "");
+          if (paintingStoryReveal)
+            paintingStoryReveal.setAttribute("hidden", "");
+          if (choiceFeedbackMsg) choiceFeedbackMsg.textContent = "";
+          choiceBtns.forEach((b) => b.classList.remove("active-choice"));
+          selectedClueIcon = null;
+          localStorage.removeItem(UNLOCKED_KEY);
+          localStorage.removeItem(STORY_SOLVED_KEY);
+        }
+
+        function placeTokenInCell(token, cell) {
+          const existingToken = cell.querySelector(".map-token");
+          if (existingToken && existingToken !== token) {
+            existingToken.classList.remove("correct-spot", "wrong-spot");
+            bankEl.appendChild(existingToken);
+          }
+
+          token.classList.remove("correct-spot", "wrong-spot");
+          cell.appendChild(token);
+          feedbackEl.textContent = "";
+          hideSecretPopup();
+          saveMapState();
+        }
+
+        function saveMapState() {
+          const state = {};
+          allTokens.forEach((token) => {
+            const parentCell = token.closest(".coord-cell");
+            state[token.dataset.symbol] = parentCell
+              ? parentCell.getAttribute("data-coord")
+              : "bank";
+          });
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+        }
+
+        function loadMapState() {
+          try {
+            const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
+            allTokens.forEach((token) => {
+              const loc = saved[token.dataset.symbol];
+              if (loc && loc !== "bank") {
+                const targetCell = gridEl.querySelector(
+                  `.coord-cell[data-coord="${loc}"]`,
+                );
+                if (targetCell) targetCell.appendChild(token);
+              }
+            });
+
+            if (localStorage.getItem(UNLOCKED_KEY) === "true" && secretPopup) {
+              allTokens.forEach((token) => token.classList.add("correct-spot"));
+              secretPopup.removeAttribute("hidden");
+            }
+
+            if (
+              localStorage.getItem(STORY_SOLVED_KEY) === "true" &&
+              paintingStoryReveal
+            ) {
+              const paintingBtn = document.querySelector(
+                '.clue-choice-btn[data-choice="🖼️"]',
+              );
+              if (paintingBtn) paintingBtn.classList.add("active-choice");
+              selectedClueIcon = "🖼️";
+              paintingStoryReveal.removeAttribute("hidden");
+            }
+          } catch (err) {
+            console.error("Error loading map state:", err);
+          }
+        }
+
+        checkBtn.addEventListener("click", () => {
+          let correctCount = 0;
+          let placedCount = 0;
+
+          allTokens.forEach((token) => {
+            token.classList.remove("correct-spot", "wrong-spot");
+            const parentCell = token.closest(".coord-cell");
+            if (!parentCell) return;
+
+            placedCount++;
+            const currentCoord = parentCell.getAttribute("data-coord");
+            if (currentCoord === token.dataset.target) {
+              token.classList.add("correct-spot");
+              correctCount++;
+            } else {
+              token.classList.add("wrong-spot");
+            }
+          });
+
+          if (placedCount === 0) {
+            feedbackEl.style.color = "tomato";
+            feedbackEl.textContent =
+              "Place the symbols onto the coordinate grid first!";
+            hideSecretPopup();
+          } else if (correctCount === allTokens.length) {
+            feedbackEl.style.color = "var(--brand2)";
+            feedbackEl.textContent =
+              "🎉 All 8 symbols are plotted correctly! Read the new message below:";
+            if (secretPopup) {
+              secretPopup.removeAttribute("hidden");
+              localStorage.setItem(UNLOCKED_KEY, "true");
+              secretPopup.scrollIntoView({
+                behavior: "smooth",
+                block: "nearest",
+              });
+            }
+          } else {
+            feedbackEl.style.color = "var(--accent-pop)";
+            feedbackEl.textContent = `You placed ${correctCount} out of 8 correctly. Check the red symbols!`;
+            hideSecretPopup();
+          }
+        });
+
+        resetBtn.addEventListener("click", () => {
+          localStorage.removeItem(STORAGE_KEY);
+          hideSecretPopup();
+          clearSelection();
+          allTokens.forEach((token) => {
+            token.classList.remove("correct-spot", "wrong-spot");
+            bankEl.appendChild(token);
+          });
+          feedbackEl.textContent = "";
+        });
+
+        loadMapState();
+      });
+    </script>
+  </body>
+</html>
