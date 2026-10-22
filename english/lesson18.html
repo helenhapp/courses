@@ -1,0 +1,1844 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Навчальні матеріали" />
+
+    <link rel="icon" type="image/svg+xml" href="../media/icons/carambola.svg" />
+
+    <title>English Lesson 18</title>
+
+    <script>
+      const savedTheme = localStorage.getItem("lms_theme") || "light";
+      document.documentElement.setAttribute("data-theme", savedTheme);
+
+      const hljsThemeLink =
+        savedTheme === "dark"
+          ? "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css"
+          : "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css";
+
+      document.head.insertAdjacentHTML(
+        "beforeend",
+        `<link id="hljs-theme" rel="stylesheet" href="${hljsThemeLink}" />`,
+      );
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Fira+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Tektur:wght@400..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"
+    ></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.css"
+    />
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.js"
+    ></script>
+
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/javascript/javascript.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/xml/xml.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/css/css.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/htmlmixed/htmlmixed.min.js"
+    ></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/theme/dracula.min.css"
+    />
+
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/python/python.min.js"
+    ></script>
+
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt-stdlib.js"
+    ></script>
+
+    <link rel="stylesheet" href="../style.css?v=4.0" />
+    <script src="../script.js?v=4.0" defer></script>
+  </head>
+
+  <body>
+    <!-- transition curtain -->
+    <div class="transition-curtain"></div>
+
+    <!-- top-bar -->
+    <div id="nav-container">
+      <nav class="top-bar">
+        <div class="logo-container">
+          <img
+            src="../media/icons/carambola.svg"
+            alt="Logo"
+            class="site-logo"
+          />
+        </div>
+
+        <div class="top-bar__controls">
+          <button
+            id="translator-toggle-btn"
+            class="top-bar-btn"
+            type="button"
+            title="Translator"
+            aria-expanded="false"
+          >
+            🌍 <span class="btn-label">Translator</span>
+          </button>
+
+          <button
+            id="notes-toggle-btn"
+            class="top-bar-btn"
+            type="button"
+            title="Lesson Notes"
+            aria-expanded="false"
+          >
+            📝 <span class="btn-label">Notes</span>
+          </button>
+
+          <label class="toggle-switch" aria-label="Перемикач теми">
+            <input type="checkbox" id="theme-checkbox" />
+            <span class="slider">
+              <span class="icon sun"
+                ><img src="../media/icons/stars.svg"
+              /></span>
+              <span class="icon moon"
+                ><img src="../media/icons/moon.svg"
+              /></span>
+            </span>
+          </label>
+          <button
+            id="dyslexia-mode-btn"
+            class="wide-toggle"
+            title="Шрифт для дислектиків"
+          >
+            Aa
+          </button>
+        </div>
+      </nav>
+    </div>
+
+    <!-- 🌍 TRANSLATOR POP-UP -->
+    <div id="translator-popup" class="top-popup" hidden>
+      <div class="top-popup__header">
+        <h4>🌍 Translator</h4>
+        <button type="button" class="top-popup__close" aria-label="Close">
+          ✕
+        </button>
+      </div>
+
+      <div
+        class="translator-module"
+        data-source-lang="en"
+        data-target-lang="uk"
+      >
+        <div class="translator-lang-labels">
+          <span class="lang-source">Англійська</span>
+          <button type="button" class="swap-lang-btn" title="Swap languages">
+            ⇄
+          </button>
+          <span class="lang-target">Українська</span>
+        </div>
+
+        <div class="translator-inputs">
+          <input
+            type="text"
+            class="translator-input"
+            placeholder="Type a word..."
+          />
+          <button type="button" class="translate-btn">Translate</button>
+        </div>
+
+        <div class="translator-output" style="display: none"></div>
+      </div>
+    </div>
+
+    <!-- 📝 NOTES POP-UP -->
+    <div id="notes-popup" class="top-popup" hidden>
+      <div class="top-popup__header">
+        <h4>📝 Lesson Notes</h4>
+        <div class="top-popup__actions">
+          <span id="notes-status" class="notes-status">Saved</span>
+          <button type="button" class="top-popup__close" aria-label="Close">
+            ✕
+          </button>
+        </div>
+      </div>
+
+      <textarea
+        id="lesson-notes-textarea"
+        class="notes-textarea"
+        placeholder="Write your notes here... They are saved automatically."
+      ></textarea>
+    </div>
+
+    <!-- lesson header -->
+    <header>
+      <div class="title-container">
+        <h1 id="lesson-title">English: 18</h1>
+      </div>
+
+      <p class="topic">Adjectives &amp; Adverbs of Manner</p>
+
+      <hr class="pretty-divider" />
+    </header>
+
+    <!-- lesson content -->
+    <main>
+      <!-- tab buttons -->
+      <div class="tabs-nav">
+        <button class="tab-btn active" data-target="part-1">
+          Reading &amp; Vocabulary
+        </button>
+        <button class="tab-btn" data-target="part-2">Grammar</button>
+        <button class="tab-btn" data-target="part-3">Speaking</button>
+      </div>
+
+      <!-- 🍓 PART 1: READING & VOCABULARY -->
+      <section id="part-1" class="lesson-wrapper tab-content active show">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img
+                src="../media/icons/strawberry.svg"
+                class="star"
+                alt="strawberry"
+              />
+              <span>Reading &amp; Vocabulary</span>
+            </h2>
+          </div>
+
+          <div class="lesson-content">
+            <h3 id="p1-1">1. Reading</h3>
+
+            <div class="callout2" style="margin-bottom: 20px">
+              <h4 style="margin: 0">What Makes Code Good?</h4>
+
+              <p>
+                Good code does its job
+                <span class="gloss" data-tr="правильно">correctly</span>, but
+                that is not enough. It must also be easy for other people to
+                read. Programmers often spend more time reading code than
+                writing it, so
+                <span class="gloss" data-tr="зрозумілий, чіткий">clear</span>
+                code
+                <span class="gloss" data-tr="заощаджує багато часу"
+                  >saves a lot of time</span
+                >.
+              </p>
+              <p>
+                <span class="gloss" data-tr="безладний, неохайний">Messy</span>
+                code looks
+                <span class="gloss" data-tr="заплутаний">confusing</span>, even
+                when it works well. Clear and
+                <span class="gloss" data-tr="описовий">descriptive</span>
+                names help a lot. If a variable stores a price, the name
+                <span class="accent-string">price</span> is better than a short
+                name like <span class="accent-string">p</span> or
+                <span class="accent-string">x</span>.
+              </p>
+              <p>
+                <span class="gloss" data-tr="коментарі">Comments</span>
+                are important too. A comment is a
+                <span class="gloss" data-tr="стислий, короткий">brief</span>
+                note in the code. The computer
+                <span class="gloss" data-tr="ігнорує">ignores</span> it, but
+                people read it. A
+                <span class="gloss" data-tr="корисний">useful</span>
+                comment explains <span class="italic">why</span> the code does
+                something. A comment that only
+                <span class="gloss" data-tr="повторює">repeats</span> the code
+                is not useful. Some programmers write code fast and forget
+                comments, so after a few weeks they can
+                <span class="gloss" data-tr="ледве, майже не">hardly</span>
+                understand it.
+              </p>
+              <p style="margin-bottom: 0">
+                Programmers also
+                <span class="gloss" data-tr="тестують">test</span> their code
+                often. A small <span class="gloss" data-tr="тест">test</span>
+                can find a
+                <span class="gloss" data-tr="помилка">mistake</span> quickly,
+                before it becomes a big problem. Good programmers work
+                <span class="gloss" data-tr="уважно, ретельно">carefully</span>,
+                but not too slowly. They keep things
+                <span class="gloss" data-tr="простими">simple</span>: they write
+                a basic working version of the program, then
+                <span class="gloss" data-tr="покращують">improve</span> it
+                <span class="gloss" data-tr="крок за кроком">step by step</span
+                >.
+              </p>
+            </div>
+
+            <ol>
+              <li>
+                Is working correctly enough for good code? What else is
+                important?
+              </li>
+              <li>What does clear code save?</li>
+              <li>What does the computer do with a comment?</li>
+              <li>What should a useful comment explain?</li>
+              <li>Why is the name price better than p or x?</li>
+              <li>Why do programmers test their code often?</li>
+            </ol>
+
+            <textarea
+              id="l18-p1-q-notes"
+              class="test-textarea"
+              placeholder="Teacher notes / corrections..."
+            ></textarea>
+
+            <hr />
+
+            <h3 id="p1-2">2. Vocabulary</h3>
+
+            <h4>Match: definition + translation</h4>
+
+            <p class="task-description">
+              Для кожного слова назви літеру означення і переклад українською
+              (здогадайся з тексту та означення).
+            </p>
+
+            <div class="callout2" style="margin-bottom: 20px">
+              <p style="margin-top: 0">
+                <span class="bold">Definitions:</span>
+              </p>
+              <ul
+                style="
+                  list-style-type: none;
+                  margin: 0;
+                  padding-left: 0;
+                  line-height: 2;
+                "
+              >
+                <li>
+                  <label class="test-label" style="margin: 0">
+                    <input
+                      type="checkbox"
+                      class="test-checkbox"
+                      id="l18-def-a"
+                    />
+                    <span class="bold">A.</span> in the right way, with the
+                    right result
+                  </label>
+                </li>
+                <li>
+                  <label class="test-label" style="margin: 0">
+                    <input
+                      type="checkbox"
+                      class="test-checkbox"
+                      id="l18-def-b"
+                    />
+                    <span class="bold">B.</span> with a lot of attention, to
+                    avoid problems
+                  </label>
+                </li>
+                <li>
+                  <label class="test-label" style="margin: 0">
+                    <input
+                      type="checkbox"
+                      class="test-checkbox"
+                      id="l18-def-c"
+                    />
+                    <span class="bold">C.</span> easy to see, read or understand
+                  </label>
+                </li>
+                <li>
+                  <label class="test-label" style="margin: 0">
+                    <input
+                      type="checkbox"
+                      class="test-checkbox"
+                      id="l18-def-d"
+                    />
+                    <span class="bold">D.</span> with few words; short
+                  </label>
+                </li>
+                <li>
+                  <label class="test-label" style="margin: 0">
+                    <input
+                      type="checkbox"
+                      class="test-checkbox"
+                      id="l18-def-e"
+                    />
+                    <span class="bold">E.</span> not tidy; in a bad order
+                  </label>
+                </li>
+                <li>
+                  <label class="test-label" style="margin: 0">
+                    <input
+                      type="checkbox"
+                      class="test-checkbox"
+                      id="l18-def-f"
+                    />
+                    <span class="bold">F.</span> good to have; it helps you
+                  </label>
+                </li>
+                <li>
+                  <label class="test-label" style="margin: 0">
+                    <input
+                      type="checkbox"
+                      class="test-checkbox"
+                      id="l18-def-g"
+                    />
+                    <span class="bold">G.</span> it makes you think: "I don't
+                    understand this"
+                  </label>
+                </li>
+                <li>
+                  <label class="test-label" style="margin: 0">
+                    <input
+                      type="checkbox"
+                      class="test-checkbox"
+                      id="l18-def-h"
+                    />
+                    <span class="bold">H.</span> to use less time for a job, so
+                    you have time for other things
+                  </label>
+                </li>
+                <li>
+                  <label class="test-label" style="margin: 0">
+                    <input
+                      type="checkbox"
+                      class="test-checkbox"
+                      id="l18-def-i"
+                    />
+                    <span class="bold">I.</span> slowly, one small part after
+                    another
+                  </label>
+                </li>
+              </ul>
+            </div>
+
+            <div class="tablecontainer">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Word</th>
+                    <th style="min-width: 140px">Definition (A–I)</th>
+                    <th>Translation</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="bold">1. clear</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l18-m-1d"
+                        class="test-input"
+                        style="width: 65px; margin: 0"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l18-m-1t"
+                        class="test-input"
+                        style="width: 100%; min-width: 180px; margin: 0"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">2. messy</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l18-m-2d"
+                        class="test-input"
+                        style="width: 65px; margin: 0"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l18-m-2t"
+                        class="test-input"
+                        style="width: 100%; min-width: 180px; margin: 0"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">3. confusing</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l18-m-3d"
+                        class="test-input"
+                        style="width: 65px; margin: 0"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l18-m-3t"
+                        class="test-input"
+                        style="width: 100%; min-width: 180px; margin: 0"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">4. brief</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l18-m-4d"
+                        class="test-input"
+                        style="width: 65px; margin: 0"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l18-m-4t"
+                        class="test-input"
+                        style="width: 100%; min-width: 180px; margin: 0"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">5. useful</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l18-m-5d"
+                        class="test-input"
+                        style="width: 65px; margin: 0"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l18-m-5t"
+                        class="test-input"
+                        style="width: 100%; min-width: 180px; margin: 0"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">6. correctly</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l18-m-6d"
+                        class="test-input"
+                        style="width: 65px; margin: 0"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l18-m-6t"
+                        class="test-input"
+                        style="width: 100%; min-width: 180px; margin: 0"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">7. carefully</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l18-m-7d"
+                        class="test-input"
+                        style="width: 65px; margin: 0"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l18-m-7t"
+                        class="test-input"
+                        style="width: 100%; min-width: 180px; margin: 0"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">8. to save time</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l18-m-11d"
+                        class="test-input"
+                        style="width: 65px; margin: 0"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l18-m-11t"
+                        class="test-input"
+                        style="width: 100%; min-width: 180px; margin: 0"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">9. step by step</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l18-m-12d"
+                        class="test-input"
+                        style="width: 65px; margin: 0"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l18-m-12t"
+                        class="test-input"
+                        style="width: 100%; min-width: 180px; margin: 0"
+                      />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h4>Make an example</h4>
+
+            <p class="task-description">
+              Склади до кожного слова приклад (кілька слів або одне речення).
+              Орієнтуйся на модель у другій колонці.
+            </p>
+
+            <div class="tablecontainer">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Word</th>
+                    <th>Pattern</th>
+                    <th>Your example</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="bold">clear</span></td>
+                    <td>adjective + noun</td>
+                    <td><span class="italic">clear code</span></td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">messy</span></td>
+                    <td>adjective + noun</td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l18-ex-1"
+                        class="test-input"
+                        style="
+                          width: 100%;
+                          min-width: 220px;
+                          text-align: left;
+                          margin: 0;
+                        "
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">useful</span></td>
+                    <td>adjective + noun</td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l18-ex-2"
+                        class="test-input"
+                        style="
+                          width: 100%;
+                          min-width: 220px;
+                          text-align: left;
+                          margin: 0;
+                        "
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">brief</span></td>
+                    <td>adjective + noun</td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l18-ex-3"
+                        class="test-input"
+                        style="
+                          width: 100%;
+                          min-width: 220px;
+                          text-align: left;
+                          margin: 0;
+                        "
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">confusing</span></td>
+                    <td>
+                      noun + <span class="italic">looks</span> + adjective
+                    </td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l18-ex-4"
+                        class="test-input"
+                        style="
+                          width: 100%;
+                          min-width: 220px;
+                          text-align: left;
+                          margin: 0;
+                        "
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">carefully</span></td>
+                    <td>verb + adverb</td>
+                    <td><span class="italic">write carefully</span></td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">correctly</span></td>
+                    <td>verb + adverb</td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l18-ex-5"
+                        class="test-input"
+                        style="
+                          width: 100%;
+                          min-width: 220px;
+                          text-align: left;
+                          margin: 0;
+                        "
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">to save time</span></td>
+                    <td>something + <span class="italic">saves time</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l18-ex-9"
+                        class="test-input"
+                        style="
+                          width: 100%;
+                          min-width: 220px;
+                          text-align: left;
+                          margin: 0;
+                        "
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">step by step</span></td>
+                    <td>verb + <span class="italic">step by step</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l18-ex-10"
+                        class="test-input"
+                        style="
+                          width: 100%;
+                          min-width: 220px;
+                          text-align: left;
+                          margin: 0;
+                        "
+                      />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 🍉 PART 2: GRAMMAR -->
+      <section id="part-2" class="lesson-wrapper tab-content">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img
+                src="../media/icons/watermelon.svg"
+                class="star"
+                alt="watermelon"
+              />
+              <span>Grammar</span>
+            </h2>
+          </div>
+
+          <div class="lesson-content">
+            <!-- ===================== BLOCK 1 ===================== -->
+            <h3 id="g-block-1">Adjectives (прикметники)</h3>
+
+            <p>
+              <span class="bold">Прикметник описує іменник</span> і відповідає
+              на питання <span class="italic">який?</span>
+            </p>
+
+            <p><span class="bold">Де стоїть прикметник:</span></p>
+            <ol>
+              <li>
+                <span class="bold">Перед іменником:</span> (a/an) + adjective +
+                noun<br />
+                <span class="italic"
+                  >a <span class="bold">clear</span> name, a
+                  <span class="bold">long</span> function,
+                  <span class="bold">useful</span> comments</span
+                >
+              </li>
+              <li>
+                <span class="bold"
+                  >Після дієслів be, look, sound, feel, seem:</span
+                ><br />
+                <span class="italic"
+                  >The code is <span class="bold">short</span>. · Your idea
+                  sounds <span class="bold">good</span>.</span
+                >
+              </li>
+              <li>
+                <span class="bold">Перед to + дієслово</span> у конструкції
+                <span class="italic">easy / hard / difficult to …:</span><br />
+                <span class="italic"
+                  >The code is <span class="bold">easy to read</span>. · The
+                  error is <span class="bold">hard to find</span>.</span
+                >
+              </li>
+            </ol>
+
+            <p>
+              Якщо прикметників кілька, думка (<span class="italic"
+                >nice, useful</span
+              >) стоїть перед фактом (<span class="italic">short, new</span>):
+              <span class="italic"
+                >a <span class="bold">nice short</span> function</span
+              >.
+            </p>
+
+            <!-- Exercise 1 -->
+            <details class="task">
+              <summary><h4>Exercise 1</h4></summary>
+              <div>
+                <p class="bold">A. Fill in the blanks with the given words.</p>
+
+                <p class="italic">clear · messy · confusing · useful · easy</p>
+
+                <div class="callout2" style="line-height: 2.2">
+                  <p style="margin: 0">
+                    Compare two programs. The first program has
+                    <input
+                      type="text"
+                      id="l18-ex1a-1-1"
+                      class="test-input"
+                      style="width: 100px"
+                    />
+                    names, so they are
+                    <input
+                      type="text"
+                      id="l18-ex1a-1-2"
+                      class="test-input"
+                      style="width: 100px"
+                    />
+                    to understand. Its comments are brief and
+                    <input
+                      type="text"
+                      id="l18-ex1a-2"
+                      class="test-input"
+                      style="width: 100px"
+                    />. The second program looks
+                    <input
+                      type="text"
+                      id="l18-ex1a-4-1"
+                      class="test-input"
+                      style="width: 110px"
+                    />
+                    and
+                    <input
+                      type="text"
+                      id="l18-ex1a-4-2"
+                      class="test-input"
+                      style="width: 110px"
+                    />, so nobody can say what it does.
+                  </p>
+                </div>
+
+                <p class="bold" style="margin-top: 25px">
+                  B. Say 1-2 sentences about these functions, using look or be +
+                  an adjective.
+                </p>
+
+                <pre><code class="language-python"># Function A:                  
+def f(a, b):
+    return a * b * 0.8</code></pre>
+
+                <pre><code class="language-python"># Function B:
+def get_final_price(price, quantity):
+    # The shop gives a 20% discount
+    return price * quantity * 0.8</code></pre>
+
+                <textarea
+                  id="l18-ex1c"
+                  class="test-textarea"
+                  placeholder="Function A: ...&#10;Function B: ..."
+                ></textarea>
+              </div>
+            </details>
+
+            <hr />
+
+            <!-- ===================== BLOCK 2 ===================== -->
+            <h3 id="g-block-2">Adverbs of manner (прислівники способу дії)</h3>
+
+            <p>
+              <span class="bold">Прислівник описує дію</span> і відповідає на
+              питання <span class="italic">як?</span>
+            </p>
+
+            <p><span class="bold">Як утворити прислівник:</span></p>
+            <div class="tablecontainer">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Правило</th>
+                    <th>Приклад</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>adjective + <span class="bold">-ly</span></td>
+                    <td>
+                      clear → clear<span class="bold">ly</span>, careful →
+                      careful<span class="bold">ly</span>, brief → brief<span
+                        class="bold"
+                        >ly</span
+                      >, bad → bad<span class="bold">ly</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span class="bold">-y</span> →
+                      <span class="bold">-ily</span>
+                    </td>
+                    <td>easy → eas<span class="bold">ily</span></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span class="bold">-le</span> →
+                      <span class="bold">-ly</span>
+                    </td>
+                    <td>simple → simp<span class="bold">ly</span></td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">Irregular</span></td>
+                    <td>
+                      good → <span class="bold">well</span>, fast →
+                      <span class="bold">fast</span>, hard →
+                      <span class="bold">hard</span>, late →
+                      <span class="bold">late</span>, early →
+                      <span class="bold">early</span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p><span class="bold">Де стоїть прислівник:</span></p>
+            <ul style="list-style-type: square">
+              <li>
+                Після дієслова:
+                <span class="italic"
+                  >The function works <span class="bold">correctly</span>.</span
+                >
+              </li>
+              <li>
+                Після додатка (object):
+                <span class="italic"
+                  >He writes the code <span class="bold">carefully</span>.</span
+                >
+              </li>
+              <li>
+                <span class="bold">Не</span> ставимо між дієсловом і додатком: ✗
+                <span class="italic">He writes carefully the code.</span>
+              </li>
+            </ul>
+
+            <!-- Exercise 2 -->
+            <details class="task">
+              <summary><h4>Exercise 2</h4></summary>
+              <div>
+                <p class="bold">A. Say / write the adverb.</p>
+
+                <div class="tablecontainer">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>clear</th>
+                        <th>careful</th>
+                        <th>brief</th>
+                        <th>simple</th>
+                        <th>easy</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <input
+                            type="text"
+                            id="l18-ex2a-1"
+                            class="test-input"
+                            style="width: 100%; margin: 0"
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="text"
+                            id="l18-ex2a-2"
+                            class="test-input"
+                            style="width: 100%; margin: 0"
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="text"
+                            id="l18-ex2a-3"
+                            class="test-input"
+                            style="width: 100%; margin: 0"
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="text"
+                            id="l18-ex2a-4"
+                            class="test-input"
+                            style="width: 100%; margin: 0"
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="text"
+                            id="l18-ex2a-5"
+                            class="test-input"
+                            style="width: 100%; margin: 0"
+                          />
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <div class="tablecontainer">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>quick</th>
+                        <th>slow</th>
+                        <th>good</th>
+                        <th>fast</th>
+                        <th>correct</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <input
+                            type="text"
+                            id="l18-ex2a-6"
+                            class="test-input"
+                            style="width: 100%; margin: 0"
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="text"
+                            id="l18-ex2a-7"
+                            class="test-input"
+                            style="width: 100%; margin: 0"
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="text"
+                            id="l18-ex2a-8"
+                            class="test-input"
+                            style="width: 100%; margin: 0"
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="text"
+                            id="l18-ex2a-9"
+                            class="test-input"
+                            style="width: 100%; margin: 0"
+                          />
+                        </td>
+                        <td>
+                          <input
+                            type="text"
+                            id="l18-ex2a-10"
+                            class="test-input"
+                            style="width: 100%; margin: 0"
+                          />
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <p class="bold" style="margin-top: 30px">
+                  B. Rewrite the sentences. Use an adverb instead of the
+                  adjective.
+                </p>
+                <ol style="line-height: 2.2">
+                  <li>
+                    A good programmer is careful.
+                    <span class="italic">
+                      → A good programmer works carefully.
+                    </span>
+                  </li>
+                  <li>The program is slow.</li>
+                  <li>Her answer is brief.</li>
+                  <li>His explanation is clear.</li>
+                  <li>The new program is fast.</li>
+                  <li>He is a good coder.</li>
+                </ol>
+
+                <textarea
+                  id="l18-ex2b"
+                  class="test-textarea"
+                  placeholder="2. ..."
+                ></textarea>
+              </div>
+            </details>
+
+            <hr />
+
+            <!-- ===================== BLOCK 3 ===================== -->
+            <h3 id="g-block-3">Adjective or adverb?</h3>
+
+            <p style="margin: 0">
+              Дієслово означає
+              <span class="bold">дію</span> (<span class="italic"
+                >work, write, run, explain</span
+              >) → <span class="bold">прислівник</span>. <br />Дієслово означає
+              <span class="bold">стан</span> (<span class="italic"
+                >be, look, sound, feel, seem</span
+              >) → <span class="bold">прикметник</span>.
+            </p>
+
+            <p><span class="bold">good чи well?</span></p>
+            <ul style="list-style-type: square">
+              <li>
+                <span class="bold">good</span> (adj):
+                <span class="italic"
+                  >This program is <span class="bold">good</span>. This idea
+                  sounds <span class="bold">good</span>.</span
+                >
+              </li>
+              <li>
+                <span class="bold">well</span> (adv):
+                <span class="italic"
+                  >The program works <span class="bold">well</span>. He codes
+                  <span class="bold">well</span>.</span
+                >
+              </li>
+            </ul>
+
+            <p><span class="bold">bad чи badly?</span> (так само)</p>
+            <ul style="list-style-type: square">
+              <li>
+                <span class="bold">bad</span> (adj):
+                <span class="italic"
+                  >It is a <span class="bold">bad</span> program. The code looks
+                  <span class="bold">bad</span>.</span
+                >
+              </li>
+              <li>
+                <span class="bold">badly</span> (adv):
+                <span class="italic"
+                  >The program works <span class="bold">badly</span>.</span
+                >
+              </li>
+            </ul>
+
+            <p>
+              <span class="bold"
+                >Існують пари слів, де додавання -ly повністю змінює
+                значення:</span
+              >
+            </p>
+            <div class="tablecontainer">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Слово</th>
+                    <th>Значення</th>
+                    <th>Приклад</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="bold">hard</span></td>
+                    <td>наполегливо (adv); важкий (adj)</td>
+                    <td>
+                      She works <span class="bold">hard</span>. Math is
+                      <span class="bold">hard</span> to learn.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">hardly</span></td>
+                    <td>ледве, майже не</td>
+                    <td>
+                      I <span class="bold">hardly</span> understand this code.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">late</span></td>
+                    <td>пізно (adv); пізній (adj)</td>
+                    <td>He sent the code <span class="bold">late</span>.</td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">lately</span></td>
+                    <td>останнім часом</td>
+                    <td>
+                      I haven't written much code
+                      <span class="bold">lately</span>. <br /><span class="bold"
+                        >Lately</span
+                      >, I haven't seen many bugs in my code.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p>
+              Також:
+              <span class="italic">friendly, lovely, lonely</span> закінчуються
+              на <span class="bold">-ly</span>, але це
+              <span class="bold">прикметники</span>:
+              <span class="italic"
+                >a <span class="bold">friendly</span> message</span
+              >.
+            </p>
+
+            <!-- Exercise 3 -->
+            <details class="task">
+              <summary><h4>Exercise 3</h4></summary>
+              <div>
+                <p class="bold">A. Choose the correct word.</p>
+                <ol style="line-height: 2.2">
+                  <li>
+                    This function looks (<strong>clear / clearly</strong>)
+                    <input
+                      type="text"
+                      id="l18-ex3a-1"
+                      class="test-input"
+                      style="width: 95px"
+                    />.
+                  </li>
+                  <li>
+                    Your code is (<strong>simple / simply</strong>)
+                    <input
+                      type="text"
+                      id="l18-ex3a-4"
+                      class="test-input"
+                      style="width: 95px"
+                    />.
+                  </li>
+                  <li>
+                    Please write the comments (<strong>clear / clearly</strong>)
+                    <input
+                      type="text"
+                      id="l18-ex3a-2"
+                      class="test-input"
+                      style="width: 95px"
+                    />.
+                  </li>
+                  <li>
+                    The program works (<strong>good / well</strong>)
+                    <input
+                      type="text"
+                      id="l18-ex3a-3"
+                      class="test-input"
+                      style="width: 95px"
+                    />.
+                  </li>
+                  <li>
+                    A test can find a mistake (<strong>quick / quickly</strong>)
+                    <input
+                      type="text"
+                      id="l18-ex3a-5"
+                      class="test-input"
+                      style="width: 95px"
+                    />.
+                  </li>
+                  <li>
+                    The new version sounds (<strong>good / well</strong>)
+                    <input
+                      type="text"
+                      id="l18-ex3a-6"
+                      class="test-input"
+                      style="width: 95px"
+                    />.
+                  </li>
+                  <li>
+                    The program works (<strong>bad / badly</strong>)
+                    <input
+                      type="text"
+                      id="l18-ex3a-7"
+                      class="test-input"
+                      style="width: 95px"
+                    />.
+                  </li>
+                  <li>
+                    I (<strong>hard / hardly</strong>)
+                    <input
+                      type="text"
+                      id="l18-ex3c-1"
+                      class="test-input"
+                      style="width: 95px"
+                    />
+                    understand my old code. It has no comments.
+                  </li>
+                  <li>
+                    She worked (<strong>hard / hardly</strong>)
+                    <input
+                      type="text"
+                      id="l18-ex3c-2"
+                      class="test-input"
+                      style="width: 95px"
+                    />
+                    to find the mistake.
+                  </li>
+                  <li>
+                    He sent the code (<strong>late / lately</strong>)
+                    <input
+                      type="text"
+                      id="l18-ex3c-3"
+                      class="test-input"
+                      style="width: 95px"
+                    />, after the deadline.
+                  </li>
+                </ol>
+
+                <p class="bold" style="margin-top: 25px">
+                  B. Find and correct 5 mistakes.
+                </p>
+                <div class="callout2">
+                  <p style="margin: 0">
+                    Two months ago I wrote my first long program. I wrote it
+                    quick, so I did not add any comments. The names were short
+                    and confusing, and the code looked messily. Last week I ran
+                    this program and it didn't work. I read the code careful,
+                    but I could not find the mistake. So I decided to clean it
+                    up: I wrote the names clear and added short comments. After
+                    that, I found the mistake quickly, and now the program works
+                    good.
+                  </p>
+                </div>
+                <textarea
+                  id="l18-ex3b"
+                  class="test-textarea"
+                  placeholder="..."
+                ></textarea>
+              </div>
+            </details>
+
+            <hr />
+
+            <!-- ===================== BLOCK 4 ===================== -->
+            <h3 id="g-block-4">too / very / enough</h3>
+
+            <ul style="list-style-type: square">
+              <li>
+                <span class="bold">too</span> = занадто, більше ніж потрібно (це
+                <span class="bold">проблема</span>):
+                <span class="italic"
+                  >The function is <span class="bold">too long</span> to
+                  understand.</span
+                >
+              </li>
+              <li>
+                <span class="bold">very</span> = просто дуже (проблеми немає):
+                <span class="italic"
+                  >The program is <span class="bold">very fast</span>, and the
+                  users are happy.</span
+                >
+              </li>
+              <li>
+                <span class="bold">enough</span> = достатньо; стоїть
+                <span class="bold">після</span> прикметника або прислівника:
+                <span class="italic"
+                  >This comment isn't
+                  <span class="bold">clear enough</span>.</span
+                >
+              </li>
+              <li>
+                <span class="bold"
+                  >too + adj ↔ not + opposite adj + enough:</span
+                >
+                <span class="italic"
+                  >The function is <span class="bold">too long</span>. = The
+                  function isn't <span class="bold">short enough</span>.</span
+                >
+              </li>
+            </ul>
+
+            <p>
+              <span class="bold">very, really, quite, a bit</span> стоять
+              <span class="bold">перед</span> прикметником або прислівником і
+              показують міру:
+              <span class="accent"> a bit &lt; quite &lt; very/really</span>.
+            </p>
+
+            <p style="margin-bottom: 10px">
+              У деяких прикметниках ("сильних"/крайніх) слово
+              <span class="bold">very</span> вже закладене всередині значення:
+            </p>
+            <ul
+              style="
+                list-style-type: square;
+                margin-top: 0;
+                margin-bottom: 10px;
+              "
+            >
+              <li>
+                <span class="bold">terrible / awful</span> =
+                <span class="italic">very bad</span> (жахливий)
+              </li>
+              <li>
+                <span class="bold">wonderful / fantastic</span> =
+                <span class="italic">very good</span> (чудовий)
+              </li>
+            </ul>
+            <p style="margin: 0">
+              Тому ми <span class="bold">не</span> кажемо
+              <span class="italic">very terrible</span> (бо це означало б
+              <span class="italic">very very bad</span>). З такими словами
+              вживаємо <span class="bold">really</span>:
+              <span class="italic"
+                >The error message was
+                <span class="bold">really</span> terrible.</span
+              >
+            </p>
+
+            <!-- Exercise 4 -->
+            <details class="task">
+              <summary><h4>Exercise 4</h4></summary>
+              <div>
+                <p class="bold">A. Choose the correct word.</p>
+                <ol style="line-height: 2.2">
+                  <li>
+                    This function is
+                    <input
+                      type="text"
+                      id="l18-ex4a-1"
+                      class="test-input"
+                      style="width: 90px"
+                    />long to read on one screen.
+                  </li>
+                  <li>
+                    The variable name <span class="accent-string">a</span> isn't
+                    clear
+                    <input
+                      type="text"
+                      id="l18-ex4a-2"
+                      class="test-input"
+                      style="width: 100px"
+                    />.
+                  </li>
+                  <li>
+                    The error message was
+                    <input
+                      type="text"
+                      id="l18-ex4a-3"
+                      class="test-input"
+                      style="width: 90px"
+                    />awful: it didn't explain anything.
+                  </li>
+                  <li>
+                    He typed
+                    <input
+                      type="text"
+                      id="l18-ex4a-5"
+                      class="test-input"
+                      style="width: 90px"
+                    />quickly to notice his mistakes.
+                  </li>
+                  <li>
+                    Your explanation is
+                    <input
+                      type="text"
+                      id="l18-ex4a-7"
+                      class="test-input"
+                      style="width: 90px"
+                    />clear. Now I understand everything!
+                  </li>
+                  <li>
+                    The font isn't big
+                    <input
+                      type="text"
+                      id="l18-ex4a-8"
+                      class="test-input"
+                      style="width: 135px"
+                    />to read on a phone.
+                  </li>
+                  <li>
+                    Python is
+                    <input
+                      type="text"
+                      id="l18-ex4a-9"
+                      class="test-input"
+                      style="width: 90px"
+                    />popular, and millions of beginners learn it.
+                  </li>
+                </ol>
+
+                <p class="bold" style="margin-top: 20px">
+                  B. Rewrite with <strong>enough</strong>. Keep the same
+                  meaning.
+                </p>
+                <ol>
+                  <li>The function is too long to read.</li>
+                  <li>This code is too confusing for beginners.</li>
+                  <li>The test is too slow.</li>
+                  <li>He wrote the comment too quickly.</li>
+                  <li>The password is too short.</li>
+                  <li>The error message is too difficult for children.</li>
+                </ol>
+                <textarea
+                  id="l18-ex4b"
+                  class="test-textarea"
+                  placeholder="1. ..."
+                ></textarea>
+
+                <p class="bold" style="margin-top: 20px">
+                  C. Write sentences with <strong>too</strong>. Use the words
+                  and add <em>is</em> and <em>to</em> where needed.
+                </p>
+                <ol>
+                  <li>function / long / understand</li>
+                  <li>password / short / be safe</li>
+                  <li>screen / small / read the code</li>
+                </ol>
+                <textarea
+                  id="l18-ex4c"
+                  class="test-textarea"
+                  placeholder="1. ..."
+                ></textarea>
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- 🍋 PART 3: SPEAKING -->
+      <section id="part-3" class="lesson-wrapper tab-content">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img
+                src="../media/icons/lemon.svg"
+                class="star"
+                alt="a lemon slice"
+              />
+              <span>Speaking: The Code Review Puzzle</span>
+            </h2>
+          </div>
+
+          <div class="lesson-content">
+            <h3 id="s-stage-1">Puzzle</h3>
+
+            <p>
+              <span class="bold">Ситуація:</span> у проєкті є чотири файли:
+              <span class="bold">login.py, shop.py, game.py, timer.py</span>.
+              Кожен файл має:
+            </p>
+            <ul style="list-style-type: square">
+              <li>
+                <span class="bold">код</span>, який можна описати як:
+                <span class="bold">short, long, messy</span> або
+                <span class="bold">clear</span>;
+              </li>
+              <li>
+                <span class="bold">програму</span>, роботу якої можна описати
+                як: <span class="bold">quick, slow, good</span> або
+                <span class="bold">bad</span>.
+              </li>
+            </ul>
+
+            <h4>Clue Card</h4>
+            <p>Прочитай підказки вголос і знайди відповідність у таблиці.</p>
+            <div class="callout2" style="margin: 20px 0">
+              <ol style="margin: 0 10px">
+                <li>
+                  The file with <span class="bold">short</span> code is a
+                  <span class="bold">quick</span> program.
+                </li>
+                <li>
+                  <span class="bold">login.py</span> has
+                  <span class="bold">short</span> code.
+                </li>
+                <li>
+                  The file with <span class="bold">long</span> code is a
+                  <span class="bold">slow</span> program.
+                </li>
+                <li>
+                  <span class="bold">timer.py</span> has
+                  <span class="bold">clear</span> code, but it is a
+                  <span class="bold">bad</span> program.
+                </li>
+                <li>
+                  <span class="bold">game.py</span> is not a
+                  <span class="bold">slow</span> program.
+                </li>
+                <li>
+                  <span class="bold">shop.py</span> does not have
+                  <span class="bold">messy</span> code.
+                </li>
+              </ol>
+            </div>
+
+            <p>
+              <span class="bold">Useful phrases:</span>
+              <span class="italic"
+                >So … / That means … / Now we know that …</span
+              >
+            </p>
+
+            <h4>Solution Grid</h4>
+            <div class="tablecontainer">
+              <table>
+                <thead>
+                  <tr>
+                    <th>File</th>
+                    <th>Code (short / long / messy / clear)</th>
+                    <th>Program: (runs quickly/slowly, works well/badly)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="bold">login.py</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l18-grid-1a"
+                        class="test-input"
+                        style="width: 100%; margin: 0"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l18-grid-1b"
+                        class="test-input"
+                        style="width: 100%; margin: 0"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">shop.py</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l18-grid-2a"
+                        class="test-input"
+                        style="width: 100%; margin: 0"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l18-grid-2b"
+                        class="test-input"
+                        style="width: 100%; margin: 0"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">game.py</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l18-grid-3a"
+                        class="test-input"
+                        style="width: 100%; margin: 0"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l18-grid-3b"
+                        class="test-input"
+                        style="width: 100%; margin: 0"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">timer.py</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l18-grid-4a"
+                        class="test-input"
+                        style="width: 100%; margin: 0"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l18-grid-4b"
+                        class="test-input"
+                        style="width: 100%; margin: 0"
+                      />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h4>Present the solution</h4>
+            <p style="margin: 0">
+              <span class="bold"
+                >[File] has [adjective] code. It runs / works [adverb].</span
+              >
+            </p>
+
+            <hr />
+
+            <h3 id="s-stage-2">Fix bad advice</h3>
+
+            <p style="margin-top: 20px">
+              Прочитай погану пораду про код і дай виправлену пораду вголос,
+              використовуючи слово з другої колонки.
+            </p>
+
+            <div class="tablecontainer">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Bad advice</th>
+                    <th style="min-width: 150px">Use this word</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1. Write your code fast. Don't test it.</td>
+                    <td><span class="bold">carefully</span></td>
+                  </tr>
+                  <tr>
+                    <td>2. Make your functions very long.</td>
+                    <td><span class="bold">too</span></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      3. Don't write any comments. The computer ignores them.
+                    </td>
+                    <td><span class="bold">useful</span></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      4. Use names like <span class="accent-string">x</span> and
+                      <span class="accent-string">y</span>. They are good names.
+                    </td>
+                    <td><span class="bold">clear enough</span></td>
+                  </tr>
+                  <tr>
+                    <td>5. Messy code is fine if it works well.</td>
+                    <td><span class="bold">easy to read</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <textarea
+              id="l18-s3-notes"
+              class="test-textarea"
+              placeholder="Notes..."
+            ></textarea>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>🌷 🍓 🌿 Made by Olena Hapchyna 🌿 🍓 🌷</p>
+
+      <div class="footer-credits">
+        <span
+          >Fruit icons by
+          <a
+            href="https://www.svgrepo.com/collection/fruits-vectors/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >An Nguyen</a
+          ></span
+        >
+        |
+        <a href="../credits.html" target="_blank">Credits &amp; Licenses</a>
+      </div>
+    </footer>
+
+    <button
+      id="scrollToTopBtn"
+      class="scroll-to-top"
+      aria-label="Scroll to top"
+    >
+      <img src="../media/icons/apple.svg" />
+    </button>
+
+    <dialog id="clear-confirm-dialog" class="custom-dialog">
+      <div class="dialog-content">
+        <h3>⚠️ Attention!</h3>
+        <p>Do you really want to delete ALL your answers and start over?</p>
+        <div class="dialog-actions">
+          <button type="button" id="dialog-cancel-btn">No</button>
+          <button type="button" id="dialog-confirm-btn">Yes, delete</button>
+        </div>
+      </div>
+    </dialog>
+
+    <script>
+      document.querySelectorAll(".gloss").forEach(function (el) {
+        var pill = document.createElement("span");
+        pill.className = "tr-pill";
+        pill.textContent = el.getAttribute("data-tr");
+        el.insertAdjacentElement("afterend", pill);
+        function toggle() {
+          pill.classList.toggle("show");
+        }
+        el.addEventListener("click", toggle);
+        el.addEventListener("keydown", function (e) {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            toggle();
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
