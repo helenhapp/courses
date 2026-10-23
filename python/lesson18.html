@@ -145,7 +145,7 @@
         <button class="tab-btn active" data-target="part-1">Entry</button>
         <button class="tab-btn" data-target="part-2">Frame</button>
         <button class="tab-btn" data-target="part-3">Text</button>
-        <!-- <button class="tab-btn" data-target="part-4">Homework</button> -->
+        <!-- <button class="tab-btn" data-target="part-4">Д/з</button> -->
       </div>
 
       <!-- 🍓 PART 1: Поле введення Entry -->
@@ -683,6 +683,21 @@ window.mainloop()</code></pre>
                     <span class="accent-string">Label</span> під кнопками.
                   </li>
                 </ol>
+
+                <div class="image-gallery3">
+                  <img
+                    style="height: 190px"
+                    src="./images/lesson18/task4_1.png"
+                  />
+                  <img
+                    style="height: 190px"
+                    src="./images/lesson18/task4_2.png"
+                  />
+                  <img
+                    style="height: 190px"
+                    src="./images/lesson18/task4_3.png"
+                  />
+                </div>
               </div>
             </details>
 
@@ -711,9 +726,9 @@ window.mainloop()</code></pre>
           <div class="lesson-header">
             <h2>
               <img
-                src="../media/icons/lemon.svg"
+                src="../media/icons/apple.svg"
                 class="star"
-                alt="lemon"
+                alt="apple"
                 width="60"
                 height="60"
               />
@@ -722,68 +737,128 @@ window.mainloop()</code></pre>
           </div>
 
           <div class="lesson-content">
-            <h3>Гра "Вгадай число" у вікні Tkinter</h3>
+            <h3>Домашнє завдання</h3>
 
-            <p>
-              Створи мінігру з графічним інтерфейсом. Комп'ютер загадує
-              випадкове число від 1 до 10, а користувач намагається його вгадати
-              через поле <span class="accent-string">Entry</span>.
-            </p>
-            <p>
-              Після кожного натискання кнопки
-              <span class="italic">"Check"</span> напис (<span
-                class="accent-string"
-                >Label</span
-              >) має давати підказку: <span class="italic">"Too low!"</span>,
-              <span class="italic">"Too high!"</span> або
-              <span class="italic">"You guessed it! 🎉"</span>.
-            </p>
-
-            <p>Нагадування, як генерувати випадкові числа:</p>
-            <pre><code class="language-python">import random
-secret_number = random.randint(1, 10)</code></pre>
-
-            <!-- ЗАВДАННЯ 5 -->
+            <!-- ЗАВДАННЯ -->
             <details class="task" open>
-              <summary><h4>Завдання 5</h4></summary>
+              <summary><h4>Вгадай число</h4></summary>
               <div>
-                <p>Вимоги до програми:</p>
+                <p>
+                  Створи мінігру з графічним інтерфейсом: комп'ютер загадує
+                  випадкове число від 1 до 10, а гравець намагається його
+                  вгадати через поле <span class="accent-string">Entry</span>.
+                </p>
+
+                <p>Вікно має містити зверху вниз:</p>
                 <ol>
                   <li>
-                    Комп'ютер загадує число від 1 до 10 за допомогою
-                    <span class="accent-string">random.randint()</span>
-                    <span class="bold">до початку гри</span> (поза функцією).
+                    напис з інструкцією
+                    <span class="italic">"Guess a number from 1 to 10:"</span>
+                  </li>
+                  <li>поле для введення числа</li>
+                  <li>кнопку <span class="italic">"Check"</span></li>
+                  <li>
+                    порожній напис для підказки (на початку гри він нічого не
+                    показує)
+                  </li>
+                </ol>
+
+                <p>
+                  Після натискання на
+                  <span class="italic">"Check"</span> напис для підказки показує
+                  одне з трьох повідомлень:
+                </p>
+                <ul style="list-style-type: square; margin-bottom: 15px">
+                  <li>
+                    <span class="italic">"Too low!"</span> – введене число
+                    <span class="bold">менше</span> за загадане;
                   </li>
                   <li>
-                    Вікно містить:
-                    <ul>
-                      <li>
-                        напис із інструкцією (<span class="accent-string"
-                          >"Guess a number from 1 to 10:"</span
-                        >)
-                      </li>
-                      <li>
-                        поле для вводу числа (<span class="accent-string"
-                          >Entry</span
-                        >)
-                      </li>
-                      <li>
-                        кнопку <span class="italic">"Check"</span>, яка
-                        перевіряє введене число
-                      </li>
-                      <li>напис для виведення результату/підказки</li>
-                    </ul>
+                    <span class="italic">"Too high!"</span> – введене число
+                    <span class="bold">більше</span> за загадане;
                   </li>
                   <li>
-                    У функції перевірки зчитай число через
-                    <span class="accent-string">int(entry.get())</span>
-                    (програма може зламатися, якщо ввести не число, але поки-що
-                    ігноруй цей випадок).
+                    <span class="italic">"You guessed it! 🎉"</span> – число
+                    вгадано.
+                  </li>
+                </ul>
+
+                <p>
+                  Число потрібно загадати <span class="bold">один раз</span>, до
+                  початку гри (поза функцією). Інакше воно буде змінюватися при
+                  кожному натисканні, і вгадати його буде неможливо.
+                  Нагадування, як це зробити:
+                </p>
+                <pre><code class="language-python">import random
+secret_number = random.randint(1, 10)</code></pre>
+
+                <p>
+                  Введене число зчитуй через
+                  <span class="accent-string">int(entry.get())</span>. Якщо
+                  ввести не число, виникне помилка – поки що ігноруй цей
+                  випадок.
+                </p>
+
+                <p>Ось як має виглядати результат:</p>
+
+                <div class="image-gallery3">
+                  <img
+                    style="height: 190px"
+                    src="./images/lesson18/hw_1.png"
+                    alt="game start"
+                  />
+                  <img
+                    style="height: 190px"
+                    src="./images/lesson18/hw_2.png"
+                    alt="too low"
+                  />
+                  <img
+                    style="height: 190px"
+                    src="./images/lesson18/hw_3.png"
+                    alt="too high"
+                  />
+                  <img
+                    style="height: 190px"
+                    src="./images/lesson18/hw_4.png"
+                    alt="guessed"
+                  />
+                </div>
+              </div>
+            </details>
+
+            <details class="answer">
+              <summary style="color: gray">Підказка</summary>
+              <p style="margin: 0">
+                У функції для кнопки <span class="italic">"Check"</span>
+                спочатку зчитай число з поля, а потім порівняй його із загаданим
+                через
+                <span class="accent-string">if / elif / else</span>. У кожній
+                гілці змінюй текст напису для підказки через
+                <span class="accent-string">label.config(text=...)</span>.
+              </p>
+            </details>
+
+            <!-- БОНУС -->
+            <details class="task">
+              <summary><h4>Бонус ⭐ (необов'язково)</h4></summary>
+              <div>
+                <ol>
+                  <li>
+                    Якщо ввести не число, напис має показувати
+                    <span class="italic">"Please enter a number!"</span>
+                    (використай <span class="accent-string">try / except</span>
+                    з уроку 15).
                   </li>
                   <li>
-                    Порівняй введене число із загаданим за допомогою
-                    <span class="accent-string">if / elif / else</span> і зміни
-                    текст у написі.
+                    Після кожної перевірки поле для введення очищується (<span
+                      class="accent-string"
+                      >entry.delete(0, END)</span
+                    >).
+                  </li>
+                  <li>
+                    Додай кнопку <span class="italic">"New game"</span>, яка
+                    загадує нове число та очищує напис для підказки. Тут
+                    знадобиться <span class="accent-string">global</span>.
                   </li>
                 </ol>
               </div>
