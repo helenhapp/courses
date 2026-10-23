@@ -145,6 +145,7 @@
         <button class="tab-btn active" data-target="part-1">Entry</button>
         <button class="tab-btn" data-target="part-2">Frame</button>
         <button class="tab-btn" data-target="part-3">Text</button>
+        <!-- <button class="tab-btn" data-target="part-4">Homework</button> -->
       </div>
 
       <!-- 🍓 PART 1: Поле введення Entry -->
@@ -699,6 +700,93 @@ window.mainloop()</code></pre>
                 і оновлює
                 <span class="accent-string">label.config(text=...)</span>.
               </p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- 🍎 PART 4: Домашнє завдання -->
+      <section id="part-4" class="lesson-wrapper tab-content">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img
+                src="../media/icons/lemon.svg"
+                class="star"
+                alt="lemon"
+                width="60"
+                height="60"
+              />
+              <span>Домашнє завдання: Guess the Number 🎲</span>
+            </h2>
+          </div>
+
+          <div class="lesson-content">
+            <h3>Гра "Вгадай число" у вікні Tkinter</h3>
+
+            <p>
+              Створи мінігру з графічним інтерфейсом. Комп'ютер загадує
+              випадкове число від 1 до 10, а користувач намагається його вгадати
+              через поле <span class="accent-string">Entry</span>.
+            </p>
+            <p>
+              Після кожного натискання кнопки
+              <span class="italic">"Check"</span> напис (<span
+                class="accent-string"
+                >Label</span
+              >) має давати підказку: <span class="italic">"Too low!"</span>,
+              <span class="italic">"Too high!"</span> або
+              <span class="italic">"You guessed it! 🎉"</span>.
+            </p>
+
+            <p>Нагадування, як генерувати випадкові числа:</p>
+            <pre><code class="language-python">import random
+secret_number = random.randint(1, 10)</code></pre>
+
+            <!-- ЗАВДАННЯ 5 -->
+            <details class="task" open>
+              <summary><h4>Завдання 5</h4></summary>
+              <div>
+                <p>Вимоги до програми:</p>
+                <ol>
+                  <li>
+                    Комп'ютер загадує число від 1 до 10 за допомогою
+                    <span class="accent-string">random.randint()</span>
+                    <span class="bold">до початку гри</span> (поза функцією).
+                  </li>
+                  <li>
+                    Вікно містить:
+                    <ul>
+                      <li>
+                        напис із інструкцією (<span class="accent-string"
+                          >"Guess a number from 1 to 10:"</span
+                        >)
+                      </li>
+                      <li>
+                        поле для вводу числа (<span class="accent-string"
+                          >Entry</span
+                        >)
+                      </li>
+                      <li>
+                        кнопку <span class="italic">"Check"</span>, яка
+                        перевіряє введене число
+                      </li>
+                      <li>напис для виведення результату/підказки</li>
+                    </ul>
+                  </li>
+                  <li>
+                    У функції перевірки зчитай число через
+                    <span class="accent-string">int(entry.get())</span>
+                    (програма може зламатися, якщо ввести не число, але поки-що
+                    ігноруй цей випадок).
+                  </li>
+                  <li>
+                    Порівняй введене число із загаданим за допомогою
+                    <span class="accent-string">if / elif / else</span> і зміни
+                    текст у написі.
+                  </li>
+                </ol>
+              </div>
             </details>
           </div>
         </div>
