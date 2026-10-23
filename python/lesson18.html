@@ -1,0 +1,734 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Навчальні матеріали" />
+
+    <link rel="icon" type="image/svg+xml" href="../media/icons/carambola.svg" />
+
+    <title>Python Lesson 18</title>
+
+    <script>
+      const savedTheme = localStorage.getItem("lms_theme") || "light";
+      document.documentElement.setAttribute("data-theme", savedTheme);
+
+      const hljsThemeLink =
+        savedTheme === "dark"
+          ? "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css"
+          : "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css";
+
+      document.head.insertAdjacentHTML(
+        "beforeend",
+        `<link id="hljs-theme" rel="stylesheet" href="${hljsThemeLink}" />`,
+      );
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Fira+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Tektur:wght@400..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"
+    ></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.css"
+    />
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.js"
+    ></script>
+
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/javascript/javascript.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/xml/xml.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/css/css.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/htmlmixed/htmlmixed.min.js"
+    ></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/theme/dracula.min.css"
+    />
+
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/python/python.min.js"
+    ></script>
+
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt-stdlib.js"
+    ></script>
+
+    <link rel="stylesheet" href="../style.css?v=7.0" />
+    <script src="../script.js?v=7.0" defer></script>
+  </head>
+
+  <body>
+    <!-- transition curtain -->
+    <div class="transition-curtain"></div>
+
+    <!-- top-bar -->
+    <div id="nav-container">
+      <nav class="top-bar">
+        <div class="logo-container">
+          <img
+            src="../media/icons/carambola.svg"
+            alt="Logo"
+            class="site-logo"
+          />
+        </div>
+
+        <div class="top-bar__controls">
+          <label class="toggle-switch" aria-label="Перемикач теми">
+            <input type="checkbox" id="theme-checkbox" />
+            <span class="slider">
+              <span class="icon sun"
+                ><img src="../media/icons/stars.svg"
+              /></span>
+              <span class="icon moon"
+                ><img src="../media/icons/moon.svg"
+              /></span>
+            </span>
+          </label>
+          <button
+            id="dyslexia-mode-btn"
+            class="wide-toggle"
+            title="Шрифт для дислектиків"
+          >
+            Aa
+          </button>
+        </div>
+      </nav>
+    </div>
+
+    <!-- lesson header -->
+    <header>
+      <div class="title-container">
+        <h1 id="lesson-title">Python: 18</h1>
+      </div>
+
+      <p class="topic">Tkinter 2: Entry, Frame та Text</p>
+
+      <hr class="pretty-divider" />
+    </header>
+
+    <!-- lesson content -->
+    <main>
+      <!-- tab buttons -->
+      <div class="tabs-nav">
+        <button class="tab-btn active" data-target="part-1">Entry</button>
+        <button class="tab-btn" data-target="part-2">Frame</button>
+        <button class="tab-btn" data-target="part-3">Text</button>
+      </div>
+
+      <!-- 🍓 PART 1: Поле введення Entry -->
+      <section id="part-1" class="lesson-wrapper tab-content active show">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img
+                src="../media/icons/strawberry.svg"
+                class="star"
+                alt="strawberry"
+                width="60"
+                height="60"
+              />
+              <span>Поле введення Entry</span>
+            </h2>
+          </div>
+
+          <div class="lesson-content">
+            <h3 id="p1-1">Що таке Entry</h3>
+
+            <p>
+              На минулому уроці ми розглянули, як показувати текст (<span
+                class="accent-string"
+                >Label</span
+              >) і реагувати на кліки (<span class="accent-string">Button</span
+              >). Сьогодні ознайомимося із новим віджетом, який дозволяє
+              запитувати дані у користувача –
+              <span class="accent-string">Entry</span>. Це поле для введення
+              одного рядка тексту:
+            </p>
+
+            <pre><code class="language-python">from tkinter import *
+
+window = Tk()
+window.geometry("400x250")
+window.eval("tk::PlaceWindow . center")
+
+entry = Entry(
+    window,
+    font=("Arial", 14),
+    width=20,
+)
+entry.pack(pady=20)
+
+window.mainloop()</code></pre>
+
+            <img src="./images/lesson18/entry_1.png" alt="code result" />
+
+            <p>Пояснення параметрів:</p>
+            <ul style="list-style-type: square; margin-bottom: 15px">
+              <li>
+                <span class="accent-string">window</span> – у якому контейнері
+                розмістити поле.
+              </li>
+              <li>
+                <span class="accent-string">font</span> – шрифт тексту, який
+                вводить користувач.
+              </li>
+              <li>
+                <span class="accent-string">width=20</span> – ширина поля.
+                Увага: вона вимірюється в <span class="bold">символах</span>, а
+                не в пікселях.
+                <span class="accent-string">width=20</span> означає, що
+                вміститься приблизно 20 літер.
+              </li>
+              <li>
+                Також працюють <span class="accent-string">bg</span> (колір фону
+                поля) та <span class="accent-string">fg</span> (колір тексту).
+              </li>
+            </ul>
+
+            <p>Також можна змінити вигляд контуру поля:</p>
+
+            <pre><code class="language-python">entry = Entry(
+    window,
+    font=("Arial", 14),
+    width=20,
+
+    bd=0,                             # прибирає стандартну об'ємну рамку
+    highlightthickness=3,             # товщина нової рамки (в пікселях)
+    highlightbackground="lightblue",  # колір рамки у звичайному стані
+    highlightcolor="blue",            # колір рамки, коли поле активне (в ньому курсор)
+)</code></pre>
+
+            <img src="./images/lesson18/entry_2.png" alt="code result" />
+            <img src="./images/lesson18/entry_3.png" alt="code result" />
+
+            <hr />
+
+            <h3 id="p1-2">Як отримати введені дані: .get()</h3>
+
+            <p>
+              Отже, користувач ввів у поле якийсь текст. Як отримати цей текст
+              із поля, щоб використати його далі в програмі? Для цього існує
+              метод <span class="accent-string">.get()</span>. Він повертає
+              вміст поля:
+            </p>
+
+            <pre><code class="language-python">user_input = entry.get()</code></pre>
+
+            <p>
+              Але цей метод потрібно використовувати всередині функції, яка
+              викликається при натисканні кнопки. Якщо помістити його поза
+              функцією, він викличеться лише один раз одразу при запуску
+              програми, коли користувач ще не встиг нічого ввести, і поверне
+              порожній рядок <span class="accent-string">""</span>.
+            </p>
+
+            <p>Розглянемо простий приклад:</p>
+            <pre
+              style="max-height: none"
+            ><code class="language-python">from tkinter import *
+
+window = Tk()
+window.geometry("400x250")
+
+entry = Entry(window, font=("Arial", 14), width=20)
+entry.pack(pady=10)
+
+def show_text():
+    user_input = entry.get()
+    label.config(text=user_input)
+
+btn = Button(window, text="Print", command=show_text, font=("Arial", 12))
+btn.pack(pady=10)
+
+label = Label(window, text="", font=("Arial", 16))
+label.pack(pady=10)
+
+window.mainloop()</code></pre>
+
+            <img src="./images/lesson18/example1.png" alt="code result" />
+
+            <p>
+              Щоб після виведення тексту на екран очистити текстове поле, можна
+              використати метод <span class="accent-string">.delete()</span>:
+            </p>
+
+            <pre><code class="language-python">def print():
+    user_input = entry.get()
+    label.config(text=user_input)
+    entry.delete(0, END) # видаляє весь текст</code></pre>
+
+            <p>
+              Також варто зважати, що
+              <span class="accent-string">.get()</span>, як і
+              <span class="accent-string">input()</span>, повертає текстовий
+              рядок, і на число його треба перетворювати з
+              <span class="accent-string">int()</span> або
+              <span class="accent-string">float()</span>.
+            </p>
+
+            <hr />
+
+            <h3 id="p1-8">Практика</h3>
+
+            <!-- ЗАВДАННЯ 1 -->
+            <details class="task" name="l18-p1" open>
+              <summary><h4>Завдання 1</h4></summary>
+              <div>
+                <p>
+                  1) Створи вікно з полем для введення тексту, кнопкою
+                  <span class="italic">"Greet"</span> та написом
+                  <span class="italic">"Enter your name"</span>. Після
+                  натискання кнопки напис має змінюватися на
+                  <span class="italic">"Hello, &lt;ім'я&gt;!"</span>.
+                </p>
+
+                <p>
+                  2) Якщо поле порожнє, напис має показувати
+                  <span class="italic">"Please enter your name"</span>
+                  замість привітання (перевірка через
+                  <span class="accent-string">if</span>).
+                </p>
+
+                <p>
+                  3) Додай кнопку <span class="italic">Clear</span>, яка стирає
+                  текст і поля, і напису.
+                </p>
+
+                <div class="image-gallery3">
+                  <img
+                    style="height: 180px"
+                    src="./images/lesson18/task1_1.png"
+                  />
+                  <img
+                    style="height: 180px"
+                    src="./images/lesson18/task1_2.png"
+                  />
+                  <img
+                    style="height: 180px"
+                    src="./images/lesson18/task1_3.png"
+                  />
+                  <img
+                    style="height: 180px"
+                    src="./images/lesson18/task1_4.png"
+                  />
+                </div>
+              </div>
+            </details>
+
+            <!-- ЗАВДАННЯ 2 -->
+            <details class="task" name="l18-p1">
+              <summary><h4>Завдання 2</h4></summary>
+              <div>
+                <p>
+                  Створи програму, у якій користувач вводить
+                  <span class="bold">назву кольору</span> англійською (<span
+                    class="accent-string"
+                    >pink</span
+                  >, <span class="accent-string">lavender</span>,
+                  <span class="accent-string">teal</span>...), натискає кнопку,
+                  і фон вікна змінюється на цей колір.
+                </p>
+                <p>
+                  Якщо ввести неіснуючий колір, програма видасть помилку
+                  <span class="accent-string">TclError</span>. Її можна обробити
+                  так:
+                </p>
+                <pre><code class="language-python">try:
+    window.config(bg=color)
+except TclError:
+    ...   # напиши в Label, що такого кольору немає</code></pre>
+
+                <div class="image-gallery3">
+                  <img
+                    style="height: 190px"
+                    src="./images/lesson18/task2_1.png"
+                  />
+                  <img
+                    style="height: 190px"
+                    src="./images/lesson18/task2_2.png"
+                  />
+                  <img
+                    style="height: 190px"
+                    src="./images/lesson18/task2_3.png"
+                  />
+                </div>
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- 🍉 PART 2: Розташування віджетів – Frame -->
+      <section id="part-2" class="lesson-wrapper tab-content">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img
+                src="../media/icons/watermelon.svg"
+                class="star"
+                alt="watermelon"
+                width="60"
+                height="60"
+              />
+              <span>Розташування віджетів – Frame</span>
+            </h2>
+          </div>
+
+          <div class="lesson-content">
+            <h3 id="p2-1">Що таке Frame</h3>
+
+            <p>
+              Метод <span class="accent-string">.pack()</span> за замовчуванням
+              розташовує віджети <span class="bold">один під одним</span>, і це
+              не завжди зручно. Що як потрібно розмістити дві кнопки
+              <span class="bold">поруч</span>? Або підпис і поле введення в один
+              рядок. Для цього є віджет
+              <span class="accent-string">Frame</span>.
+            </p>
+
+            <p>
+              <span class="accent-string">Frame</span> – це
+              <span class="bold">рамка</span>, яка знаходиться у вікні, а
+              всередині неї можна помістити інші віджети. Це ніби "вікно
+              всередині вікна".
+            </p>
+            <p>
+              Спочатку створюємо <span class="accent-string">Frame</span> і
+              розміщуємо його у вікні. Потім створюємо віджети, але в якості
+              контейнера вказуємо вже не
+              <span class="accent-string">window</span>, а
+              <span class="bold">цей Frame</span>:
+            </p>
+
+            <pre><code class="language-python">buttons_frame = Frame(window)
+buttons_frame.pack(pady=10)
+
+btn1 = Button(
+    buttons_frame,
+    text="Left",
+    font=("Arial", 14),
+)
+btn1.pack(side=LEFT, padx=5)
+
+btn2 = Button(
+    buttons_frame,
+    text="Right",
+    font=("Arial", 14),
+)
+btn2.pack(side=LEFT, padx=5)</code></pre>
+
+            <p>
+              Щоб віджети всередині рамки стали
+              <span class="bold">в рядок</span>, всередині
+              <span class="accent-string">.pack()</span> використовуємо параметр
+              <span class="accent-string">side</span>. Він може приймати такі
+              значення:
+            </p>
+
+            <table>
+              <thead>
+                <tr>
+                  <th>Значення</th>
+                  <th>Де розміщується віджет</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="accent-string">TOP</span></td>
+                  <td>
+                    зверху (за замовчуванням – віджети стають один під одним)
+                  </td>
+                </tr>
+                <tr>
+                  <td><span class="accent-string">LEFT</span></td>
+                  <td>зліва (віджети стають у рядок зліва направо)</td>
+                </tr>
+                <tr>
+                  <td><span class="accent-string">RIGHT</span></td>
+                  <td>справа (віджети стають у рядок справа наліво)</td>
+                </tr>
+                <tr>
+                  <td><span class="accent-string">BOTTOM</span></td>
+                  <td>знизу (віджети стають знизу вгору)</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <hr />
+
+            <h3 id="p2-6">Практика</h3>
+
+            <!-- ЗАВДАННЯ 3 -->
+            <details class="task" open>
+              <summary><h4>Завдання 3</h4></summary>
+              <div>
+                <p>
+                  Створи програму, яка приймає два числа і рахує їхню суму.
+                  Використай <span class="accent-string">Frame</span>, щоб
+                  розмістити текстове поле і його назву в одному рядку (<span
+                    class="italic"
+                    >a: [___]</span
+                  >).
+                </p>
+
+                <div class="image-gallery3">
+                  <img
+                    style="height: 200px"
+                    src="./images/lesson18/task3_1.png"
+                  />
+                  <img
+                    style="height: 200px"
+                    src="./images/lesson18/task3_2.png"
+                  />
+                </div>
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- 🍇 PART 3: Багаторядкове поле Text -->
+      <section id="part-3" class="lesson-wrapper tab-content">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img
+                src="../media/icons/grapes.svg"
+                class="star"
+                alt="grapes"
+                width="60"
+                height="60"
+              />
+              <span>Багаторядкове поле Text</span>
+            </h2>
+          </div>
+
+          <div class="lesson-content">
+            <h3 id="p3-1">Що таке Text</h3>
+
+            <p>
+              <span class="accent-string">Entry</span> вміщує лише один рядок.
+              Якщо потрібно ввести більший текст (нотатку, повідомлення чи
+              історію на кілька рядків), використовують віджет
+              <span class="accent-string">Text</span>:
+            </p>
+
+            <pre><code class="language-python">from tkinter import *
+
+window = Tk()
+window.geometry("450x350")
+window.config(bg="lavender")
+window.eval("tk::PlaceWindow . center")
+
+notes = Text(
+    window,
+    font=("Arial", 14),
+    width=30,
+    height=8,
+)
+notes.pack(pady=20)
+
+window.mainloop()</code></pre>
+
+            <img src="./images/lesson18/text.png" alt="code result" />
+
+            <p>Пояснення параметрів:</p>
+            <ul style="list-style-type: square; margin-bottom: 15px">
+              <li>
+                <span class="accent-string">width=30</span> – ширина в
+                <span class="bold">символах</span> (як і в
+                <span class="accent-string">Entry</span>).
+              </li>
+              <li>
+                <span class="accent-string">height=8</span> – висота в
+                <span class="bold">рядках</span> (не в пікселях!).
+              </li>
+            </ul>
+
+            <hr />
+
+            <h3 id="p3-2">Читання та зміна тексту</h3>
+
+            <p>
+              Оскільки в <span class="accent-string">Text</span> багато рядків,
+              початок тексту позначається як
+              <span class="accent-string">"1.0"</span> (1-й рядок, 0-й символ),
+              а кінець – <span class="accent-string">END</span> (або
+              <span class="accent-string">"end-1c"</span> при читанні, щоб не
+              захопити зайвий перенос рядка
+              <span class="accent-string">\n</span>
+              у кінці):
+            </p>
+
+            <table>
+              <thead>
+                <tr>
+                  <th>Команда</th>
+                  <th>Що робить</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <span class="accent-string"
+                      >notes.get("1.0", "end-1c")</span
+                    >
+                  </td>
+                  <td>повертає весь введений текст</td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="accent-string">notes.delete("1.0", END)</span>
+                  </td>
+                  <td>видаляє весь текст</td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="accent-string"
+                      >notes.insert("1.0", "...")</span
+                    >
+                  </td>
+                  <td>вставляє текст на початок поля</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <p style="margin-top: 15px">
+              Щоб <span class="bold">змінити</span> текст у полі, виконуємо три
+              кроки: читаємо старий текст (<span class="accent-string">get</span
+              >), очищуємо поле (<span class="accent-string">delete</span>) і
+              вставляємо новий (<span class="accent-string">insert</span>):
+            </p>
+
+            <pre><code class="language-python">def add_stars():
+    content = notes.get("1.0", "end-1c")   # 1. прочитали
+    notes.delete("1.0", END)               # 2. видалили старий
+    notes.insert("1.0", f"✨ {content} ✨") # 3. вставили змінений</code></pre>
+
+            <p>
+              А щоб порахувати кількість слів у тексті, достатньо розбити
+              прочитаний рядок за пробілами методом
+              <span class="accent-string">.split()</span> і знайти довжину
+              списку:
+            </p>
+
+            <pre><code class="language-python">def count_words():
+    content = notes.get("1.0", "end-1c")
+    words = len(content.split())
+    label.config(text=f"Words: {words}")</code></pre>
+
+            <hr />
+
+            <h3 id="p3-3">Практика</h3>
+
+            <!-- ЗАВДАННЯ 4 -->
+            <details class="task" open>
+              <summary><h4>Завдання 4</h4></summary>
+              <div>
+                <p>Створи свій <span class="bold">Text Toolbox</span>:</p>
+                <ol>
+                  <li>
+                    Додай багаторядкове поле
+                    <span class="accent-string">Text</span> та ряд кнопок під
+                    ним (у <span class="accent-string">Frame</span>).
+                  </li>
+                  <li>
+                    Додай 3 кнопки для зміни регістру тексту в полі:
+                    <span class="italic">"UPPER"</span> (метод
+                    <span class="accent-string">.upper()</span>),
+                    <span class="italic">"lower"</span> (<span
+                      class="accent-string"
+                      >.lower()</span
+                    >) та <span class="italic">"Capital"</span> (<span
+                      class="accent-string"
+                      >.capitalize()</span
+                    >).
+                  </li>
+                  <li>
+                    Додай кнопку <span class="italic">"Count"</span>, яка
+                    показує кількість слів у
+                    <span class="accent-string">Label</span> під кнопками.
+                  </li>
+                </ol>
+              </div>
+            </details>
+
+            <details class="answer">
+              <summary style="color: gray">Підказка</summary>
+              <p style="margin: 0">
+                Кнопки <span class="italic">"UPPER"</span>,
+                <span class="italic">"lower"</span> та
+                <span class="italic">"Capital"</span> працюють за однією схемою:
+                прочитати текст (<span class="accent-string">get</span>) →
+                очистити поле (<span class="accent-string">delete</span>) →
+                вставити змінений текст (<span class="accent-string"
+                  >insert</span
+                >). Кнопка <span class="italic">"Count"</span> лише читає текст
+                і оновлює
+                <span class="accent-string">label.config(text=...)</span>.
+              </p>
+            </details>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>🌷 🍓 🌿 Made by Olena Hapchyna 🌿 🍓 🌷</p>
+
+      <div class="footer-credits">
+        <span
+          >Fruit icons by
+          <a
+            href="https://www.svgrepo.com/collection/fruits-vectors/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >An Nguyen</a
+          ></span
+        >
+        |
+        <a href="../credits.html" target="_blank">Credits & Licenses</a>
+      </div>
+    </footer>
+
+    <button
+      id="scrollToTopBtn"
+      class="scroll-to-top"
+      aria-label="Scroll to top"
+    >
+      <img src="../media/icons/apple.svg" />
+    </button>
+  </body>
+</html>

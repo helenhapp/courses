@@ -670,7 +670,7 @@ img {
   object-fit: contain;
   /* margin: 15px auto; */
   margin: 15px 0;
-  border: 3px solid var(--code-border);
+  border: 1px solid lightgreen;
   border-radius: 6px;
   transition:
     transform 0.4s ease,
