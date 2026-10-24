@@ -3544,3 +3544,12 @@ code.long-code .hljs-ln td.hljs-ln-code {
   font-size: 14px;
   max-width: 90%;
 }
+
+.tk-widget-frame {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  max-width: 100%;
+}

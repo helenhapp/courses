@@ -736,6 +736,9 @@
               el = document.createElement("input");
               el.type = "text";
               el.className = "tk-widget-entry";
+            } else if (type === "Frame") {
+              el = document.createElement("div");
+              el.className = "tk-widget-frame";
             } else {
               el = document.createElement("div");
             }
@@ -770,16 +773,26 @@
             }
           });
 
-          mod.pack_widget = new Sk.builtin.func(function (idPy, padyPy, padxPy) {
+          mod.pack_widget = new Sk.builtin.func(function (idPy, padyPy, padxPy, sidePy) {
             var w = state.widgets[Sk.ffi.remapToJs(idPy)];
             if (!w) return;
             var pady = Sk.ffi.remapToJs(padyPy);
             var padx = Sk.ffi.remapToJs(padxPy);
-            w.el.style.display = "";
+            var side = Sk.ffi.remapToJs(sidePy);
+
+            w.el.style.display = w.el.classList.contains("tk-widget-frame") ? "flex" : "";
             w.el.style.marginTop = pady + "px";
             w.el.style.marginBottom = pady + "px";
             w.el.style.marginLeft = padx + "px";
             w.el.style.marginRight = padx + "px";
+
+            var parentEl = w.el.parentElement;
+            if (parentEl && (side === "left" || side === "right")) {
+              parentEl.style.display = "flex";
+              parentEl.style.flexDirection = side === "right" ? "row-reverse" : "row";
+              parentEl.style.alignItems = "center";
+              parentEl.style.justifyContent = "center";
+            }
           });
 
           mod.entry_get = new Sk.builtin.func(function (idPy) {
@@ -816,6 +829,10 @@
 import _tk_dom
 
 END = "end"
+LEFT = "left"
+RIGHT = "right"
+TOP = "top"
+BOTTOM = "bottom"
 
 class _BaseWidget:
     def __init__(self, master, wtype, **kwargs):
@@ -829,8 +846,8 @@ class _BaseWidget:
 
     configure = config
 
-    def pack(self, pady=0, padx=0, **kwargs):
-        _tk_dom.pack_widget(self._id, pady, padx)
+    def pack(self, pady=0, padx=0, side="top", **kwargs):
+        _tk_dom.pack_widget(self._id, pady, padx, side)
 
 class Tk:
     def __init__(self):
