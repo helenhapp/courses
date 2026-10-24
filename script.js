@@ -640,14 +640,28 @@
               el.dataset.activeBg = val;
             } else if (key === "text") {
               el.textContent = String(val);
+
             } else if (key === "font" && Array.isArray(val)) {
               var family = val[0] || "Arial";
               var size = val[1] ? Math.abs(Number(val[1])) + "px" : "14px";
               var styleStr = String(val[2] || "").toLowerCase();
-              el.style.fontFamily = '"' + family + '", sans-serif';
+
+              var fontMap = {
+                "arial": '"Arial", "Roboto", sans-serif',
+                "verdana": '"Verdana", "Fira Sans", sans-serif',
+                "trebuchet ms": '"Trebuchet MS", "Tektur", sans-serif',
+                "comic sans ms": '"Comic Sans MS", "Comic Neue", cursive',
+                "georgia": '"Georgia", "EB Garamond", serif',
+                "times new roman": '"Times New Roman", "EB Garamond", serif',
+                "courier new": '"Courier New", "Courier Prime", "Fira Code", monospace',
+                "impact": '"Impact", "Anton", sans-serif'
+              };
+
+              el.style.fontFamily = fontMap[family.toLowerCase()] || ('"' + family + '", sans-serif');
               el.style.fontSize = size;
               el.style.fontWeight = styleStr.includes("bold") ? "bold" : "normal";
               el.style.fontStyle = styleStr.includes("italic") ? "italic" : "normal";
+            
             } else if (key === "width" && !isWindow) {
               el.style.width = (Number(val) * 8) + "px";
             } else if (key === "padx") {
