@@ -1,0 +1,2067 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Навчальні матеріали" />
+
+    <link rel="icon" type="image/svg+xml" href="../media/icons/carambola.svg" />
+
+    <title>English Lesson 19</title>
+
+    <script>
+      const savedTheme = localStorage.getItem("lms_theme") || "light";
+      document.documentElement.setAttribute("data-theme", savedTheme);
+
+      const hljsThemeLink =
+        savedTheme === "dark"
+          ? "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css"
+          : "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css";
+
+      document.head.insertAdjacentHTML(
+        "beforeend",
+        `<link id="hljs-theme" rel="stylesheet" href="${hljsThemeLink}" />`,
+      );
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Fira+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Tektur:wght@400..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"
+    ></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.css"
+    />
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.js"
+    ></script>
+
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/javascript/javascript.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/xml/xml.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/css/css.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/htmlmixed/htmlmixed.min.js"
+    ></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/theme/dracula.min.css"
+    />
+
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/python/python.min.js"
+    ></script>
+
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt-stdlib.js"
+    ></script>
+
+    <link rel="stylesheet" href="../style.css?v=4.0" />
+    <script src="../script.js?v=4.0" defer></script>
+  </head>
+
+  <body>
+    <!-- transition curtain -->
+    <div class="transition-curtain"></div>
+
+    <!-- top-bar -->
+    <div id="nav-container">
+      <nav class="top-bar">
+        <div class="logo-container">
+          <img
+            src="../media/icons/carambola.svg"
+            alt="Logo"
+            class="site-logo"
+          />
+        </div>
+
+        <div class="top-bar__controls">
+          <button
+            id="translator-toggle-btn"
+            class="top-bar-btn"
+            type="button"
+            title="Translator"
+            aria-expanded="false"
+          >
+            🌍 <span class="btn-label">Translator</span>
+          </button>
+
+          <button
+            id="notes-toggle-btn"
+            class="top-bar-btn"
+            type="button"
+            title="Lesson Notes"
+            aria-expanded="false"
+          >
+            📝 <span class="btn-label">Notes</span>
+          </button>
+
+          <label class="toggle-switch" aria-label="Перемикач теми">
+            <input type="checkbox" id="theme-checkbox" />
+            <span class="slider">
+              <span class="icon sun"
+                ><img src="../media/icons/stars.svg"
+              /></span>
+              <span class="icon moon"
+                ><img src="../media/icons/moon.svg"
+              /></span>
+            </span>
+          </label>
+          <button
+            id="dyslexia-mode-btn"
+            class="wide-toggle"
+            title="Шрифт для дислектиків"
+          >
+            Aa
+          </button>
+        </div>
+      </nav>
+    </div>
+
+    <!-- 🌍 TRANSLATOR POP-UP -->
+    <div id="translator-popup" class="top-popup" hidden>
+      <div class="top-popup__header">
+        <h4>🌍 Translator</h4>
+        <button type="button" class="top-popup__close" aria-label="Close">
+          ✕
+        </button>
+      </div>
+
+      <div
+        class="translator-module"
+        data-source-lang="en"
+        data-target-lang="uk"
+      >
+        <div class="translator-lang-labels">
+          <span class="lang-source">Англійська</span>
+          <button type="button" class="swap-lang-btn" title="Swap languages">
+            ⇄
+          </button>
+          <span class="lang-target">Українська</span>
+        </div>
+
+        <div class="translator-inputs">
+          <input
+            type="text"
+            class="translator-input"
+            placeholder="Type a word..."
+          />
+          <button type="button" class="translate-btn">Translate</button>
+        </div>
+
+        <div class="translator-output" style="display: none"></div>
+      </div>
+    </div>
+
+    <!-- 📝 NOTES POP-UP -->
+    <div id="notes-popup" class="top-popup" hidden>
+      <div class="top-popup__header">
+        <h4>📝 Lesson Notes</h4>
+        <div class="top-popup__actions">
+          <span id="notes-status" class="notes-status">Saved</span>
+          <button type="button" class="top-popup__close" aria-label="Close">
+            ✕
+          </button>
+        </div>
+      </div>
+
+      <textarea
+        id="lesson-notes-textarea"
+        class="notes-textarea"
+        placeholder="Write your notes here... They are saved automatically."
+      ></textarea>
+    </div>
+
+    <!-- lesson header -->
+    <header>
+      <div class="title-container">
+        <h1 id="lesson-title">English: 19</h1>
+      </div>
+
+      <p class="topic">Comparatives &amp; Superlatives</p>
+
+      <hr class="pretty-divider" />
+    </header>
+
+    <!-- lesson content -->
+    <main>
+      <!-- tab buttons -->
+      <div class="tabs-nav">
+        <button class="tab-btn active" data-target="part-1">
+          Reading &amp; Vocabulary
+        </button>
+        <button class="tab-btn" data-target="part-2">Grammar</button>
+        <button class="tab-btn" data-target="part-3">Speaking</button>
+      </div>
+
+      <!-- 🍓 PART 1: READING & VOCABULARY -->
+      <section id="part-1" class="lesson-wrapper tab-content active show">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img
+                src="../media/icons/strawberry.svg"
+                class="star"
+                alt="strawberry"
+              />
+              <span>Reading &amp; Vocabulary</span>
+            </h2>
+          </div>
+
+          <div class="lesson-content">
+            <h3 id="p1-1">1. Reading</h3>
+
+            <div class="callout2" style="margin-bottom: 20px">
+              <h4 style="margin: 0">Why We Forget (and How to Remember)</h4>
+
+              <p>
+                Learning something new is exciting, but our
+                <span class="gloss" data-tr="мозок">brain</span> forgets new
+                information very fast. In the 1880s, a psychologist named
+                Hermann Ebbinghaus studied
+                <span class="gloss" data-tr="пам'ять">memory</span> and
+                <span class="gloss" data-tr="відкрив, виявив">discovered</span>
+                "the forgetting curve." He found that people forget about half
+                of new material in just one hour! After a few days, we remember
+                even less.
+              </p>
+              <p>
+                Because of this, studying for many hours the night before a
+                test—called
+                <span class="gloss" data-tr="зубріння в останній момент"
+                  >cramming</span
+                >—is one of the worst ways to learn. When you study late at
+                night without a
+                <span class="gloss" data-tr="перерва">break</span>, you feel
+                tired and lose
+                <span class="gloss" data-tr="концентрація, увага">focus</span>.
+                You might <span class="gloss" data-tr="скласти">pass</span> the
+                test the next morning, but a week later, you will
+                <span class="gloss" data-tr="ледве, майже не">hardly</span>
+                remember anything.
+              </p>
+              <p>
+                A much more
+                <span class="gloss" data-tr="ефективний">effective</span> method
+                is
+                <span class="gloss" data-tr="інтервальне повторення"
+                  >"spaced repetition."</span
+                >
+                <span class="gloss" data-tr="Замість">Instead of</span> one long
+                study session, you
+                <span class="gloss" data-tr="повторюєш, переглядаєш"
+                  >review</span
+                >
+                the material several times over a few days. The first review
+                happens soon after the lesson—for example, fifteen minutes
+                later. The second review is the next day, and the third one is
+                three days later.
+              </p>
+              <p style="margin-bottom: 0">
+                Active practice also helps a lot. Testing yourself with
+                <span class="gloss" data-tr="картки для запам'ятовування"
+                  >flashcards</span
+                >
+                or explaining a topic
+                <span class="gloss" data-tr="вголос">aloud</span> works much
+                better than just reading your notes
+                <span class="gloss" data-tr="мовчки, тихо">silently</span>. Each
+                time you
+                <span class="gloss" data-tr="пригадуєш, згадуєш">recall</span> a
+                fact from memory, your memory of it gets stronger, and you
+                remember the information for a longer time.
+              </p>
+            </div>
+
+            <ol>
+              <li>
+                What did Hermann Ebbinghaus discover about our memory after one
+                hour?
+              </li>
+              <li>
+                What is "cramming," and why is it a bad way to prepare for a
+                test?
+              </li>
+              <li>
+                How does "spaced repetition" work? When do the first, second,
+                and third reviews happen?
+              </li>
+              <li>
+                Which methods work better than reading your notes silently?
+              </li>
+              <li>What happens each time you recall a fact from memory?</li>
+            </ol>
+
+            <textarea
+              id="l19-p1-q-notes"
+              class="test-textarea"
+              placeholder="Teacher notes / corrections..."
+            ></textarea>
+
+            <hr />
+
+            <h3 id="p1-2">2. Vocabulary</h3>
+
+            <h4>Match: definition + translation</h4>
+
+            <p class="task-description">
+              Пригадай переклад слів із тексту та підбери до кожного літеру
+              означення (<strong>A–I</strong>).
+            </p>
+
+            <div class="callout2" style="margin-bottom: 20px">
+              <p style="margin-top: 0">
+                <span class="bold">Definitions:</span>
+              </p>
+              <ul
+                style="
+                  list-style-type: none;
+                  margin: 0;
+                  padding-left: 0;
+                  line-height: 2;
+                "
+              >
+                <li>
+                  <label class="test-label" style="margin: 0">
+                    <input
+                      type="checkbox"
+                      class="test-checkbox"
+                      id="l19-def-a"
+                    />
+                    <span class="bold">A.</span> full attention on one task
+                  </label>
+                </li>
+                <li>
+                  <label class="test-label" style="margin: 0">
+                    <input
+                      type="checkbox"
+                      class="test-checkbox"
+                      id="l19-def-b"
+                    />
+                    <span class="bold">B.</span> working well and giving good
+                    results
+                  </label>
+                </li>
+                <li>
+                  <label class="test-label" style="margin: 0">
+                    <input
+                      type="checkbox"
+                      class="test-checkbox"
+                      id="l19-def-c"
+                    />
+                    <span class="bold">C.</span> to look at study material again
+                    to remember it
+                  </label>
+                </li>
+                <li>
+                  <label class="test-label" style="margin: 0">
+                    <input
+                      type="checkbox"
+                      class="test-checkbox"
+                      id="l19-def-d"
+                    />
+                    <span class="bold">D.</span> in place of something else
+                  </label>
+                </li>
+                <li>
+                  <label class="test-label" style="margin: 0">
+                    <input
+                      type="checkbox"
+                      class="test-checkbox"
+                      id="l19-def-e"
+                    />
+                    <span class="bold">E.</span> in a voice that other people
+                    can hear
+                  </label>
+                </li>
+                <li>
+                  <label class="test-label" style="margin: 0">
+                    <input
+                      type="checkbox"
+                      class="test-checkbox"
+                      id="l19-def-f"
+                    />
+                    <span class="bold">F.</span> the ability to keep information
+                    in your mind
+                  </label>
+                </li>
+                <li>
+                  <label class="test-label" style="margin: 0">
+                    <input
+                      type="checkbox"
+                      class="test-checkbox"
+                      id="l19-def-g"
+                    />
+                    <span class="bold">G.</span> without making any sound
+                  </label>
+                </li>
+                <li>
+                  <label class="test-label" style="margin: 0">
+                    <input
+                      type="checkbox"
+                      class="test-checkbox"
+                      id="l19-def-h"
+                    />
+                    <span class="bold">H.</span> a short rest between periods of
+                    work or study
+                  </label>
+                </li>
+                <li>
+                  <label class="test-label" style="margin: 0">
+                    <input
+                      type="checkbox"
+                      class="test-checkbox"
+                      id="l19-def-i"
+                    />
+                    <span class="bold">I.</span> to bring a fact back into your
+                    mind; to remember
+                  </label>
+                </li>
+              </ul>
+            </div>
+
+            <div class="tablecontainer">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Word</th>
+                    <th style="min-width: 140px">Definition (A–I)</th>
+                    <th>Translation</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="bold">1. memory</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l19-m-1d"
+                        class="test-input"
+                        style="width: 65px; margin: 0"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l19-m-1t"
+                        class="test-input"
+                        style="width: 100%; min-width: 180px; margin: 0"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">2. effective</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l19-m-2d"
+                        class="test-input"
+                        style="width: 65px; margin: 0"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l19-m-2t"
+                        class="test-input"
+                        style="width: 100%; min-width: 180px; margin: 0"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">3. to review</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l19-m-3d"
+                        class="test-input"
+                        style="width: 65px; margin: 0"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l19-m-3t"
+                        class="test-input"
+                        style="width: 100%; min-width: 180px; margin: 0"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">4. to recall</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l19-m-4d"
+                        class="test-input"
+                        style="width: 65px; margin: 0"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l19-m-4t"
+                        class="test-input"
+                        style="width: 100%; min-width: 180px; margin: 0"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">5. focus</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l19-m-5d"
+                        class="test-input"
+                        style="width: 65px; margin: 0"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l19-m-5t"
+                        class="test-input"
+                        style="width: 100%; min-width: 180px; margin: 0"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">6. a break</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l19-m-6d"
+                        class="test-input"
+                        style="width: 65px; margin: 0"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l19-m-6t"
+                        class="test-input"
+                        style="width: 100%; min-width: 180px; margin: 0"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">7. aloud</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l19-m-7d"
+                        class="test-input"
+                        style="width: 65px; margin: 0"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l19-m-7t"
+                        class="test-input"
+                        style="width: 100%; min-width: 180px; margin: 0"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">8. silently</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l19-m-8d"
+                        class="test-input"
+                        style="width: 65px; margin: 0"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l19-m-8t"
+                        class="test-input"
+                        style="width: 100%; min-width: 180px; margin: 0"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">9. instead of</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l19-m-9d"
+                        class="test-input"
+                        style="width: 65px; margin: 0"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l19-m-9t"
+                        class="test-input"
+                        style="width: 100%; min-width: 180px; margin: 0"
+                      />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h4>Make an example</h4>
+
+            <p class="task-description">
+              Склади до кожного слова приклад (кілька слів або одне речення).
+              Орієнтуйся на модель у другому стовпці.
+            </p>
+
+            <div class="tablecontainer">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Word</th>
+                    <th>Pattern</th>
+                    <th>Your example</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="bold">effective</span></td>
+                    <td><span class="italic">effective</span> + noun</td>
+                    <td><span class="italic">an effective method</span></td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">memory</span></td>
+                    <td>adjective + <span class="italic">memory</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l19-ex-1"
+                        class="test-input"
+                        style="
+                          width: 100%;
+                          min-width: 220px;
+                          text-align: left;
+                          margin: 0;
+                        "
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">to review</span></td>
+                    <td><span class="italic">review</span> + noun</td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l19-ex-2"
+                        class="test-input"
+                        style="
+                          width: 100%;
+                          min-width: 220px;
+                          text-align: left;
+                          margin: 0;
+                        "
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">to recall</span></td>
+                    <td><span class="italic">recall</span> + noun</td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l19-ex-3"
+                        class="test-input"
+                        style="
+                          width: 100%;
+                          min-width: 220px;
+                          text-align: left;
+                          margin: 0;
+                        "
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">focus</span></td>
+                    <td>
+                      <span class="italic">lose / keep</span> +
+                      <span class="italic">focus</span>
+                    </td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l19-ex-4"
+                        class="test-input"
+                        style="
+                          width: 100%;
+                          min-width: 220px;
+                          text-align: left;
+                          margin: 0;
+                        "
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">a break</span></td>
+                    <td>
+                      <span class="italic">take a</span> + [adjective] +
+                      <span class="italic">break</span>
+                    </td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l19-ex-5"
+                        class="test-input"
+                        style="
+                          width: 100%;
+                          min-width: 220px;
+                          text-align: left;
+                          margin: 0;
+                        "
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">aloud</span></td>
+                    <td>verb + <span class="italic">aloud</span></td>
+                    <td><span class="italic">explain aloud</span></td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">silently</span></td>
+                    <td>verb + <span class="italic">silently</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l19-ex-6"
+                        class="test-input"
+                        style="
+                          width: 100%;
+                          min-width: 220px;
+                          text-align: left;
+                          margin: 0;
+                        "
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">instead of</span></td>
+                    <td>
+                      <span class="italic">instead of</span> + noun /
+                      <span class="italic">-ing</span>
+                    </td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l19-ex-7"
+                        class="test-input"
+                        style="
+                          width: 100%;
+                          min-width: 220px;
+                          text-align: left;
+                          margin: 0;
+                        "
+                      />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h4>Pronunciation</h4>
+
+            <p class="task-description">
+              Прослухай та прочитай слова вголос за транскрипцією (<strong
+                >British English</strong
+              >). Знак <strong>ˈ</strong> стоїть перед наголошеним складом.
+            </p>
+
+            <div class="tablecontainer">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Word</th>
+                    <th>Transcription</th>
+                    <th>Tip</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="bold">memory</span></td>
+                    <td><span class="accent-string">/ˈmeməri/</span></td>
+                    <td>
+                      наголос на 1-му складі; <em>o</em> звучить як коротке
+                      <em>ə</em>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">effective</span></td>
+                    <td><span class="accent-string">/ɪˈfektɪv/</span></td>
+                    <td>наголос на 2-му складі</td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">review</span></td>
+                    <td><span class="accent-string">/rɪˈvjuː/</span></td>
+                    <td>наголос на 2-му складі; довгий <em>juː</em> в кінці</td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">recall</span></td>
+                    <td><span class="accent-string">/rɪˈkɔːl/</span></td>
+                    <td>наголос на 2-му складі; довгий звук <em>ɔː</em></td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">focus</span></td>
+                    <td><span class="accent-string">/ˈfəʊkəs/</span></td>
+                    <td>дифтонг <em>əʊ</em> у першому складі</td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">aloud</span></td>
+                    <td><span class="accent-string">/əˈlaʊd/</span></td>
+                    <td>дифтонг <em>aʊ</em> (як у слові <em>loud</em>)</td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">silently</span></td>
+                    <td><span class="accent-string">/ˈsaɪləntli/</span></td>
+                    <td>наголос на 1-му складі зі звуком <em>aɪ</em></td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">instead of</span></td>
+                    <td><span class="accent-string">/ɪnˈsted əv/</span></td>
+                    <td>
+                      <em>ea</em> читається коротко як <em>e</em> (не
+                      <em>iː</em>!)
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 🍉 PART 2: GRAMMAR -->
+      <section id="part-2" class="lesson-wrapper tab-content">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img
+                src="../media/icons/watermelon.svg"
+                class="star"
+                alt="watermelon"
+              />
+              <span>Grammar</span>
+            </h2>
+          </div>
+
+          <div class="lesson-content">
+            <!-- ===================== BLOCK 1 ===================== -->
+            <h3 id="g-block-1">
+              Comparatives &amp; Superlatives of Adjectives
+            </h3>
+
+            <p>
+              Ми використовуємо <span class="bold">Comparative</span> (вищий
+              ступінь), щоб порівняти два предмети чи явища (зі словом
+              <span class="bold">than</span> — <span class="italic">ніж</span>),
+              і <span class="bold">Superlative</span> (найвищий ступінь), щоб
+              виділити один предмет серед трьох і більше (завжди з артиклем
+              <span class="bold">the</span>).
+            </p>
+
+            <div class="tablecontainer">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Група прикметників</th>
+                    <th>Base</th>
+                    <th>Comparative (більш…)</th>
+                    <th>Superlative (найбільш…)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="bold">Короткі (1 склад)</span></td>
+                    <td>fast<br />short<br />nice<br />big</td>
+                    <td>
+                      fast<span class="bold">er</span><br />short<span
+                        class="bold"
+                        >er</span
+                      ><br />nic<span class="bold">er</span><br />bi<span
+                        class="bold"
+                        >gger</span
+                      >
+                    </td>
+                    <td>
+                      <span class="bold">the</span> fast<span class="bold"
+                        >est</span
+                      ><br /><span class="bold">the</span> short<span
+                        class="bold"
+                        >est</span
+                      ><br /><span class="bold">the</span> nic<span class="bold"
+                        >est</span
+                      ><br /><span class="bold">the</span> bi<span class="bold"
+                        >ggest</span
+                      >
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">На -y (2 склади)</span></td>
+                    <td>easy<br />noisy</td>
+                    <td>
+                      eas<span class="bold">ier</span><br />nois<span
+                        class="bold"
+                        >ier</span
+                      >
+                    </td>
+                    <td>
+                      <span class="bold">the</span> eas<span class="bold"
+                        >iest</span
+                      ><br /><span class="bold">the</span> nois<span
+                        class="bold"
+                        >iest</span
+                      >
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span class="bold"
+                        >3+ склади та більшість 2-складових (крім -y)</span
+                      >
+                    </td>
+                    <td>effective<br />useful<br />difficult</td>
+                    <td>
+                      <span class="bold">more</span> effective<br /><span
+                        class="bold"
+                        >more / less</span
+                      >
+                      useful<br /><span class="bold">more</span> difficult
+                    </td>
+                    <td>
+                      <span class="bold">the most</span> effective<br /><span
+                        class="bold"
+                        >the most / least</span
+                      >
+                      useful<br /><span class="bold">the most</span> difficult
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">Irregular (Винятки)</span></td>
+                    <td>good<br />bad<br />little<br />many / much</td>
+                    <td>
+                      <span class="bold">better</span><br /><span class="bold"
+                        >worse</span
+                      ><br /><span class="bold">less</span><br /><span
+                        class="bold"
+                        >more</span
+                      >
+                    </td>
+                    <td>
+                      <span class="bold">the best</span><br /><span class="bold"
+                        >the worst</span
+                      ><br /><span class="bold">the least</span><br /><span
+                        class="bold"
+                        >the most</span
+                      >
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p>
+              <span class="bold"
+                >Правила правопису та корисні конструкції:</span
+              >
+            </p>
+            <ul style="list-style-type: square">
+              <li>
+                Якщо коротке слово закінчується на <span class="bold">-e</span>,
+                додаємо лише <span class="bold">-r / -st</span>:
+                <span class="italic">nice → nicer → the nicest</span>.
+              </li>
+              <li>
+                Якщо коротке слово закінчується на
+                <span class="bold"
+                  >приголосну + короткий голосний + приголосну</span
+                >, остання приголосна подвоюється:
+                <span class="italic"
+                  >big → bi<span class="bold">gg</span>er → the bi<span
+                    class="bold"
+                    >gg</span
+                  >est</span
+                >,
+                <span class="italic"
+                  >hot → ho<span class="bold">tt</span>er</span
+                >.
+              </li>
+              <li>
+                Щоб показати <span class="bold">наскільки</span> щось
+                відрізняється, перед вищим ступенем ставимо
+                <span class="bold">much</span> (набагато) або
+                <span class="bold">a bit</span> (трохи):
+                <span class="italic"
+                  >Spaced repetition is
+                  <span class="bold">much more effective than</span>
+                  cramming.</span
+                >
+              </li>
+              <li>
+                Конструкція <span class="bold">as + adjective + as</span> (<span
+                  class="italic"
+                  >такий самий … як</span
+                >) / <span class="bold">not as + adjective + as</span> (<span
+                  class="italic"
+                  >не такий … як</span
+                >) використовує
+                <span class="bold">базову форму</span> прикметника:<br />
+                <span class="italic"
+                  >Reading silently is
+                  <span class="bold">not as effective as</span> testing
+                  yourself.</span
+                >
+              </li>
+            </ul>
+
+            <!-- Exercise 1 -->
+            <details class="task">
+              <summary><h4>Exercise 1</h4></summary>
+              <div>
+                <p class="bold">
+                  A. Fill in the blanks with the comparative or superlative form
+                  of the adjective in brackets.
+                </p>
+
+                <ol style="line-height: 2.2">
+                  <li>
+                    Reading notes silently is (<span class="bold">easy</span>)
+                    <input
+                      type="text"
+                      id="l19-ex1a-1"
+                      class="test-input"
+                      style="width: 120px"
+                    />
+                    of all study methods, but it is not (<span class="bold"
+                      >effective</span
+                    >)
+                    <input
+                      type="text"
+                      id="l19-ex1a-2"
+                      class="test-input"
+                      style="width: 160px"
+                    />.
+                  </li>
+                  <li>
+                    Studying in the morning is much (<span class="bold"
+                      >good</span
+                    >)
+                    <input
+                      type="text"
+                      id="l19-ex1a-3"
+                      class="test-input"
+                      style="width: 110px"
+                    />
+                    for your focus than studying at midnight.
+                  </li>
+                  <li>
+                    Cramming the night before a test is (<span class="bold"
+                      >bad</span
+                    >)
+                    <input
+                      type="text"
+                      id="l19-ex1a-4"
+                      class="test-input"
+                      style="width: 120px"
+                    />
+                    study <span class="gloss" data-tr="звичка">habit</span> of
+                    all.
+                  </li>
+                  <li>
+                    Which subject is (<span class="bold">difficult</span>)
+                    <input
+                      type="text"
+                      id="l19-ex1a-5"
+                      class="test-input"
+                      style="width: 160px"
+                    />
+                    of all your school subjects, and which one is (<span
+                      class="bold"
+                      >interesting</span
+                    >)
+                    <input
+                      type="text"
+                      id="l19-ex1a-6"
+                      class="test-input"
+                      style="width: 170px"
+                    />?
+                  </li>
+                  <li>
+                    Short breaks make your study sessions (<span class="bold"
+                      ><span class="gloss" data-tr="продуктивний"
+                        >productive</span
+                      ></span
+                    >)
+                    <input
+                      type="text"
+                      id="l19-ex1a-7"
+                      class="test-input"
+                      style="width: 160px"
+                    />
+                    and (<span class="bold"
+                      ><span class="gloss" data-tr="втомливий"
+                        >tiring</span
+                      ></span
+                    >
+                    — <span class="italic">use "less"</span>)
+                    <input
+                      type="text"
+                      id="l19-ex1a-8"
+                      class="test-input"
+                      style="width: 130px"
+                    />.
+                  </li>
+                </ol>
+
+                <p class="bold" style="margin-top: 25px">
+                  B. Combine the two sentences into one using a comparative
+                  adjective + <em>than</em> (or <em>not as … as</em> where
+                  indicated).
+                </p>
+                <ol style="line-height: 2.2">
+                  <li>
+                    A 15-minute review is short. A 2-hour study session is very
+                    long.
+                    <span class="italic"
+                      >→ A 15-minute review is much shorter than a 2-hour study
+                      session.</span
+                    >
+                  </li>
+                  <li>
+                    Explaining a topic aloud is active. Reading a textbook is
+                    passive.
+                  </li>
+                  <li>
+                    Studying with flashcards is good. Studying without a break
+                    at night is bad.
+                  </li>
+                  <li>
+                    The first question on the test was easy. The fifth question
+                    was quite hard.
+                  </li>
+                  <li>
+                    My memory in the morning is clear. My memory at 11 PM is
+                    <span class="gloss" data-tr="жахливий">terrible</span>.
+                  </li>
+                  <li>
+                    Cramming is not very useful. Spaced repetition is very
+                    useful. (<span class="italic">use "not as … as"</span>)
+                  </li>
+                </ol>
+
+                <textarea
+                  id="l19-ex1b"
+                  class="test-textarea"
+                  placeholder="2. ..."
+                ></textarea>
+              </div>
+            </details>
+
+            <hr />
+
+            <!-- ===================== BLOCK 2 ===================== -->
+            <h3 id="g-block-2">Comparatives &amp; Superlatives of Adverbs</h3>
+
+            <p>
+              Коли ми порівнюємо <span class="bold">дії</span> (хто як працює,
+              читає чи запам'ятовує), ми використовуємо ступені порівняння
+              <span class="bold">прислівників (adverbs)</span>:
+            </p>
+
+            <div class="tablecontainer">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Група прислівників</th>
+                    <th>Adverb</th>
+                    <th>Comparative (більш…)</th>
+                    <th>Superlative (найбільш…)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="bold">Прислівники на -ly</span></td>
+                    <td>carefully<br />easily<br />clearly<br />effectively</td>
+                    <td>
+                      <span class="bold">more</span> carefully<br /><span
+                        class="bold"
+                        >more</span
+                      >
+                      easily<br /><span class="bold">more</span>
+                      clearly<br /><span class="bold">more</span> effectively
+                    </td>
+                    <td>
+                      <span class="bold">(the) most</span> carefully<br /><span
+                        class="bold"
+                        >(the) most</span
+                      >
+                      easily<br /><span class="bold">(the) most</span>
+                      clearly<br /><span class="bold">(the) most</span>
+                      effectively
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span class="bold"
+                        >Збігаються за формою з прикметником</span
+                      >
+                    </td>
+                    <td>fast<br />hard<br />early<br />late<br />long</td>
+                    <td>
+                      fast<span class="bold">er</span><br />hard<span
+                        class="bold"
+                        >er</span
+                      ><br />earl<span class="bold">ier</span><br />lat<span
+                        class="bold"
+                        >er</span
+                      ><br />long<span class="bold">er</span>
+                    </td>
+                    <td>
+                      <span class="bold">(the) fastest</span><br /><span
+                        class="bold"
+                        >(the) hardest</span
+                      ><br /><span class="bold">(the) earliest</span><br /><span
+                        class="bold"
+                        >(the) latest</span
+                      ><br /><span class="bold">(the) longest</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">Irregular (Винятки)</span></td>
+                    <td>well<br />badly</td>
+                    <td>
+                      <span class="bold">better</span><br /><span class="bold"
+                        >worse</span
+                      >
+                    </td>
+                    <td>
+                      <span class="bold">(the) best</span><br /><span
+                        class="bold"
+                        >(the) worst</span
+                      >
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <ul style="list-style-type: square">
+              <li>
+                Слово <span class="bold">early</span> має однакову форму для
+                прикметника і прислівника (<span class="italic"
+                  >an early bus / wake up early</span
+                >). Оскільки воно закінчується на <span class="bold">-y</span>,
+                воно змінюється за тим самим правилом, що й
+                <span class="italic">easy</span>:
+                <span class="italic"
+                  >early → <span class="bold">earlier</span> →
+                  <span class="bold">the earliest</span></span
+                >.
+              </li>
+              <li>
+                Не плутай <span class="bold">hard</span> (наполегливо →
+                <span class="bold">harder</span>:
+                <span class="italic">She worked harder</span>) та
+                <span class="bold">hardly</span> (ледве, майже не:
+                <span class="italic">I hardly remember it</span>).
+              </li>
+            </ul>
+
+            <!-- Exercise 2 -->
+            <details class="task">
+              <summary><h4>Exercise 2</h4></summary>
+              <div>
+                <p class="bold">
+                  Rewrite each sentence using a verb + comparative/superlative
+                  adverb, keeping the same meaning.
+                </p>
+
+                <ol style="line-height: 2.2">
+                  <li>
+                    Flashcards are a faster way to learn new words.
+                    <span class="italic"
+                      >→ You learn new words faster with flashcards.</span
+                    >
+                  </li>
+                  <li>
+                    Active practice is a better method than silent reading.
+                    <span class="italic">→ Active practice works...</span>
+                  </li>
+                  <li>
+                    After a short break, she is a more careful writer.
+                    <span class="italic"
+                      >→ After a short break, she writes...</span
+                    >
+                  </li>
+                  <li>
+                    His second explanation of the rule was clearer than the
+                    first one.
+                    <span class="italic"
+                      >→ The second time, he explained the rule...</span
+                    >
+                  </li>
+                  <li>
+                    Morning is my most productive time for working.
+                    <span class="italic">→ I work...</span>
+                  </li>
+                  <li>
+                    Studying late at night is a worse way to remember facts than
+                    studying in the morning.
+                    <span class="italic"
+                      >→ Late at night, you remember facts...</span
+                    >
+                  </li>
+                </ol>
+
+                <textarea
+                  id="l19-ex2"
+                  class="test-textarea"
+                  placeholder="2. ..."
+                ></textarea>
+              </div>
+            </details>
+
+            <hr />
+
+            <!-- ===================== BLOCK 3 ===================== -->
+            <h3 id="g-block-3">Ordinal Numbers, Time &amp; Superlatives</h3>
+
+            <h4>
+              1. Ordinal Numbers (Порядкові числівники: котрий за рахунком?)
+            </h4>
+            <ul style="list-style-type: square">
+              <li>
+                <span class="bold">1st – the first</span>,
+                <span class="bold">2nd – the second</span>,
+                <span class="bold">3rd – the third</span>
+              </li>
+              <li>
+                Далі додаємо <span class="bold">-th</span>, але уважно з вимовою
+                та правописом у
+                <span class="bold">5th, 8th, 9th, 12th, 20th</span>:
+              </li>
+            </ul>
+
+            <div class="tablecontainer">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Number</th>
+                    <th>Ordinal</th>
+                    <th>Transcription &amp; Spelling Tip</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>4th</td>
+                    <td>the four<span class="bold">th</span></td>
+                    <td><span class="accent-string">/fɔːθ/</span></td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">5th</span></td>
+                    <td><span class="bold">the fifth</span></td>
+                    <td>
+                      <span class="accent-string">/fɪfθ/</span> (не
+                      <span class="italic">fiveth</span>!)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">8th</span></td>
+                    <td><span class="bold">the eighth</span></td>
+                    <td>
+                      <span class="accent-string">/eɪtθ/</span> (одна літера
+                      <span class="italic">t</span>)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">9th</span></td>
+                    <td><span class="bold">the ninth</span></td>
+                    <td>
+                      <span class="accent-string">/naɪnθ/</span> (без літери
+                      <span class="italic">e</span>)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">12th</span></td>
+                    <td><span class="bold">the twelfth</span></td>
+                    <td>
+                      <span class="accent-string">/twelfθ/</span> (<span
+                        class="italic"
+                        >ve → f</span
+                      >)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">20th</span></td>
+                    <td><span class="bold">the twentieth</span></td>
+                    <td>
+                      <span class="accent-string">/ˈtwentiəθ/</span> (<span
+                        class="italic"
+                        >y → ie</span
+                      >)
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p>
+              <span class="bold"
+                >Як поєднати порядковий числівник і Superlative:</span
+              ><br />
+              Порядковий числівник ставиться
+              <span class="bold"
+                >між артиклем <em>the</em> та найвищим ступенем</span
+              >:
+            </p>
+            <ul style="list-style-type: square">
+              <li>
+                <span class="italic"
+                  >This is <span class="bold">the second hardest</span> topic in
+                  the book.</span
+                >
+              </li>
+              <li>
+                <span class="italic"
+                  >Mia is <span class="bold">the third fastest</span> runner in
+                  the class.</span
+                >
+              </li>
+            </ul>
+
+            <h4>2. Clock Time Review: The Math Rule (+ / –)</h4>
+            <ul style="list-style-type: square">
+              <li>
+                <span class="bold">01–30 хвилин = PAST</span> (додаємо хвилини
+                до години, яка <span class="bold">вже почалася</span>):<br />
+                <span class="accent-string">16:15</span> =
+                <span class="bold">a quarter past four</span> (4 + 15 min)<br />
+                <span class="accent-string">17:30</span> =
+                <span class="bold">half past five</span> (5 + 30 min)
+              </li>
+              <li>
+                <span class="bold">31–59 хвилин = TO</span> (рахуємо, скільки
+                хвилин залишилося
+                <span class="bold">до наступної</span> години):<br />
+                <span class="accent-string">21:45</span> =
+                <span class="bold">a quarter to ten</span> (10 – 15 min)<br />
+                <span class="accent-string">08:50</span> =
+                <span class="bold">ten to nine</span> (9 – 10 min)
+              </li>
+            </ul>
+
+            <!-- Exercise 3 -->
+            <details class="task">
+              <summary><h4>Exercise 3</h4></summary>
+              <div>
+                <p class="bold">
+                  A. Read the times aloud using <em>past / to</em> and compare
+                  them using <em>earlier than</em> or <em>later than</em>.
+                </p>
+                <ol style="line-height: 2.2">
+                  <li>
+                    Lesson A starts at <span class="accent-string">08:15</span>.
+                    Lesson B starts at <span class="accent-string">08:45</span>.
+                    <br />
+                    <span class="italic"
+                      >→ Lesson A starts at a quarter past eight. Lesson B
+                      starts at a quarter to nine. Lesson A starts half an hour
+                      earlier than Lesson B.</span
+                    >
+                  </li>
+                  <li>
+                    The 1st break is at
+                    <span class="accent-string">10:30</span>. The 2nd break is
+                    at <span class="accent-string">12:15</span>.
+                  </li>
+                  <li>
+                    Alex started studying at
+                    <span class="accent-string">21:45</span>. Mia started
+                    studying at <span class="accent-string">17:30</span>.
+                  </li>
+                  <li>
+                    The 3rd bus leaves at
+                    <span class="accent-string">14:45</span>. The 5th bus leaves
+                    at <span class="accent-string">15:15</span>.
+                  </li>
+                </ol>
+                <textarea
+                  id="l19-ex3a"
+                  class="test-textarea"
+                  placeholder="2. ..."
+                ></textarea>
+
+                <p class="bold" style="margin-top: 25px">
+                  B. Look at the results of 4 students on a 20-question quiz and
+                  complete the sentences using
+                  <em>the [ordinal] + superlative</em>.
+                </p>
+
+                <div class="tablecontainer">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Student</th>
+                        <th>Time spent</th>
+                        <th>Score</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><span class="bold">1. Nina</span></td>
+                        <td>12 minutes</td>
+                        <td>20 / 20</td>
+                      </tr>
+                      <tr>
+                        <td><span class="bold">2. Max</span></td>
+                        <td>15 minutes</td>
+                        <td>18 / 20</td>
+                      </tr>
+                      <tr>
+                        <td><span class="bold">3. Sam</span></td>
+                        <td>18 minutes</td>
+                        <td>19 / 20</td>
+                      </tr>
+                      <tr>
+                        <td><span class="bold">4. Leo</span></td>
+                        <td>25 minutes</td>
+                        <td>14 / 20</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <ol style="line-height: 2.2">
+                  <li>
+                    Nina finished in 12 minutes, and Max finished in 15 minutes.
+                    Max was (<span class="bold">2nd / fast</span>)
+                    <input
+                      type="text"
+                      id="l19-ex3b-1"
+                      class="test-input"
+                      style="width: 170px"
+                    />
+                    student.
+                  </li>
+                  <li>
+                    Nina got 20 points, and Sam got 19 points. Sam got (<span
+                      class="bold"
+                      >2nd / high</span
+                    >)
+                    <input
+                      type="text"
+                      id="l19-ex3b-2"
+                      class="test-input"
+                      style="width: 170px"
+                    />
+                    score.
+                  </li>
+                  <li>
+                    Max got 18 points. That was (<span class="bold"
+                      >3rd / good</span
+                    >)
+                    <input
+                      type="text"
+                      id="l19-ex3b-3"
+                      class="test-input"
+                      style="width: 170px"
+                    />
+                    result in the group.
+                  </li>
+                  <li>
+                    Leo spent 25 minutes on the quiz, and Sam spent 18 minutes.
+                    Sam's time was (<span class="bold">2nd / long</span>)
+                    <input
+                      type="text"
+                      id="l19-ex3b-4"
+                      class="test-input"
+                      style="width: 170px"
+                    />.
+                  </li>
+                </ol>
+
+                <p class="bold" style="margin-top: 25px">
+                  C. Find and correct 5 mistakes in the text.
+                </p>
+                <div class="callout2">
+                  <p style="margin: 0">
+                    This month I decided to change my study habits. Before my
+                    first school test, I started studying at a quarter past
+                    eleven at night. I was very sleepy, so I read the textbook
+                    very slow and remembered almost nothing. For my second
+                    <span class="gloss" data-tr="спроба">attempt</span>, I
+                    started much more early—at half past five in the afternoon.
+                    Instead of reading silently, I tested myself with
+                    flashcards. It was the more effective method of all! On the
+                    five day, I still remembered 90% of the material, and I
+                    passed the test much good than the first one.
+                  </p>
+                </div>
+                <textarea
+                  id="l19-ex3c"
+                  class="test-textarea"
+                  placeholder="..."
+                ></textarea>
+
+                <p class="bold" style="margin-top: 25px">
+                  D. Translate into English.
+                </p>
+                <ol>
+                  <li>
+                    Інтервальне повторення набагато ефективніше за зубріння.
+                  </li>
+                  <li>
+                    Читати нотатки мовчки не так корисно, як пояснювати тему
+                    вголос.
+                  </li>
+                  <li>Це друге найскладніше питання в тесті.</li>
+                  <li>
+                    Перше повторення відбувається через п'ятнадцять хвилин після
+                    уроку.
+                  </li>
+                </ol>
+                <textarea
+                  id="l19-ex3d"
+                  class="test-textarea"
+                  placeholder="1. ..."
+                ></textarea>
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- 🍋 PART 3: SPEAKING -->
+      <section id="part-3" class="lesson-wrapper tab-content">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img
+                src="../media/icons/lemon.svg"
+                class="star"
+                alt="a lemon slice"
+              />
+              <span>Speaking</span>
+            </h2>
+          </div>
+
+          <div class="lesson-content">
+            <h3 id="s-stage-1">
+              1. Retell &amp; Compare: Laura's School Quizzes
+            </h3>
+
+            <p>
+              <span class="bold">Ситуація:</span> Лора — учениця в школі.
+              Минулого тижня вона готувалася до трьох ранкових тестів із
+              біології (у понеділок, середу та п'ятницю), у кожному з яких було
+              по 30 нових слів. Щоразу вона пробувала інший підхід.
+            </p>
+            <p>
+              Подивись на її нотатки в таблиці та
+              <span class="bold">перекажи історію її експерименту</span>,
+              порівнюючи <span class="bold">першу, другу та третю</span> спроби!
+            </p>
+
+            <div class="tablecontainer">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Details</th>
+                    <th>1st Quiz (Monday morning)</th>
+                    <th>2nd Quiz (Wednesday morning)</th>
+                    <th>3rd Quiz (Friday morning)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="bold">When she started</span></td>
+                    <td>
+                      <span class="accent-string">21:45</span> on Sunday
+                      <br /><span class="small"
+                        >(the night before the quiz)</span
+                      >
+                    </td>
+                    <td>
+                      <span class="accent-string">18:30</span> on Tuesday
+                      <br /><span class="small"
+                        >(the evening before the quiz)</span
+                      >
+                    </td>
+                    <td>
+                      <span class="accent-string">16:15</span> on Wednesday (2
+                      days before!) + a review at
+                      <span class="accent-string">19:30</span> on Thursday
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">Study method</span></td>
+                    <td>
+                      Read the textbook pages silently 4 times in a row, without
+                      a break
+                    </td>
+                    <td>Copied long definitions into her notebook by hand</td>
+                    <td>
+                      Made flashcards and explained the hardest words aloud
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">Total time spent</span></td>
+                    <td>60 minutes</td>
+                    <td>45 minutes</td>
+                    <td>30 minutes (20 min + 10 min)</td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">How she felt</span></td>
+                    <td>
+                      <span class="gloss" data-tr="виснажена">Exhausted</span>
+                      and bored; lost focus after 15 minutes
+                    </td>
+                    <td>A bit tired; her hand hurt, but she kept focus</td>
+                    <td>Energetic and confident</td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">Quiz result</span></td>
+                    <td><span class="bold">12 / 30</span></td>
+                    <td><span class="bold">21 / 30</span></td>
+                    <td><span class="bold">29 / 30</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="callout2" style="margin: 20px 0">
+              <p style="margin-top: 0">
+                <span class="bold">Useful Sentence Frames &amp; Model:</span>
+              </p>
+              <ul style="list-style-type: square; margin-bottom: 10px">
+                <li>
+                  <span class="italic"
+                    >For the
+                    <span class="bold">first / second / third</span> quiz, Laura
+                    started studying at
+                    <span class="bold">[time in words]</span>…</span
+                  >
+                </li>
+                <li>
+                  <span class="italic"
+                    >She started
+                    <span class="bold">earlier / later in the day than</span
+                    >…</span
+                  >
+                </li>
+                <li>
+                  <span class="italic"
+                    >Her <span class="bold">[ordinal]</span> study session was
+                    <span class="bold">longer / shorter than</span> … (or
+                    <span class="bold">the longest / the shortest</span>).</span
+                  >
+                </li>
+                <li>
+                  <span class="italic"
+                    >Copying by hand worked
+                    <span class="bold">better than</span> …, but flashcards
+                    worked <span class="bold">the best</span>.</span
+                  >
+                </li>
+              </ul>
+              <p style="margin: 0">
+                <span class="bold">Example:</span>
+                <span class="italic"
+                  >For the first quiz, Laura started at a quarter to ten on
+                  Sunday night—closest to the quiz! Her first study session was
+                  the longest (60 minutes), but silent reading was the least
+                  effective method, so she got the worst result (12 out of
+                  30).</span
+                >
+              </p>
+            </div>
+
+            <p><span class="bold">What to compare in your story:</span></p>
+            <ol>
+              <li>
+                <span class="bold">Timing &amp; Spacing:</span> What time of day
+                did she start each session (say the times in words)? Which
+                session was <span class="bold">closest</span> to the quiz, and
+                when did she start <span class="bold">two days earlier</span>?
+              </li>
+              <li>
+                <span class="bold">Duration &amp; Method:</span> Compare how
+                long she studied (<span class="italic"
+                  >longer, shorter, the longest, the shortest</span
+                >) and how well each method worked (<span class="italic"
+                  >better, worse, more effectively, the best</span
+                >).
+              </li>
+              <li>
+                <span class="bold">Focus &amp; Results:</span> How did she feel,
+                and how did her score change from the 1st to the 3rd quiz?
+              </li>
+            </ol>
+
+            <textarea
+              id="l19-s1-notes"
+              class="test-textarea"
+              placeholder="Notes..."
+            ></textarea>
+
+            <hr />
+
+            <h3 id="s-stage-2">
+              2. Rank the Study Methods &amp; Fix the Mistakes
+            </h3>
+
+            <p>
+              <span class="bold">A. Rank from 1st to 5th.</span> Використай
+              результати Лори з таблиці вище (<span class="bold"
+                >12/30, 21/30, 29/30</span
+              >) та інформацію з тексту, щоб розставити методи
+              <span class="bold">A–D</span> від
+              <span class="bold">1st (the most effective)</span> до
+              <span class="bold">5th (the least effective)</span>. А куди б ти
+              поставила метод <span class="bold">E</span> для себе? Поясни свій
+              рейтинг усно!
+            </p>
+
+            <div class="tablecontainer">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Study Method</th>
+                    <th>Evidence from Laura's Quizzes</th>
+                    <th style="min-width: 150px">Rank (1st–5th)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <span class="bold">A.</span> Reading the textbook silently
+                      4 times in a row
+                    </td>
+                    <td>60 min → <span class="bold">12 / 30</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l19-rank-a"
+                        class="test-input"
+                        style="width: 100%; margin: 0"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span class="bold">B.</span> Copying long definitions into
+                      a notebook by hand
+                    </td>
+                    <td>45 min → <span class="bold">21 / 30</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l19-rank-b"
+                        class="test-input"
+                        style="width: 100%; margin: 0"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span class="bold">C.</span> Testing yourself with
+                      flashcards (spaced over 2 days)
+                    </td>
+                    <td>30 min (with D) → <span class="bold">29 / 30</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l19-rank-c"
+                        class="test-input"
+                        style="width: 100%; margin: 0"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span class="bold">D.</span> Explaining the hardest words
+                      aloud
+                    </td>
+                    <td>30 min (with C) → <span class="bold">29 / 30</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l19-rank-d"
+                        class="test-input"
+                        style="width: 100%; margin: 0"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span class="bold">E.</span> Drawing a diagram, table, or
+                      mind map
+                    </td>
+                    <td><span class="italic">Your own experience!</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l19-rank-e"
+                        class="test-input"
+                        style="width: 100%; margin: 0"
+                      />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p style="margin-top: 25px">
+              <span class="bold">B. Wrong comparisons! Fix them aloud.</span>
+              Прочитай хибне твердження та виправ його, використовуючи
+              слово-підказку з другого стовпця.
+            </p>
+
+            <div class="tablecontainer">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Wrong statement</th>
+                    <th style="min-width: 170px">Use this in your answer</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      1. Reading silently is more effective than testing
+                      yourself with flashcards.
+                    </td>
+                    <td><span class="bold">much less / not as … as</span></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      2. Laura's third study session was the longest of all
+                      three.
+                    </td>
+                    <td><span class="bold">the shortest</span></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      3. For the second quiz, Laura got a worse score than for
+                      the first quiz.
+                    </td>
+                    <td><span class="bold">better (21 vs. 12)</span></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      4. Cramming late at night helps you remember information
+                      longer than spaced repetition.
+                    </td>
+                    <td><span class="bold">hardly / faster</span></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      5. On Sunday night, Laura started studying at a quarter
+                      past ten.
+                    </td>
+                    <td><span class="bold">a quarter to ten (21:45)</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <textarea
+              id="l19-s2-notes"
+              class="test-textarea"
+              placeholder="Notes..."
+            ></textarea>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>🌷 🍓 🌿 Made by Olena Hapchyna 🌿 🍓 🌷</p>
+
+      <div class="footer-credits">
+        <span
+          >Fruit icons by
+          <a
+            href="https://www.svgrepo.com/collection/fruits-vectors/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >An Nguyen</a
+          ></span
+        >
+        |
+        <a href="../credits.html" target="_blank">Credits &amp; Licenses</a>
+      </div>
+    </footer>
+
+    <button
+      id="scrollToTopBtn"
+      class="scroll-to-top"
+      aria-label="Scroll to top"
+    >
+      <img src="../media/icons/apple.svg" />
+    </button>
+
+    <dialog id="clear-confirm-dialog" class="custom-dialog">
+      <div class="dialog-content">
+        <h3>⚠️ Attention!</h3>
+        <p>Do you really want to delete ALL your answers and start over?</p>
+        <div class="dialog-actions">
+          <button type="button" id="dialog-cancel-btn">No</button>
+          <button type="button" id="dialog-confirm-btn">Yes, delete</button>
+        </div>
+      </div>
+    </dialog>
+
+    <script>
+      document.querySelectorAll(".gloss").forEach(function (el) {
+        var pill = document.createElement("span");
+        pill.className = "tr-pill";
+        pill.textContent = el.getAttribute("data-tr");
+        el.insertAdjacentElement("afterend", pill);
+        function toggle() {
+          pill.classList.toggle("show");
+        }
+        el.addEventListener("click", toggle);
+        el.addEventListener("keydown", function (e) {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            toggle();
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
