@@ -277,14 +277,12 @@ window.mainloop()</textarea
           </div>
 
           <div class="lesson-content">
-            <h3 id="p2-1">Що таке Text</h3>
+            <h3 id="p2-0">Вступ</h3>
 
             <p>
-              <span class="accent-string">Entry</span> вміщує лише один рядок.
-              Якщо потрібно ввести більший текст (нотатку або повідомлення на
-              кілька рядків), використовують віджет
-              <span class="accent-string">Text</span>.
+              Сьогодні ми розглянемо, як створити багаторядкове текстове поле:
             </p>
+            <img src="./images/lesson19/19-4.png" alt="code result" />
 
             <p>Починаємо як завжди зі створення головного вікна програми:</p>
             <pre><code class="language-python">from tkinter import *
@@ -298,10 +296,17 @@ window.config(bg="lavender")
 window.eval("tk::PlaceWindow . center")
 window.mainloop()</code></pre>
 
+            <hr />
+
+            <h3 id="p2-1">Що таке Text</h3>
+
             <p>
-              Тепер створимо новий віджет
+              <span class="accent-string">Entry</span> вміщує лише один рядок.
+              Якщо потрібно ввести більший текст (нотатку або повідомлення на
+              кілька рядків), використовують віджет
               <span class="accent-string">Text</span>:
             </p>
+
             <pre><code class="language-python">text = Text(
     window,
     font=("Comic Sans MS", 14),
