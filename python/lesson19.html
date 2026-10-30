@@ -582,26 +582,24 @@ print(filename)  # note_2026-10-30_14-35-07.txt</code></pre>
               </div>
             </details>
 
-            <p>
-              Як зберегти текст(зі змінної
-              <span class="accent-string">content</span>) у файл:
-            </p>
+            <p>Як зберегти текст у файл:</p>
 
             <pre><code class="language-python">with open(filename, "w", encoding="utf-8") as f:
     f.write(content)</code></pre>
-
-            <p>Як зупинити функцію, якщо немає що зберігати:</p>
-
-            <pre><code class="language-python">def save():
-    ...
-    if not content:
-        return
-    ...</code></pre>
 
             <p>
               Новий файл з'явиться в тій самій папці, звідки запущено програму
               (зазвичай поруч з <span class="accent-string">notes.py</span>).
             </p>
+
+            <p>Як зупинити функцію, якщо немає що зберігати:</p>
+
+            <pre><code class="language-python">def save():
+    # ...
+    if not content:
+        return
+    
+    # далі пишемо код без else</code></pre>
           </div>
         </div>
       </section>
