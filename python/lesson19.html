@@ -511,6 +511,97 @@ print(len(words))</code></pre>
                 </p>
               </div>
             </details>
+
+            <hr />
+
+            <h3 id="p2-5">Збереження нотатки у файл</h3>
+
+            <p>
+              Нотатки, які зникають після закриття програми, не дуже корисні.
+              Щоб їх зберігати, потрібно дві речі:
+              <span class="bold">унікальне ім'я файлу</span> (щоб нова нотатка
+              не стирала стару) і <span class="bold">запис тексту у файл</span>.
+              Унікальне імʼя файлу часто генерують з використанням дати й часу
+              створення файлу.
+            </p>
+
+            <p>
+              Модуль <span class="accent-string">datetime</span> вміє працювати
+              з датою і часом. Метод
+              <span class="accent-string">.now()</span> повертає поточний
+              момент, а <span class="accent-string">.strftime()</span>
+              перетворює його на рядок за шаблоном:
+            </p>
+
+            <pre><code class="language-python">from datetime import datetime
+
+now = datetime.now()
+filename = now.strftime("note_%Y-%m-%d_%H-%M-%S.txt")
+print(filename)  # note_2026-10-30_14-35-07.txt</code></pre>
+
+            <p>
+              Коди з <span class="accent-string">%</span> замінюються на частини
+              дати: <span class="accent-string">%Y</span> – рік,
+              <span class="accent-string">%m</span> – місяць,
+              <span class="accent-string">%d</span> – день,
+              <span class="accent-string">%H</span> – години,
+              <span class="accent-string">%M</span> – хвилини,
+              <span class="accent-string">%S</span> – секунди. Решта символів
+              (<span class="accent-string">note_</span>,
+              <span class="accent-string">-</span>,
+              <span class="accent-string">.txt</span>) копіюються як є.
+              Двокрапки в імені файлу використовувати не можна, тому в часі
+              стоять дефіси. А оскільки секунди щоразу інші, кожен файл отримає
+              унікальне ім'я.
+            </p>
+
+            <!-- Завдання 5 -->
+            <details class="task" name="text">
+              <summary><h4>Завдання 5</h4></summary>
+              <div>
+                <p>
+                  Додай до програми п'яту кнопку –
+                  <span class="italic">Save</span> – яка зберігає текст з поля у
+                  новий файл з унікальною назвою.
+                </p>
+                <p>
+                  Якщо тексту немає, на екрані має зʼявитися відповідне
+                  повідомлення (<span class="italic">"Nothing to save"</span>),
+                  і новий файл не повинен створюватися.
+                </p>
+                <p>
+                  Якщо все спрацювало, то має вивестися повідомлення про успіх:
+                  <span class="italic">"Saved: [назва файлу]"</span> .
+                </p>
+
+                <p>
+                  Перевірка: натисни <span class="italic">Save</span> двічі з
+                  різницею в кілька секунд. У папці мають з'явитися два різні
+                  файли з правильним текстом.
+                </p>
+              </div>
+            </details>
+
+            <p>
+              Як зберегти текст(зі змінної
+              <span class="accent-string">content</span>) у файл:
+            </p>
+
+            <pre><code class="language-python">with open(filename, "w", encoding="utf-8") as f:
+    f.write(content)</code></pre>
+
+            <p>Як зупинити функцію, якщо немає що зберігати:</p>
+
+            <pre><code class="language-python">def save():
+    ...
+    if not content:
+        return
+    ...</code></pre>
+
+            <p>
+              Новий файл з'явиться в тій самій папці, звідки запущено програму
+              (зазвичай поруч з <span class="accent-string">notes.py</span>).
+            </p>
           </div>
         </div>
       </section>
