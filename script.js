@@ -664,7 +664,14 @@
             
             } else if (key === "width" && !isWindow) {
               el.style.width = (Number(val) * 8) + "px";
-            } else if (key === "padx") {
+            } else if (key === "height" && !isWindow) {
+              if (el.tagName === "TEXTAREA") el.rows = Number(val);
+            } else if (key === "wrap") {
+              el.style.whiteSpace = "pre-wrap";
+              el.style.wordBreak = val === "word" ? "normal" : "break-all";
+              el.style.overflowWrap = val === "word" ? "break-word" : "normal";
+            }
+            else if (key === "padx") {
               el.style.paddingLeft = val + "px";
               el.style.paddingRight = val + "px";
             } else if (key === "pady") {
@@ -750,6 +757,10 @@
               el = document.createElement("input");
               el.type = "text";
               el.className = "tk-widget-entry";
+            } else if (type === "Text") {
+              el = document.createElement("textarea");
+              el.className = "tk-widget-text";
+              el.rows = 8;
             } else if (type === "Frame") {
               el = document.createElement("div");
               el.className = "tk-widget-frame";
@@ -847,6 +858,7 @@ LEFT = "left"
 RIGHT = "right"
 TOP = "top"
 BOTTOM = "bottom"
+WORD = "word"
 
 class _BaseWidget:
     def __init__(self, master, wtype, **kwargs):
@@ -892,6 +904,22 @@ class Label(_BaseWidget):
 class Button(_BaseWidget):
     def __init__(self, master=None, **kwargs):
         _BaseWidget.__init__(self, master, "Button", **kwargs)
+
+class Text(_BaseWidget):
+    def __init__(self, master=None, **kwargs):
+        _BaseWidget.__init__(self, master, "Text", **kwargs)
+
+    def get(self, index1, index2=None):
+        if index2 is None:
+            raise TypeError("Text.get() missing required argument 'index2'")
+        return _tk_dom.entry_get(self._id)
+
+    def delete(self, first, last=None):
+        _tk_dom.entry_delete(self._id, 0, "end")
+
+    def insert(self, index, string):
+        idx = 0 if str(index) == "1.0" else "end"
+        _tk_dom.entry_insert(self._id, idx, string)
 
 class Entry(_BaseWidget):
     def __init__(self, master=None, **kwargs):

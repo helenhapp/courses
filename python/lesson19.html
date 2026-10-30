@@ -1,0 +1,823 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Навчальні матеріали" />
+
+    <link rel="icon" type="image/svg+xml" href="../media/icons/carambola.svg" />
+
+    <title>Python Lesson 19</title>
+
+    <script>
+      const savedTheme = localStorage.getItem("lms_theme") || "light";
+      document.documentElement.setAttribute("data-theme", savedTheme);
+
+      const hljsThemeLink =
+        savedTheme === "dark"
+          ? "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css"
+          : "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css";
+
+      document.head.insertAdjacentHTML(
+        "beforeend",
+        `<link id="hljs-theme" rel="stylesheet" href="${hljsThemeLink}" />`,
+      );
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Fira+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Tektur:wght@400..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"
+    ></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.css"
+    />
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.js"
+    ></script>
+
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/javascript/javascript.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/xml/xml.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/css/css.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/htmlmixed/htmlmixed.min.js"
+    ></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/theme/dracula.min.css"
+    />
+
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/python/python.min.js"
+    ></script>
+
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt-stdlib.js"
+    ></script>
+
+    <link rel="stylesheet" href="../style.css?v=8.0" />
+    <script src="../script.js?v=8.0" defer></script>
+  </head>
+
+  <body>
+    <!-- transition curtain -->
+    <div class="transition-curtain"></div>
+
+    <!-- top-bar -->
+    <div id="nav-container">
+      <nav class="top-bar">
+        <div class="logo-container">
+          <img
+            src="../media/icons/carambola.svg"
+            alt="Logo"
+            class="site-logo"
+          />
+        </div>
+
+        <div class="top-bar__controls">
+          <label class="toggle-switch" aria-label="Перемикач теми">
+            <input type="checkbox" id="theme-checkbox" />
+            <span class="slider">
+              <span class="icon sun"
+                ><img src="../media/icons/stars.svg"
+              /></span>
+              <span class="icon moon"
+                ><img src="../media/icons/moon.svg"
+              /></span>
+            </span>
+          </label>
+          <button
+            id="dyslexia-mode-btn"
+            class="wide-toggle"
+            title="Шрифт для дислектиків"
+          >
+            Aa
+          </button>
+        </div>
+      </nav>
+    </div>
+
+    <!-- lesson header -->
+    <header>
+      <div class="title-container">
+        <h1 id="lesson-title">Python: 19</h1>
+      </div>
+
+      <p class="topic">Багаторядкове текстове поле Text</p>
+
+      <hr class="pretty-divider" />
+    </header>
+
+    <!-- lesson content -->
+    <main>
+      <!-- tab buttons -->
+      <div class="tabs-nav">
+        <button class="tab-btn active" data-target="part-1">Повторення</button>
+        <button class="tab-btn" data-target="part-2">Text</button>
+        <button class="tab-btn" data-target="part-3">Практика</button>
+        <button class="tab-btn" data-target="part-4">Д/з</button>
+      </div>
+
+      <!-- 🍓 PART 1: Повторення -->
+      <section id="part-1" class="lesson-wrapper tab-content active show">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img
+                src="../media/icons/strawberry.svg"
+                class="star"
+                alt="strawberry"
+                width="60"
+                height="60"
+              />
+              <span>Повторення: Entry, Frame та try / except</span>
+            </h2>
+          </div>
+
+          <div class="lesson-content">
+            <h3 id="p1-1">Бліц-опитування</h3>
+            <ol>
+              <li>
+                Що повертає метод
+                <span class="accent-string">entry.get()</span>: число чи рядок?
+              </li>
+              <li>
+                Чому ми викликаємо <span class="accent-string">.get()</span>
+                <span class="bold">всередині функції</span>, а не одразу після
+                створення поля <span class="accent-string">Entry</span>?
+              </li>
+              <li>
+                Для чого потрібен віджет
+                <span class="accent-string">Frame</span> і що робить параметр
+                <span class="accent-string">side=LEFT</span>?
+              </li>
+              <li>
+                Що не так із рядком
+                <span class="accent-string"
+                  >name_entry = Entry(window).pack()</span
+                >?
+              </li>
+            </ol>
+
+            <hr />
+
+            <h3 id="p1-2">Розминка</h3>
+
+            <!-- ЗАВДАННЯ 1 -->
+            <details class="task" open>
+              <summary><h4>Завдання 1: Подвоювач числа</h4></summary>
+              <div>
+                <p>Створи у VS Code програму, яка складається з:</p>
+                <ol>
+                  <li>
+                    Рамки <span class="accent-string">Frame</span>, у якій в
+                    один рядок (<span class="accent-string">side=LEFT</span>)
+                    розміщені напис
+                    <span class="accent-string">"Number:"</span> та поле для
+                    вводу <span class="accent-string">Entry</span>.
+                  </li>
+                  <li>Кнопки <span class="accent-string">"Double"</span>.</li>
+                  <li>
+                    Напису <span class="accent-string">Label</span> для виводу
+                    результату:
+                    <ul>
+                      <li>
+                        якщо введено ціле число — виводить подвоєне число
+                        <span class="bold">темно-зеленим</span> кольором (<span
+                          class="accent-string"
+                          >fg="darkgreen"</span
+                        >);
+                      </li>
+                      <li>
+                        якщо введено текст або порожній рядок — виводить
+                        повідомлення
+                        <span class="accent-string"
+                          >"Enter a whole number!"</span
+                        >
+                        <span class="bold">червоним</span> кольором (<span
+                          class="accent-string"
+                          >fg="red"</span
+                        >).
+                      </li>
+                    </ul>
+                  </li>
+                </ol>
+              </div>
+            </details>
+
+            <details class="answer">
+              <summary style="color: gray">Підказка (шаблон функції)</summary>
+              <pre><code class="language-python">def double():
+    try:
+        number = int(num_entry.get())
+        result_label.config(text=f"{number * 2}", fg="darkgreen")
+    except ValueError:
+        result_label.config(text="Enter a whole number!", fg="red")</code></pre>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- 🍉 PART 2: Віджет Text -->
+      <section id="part-2" class="lesson-wrapper tab-content">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img
+                src="../media/icons/watermelon.svg"
+                class="star"
+                alt="watermelon"
+                width="60"
+                height="60"
+              />
+              <span>Багаторядкове поле Text</span>
+            </h2>
+          </div>
+
+          <div class="lesson-content">
+            <h3 id="p2-1">Створення поля Text</h3>
+            <p>
+              Віджет <span class="accent-string">Entry</span> підходить лише для
+              одного короткого рядка (ім'я, пароль, число). Якщо ж нам потрібно
+              поле для нотаток, повідомлень або великого тексту з кількома
+              рядками, використовують віджет
+              <span class="accent-string">Text</span>:
+            </p>
+            <pre><code class="language-python">notes = Text(window, width=40, height=8, font=("Arial", 12), wrap=WORD)
+notes.pack(padx=10, pady=10)</code></pre>
+            <p>Основні параметри:</p>
+            <ul style="list-style-type: square; margin-bottom: 15px">
+              <li>
+                <span class="accent-string">width=40</span> – ширина поля у
+                <span class="bold">символах</span> (літерах), а не пікселях.
+              </li>
+              <li>
+                <span class="accent-string">height=8</span> – висота поля у
+                <span class="bold">рядках</span>.
+              </li>
+              <li>
+                <span class="accent-string">wrap=WORD</span> – переносить слова
+                на новий рядок <span class="bold">цілими</span> (без цього
+                параметра довге слово розірветься просто посередині).
+              </li>
+              <li>
+                Параметри <span class="accent-string">font</span>,
+                <span class="accent-string">bg</span> та
+                <span class="accent-string">fg</span> працюють так само, як у
+                <span class="accent-string">Label</span> та
+                <span class="accent-string">Entry</span>.
+              </li>
+            </ul>
+
+            <hr />
+
+            <h3 id="p2-2">Позиції у Text</h3>
+            <p>
+              Оскільки в полі <span class="accent-string">Text</span> багато
+              рядків, позиція кожного символу записується як рядок у форматі
+              <span class="accent-string">"рядок.символ"</span>:
+            </p>
+            <ul style="list-style-type: square; margin-bottom: 15px">
+              <li>
+                Номери <span class="bold">рядків</span> починаються з
+                <span class="accent-string">1</span>.
+              </li>
+              <li>
+                Номери <span class="bold">символів</span> у рядку починаються з
+                <span class="accent-string">0</span>.
+              </li>
+            </ul>
+
+            <div class="tablecontainer">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Позиція</th>
+                    <th>Що означає</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="accent-string">"1.0"</span></td>
+                    <td>
+                      Рядок 1, символ 0 —
+                      <span class="bold">самий початок</span> тексту (завжди в
+                      лапках!)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="accent-string">END</span></td>
+                    <td><span class="bold">Самий кінець</span> тексту</td>
+                  </tr>
+                  <tr>
+                    <td><span class="accent-string">"end-1c"</span></td>
+                    <td>
+                      Кінець тексту мінус останній невидимий перенос рядка
+                      (використовуємо під час <span class="bold">читання</span>)
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <hr />
+
+            <h3 id="p2-3">Читання та очищення: .get() і .delete()</h3>
+            <p>
+              На відміну від <span class="accent-string">Entry</span>, у віджеті
+              <span class="accent-string">Text</span> метод
+              <span class="accent-string">.get()</span> обов'язково приймає
+              <span class="bold">два аргументи</span>: звідки і доки читати
+              текст.
+            </p>
+            <pre><code class="language-python"># Прочитати весь текст із поля
+content = notes.get("1.0", "end-1c")
+
+# Очистити все поле
+notes.delete("1.0", END)</code></pre>
+
+            <hr />
+
+            <h3 id="p2-4">Вставка та «рецепт» зміни тексту</h3>
+            <p>
+              Метод <span class="accent-string">.insert(позиція, текст)</span>
+              додає текст у вказане місце:
+            </p>
+            <pre><code class="language-python">notes.insert(END, "Hello!\n")    # додати в кінець
+notes.insert("1.0", "Title\n")   # додати на самий початок</code></pre>
+
+            <p>
+              Щоб <span class="bold">змінити</span> текст, який вже написаний у
+              полі, ми завжди виконуємо <span class="bold">три кроки</span>
+              (прочитати → видалити старий → вставити новий):
+            </p>
+            <pre><code class="language-python">def to_upper():
+    content = notes.get("1.0", "end-1c")   # 1. Прочитати текст
+    notes.delete("1.0", END)               # 2. Видалити старий текст
+    notes.insert("1.0", content.upper())   # 3. Вставити змінений текст</code></pre>
+
+            <div class="callout2">
+              💡 <span class="bold">Подумай:</span> що станеться, якщо у функції
+              вище пропустити крок 2 (<span class="accent-string"
+                >notes.delete("1.0", END)</span
+              >)?
+            </div>
+
+            <hr />
+
+            <h3 id="p2-5">Порівняння Entry та Text</h3>
+            <div class="tablecontainer">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Дія</th>
+                    <th>Entry</th>
+                    <th>Text</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Кількість рядків</td>
+                    <td>Один</td>
+                    <td>Багато</td>
+                  </tr>
+                  <tr>
+                    <td>Початок поля</td>
+                    <td><span class="accent-string">0</span></td>
+                    <td><span class="accent-string">"1.0"</span></td>
+                  </tr>
+                  <tr>
+                    <td>Прочитати текст</td>
+                    <td><span class="accent-string">entry.get()</span></td>
+                    <td>
+                      <span class="accent-string"
+                        >notes.get("1.0", "end-1c")</span
+                      >
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Очистити поле</td>
+                    <td>
+                      <span class="accent-string">entry.delete(0, END)</span>
+                    </td>
+                    <td>
+                      <span class="accent-string"
+                        >notes.delete("1.0", END)</span
+                      >
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 🍇 PART 3: Практика -->
+      <section id="part-3" class="lesson-wrapper tab-content">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img
+                src="../media/icons/grapes.svg"
+                class="star"
+                alt="grapes"
+                width="60"
+                height="60"
+              />
+              <span>Практика: Text Toolbox 🧰</span>
+            </h2>
+          </div>
+
+          <div class="lesson-content">
+            <h3 id="p3-1">Мініпроєкт: Text Toolbox</h3>
+            <p>
+              Створимо власний текстовий редактор із панеллю інструментів!
+              Рекомендуємо додавати кнопки по одній і одразу перевіряти, як вони
+              працюють.
+            </p>
+
+            <!-- РІВЕНЬ 1 -->
+            <details class="task" open>
+              <summary><h4>Рівень 1: Основні кнопки</h4></summary>
+              <div>
+                <ol>
+                  <li>
+                    Створи вікно та додай у нього багаторядкове поле
+                    <span class="accent-string">Text</span> (із параметром
+                    <span class="accent-string">wrap=WORD</span>).
+                  </li>
+                  <li>
+                    Під полем створи рамку
+                    <span class="accent-string">Frame</span> для кнопок.
+                  </li>
+                  <li>
+                    Додай у рамку три кнопки в один рядок (<span
+                      class="accent-string"
+                      >side=LEFT</span
+                    >):
+                    <ul>
+                      <li>
+                        <span class="accent-string">"UPPER"</span> — переводить
+                        увесь текст у ВЕЛИКІ літери (<span class="accent-string"
+                          >.upper()</span
+                        >);
+                      </li>
+                      <li>
+                        <span class="accent-string">"lower"</span> — переводить
+                        увесь текст у маленькі літери (<span
+                          class="accent-string"
+                          >.lower()</span
+                        >);
+                      </li>
+                      <li>
+                        <span class="accent-string">"Clear"</span> — повністю
+                        очищує поле.
+                      </li>
+                    </ul>
+                  </li>
+                </ol>
+              </div>
+            </details>
+
+            <!-- РІВЕНЬ 2 -->
+            <details class="task">
+              <summary><h4>Рівень 2: Підрахунок слів (Count)</h4></summary>
+              <div>
+                <ol>
+                  <li>
+                    Додай під рамкою з кнопками напис
+                    <span class="accent-string">Label</span> із початковим
+                    текстом <span class="accent-string">"Words: 0"</span>.
+                  </li>
+                  <li>
+                    Додай у рамку ще одну кнопку —
+                    <span class="accent-string">"Count"</span>, яка рахує
+                    кількість слів у полі
+                    <span class="accent-string">Text</span>
+                    і оновлює напис.
+                  </li>
+                </ol>
+                <p>
+                  💡 <span class="bold">Підказка:</span> щоб порахувати слова в
+                  рядку <span class="accent-string">content</span>, розбий його
+                  за пробілами через
+                  <span class="accent-string">.split()</span> і знайди довжину
+                  списку:
+                </p>
+                <pre><code class="language-python">words_count = len(content.split())</code></pre>
+              </div>
+            </details>
+
+            <!-- РІВЕНЬ 3 -->
+            <details class="task">
+              <summary><h4>Рівень 3 (Бонус): Capital</h4></summary>
+              <div>
+                <p>
+                  Додай кнопку <span class="accent-string">"Capital"</span>, яка
+                  робить першу літеру тексту великою, а всі інші — маленькими за
+                  допомогою методу
+                  <span class="accent-string">.capitalize()</span>.
+                </p>
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- 🍎 PART 4: Домашнє завдання -->
+      <section id="part-4" class="lesson-wrapper tab-content">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img
+                src="../media/icons/apple.svg"
+                class="star"
+                alt="apple"
+                width="60"
+                height="60"
+              />
+              <span>Домашнє завдання</span>
+            </h2>
+          </div>
+
+          <div class="lesson-content">
+            <h3>Завдання</h3>
+
+            <h4>1) Дай відповіді на питання:</h4>
+
+            <!-- Питання 1 -->
+            <div class="test-question">
+              <p>
+                1. Поле Text порожнє. Кнопка виконує команду notes.insert(END,
+                "Hi"). Що буде всередині поля, якщо натиснути цю кнопку двічі?
+              </p>
+              <label class="test-label">
+                <input
+                  type="radio"
+                  class="test-radio"
+                  name="l19-q1"
+                  value="Hi"
+                />
+                Hi
+              </label>
+              <label class="test-label">
+                <input
+                  type="radio"
+                  class="test-radio"
+                  name="l19-q1"
+                  value="HiHi"
+                />
+                HiHi
+              </label>
+              <label class="test-label">
+                <input
+                  type="radio"
+                  class="test-radio"
+                  name="l19-q1"
+                  value="Error"
+                />
+                Виникне помилка
+              </label>
+            </div>
+
+            <!-- Питання 2 -->
+            <div class="test-question">
+              <p>
+                2. У полі написано "abc". Функція читає текст у змінну content,
+                очищує поле і вставляє content.upper(). Що буде на екрані після
+                натискання кнопки?
+              </p>
+              <label class="test-label">
+                <input
+                  type="radio"
+                  class="test-radio"
+                  name="l19-q2"
+                  value="abcABC"
+                />
+                abcABC
+              </label>
+              <label class="test-label">
+                <input
+                  type="radio"
+                  class="test-radio"
+                  name="l19-q2"
+                  value="ABC"
+                />
+                ABC
+              </label>
+              <label class="test-label">
+                <input
+                  type="radio"
+                  class="test-radio"
+                  name="l19-q2"
+                  value="abc"
+                />
+                abc
+              </label>
+            </div>
+
+            <!-- Питання 3 -->
+            <div class="test-question">
+              <p>
+                3. Яка помилка допущена в рядку: content = notes.get("1.0")?
+              </p>
+              <label class="test-label">
+                <input
+                  type="radio"
+                  class="test-radio"
+                  name="l19-q3"
+                  value="no_second_arg"
+                />
+                Не вказано другу позицію (до куди читати текст)
+              </label>
+              <label class="test-label">
+                <input
+                  type="radio"
+                  class="test-radio"
+                  name="l19-q3"
+                  value="quotes"
+                />
+                Позицію 1.0 треба писати без лапок
+              </label>
+              <label class="test-label">
+                <input
+                  type="radio"
+                  class="test-radio"
+                  name="l19-q3"
+                  value="zero"
+                />
+                Замість "1.0" треба писати 0
+              </label>
+            </div>
+
+            <!-- Питання 4 -->
+            <div class="test-question">
+              <p>
+                4. У якому порядку потрібно виконувати команди, щоб змінити
+                текст у полі Text?
+              </p>
+              <label class="test-label">
+                <input
+                  type="radio"
+                  class="test-radio"
+                  name="l19-q4"
+                  value="delete_get_insert"
+                />
+                1. delete() → 2. get() → 3. insert()
+              </label>
+              <label class="test-label">
+                <input
+                  type="radio"
+                  class="test-radio"
+                  name="l19-q4"
+                  value="get_delete_insert"
+                />
+                1. get() → 2. delete() → 3. insert()
+              </label>
+              <label class="test-label">
+                <input
+                  type="radio"
+                  class="test-radio"
+                  name="l19-q4"
+                  value="insert_get_delete"
+                />
+                1. insert() → 2. get() → 3. delete()
+              </label>
+            </div>
+
+            <!-- Питання 5 -->
+            <div class="test-question">
+              <p>5. Яка позиція означає самий початок поля Text?</p>
+              <label class="test-label">
+                <input
+                  type="radio"
+                  class="test-radio"
+                  name="l19-q5"
+                  value="0"
+                />
+                0
+              </label>
+              <label class="test-label">
+                <input
+                  type="radio"
+                  class="test-radio"
+                  name="l19-q5"
+                  value="1.0_str"
+                />
+                "1.0"
+              </label>
+              <label class="test-label">
+                <input
+                  type="radio"
+                  class="test-radio"
+                  name="l19-q5"
+                  value="START"
+                />
+                START
+              </label>
+            </div>
+
+            <hr />
+
+            <h4>2) Допиши код:</h4>
+
+            <p>
+              Створи багаторядкове текстове поле шириною 30, висотою 5, зі
+              світло-жовтим фоном, шрифтом Arial 14 та переносом по словах.
+              Додай під ним кнопку "Clear", яка повністю очищує це поле.
+            </p>
+
+            <!-- code editor -->
+            <div
+              class="custom-editor-wrapper python-editor-wrapper"
+              id="l19-hw-1"
+            >
+              <div class="editor-header">
+                <span class="editor-title">Python3 (Tkinter)</span>
+                <div class="editor-actions">
+                  <button class="run-btn" title="Запустити код">▶️</button>
+                  <button
+                    class="reset-btn"
+                    title="Скинути до початкового стану"
+                  >
+                    🔁
+                  </button>
+                </div>
+              </div>
+
+              <textarea class="custom-editor-input">
+from tkinter import *
+
+window = Tk()
+window.geometry("350x250")
+
+# допиши свій код тут
+
+window.mainloop()</textarea
+              >
+
+              <pre class="custom-editor-output">Очікування запуску...</pre>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>🌷 🍓 🌿 Made by Olena Hapchyna 🌿 🍓 🌷</p>
+
+      <div class="footer-credits">
+        <span
+          >Fruit icons by
+          <a
+            href="https://www.svgrepo.com/collection/fruits-vectors/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >An Nguyen</a
+          ></span
+        >
+        |
+        <a href="../credits.html" target="_blank">Credits & Licenses</a>
+      </div>
+    </footer>
+
+    <button
+      id="scrollToTopBtn"
+      class="scroll-to-top"
+      aria-label="Scroll to top"
+    >
+      <img src="../media/icons/apple.svg" />
+    </button>
+  </body>
+</html>
