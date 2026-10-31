@@ -419,7 +419,7 @@ text.pack(pady=10)</code></pre>
                   <tr>
                     <td>
                       <span class="accent-string"
-                        >notes.insert("1.0", "...")</span
+                        >text.insert("1.0", "...")</span
                       >
                     </td>
                     <td>вставляє текст на початок поля</td>
@@ -517,59 +517,76 @@ print(len(words))</code></pre>
             <p>
               Нотатки, які зникають після закриття програми, не дуже корисні.
               Щоб їх зберігати, потрібно дві речі:
-              <span class="bold">унікальне ім'я файлу</span> (щоб нова нотатка
-              не стирала стару) і <span class="bold">запис тексту у файл</span>.
-              Унікальне імʼя файлу часто генерують з використанням дати й часу
-              створення файлу.
+              <span class="bold">місце і назва для файлу</span> (їх обирає
+              користувач) і <span class="bold">запис тексту у файл</span>.
             </p>
 
             <p>
-              Модуль <span class="accent-string">datetime</span> вміє працювати
-              з датою і часом. Метод
-              <span class="accent-string">.now()</span> повертає поточний
-              момент, а <span class="accent-string">.strftime()</span>
-              перетворює його на рядок за шаблоном:
+              Вікно для вибору місця й назви файлу вміє показувати модуль
+              <span class="accent-string">filedialog</span>. Його потрібно
+              імпортувати окремо, бо рядок
+              <span class="accent-string">from tkinter import *</span> його не
+              підключає:
             </p>
 
-            <pre><code class="language-python">from datetime import datetime
-
-now = datetime.now()
-filename = now.strftime("note_%Y-%m-%d_%H-%M-%S.txt")
-print(filename)  # note_2026-10-30_14-35-07.txt</code></pre>
+            <pre><code class="language-python">from tkinter import *
+from tkinter import filedialog</code></pre>
 
             <p>
-              Коди з <span class="accent-string">%</span> замінюються на частини
-              дати: <span class="accent-string">%Y</span> – рік,
-              <span class="accent-string">%m</span> – місяць,
-              <span class="accent-string">%d</span> – день,
-              <span class="accent-string">%H</span> – години,
-              <span class="accent-string">%M</span> – хвилини,
-              <span class="accent-string">%S</span> – секунди. Решта символів
-              (<span class="accent-string">note_</span>,
-              <span class="accent-string">-</span>,
-              <span class="accent-string">.txt</span>) копіюються як є.
-              Двокрапки в імені файлу використовувати не можна, тому в часі
-              стоять дефіси. А оскільки секунди щоразу інші, кожен файл отримає
-              унікальне ім'я.
+              Функція
+              <span class="accent-string">asksaveasfilename()</span> відкриває
+              вікно «Зберегти як…» і повертає шлях до файлу, який обрав
+              користувач:
+            </p>
+
+            <pre><code class="language-python">filepath = filedialog.asksaveasfilename(
+    defaultextension=".txt",
+    filetypes=[("Text files", "*.txt"), ("All files", "*.*")],
+)
+print(filepath)  # наприклад, C:/Users/Anna/Documents/my_note.txt</code></pre>
+
+            <ul>
+              <li>
+                <span class="accent-string">defaultextension</span>: додає
+                <span class="accent-string">.txt</span> до назви, якщо
+                користувач сам його не написав.
+              </li>
+              <li>
+                <span class="accent-string">filetypes</span>: список типів
+                файлів у вікні. Кожен тип – це пара
+                <span class="accent-string">(опис, шаблон)</span>.
+              </li>
+            </ul>
+
+            <p>
+              Якщо користувач закрив вікно або натиснув
+              <span class="italic">Cancel</span>, функція поверне порожній рядок
+              <span class="accent-string">""</span>. Тому перед записом треба
+              перевірити, що шлях не порожній.
             </p>
 
             <p>Як зберегти текст у файл:</p>
 
-            <pre><code class="language-python">with open(filename, "w", encoding="utf-8") as f:
-    f.write(content)</code></pre>
+            <pre><code class="language-python">if filepath:
+    with open(filepath, "w", encoding="utf-8") as f:
+        f.write(content)</code></pre>
 
             <p>
-              Новий файл з'явиться в тій самій папці, звідки запущено програму
-              (зазвичай поруч з <span class="accent-string">notes.py</span>).
+              Тут <span class="accent-string">"w"</span> означає запис у файл, а
+              <span class="accent-string">encoding="utf-8"</span> потрібен, щоб
+              українські літери та емодзі записалися правильно. Блок
+              <span class="accent-string">with</span> сам закриє файл після
+              запису.
             </p>
 
             <p>Як зупинити функцію, якщо немає що зберігати:</p>
 
             <pre><code class="language-python">def save():
     # ...
-    if not content:
+    if not content.strip():
+        # тут можна змінити текст у Label
         return
-    
+
     # далі пишемо код без else</code></pre>
 
             <!-- Завдання 5 -->
@@ -579,22 +596,26 @@ print(filename)  # note_2026-10-30_14-35-07.txt</code></pre>
                 <p>
                   Додай до програми п'яту кнопку –
                   <span class="italic">Save</span> – яка зберігає текст з поля у
-                  новий файл з унікальною назвою.
+                  файл. Місце і назву файлу користувач обирає у вікні
+                  <span class="accent-string">filedialog</span>.
                 </p>
                 <p>
                   Якщо тексту немає, на екрані має зʼявитися відповідне
                   повідомлення (<span class="italic">"Nothing to save"</span>),
-                  і новий файл не повинен створюватися.
+                  і вікно вибору файлу не повинно відкриватися.
                 </p>
                 <p>
-                  Якщо все спрацювало, то має вивестися повідомлення про успіх:
-                  <span class="italic">"Saved: [назва файлу]"</span>.
+                  Якщо файл збережено, має вивестися повідомлення про успіх:
+                  <span class="italic">"Saved!"</span>. Якщо користувач
+                  закрив вікно без збереження, файл не створюється і
+                  повідомлення про успіх не показується.
                 </p>
 
                 <p>
-                  Перевірка: натисни <span class="italic">Save</span> двічі з
-                  різницею в кілька секунд. У папці мають з'явитися два різні
-                  файли з правильним текстом.
+                  Перевірка: збережи текст двічі під різними назвами. Потім
+                  натисни <span class="italic">Save</span> ще раз і закрий вікно
+                  кнопкою <span class="italic">Cancel</span>. У папці мають бути
+                  два файли з правильним текстом.
                 </p>
               </div>
             </details>
@@ -602,7 +623,7 @@ print(filename)  # note_2026-10-30_14-35-07.txt</code></pre>
         </div>
       </section>
 
-      <!-- 🍋 PART 3: Багаторядкове поле Text -->
+      <!-- 🍋 PART 3: Кольори та шрифти -->
       <section id="part-3" class="lesson-wrapper tab-content">
         <div class="lesson-block">
           <div class="lesson-header">
