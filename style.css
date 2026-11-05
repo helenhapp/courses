@@ -3563,3 +3563,29 @@ code.long-code .hljs-ln td.hljs-ln-code {
   max-width: 92%;
   resize: none;
 }
+
+.reveal {
+  display: inline-block;
+  margin: 1px 0;
+  padding: 0 6px;
+  border-radius: 4px;
+  background: #86bb9d;
+  color: transparent;
+  cursor: pointer;
+  user-select: none;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.reveal:hover {
+  background: #609979;
+}
+
+.reveal.revealed {
+  background: transparent;
+  color: inherit;
+  padding: 0;
+  margin: 0;
+  user-select: text;
+}
