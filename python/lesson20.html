@@ -1,0 +1,979 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Навчальні матеріали" />
+
+    <link rel="icon" type="image/svg+xml" href="../media/icons/carambola.svg" />
+
+    <title>Python Lesson 20</title>
+
+    <script>
+      const savedTheme = localStorage.getItem("lms_theme") || "light";
+      document.documentElement.setAttribute("data-theme", savedTheme);
+
+      const hljsThemeLink =
+        savedTheme === "dark"
+          ? "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css"
+          : "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css";
+
+      document.head.insertAdjacentHTML(
+        "beforeend",
+        `<link id="hljs-theme" rel="stylesheet" href="${hljsThemeLink}" />`,
+      );
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Fira+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Tektur:wght@400..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"
+    ></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.css"
+    />
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.js"
+    ></script>
+
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/javascript/javascript.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/xml/xml.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/css/css.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/htmlmixed/htmlmixed.min.js"
+    ></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/theme/dracula.min.css"
+    />
+
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/python/python.min.js"
+    ></script>
+
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt-stdlib.js"
+    ></script>
+
+    <link rel="stylesheet" href="../style.css?v=8.0" />
+    <script src="../script.js?v=8.0" defer></script>
+  </head>
+
+  <body>
+    <!-- transition curtain -->
+    <div class="transition-curtain"></div>
+
+    <!-- top-bar -->
+    <div id="nav-container">
+      <nav class="top-bar">
+        <div class="logo-container">
+          <img
+            src="../media/icons/carambola.svg"
+            alt="Logo"
+            class="site-logo"
+          />
+        </div>
+
+        <div class="top-bar__controls">
+          <label class="toggle-switch" aria-label="Перемикач теми">
+            <input type="checkbox" id="theme-checkbox" />
+            <span class="slider">
+              <span class="icon sun"
+                ><img src="../media/icons/stars.svg"
+              /></span>
+              <span class="icon moon"
+                ><img src="../media/icons/moon.svg"
+              /></span>
+            </span>
+          </label>
+          <button
+            id="dyslexia-mode-btn"
+            class="wide-toggle"
+            title="Шрифт для дислектиків"
+          >
+            Aa
+          </button>
+        </div>
+      </nav>
+    </div>
+
+    <!-- lesson header -->
+    <header>
+      <div class="title-container">
+        <h1 id="lesson-title">Python: 20</h1>
+      </div>
+
+      <p class="topic">Полотно Canvas: Міні-Paint 🎨</p>
+
+      <hr class="pretty-divider" />
+    </header>
+
+    <!-- lesson content -->
+    <main>
+      <!-- tab buttons -->
+      <div class="tabs-nav">
+        <button class="tab-btn active" data-target="part-1">Canvas</button>
+        <button class="tab-btn" data-target="part-2">Додатково</button>
+
+        <!-- I will uncomment it later: -->
+        <!-- <button class="tab-btn" data-target="part-3">Д/з</button> -->
+      </div>
+
+      <!-- 🍓 PART 1: Полотно Canvas та Міні-Paint -->
+      <section id="part-1" class="lesson-wrapper tab-content active show">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img
+                src="../media/icons/strawberry.svg"
+                class="star"
+                alt="strawberry"
+                width="60"
+                height="60"
+              />
+              <span>Полотно Canvas: Міні-Paint</span>
+            </h2>
+          </div>
+
+          <div class="lesson-content">
+            <h3 id="p1-0">Вступ</h3>
+
+            <p>
+              Сьогодні ми створимо власну програму для малювання мишкою —
+              <span class="bold">Міні-Paint</span>, а заодно повторимо, як
+              працюють кнопки (<span class="accent-string">Button</span>), рамки
+              (<span class="accent-string">Frame</span>) та глобальні змінні
+              (<span class="accent-string">global</span>):
+            </p>
+            <img src="./images/lesson20/20-final.png" alt="Mini Paint result" />
+
+            <p>
+              Пригадаємо базовий шаблон вікна, з якого починається кожна
+              програма:
+            </p>
+            <pre><code class="language-python">from tkinter import *
+
+window = Tk()
+window.title("Mini Paint")
+window.geometry("450x400")
+window.config(bg="lavender")
+
+# тут додаємо всі віджети
+
+window.eval("tk::PlaceWindow . center")
+window.mainloop()</code></pre>
+
+            <hr />
+
+            <h3 id="p1-1">1. Віджет Canvas (Полотно)</h3>
+
+            <p>
+              Щоб малювати фігури, лінії або точки, у Tkinter використовують
+              віджет <span class="accent-string">Canvas</span> (полотно):
+            </p>
+
+            <pre><code class="language-python">canvas = Canvas(window, width=300, height=200, bg="lightyellow")
+canvas.pack(pady=15)</code></pre>
+
+            <ul style="list-style-type: square; margin-bottom: 15px">
+              <li>
+                На відміну від текстових полів, у
+                <span class="accent-string">Canvas</span> ширина (<span
+                  class="accent-string"
+                  >width</span
+                >) і висота (<span class="accent-string">height</span>)
+                задаються у <span class="bold">пікселях</span>.
+              </li>
+              <li>
+                <span class="accent-string">bg</span> — колір самого полотна
+                (аркуша, на якому ми будемо малювати).
+              </li>
+            </ul>
+
+            <img src="./images/lesson20/20-1.png" alt="Canvas example" />
+
+            <!-- Завдання 1 -->
+            <details class="task" name="paint" open>
+              <summary><h4>Завдання 1</h4></summary>
+              <div>
+                <ol>
+                  <li>
+                    Створи новий файл
+                    <span class="accent-string">paint.py</span> у VS Code.
+                  </li>
+                  <li>
+                    Створи і налаштуй головне вікно програми
+                    <span class="accent-string">window</span>.
+                  </li>
+                  <li>
+                    Додай у вікно біле полотно
+                    <span class="accent-string">Canvas</span> (наприклад,
+                    розміром <span class="accent-string">380</span> на
+                    <span class="accent-string">280</span> пікселів) і розмісти
+                    його з відступом <span class="accent-string">pady</span>.
+                  </li>
+                </ol>
+              </div>
+            </details>
+
+            <hr />
+
+            <h3 id="p1-2">2. Координати та малювання кружечка</h3>
+
+            <p>
+              Кожна точка на полотні <span class="accent-string">Canvas</span>
+              має дві координати у пікселях —
+              <span class="accent-string">(x, y)</span>, які відраховуються від
+              <span class="bold">верхнього лівого кута полотна</span>:
+            </p>
+
+            <ul style="list-style-type: square; margin-bottom: 15px">
+              <li>
+                Точка <span class="accent-string">(0, 0)</span> — це верхній
+                лівий кут полотна.
+              </li>
+              <li>
+                <span class="accent-string">x</span> — відстань від
+                <span class="bold">лівого</span> краю полотна вправо.
+              </li>
+              <li>
+                <span class="accent-string">y</span> — відстань від
+                <span class="bold">верхнього</span> краю полотна вниз.
+              </li>
+            </ul>
+
+            <p>
+              Лінія у Paint складається з багатьох маленьких кружечків, які
+              з'являються там, де рухається мишка. Щоб намалювати кружечок з
+              центром у точці <span class="accent-string">(x, y)</span> і
+              радіусом <span class="accent-string">5</span> пікселів,
+              використовують метод
+              <span class="accent-string">.create_oval()</span>:
+            </p>
+
+            <pre><code class="language-python">canvas.create_oval(
+    x - 5, y - 5,
+    x + 5, y + 5,
+    fill="purple",
+    outline="purple",
+)</code></pre>
+
+            <ul style="list-style-type: square; margin-bottom: 15px">
+              <li>
+                Перші чотири числа задають межі кружечка навколо точки
+                <span class="accent-string">(x, y)</span>: на
+                <span class="accent-string">5</span> пікселів вліво і вгору
+                (<span class="accent-string">x - 5, y - 5</span>) та на
+                <span class="accent-string">5</span> пікселів вправо і вниз
+                (<span class="accent-string">x + 5, y + 5</span>). Якщо замість
+                <span class="accent-string">5</span> взяти більше число, пензлик
+                стане товстішим.
+              </li>
+              <li>
+                <span class="accent-string">fill</span> — колір заливки
+                всередині, <span class="accent-string">outline</span> — колір
+                контуру.
+              </li>
+            </ul>
+
+            <hr />
+
+            <h3 id="p1-3">3. Реакція на рух мишки (.bind)</h3>
+
+            <p>
+              Кнопки реагують на клік через параметр
+              <span class="accent-string">command</span>. А щоб
+              <span class="bold">полотно</span> реагувало на рух затиснутої
+              мишки, використовують метод
+              <span class="accent-string">.bind()</span>:
+            </p>
+
+            <pre><code class="language-python">def show_coords(event):
+    x = event.x
+    y = event.y
+    print(x, y)
+
+canvas.bind("&lt;B1-Motion&gt;", show_coords)</code></pre>
+
+            <ul style="list-style-type: square; margin-bottom: 15px">
+              <li>
+                <span class="accent-string">"&lt;B1-Motion&gt;"</span> означає
+                <span class="italic"
+                  >«рух мишки із затиснутою лівою кнопкою»</span
+                >.
+              </li>
+              <li>
+                Функція обов'язково має приймати параметр
+                <span class="accent-string">event</span> у дужках — через нього
+                Python передає координати курсора мишки:
+                <span class="accent-string">event.x</span> та
+                <span class="accent-string">event.y</span>.
+              </li>
+            </ul>
+
+            <img src="./images/lesson20/20-2.png" alt="Drawing on canvas" />
+
+            <!-- Завдання 2 -->
+            <details class="task" name="paint">
+              <summary><h4>Завдання 2</h4></summary>
+              <div>
+                <ol>
+                  <li>
+                    Напиши функцію
+                    <span class="accent-string">draw(event)</span>, яка отримує
+                    координати мишки <span class="accent-string">x</span> та
+                    <span class="accent-string">y</span> і малює в цій точці
+                    кружечок будь-якого кольору через
+                    <span class="accent-string">canvas.create_oval(...)</span>.
+                  </li>
+                  <li>
+                    Прив'яжи функцію <span class="accent-string">draw</span> до
+                    полотна за допомогою
+                    <span class="accent-string"
+                      >canvas.bind("&lt;B1-Motion&gt;", draw)</span
+                    >.
+                  </li>
+                  <li>Запусти програму і спробуй щось намалювати!</li>
+                </ol>
+              </div>
+            </details>
+
+            <hr />
+
+            <h3 id="p1-4">4. Очищення полотна</h3>
+
+            <p>
+              Пригадаємо, як створюється звичайна кнопка, яка викликає функцію:
+            </p>
+
+            <pre><code class="language-python">def say_hi():
+    print("Hi!")
+
+btn = Button(window, text="Click", command=say_hi)
+btn.pack()</code></pre>
+
+            <p>
+              А щоб повністю стерти все, що намальовано на полотні
+              <span class="accent-string">Canvas</span>, використовують таку
+              команду:
+            </p>
+
+            <pre><code class="language-python">canvas.delete("all")</code></pre>
+
+            <!-- Завдання 3 -->
+            <details class="task" name="paint">
+              <summary><h4>Завдання 3</h4></summary>
+              <div>
+                <p>
+                  Створи під полотном кнопку
+                  <span class="italic">Clear</span>, яка при натисканні очищує
+                  все полотно.
+                </p>
+              </div>
+            </details>
+
+            <hr />
+
+            <h3 id="p1-5">
+              5. Зміна кольору та гумка (Повторення: Frame і global)
+            </h3>
+
+            <p>
+              Зараз наш пензлик малює лише одним кольором. Щоб колір можна було
+              перемикати кнопками, збережемо його у
+              <span class="bold">глобальну змінну</span>.
+            </p>
+
+            <p>
+              <span class="bold">Пригадай:</span> щоб функція могла змінити
+              змінну, створену поза нею, використовуємо слово
+              <span class="accent-string">global</span>:
+            </p>
+
+            <pre><code class="language-python">mood = "happy"
+
+def make_sleepy():
+    global mood
+    mood = "sleepy"</code></pre>
+
+            <p>
+              А щоб розмістити кілька кнопок
+              <span class="bold">в один рядок</span>, кладемо їх у рамку
+              <span class="accent-string">Frame</span> із параметром
+              <span class="accent-string">side=LEFT</span>:
+            </p>
+
+            <pre><code class="language-python">row = Frame(window, bg="lavender")
+row.pack(pady=5)
+
+btn1 = Button(row, text="One", command=...)
+btn1.pack(side=LEFT, padx=5)
+
+btn2 = Button(row, text="Two", command=...)
+btn2.pack(side=LEFT, padx=5)</code></pre>
+
+            <img src="./images/lesson20/20-3.png" alt="Color buttons row" />
+
+            <!-- Завдання 4 -->
+            <details class="task" name="paint">
+              <summary><h4>Завдання 4</h4></summary>
+              <div>
+                <ol>
+                  <li>
+                    Створи перед функціями змінну
+                    <span class="accent-string">color = "black"</span> (або
+                    будь-який інший початковий колір).
+                  </li>
+                  <li>
+                    У функції <span class="accent-string">draw(event)</span>
+                    заміни назву кольору в
+                    <span class="accent-string">fill</span> та
+                    <span class="accent-string">outline</span> на змінну
+                    <span class="accent-string">color</span>.
+                  </li>
+                  <li>
+                    Створи рамку <span class="accent-string">Frame</span> і
+                    розмісти в ній в один рядок (<span class="accent-string"
+                      >side=LEFT</span
+                    >) 3–4 кнопки різних кольорів (наприклад, червоний, синій,
+                    зелений) та кнопку <span class="italic">Clear</span>. Кожна
+                    кольорова кнопка має змінювати змінну
+                    <span class="accent-string">color</span> через
+                    <span class="accent-string">global</span>.
+                  </li>
+                  <li>
+                    Додай ще одну кнопку —
+                    <span class="italic">Eraser</span> (гумка), яка стирає
+                    намальоване там, де проводиш мишкою.
+                  </li>
+                </ol>
+
+                <details class="answer" style="margin-top: 10px">
+                  <summary style="color: gray">
+                    Підказка: як працює гумка?
+                  </summary>
+                  <p style="margin: 0">
+                    Гумка — це просто пензлик, який малює кольором фону полотна
+                    (наприклад, <span class="accent-string">"white"</span>)!
+                  </p>
+                </details>
+              </div>
+            </details>
+
+            <hr />
+
+            <h3 id="p1-6">6. Бонус: Розмір пензлика</h3>
+
+            <p>
+              Так само, як ми зберігаємо у змінній колір пензлика, ми можемо
+              зберігати і його <span class="bold">радіус</span> (товщину):
+            </p>
+
+            <pre><code class="language-python">size = 5
+
+# Всередині draw(event):
+canvas.create_oval(
+    x - size, y - size,
+    x + size, y + size,
+    fill=color,
+    outline=color,
+)</code></pre>
+
+            <!-- Завдання 5 -->
+            <details class="task" name="paint">
+              <summary><h4>Завдання 5 (Додаткове)</h4></summary>
+              <div>
+                <p>
+                  Створи змінну <span class="accent-string">size = 5</span> та
+                  додай дві кнопки: <span class="italic">Small</span> (робить
+                  розмір пензлика меншим, наприклад
+                  <span class="accent-string">3</span>) та
+                  <span class="italic">Big</span> (робить розмір пензлика
+                  більшим, наприклад <span class="accent-string">12</span>).
+                </p>
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- 🍋 PART 2: Кольори та шрифти -->
+      <section id="part-2" class="lesson-wrapper tab-content">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img
+                src="../media/icons/lemon.svg"
+                class="star"
+                alt="lemon"
+                width="60"
+                height="60"
+              />
+              <span>Кольори та шрифти</span>
+            </h2>
+          </div>
+
+          <div class="lesson-content">
+            <h3>Таблиця кольорів:</h3>
+            <div class="tablecontainer">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Базові кольори</th>
+                    <th>Світлі (для фону)</th>
+                    <th>Темні (для тексту)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- 1 -->
+                  <tr>
+                    <td>
+                      <span class="circle" style="background: white"></span>
+                      <span class="accent-string">"white"</span>
+                    </td>
+                    <td>
+                      <span class="circle" style="background: lightblue"></span>
+                      <span class="accent-string">"lightblue"</span>
+                    </td>
+                    <td>
+                      <span class="circle" style="background: darkblue"></span>
+                      <span class="accent-string">"darkblue"</span>
+                    </td>
+                  </tr>
+                  <!-- 2 -->
+                  <tr>
+                    <td>
+                      <span class="circle" style="background: black"></span>
+                      <span class="accent-string">"black"</span>
+                    </td>
+                    <td>
+                      <span
+                        class="circle"
+                        style="background: lightgreen"
+                      ></span>
+                      <span class="accent-string">"lightgreen"</span>
+                    </td>
+                    <td>
+                      <span class="circle" style="background: darkgreen"></span>
+                      <span class="accent-string">"darkgreen"</span>
+                    </td>
+                  </tr>
+                  <!-- 3 -->
+                  <tr>
+                    <td>
+                      <span class="circle" style="background: red"></span>
+                      <span class="accent-string">"red"</span>
+                    </td>
+                    <td>
+                      <span
+                        class="circle"
+                        style="background: lightyellow"
+                      ></span>
+                      <span class="accent-string">"lightyellow"</span>
+                    </td>
+                    <td>
+                      <span class="circle" style="background: crimson"></span>
+                      <span class="accent-string">"crimson"</span>
+                    </td>
+                  </tr>
+                  <!-- 4 -->
+                  <tr>
+                    <td>
+                      <span class="circle" style="background: blue"></span>
+                      <span class="accent-string">"blue"</span>
+                    </td>
+                    <td>
+                      <span class="circle" style="background: lavender"></span>
+                      <span class="accent-string">"lavender"</span>
+                    </td>
+                    <td>
+                      <span class="circle" style="background: purple"></span>
+                      <span class="accent-string">"purple"</span>
+                    </td>
+                  </tr>
+                  <!-- 5 -->
+                  <tr>
+                    <td>
+                      <span class="circle" style="background: green"></span>
+                      <span class="accent-string">"green"</span>
+                    </td>
+                    <td>
+                      <span class="circle" style="background: mistyrose"></span>
+                      <span class="accent-string">"mistyrose"</span>
+                    </td>
+                    <td>
+                      <span class="circle" style="background: indigo"></span>
+                      <span class="accent-string">"indigo"</span>
+                    </td>
+                  </tr>
+                  <!-- 6 -->
+                  <tr>
+                    <td>
+                      <span class="circle" style="background: yellow"></span>
+                      <span class="accent-string">"yellow"</span>
+                    </td>
+                    <td>
+                      <span class="circle" style="background: peachpuff"></span>
+                      <span class="accent-string">"peachpuff"</span>
+                    </td>
+                    <td>
+                      <span class="circle" style="background: teal"></span>
+                      <span class="accent-string">"teal"</span>
+                    </td>
+                  </tr>
+                  <!-- 7 -->
+                  <tr>
+                    <td>
+                      <span class="circle" style="background: orange"></span>
+                      <span class="accent-string">"orange"</span>
+                    </td>
+                    <td>
+                      <span class="circle" style="background: aliceblue"></span>
+                      <span class="accent-string">"aliceblue"</span>
+                    </td>
+                    <td>
+                      <span
+                        class="circle"
+                        style="background: darkslateblue"
+                      ></span>
+                      <span class="accent-string">"darkslateblue"</span>
+                    </td>
+                  </tr>
+                  <!-- 8 -->
+                  <tr>
+                    <td>
+                      <span class="circle" style="background: pink"></span>
+                      <span class="accent-string">"pink"</span>
+                    </td>
+                    <td>
+                      <span class="circle" style="background: honeydew"></span>
+                      <span class="accent-string">"honeydew"</span>
+                    </td>
+                    <td>
+                      <span class="circle" style="background: chocolate"></span>
+                      <span class="accent-string">"chocolate"</span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <hr />
+
+            <h3>Таблиця шрифтів:</h3>
+            <div class="tablecontainer">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Назва шрифту</th>
+                    <th>Як виглядає</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="accent-string">"Arial"</span></td>
+                    <td style="font-family: Arial">Чистий сучасний шрифт</td>
+                  </tr>
+                  <tr>
+                    <td><span class="accent-string">"Verdana"</span></td>
+                    <td style="font-family: Verdana">
+                      Широкий, легко читається
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="accent-string">"Trebuchet MS"</span></td>
+                    <td style="font-family: Trebuchet MS">
+                      Стильний м'який шрифт для заголовків
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="accent-string">"Comic Sans MS"</span></td>
+                    <td style="font-family: Comic Sans MS">
+                      Неформальний, схожий на комікс
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="accent-string">"Georgia"</span></td>
+                    <td style="font-family: Georgia">
+                      Елегантний книжковий шрифт
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span class="accent-string">"Times New Roman"</span>
+                    </td>
+                    <td style="font-family: Times New Roman">
+                      Класичний шрифт
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="accent-string">"Courier New"</span></td>
+                    <td style="font-family: Courier New">
+                      Моноширинний (як друкарська машинка)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="accent-string">"Impact"</span></td>
+                    <td style="font-family: Impact">Дуже товстий шрифт</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 🍎 PART 3: Домашнє завдання -->
+      <section id="part-3" class="lesson-wrapper tab-content">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img
+                src="../media/icons/apple.svg"
+                class="star"
+                alt="apple"
+                width="60"
+                height="60"
+              />
+              <span>Домашнє завдання</span>
+            </h2>
+          </div>
+
+          <div class="lesson-content">
+            <h3>Завдання</h3>
+
+            <h4>1) Дай відповіді на питання:</h4>
+
+            <!-- Питання 1 -->
+            <div class="test-question">
+              <p>
+                1. Який віджет використовують для створення полотна для
+                малювання?
+              </p>
+              <label class="test-label">
+                <input
+                  type="radio"
+                  class="test-radio"
+                  name="l20-q1"
+                  value="Paint"
+                />
+                Paint()
+              </label>
+              <label class="test-label">
+                <input
+                  type="radio"
+                  class="test-radio"
+                  name="l20-q1"
+                  value="Canvas"
+                />
+                Canvas()
+              </label>
+              <label class="test-label">
+                <input
+                  type="radio"
+                  class="test-radio"
+                  name="l20-q1"
+                  value="Frame"
+                />
+                Frame()
+              </label>
+            </div>
+
+            <!-- Питання 2 -->
+            <div class="test-question">
+              <p>2. Яка команда повністю очищує полотно canvas?</p>
+              <label class="test-label">
+                <input
+                  type="radio"
+                  class="test-radio"
+                  name="l20-q2"
+                  value="delete_all"
+                />
+                canvas.delete("all")
+              </label>
+              <label class="test-label">
+                <input
+                  type="radio"
+                  class="test-radio"
+                  name="l20-q2"
+                  value="delete_1_0"
+                />
+                canvas.delete("1.0", END)
+              </label>
+              <label class="test-label">
+                <input
+                  type="radio"
+                  class="test-radio"
+                  name="l20-q2"
+                  value="clear"
+                />
+                canvas.clear()
+              </label>
+            </div>
+
+            <!-- Питання 3 -->
+            <div class="test-question">
+              <p>
+                3. Як отримати координати курсора мишки всередині функції
+                draw(event)?
+              </p>
+              <label class="test-label">
+                <input
+                  type="radio"
+                  class="test-radio"
+                  name="l20-q3"
+                  value="canvas_xy"
+                />
+                canvas.x та canvas.y
+              </label>
+              <label class="test-label">
+                <input
+                  type="radio"
+                  class="test-radio"
+                  name="l20-q3"
+                  value="event_xy"
+                />
+                event.x та event.y
+              </label>
+              <label class="test-label">
+                <input
+                  type="radio"
+                  class="test-radio"
+                  name="l20-q3"
+                  value="get_xy"
+                />
+                event.get()
+              </label>
+            </div>
+
+            <!-- Питання 4 -->
+            <div class="test-question">
+              <p>
+                4. Яке ключове слово потрібно написати всередині функції, щоб
+                вона могла змінити зовнішню змінну color?
+              </p>
+              <label class="test-label">
+                <input
+                  type="radio"
+                  class="test-radio"
+                  name="l20-q4"
+                  value="global"
+                />
+                global color
+              </label>
+              <label class="test-label">
+                <input
+                  type="radio"
+                  class="test-radio"
+                  name="l20-q4"
+                  value="change"
+                />
+                change color
+              </label>
+              <label class="test-label">
+                <input
+                  type="radio"
+                  class="test-radio"
+                  name="l20-q4"
+                  value="return"
+                />
+                return color
+              </label>
+            </div>
+
+            <!-- Питання 5 -->
+            <div class="test-question">
+              <p>
+                5. Як найпростіше зробити кнопку «Гумка» (Eraser) на білому
+                полотні?
+              </p>
+              <label class="test-label">
+                <input
+                  type="radio"
+                  class="test-radio"
+                  name="l20-q5"
+                  value="delete_all"
+                />
+                Викликати canvas.delete("all")
+              </label>
+              <label class="test-label">
+                <input
+                  type="radio"
+                  class="test-radio"
+                  name="l20-q5"
+                  value="white_color"
+                />
+                Змінити колір пензлика на білий ("white")
+              </label>
+              <label class="test-label">
+                <input
+                  type="radio"
+                  class="test-radio"
+                  name="l20-q5"
+                  value="none_color"
+                />
+                Видалити функцію draw
+              </label>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>🌷 🍓 🌿 Made by Olena Hapchyna 🌿 🍓 🌷</p>
+
+      <div class="footer-credits">
+        <span
+          >Fruit icons by
+          <a
+            href="https://www.svgrepo.com/collection/fruits-vectors/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >An Nguyen</a
+          ></span
+        >
+        |
+        <a href="../credits.html" target="_blank">Credits & Licenses</a>
+      </div>
+    </footer>
+
+    <button
+      id="scrollToTopBtn"
+      class="scroll-to-top"
+      aria-label="Scroll to top"
+    >
+      <img src="../media/icons/apple.svg" />
+    </button>
+  </body>
+</html>
