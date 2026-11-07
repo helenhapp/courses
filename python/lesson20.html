@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="uk">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -28,6 +28,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Fira+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Tektur:wght@400..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anton&family=Comic+Neue:ital,wght@0,400;0,700;1,400&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=EB+Garamond:ital,wght@0,400;0,700;1,400&display=swap"
       rel="stylesheet"
     />
 
@@ -85,8 +89,8 @@
       src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt-stdlib.js"
     ></script>
 
-    <link rel="stylesheet" href="../style.css?v=8.0" />
-    <script src="../script.js?v=8.0" defer></script>
+    <link rel="stylesheet" href="../style.css?v=9.0" />
+    <script src="../script.js?v=9.0" defer></script>
   </head>
 
   <body>
@@ -133,7 +137,7 @@
         <h1 id="lesson-title">Python: 20</h1>
       </div>
 
-      <p class="topic">Полотно Canvas: Міні-Paint 🎨</p>
+      <p class="topic">Checkbutton та Radiobutton</p>
 
       <hr class="pretty-divider" />
     </header>
@@ -142,14 +146,12 @@
     <main>
       <!-- tab buttons -->
       <div class="tabs-nav">
-        <button class="tab-btn active" data-target="part-1">Canvas</button>
-        <button class="tab-btn" data-target="part-2">Додатково</button>
-
-        <!-- I will uncomment it later: -->
-        <!-- <button class="tab-btn" data-target="part-3">Д/з</button> -->
+        <button class="tab-btn active" data-target="part-1">Checkbutton</button>
+        <button class="tab-btn" data-target="part-2">Radiobutton</button>
+        <button class="tab-btn" data-target="part-3">Додатково</button>
       </div>
 
-      <!-- 🍓 PART 1: Полотно Canvas та Міні-Paint -->
+      <!-- 🍓 PART 1: Checkbutton -->
       <section id="part-1" class="lesson-wrapper tab-content active show">
         <div class="lesson-block">
           <div class="lesson-header">
@@ -161,7 +163,7 @@
                 width="60"
                 height="60"
               />
-              <span>Полотно Canvas: Міні-Paint</span>
+              <span>Прапорці Checkbutton</span>
             </h2>
           </div>
 
@@ -169,366 +171,402 @@
             <h3 id="p1-0">Вступ</h3>
 
             <p>
-              Сьогодні ми створимо власну програму для малювання мишкою —
-              <span class="bold">Міні-Paint</span>, а заодно повторимо, як
-              працюють кнопки (<span class="accent-string">Button</span>), рамки
-              (<span class="accent-string">Frame</span>) та глобальні змінні
-              (<span class="accent-string">global</span>):
+              Сьогодні ми розглянемо два віджети для вибору опцій у Tkinter:
             </p>
-            <img src="./images/lesson20/20-final.png" alt="Mini Paint result" />
+            <ul style="list-style-type: square; margin-bottom: 15px">
+              <li>
+                <span class="accent-string">Checkbutton</span> (прапорець) —
+                дозволяє обрати <span class="bold">декілька</span> варіантів
+                одночасно.
+              </li>
+              <li>
+                <span class="accent-string">Radiobutton</span> (перемикач) —
+                дозволяє обрати <span class="bold">лише один</span> варіант із
+                групи.
+              </li>
+            </ul>
 
             <p>
-              Пригадаємо базовий шаблон вікна, з якого починається кожна
-              програма:
+              На практиці ми крок за кроком створимо програму
+              <span class="bold">"Pizza Builder"</span> (конструктор піци):
             </p>
+
+            <img src="./images/lesson20/pizza.png" alt="final app look" />
+
+            <p>Шаблон вікна:</p>
+
             <pre><code class="language-python">from tkinter import *
 
 window = Tk()
-window.title("Mini Paint")
-window.geometry("450x400")
-window.config(bg="lavender")
+window.title("Pizza Builder")
+window.geometry("350x550")
 
-# тут додаємо всі віджети
+# тут додаватимемо код
 
 window.eval("tk::PlaceWindow . center")
 window.mainloop()</code></pre>
 
             <hr />
 
-            <h3 id="p1-1">1. Віджет Canvas (Полотно)</h3>
+            <h3 id="p1-1">1. Віджет Checkbutton</h3>
 
             <p>
-              Щоб малювати фігури, лінії або точки, у Tkinter використовують
-              віджет <span class="accent-string">Canvas</span> (полотно):
+              Прапорець створюється за допомогою функції
+              <span class="accent-string">Checkbutton()</span>. Він має два
+              стани: галочка стоїть або галочка знята.
             </p>
 
-            <pre><code class="language-python">canvas = Canvas(window, width=300, height=200, bg="lightyellow")
-canvas.pack(pady=15)</code></pre>
+            <pre><code class="language-python">box = Checkbutton(
+    window,
+    text="Play music",
+    font=("Arial", 12),
+)
+box.pack(anchor="w", padx=20)</code></pre>
 
             <ul style="list-style-type: square; margin-bottom: 15px">
               <li>
-                На відміну від текстових полів, у
-                <span class="accent-string">Canvas</span> ширина (<span
-                  class="accent-string"
-                  >width</span
-                >) і висота (<span class="accent-string">height</span>)
-                задаються у <span class="bold">пікселях</span>.
-              </li>
-              <li>
-                <span class="accent-string">bg</span> — колір самого полотна
-                (аркуша, на якому ми будемо малювати).
+                <span class="accent-string">anchor="w"</span> (від англ.
+                <span class="italic">west</span> — захід) — притискає віджет до
+                <span class="bold">лівого краю</span> вікна, щоб стовпчик із
+                прапорців виглядав рівно.
               </li>
             </ul>
 
-            <img src="./images/lesson20/20-1.png" alt="Canvas example" />
+            <hr />
+
+            <h3 id="p1-2">2. Змінна BooleanVar та метод .get()</h3>
+
+            <p>
+              Сам віджет <span class="accent-string">Checkbutton</span> не вміє
+              повертати свій стан. Тому для кожного прапорця створюють
+              спеціальну змінну <span class="accent-string">BooleanVar()</span>,
+              яка зберігає <span class="accent-string">True</span> (галочка є)
+              або <span class="accent-string">False</span> (галочки немає):
+            </p>
+
+            <pre
+              style="max-height: none"
+            ><code class="language-python">music_var = BooleanVar()
+
+def check_music():
+    if music_var.get() == True:
+        label.config(text="Music is ON")
+    else:
+        label.config(text="Music is OFF")
+
+box = Checkbutton(
+    window,
+    text="Play music",
+    font=("Arial", 12),
+    variable=music_var,
+    command=check_music,
+)
+box.pack(anchor="w", padx=20)
+
+label = Label(window, text="...")
+label.pack()</code></pre>
+
+            <ul style="list-style-type: square; margin-bottom: 15px">
+              <li>
+                <span class="accent-string">variable=music_var</span> —
+                прив'язує прапорець до змінної.
+              </li>
+              <li>
+                <span class="accent-string">command=check_music</span> —
+                запускає функцію щоразу, коли користувач ставить або знімає
+                галочку.
+              </li>
+            </ul>
 
             <!-- Завдання 1 -->
-            <details class="task" name="paint" open>
-              <summary><h4>Завдання 1</h4></summary>
+            <details class="task" name="l20-p1" open>
+              <summary><h4>Завдання 1: Вибір начинки</h4></summary>
               <div>
                 <ol>
                   <li>
                     Створи новий файл
-                    <span class="accent-string">paint.py</span> у VS Code.
+                    <span class="accent-string">pizza.py</span> та налаштуй
+                    вікно програми.
                   </li>
                   <li>
-                    Створи і налаштуй головне вікно програми
-                    <span class="accent-string">window</span>.
+                    Додай заголовок
+                    <span class="italic">"Pick Your Toppings"</span> і створи
+                    два прапорці <span class="accent-string">Checkbutton</span>:
+                    <span class="italic">"Pepperoni (+$2.00)"</span> та
+                    <span class="italic">"Mushrooms (+$1.00)"</span> (або обери
+                    інші). Для кожного прапорця створи окрему змінну
+                    <span class="accent-string">BooleanVar()</span>.
                   </li>
                   <li>
-                    Додай у вікно біле полотно
-                    <span class="accent-string">Canvas</span> (наприклад,
-                    розміром <span class="accent-string">380</span> на
-                    <span class="accent-string">280</span> пікселів) і розмісти
-                    його з відступом <span class="accent-string">pady</span>.
+                    Додай внизу напис із ціною
+                    <span class="italic">"Total: $10.00"</span> (базова вартість
+                    піци — <span class="accent-string">10.00</span>; це варто
+                    зберегти в окремій змінній).
+                  </li>
+                  <li>
+                    Напиши функцію перерахунку ціни, яка при кожному кліку на
+                    прапорці перевіряє їхній стан через
+                    <span class="accent-string">.get()</span>, додає вартість
+                    обраних начинок до базової ціни й оновлює текст у
+                    <span class="accent-string">Label</span>.
                   </li>
                 </ol>
+
+                <div class="image-gallery3">
+                  <img
+                    style="height: 200px; margin: 10px"
+                    src="./images/lesson20/ex1-1.png"
+                  />
+                  <img
+                    style="height: 200px; margin: 10px"
+                    src="./images/lesson20/ex1-2.png"
+                  />
+                </div>
               </div>
             </details>
 
             <hr />
 
-            <h3 id="p1-2">2. Координати та малювання кружечка</h3>
+            <h3 id="p1-3">3. Зміна стану через код: .set()</h3>
 
             <p>
-              Кожна точка на полотні <span class="accent-string">Canvas</span>
-              має дві координати у пікселях —
-              <span class="accent-string">(x, y)</span>, які відраховуються від
-              <span class="bold">верхнього лівого кута полотна</span>:
+              Поставити або зняти галочку можна не лише мишкою, а й прямо з коду
+              за допомогою методу <span class="accent-string">.set()</span>:
             </p>
 
-            <ul style="list-style-type: square; margin-bottom: 15px">
-              <li>
-                Точка <span class="accent-string">(0, 0)</span> — це верхній
-                лівий кут полотна.
-              </li>
-              <li>
-                <span class="accent-string">x</span> — відстань від
-                <span class="bold">лівого</span> краю полотна вправо.
-              </li>
-              <li>
-                <span class="accent-string">y</span> — відстань від
-                <span class="bold">верхнього</span> краю полотна вниз.
-              </li>
-            </ul>
+            <div class="tablecontainer">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Команда</th>
+                    <th>Що робить</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="accent-string">var.get()</span></td>
+                    <td>
+                      повертає поточний стан (<span class="accent-string"
+                        >True</span
+                      >
+                      або <span class="accent-string">False</span>)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="accent-string">var.set(True)</span></td>
+                    <td>програмно ставить галочку на екрані</td>
+                  </tr>
+                  <tr>
+                    <td><span class="accent-string">var.set(False)</span></td>
+                    <td>програмно знімає галочку на екрані</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
 
-            <p>
-              Лінія у Paint складається з багатьох маленьких кружечків, які
-              з'являються там, де рухається мишка. Щоб намалювати кружечок з
-              центром у точці <span class="accent-string">(x, y)</span> і
-              радіусом <span class="accent-string">5</span> пікселів,
-              використовують метод
-              <span class="accent-string">.create_oval()</span>:
-            </p>
+            <p>Наприклад, можна скопіювати стан одного прапорця в інший:</p>
 
-            <pre><code class="language-python">canvas.create_oval(
-    x - 5, y - 5,
-    x + 5, y + 5,
-    fill="purple",
-    outline="purple",
-)</code></pre>
-
-            <ul style="list-style-type: square; margin-bottom: 15px">
-              <li>
-                Перші чотири числа задають межі кружечка навколо точки
-                <span class="accent-string">(x, y)</span>: на
-                <span class="accent-string">5</span> пікселів вліво і вгору
-                (<span class="accent-string">x - 5, y - 5</span>) та на
-                <span class="accent-string">5</span> пікселів вправо і вниз
-                (<span class="accent-string">x + 5, y + 5</span>). Якщо замість
-                <span class="accent-string">5</span> взяти більше число, пензлик
-                стане товстішим.
-              </li>
-              <li>
-                <span class="accent-string">fill</span> — колір заливки
-                всередині, <span class="accent-string">outline</span> — колір
-                контуру.
-              </li>
-            </ul>
-
-            <hr />
-
-            <h3 id="p1-3">3. Реакція на рух мишки (.bind)</h3>
-
-            <p>
-              Кнопки реагують на клік через параметр
-              <span class="accent-string">command</span>. А щоб
-              <span class="bold">полотно</span> реагувало на рух затиснутої
-              мишки, використовують метод
-              <span class="accent-string">.bind()</span>:
-            </p>
-
-            <pre><code class="language-python">def show_coords(event):
-    x = event.x
-    y = event.y
-    print(x, y)
-
-canvas.bind("&lt;B1-Motion&gt;", show_coords)</code></pre>
-
-            <ul style="list-style-type: square; margin-bottom: 15px">
-              <li>
-                <span class="accent-string">"&lt;B1-Motion&gt;"</span> означає
-                <span class="italic"
-                  >«рух мишки із затиснутою лівою кнопкою»</span
-                >.
-              </li>
-              <li>
-                Функція обов'язково має приймати параметр
-                <span class="accent-string">event</span> у дужках — через нього
-                Python передає координати курсора мишки:
-                <span class="accent-string">event.x</span> та
-                <span class="accent-string">event.y</span>.
-              </li>
-            </ul>
-
-            <img src="./images/lesson20/20-2.png" alt="Drawing on canvas" />
+            <pre><code class="language-python">state = main_var.get()
+other_var.set(state)</code></pre>
 
             <!-- Завдання 2 -->
-            <details class="task" name="paint">
-              <summary><h4>Завдання 2</h4></summary>
+            <details class="task" name="l20-p1">
+              <summary><h4>Завдання 2: Прапорець "Обрати все"</h4></summary>
               <div>
                 <ol>
                   <li>
-                    Напиши функцію
-                    <span class="accent-string">draw(event)</span>, яка отримує
-                    координати мишки <span class="accent-string">x</span> та
-                    <span class="accent-string">y</span> і малює в цій точці
-                    кружечок будь-якого кольору через
-                    <span class="accent-string">canvas.create_oval(...)</span>.
+                    Додай під начинками ще один прапорець —
+                    <span class="italic">"Select All Toppings"</span> зі своєю
+                    змінною <span class="accent-string">BooleanVar()</span>.
                   </li>
                   <li>
-                    Прив'яжи функцію <span class="accent-string">draw</span> до
-                    полотна за допомогою
-                    <span class="accent-string"
-                      >canvas.bind("&lt;B1-Motion&gt;", draw)</span
-                    >.
-                  </li>
-                  <li>Запусти програму і спробуй щось намалювати!</li>
-                </ol>
-              </div>
-            </details>
-
-            <hr />
-
-            <h3 id="p1-4">4. Очищення полотна</h3>
-
-            <p>
-              Пригадаємо, як створюється звичайна кнопка, яка викликає функцію:
-            </p>
-
-            <pre><code class="language-python">def say_hi():
-    print("Hi!")
-
-btn = Button(window, text="Click", command=say_hi)
-btn.pack()</code></pre>
-
-            <p>
-              А щоб повністю стерти все, що намальовано на полотні
-              <span class="accent-string">Canvas</span>, використовують таку
-              команду:
-            </p>
-
-            <pre><code class="language-python">canvas.delete("all")</code></pre>
-
-            <!-- Завдання 3 -->
-            <details class="task" name="paint">
-              <summary><h4>Завдання 3</h4></summary>
-              <div>
-                <p>
-                  Створи під полотном кнопку
-                  <span class="italic">Clear</span>, яка при натисканні очищує
-                  все полотно.
-                </p>
-              </div>
-            </details>
-
-            <hr />
-
-            <h3 id="p1-5">
-              5. Зміна кольору та гумка (Повторення: Frame і global)
-            </h3>
-
-            <p>
-              Зараз наш пензлик малює лише одним кольором. Щоб колір можна було
-              перемикати кнопками, збережемо його у
-              <span class="bold">глобальну змінну</span>.
-            </p>
-
-            <p>
-              <span class="bold">Пригадай:</span> щоб функція могла змінити
-              змінну, створену поза нею, використовуємо слово
-              <span class="accent-string">global</span>:
-            </p>
-
-            <pre><code class="language-python">mood = "happy"
-
-def make_sleepy():
-    global mood
-    mood = "sleepy"</code></pre>
-
-            <p>
-              А щоб розмістити кілька кнопок
-              <span class="bold">в один рядок</span>, кладемо їх у рамку
-              <span class="accent-string">Frame</span> із параметром
-              <span class="accent-string">side=LEFT</span>:
-            </p>
-
-            <pre><code class="language-python">row = Frame(window, bg="lavender")
-row.pack(pady=5)
-
-btn1 = Button(row, text="One", command=...)
-btn1.pack(side=LEFT, padx=5)
-
-btn2 = Button(row, text="Two", command=...)
-btn2.pack(side=LEFT, padx=5)</code></pre>
-
-            <img src="./images/lesson20/20-3.png" alt="Color buttons row" />
-
-            <!-- Завдання 4 -->
-            <details class="task" name="paint">
-              <summary><h4>Завдання 4</h4></summary>
-              <div>
-                <ol>
-                  <li>
-                    Створи перед функціями змінну
-                    <span class="accent-string">color = "black"</span> (або
-                    будь-який інший початковий колір).
+                    Напиши для нього окрему функцію: коли користувач ставить
+                    галочку на
+                    <span class="italic">"Select All Toppings"</span>, обидва
+                    прапорці начинок мають автоматично увімкнутися. Коли знімає
+                    — обидва мають вимкнутися.
                   </li>
                   <li>
-                    У функції <span class="accent-string">draw(event)</span>
-                    заміни назву кольору в
-                    <span class="accent-string">fill</span> та
-                    <span class="accent-string">outline</span> на змінну
-                    <span class="accent-string">color</span>.
-                  </li>
-                  <li>
-                    Створи рамку <span class="accent-string">Frame</span> і
-                    розмісти в ній в один рядок (<span class="accent-string"
-                      >side=LEFT</span
-                    >) 3–4 кнопки різних кольорів (наприклад, червоний, синій,
-                    зелений) та кнопку <span class="italic">Clear</span>. Кожна
-                    кольорова кнопка має змінювати змінну
-                    <span class="accent-string">color</span> через
-                    <span class="accent-string">global</span>.
-                  </li>
-                  <li>
-                    Додай ще одну кнопку —
-                    <span class="italic">Eraser</span> (гумка), яка стирає
-                    намальоване там, де проводиш мишкою.
+                    У кінці цієї функції обов'язково виклич функцію перерахунку
+                    ціни, щоб загальна сума на екрані теж оновилася.
                   </li>
                 </ol>
-
-                <details class="answer" style="margin-top: 10px">
-                  <summary style="color: gray">
-                    Підказка: як працює гумка?
-                  </summary>
-                  <p style="margin: 0">
-                    Гумка — це просто пензлик, який малює кольором фону полотна
-                    (наприклад, <span class="accent-string">"white"</span>)!
-                  </p>
-                </details>
-              </div>
-            </details>
-
-            <hr />
-
-            <h3 id="p1-6">6. Бонус: Розмір пензлика</h3>
-
-            <p>
-              Так само, як ми зберігаємо у змінній колір пензлика, ми можемо
-              зберігати і його <span class="bold">радіус</span> (товщину):
-            </p>
-
-            <pre><code class="language-python">size = 5
-
-# Всередині draw(event):
-canvas.create_oval(
-    x - size, y - size,
-    x + size, y + size,
-    fill=color,
-    outline=color,
-)</code></pre>
-
-            <!-- Завдання 5 -->
-            <details class="task" name="paint">
-              <summary><h4>Завдання 5 (Додаткове)</h4></summary>
-              <div>
-                <p>
-                  Створи змінну <span class="accent-string">size = 5</span> та
-                  додай дві кнопки: <span class="italic">Small</span> (робить
-                  розмір пензлика меншим, наприклад
-                  <span class="accent-string">3</span>) та
-                  <span class="italic">Big</span> (робить розмір пензлика
-                  більшим, наприклад <span class="accent-string">12</span>).
-                </p>
               </div>
             </details>
           </div>
         </div>
       </section>
 
-      <!-- 🍋 PART 2: Кольори та шрифти -->
+      <!-- 🍊 PART 2: Radiobutton -->
       <section id="part-2" class="lesson-wrapper tab-content">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img
+                src="../media/icons/orange.svg"
+                class="star"
+                alt="orange"
+                width="60"
+                height="60"
+              />
+              <span>Перемикачі Radiobutton</span>
+            </h2>
+          </div>
+
+          <div class="lesson-content">
+            <h3 id="p2-1">1. Віджет Radiobutton та StringVar</h3>
+
+            <p>
+              Перемикачі
+              <span class="accent-string">Radiobutton</span> дозволяють обрати
+              <span class="bold">лише один</span> варіант із запропонованих:
+              коли ми натискаємо на один перемикач, попередній автоматично
+              вимикається.
+            </p>
+
+            <p>
+              Щоб перемикачі працювали як одна група, усі вони мають
+              прив'язуватися до
+              <span class="bold">однієї спільної змінної</span>
+              <span class="accent-string">StringVar()</span>, але мати різні
+              значення <span class="accent-string">value</span>:
+            </p>
+
+            <pre
+              style="max-height: none"
+            ><code class="language-python">level_var = StringVar(value="easy")
+
+def show_level():
+    label2.config(text=f"Level: {level_var.get()}")
+
+rb1 = Radiobutton(
+    window,
+    text="Easy",
+    variable=level_var,
+    value="easy",
+    command=show_level,
+)
+rb1.pack(anchor="w", padx=20)
+
+rb2 = Radiobutton(
+    window,
+    text="Hard",
+    variable=level_var,
+    value="hard",
+    command=show_level,
+)
+rb2.pack(anchor="w", padx=20)
+
+label2 = Label(window, text="...")
+label2.pack()</code></pre>
+
+            <ul style="list-style-type: square; margin-bottom: 15px">
+              <li>
+                <span class="accent-string">StringVar(value="Easy")</span> —
+                створює спільну текстову змінну і одразу встановлює варіант за
+                замовчуванням.
+              </li>
+              <li>
+                <span class="accent-string">value="Hard"</span> — текст, який
+                запишеться всередину
+                <span class="accent-string">level_var</span>, якщо обрати цей
+                перемикач.
+              </li>
+            </ul>
+
+            <p>
+              Якщо у вікні потрібно зробити
+              <span class="bold">дві окремі групи</span>
+              перемикачів (наприклад, окремо обрати напій і окремо — десерт),
+              для другої групи потрібно створити
+              <span class="bold">другу змінну</span>
+              <span class="accent-string">StringVar()</span>:
+            </p>
+
+            <pre><code class="language-python"># Перша група перемикачів має variable=drink_var
+drink_var = StringVar(value="Tea")
+
+# Друга група перемикачів має variable=dessert_var
+dessert_var = StringVar(value="Cake")</code></pre>
+
+            <!-- Завдання 3 -->
+            <details class="task" name="l20-p2" open>
+              <summary><h4>Завдання 3: Розмір піци</h4></summary>
+              <div>
+                <ol>
+                  <li>
+                    Створи змінну
+                    <span class="accent-string">StringVar</span> для розміру
+                    піци (за замовчуванням встанови значення
+                    <span class="accent-string">"Medium"</span>).
+                  </li>
+                  <li>
+                    На самому початку вікна додай заголовок
+                    <span class="italic">"Select Size:"</span> і три перемикачі
+                    <span class="accent-string">Radiobutton</span>:
+                    <span class="italic">"Small ($7.00)"</span>,
+                    <span class="italic">"Medium ($10.00)"</span> та
+                    <span class="italic">"Large ($13.00)"</span>.
+                  </li>
+                  <li>
+                    Зміни функцію розрахунку ціни так, щоб початкова вартість
+                    піци залежала від обраного розміру (<span
+                      class="accent-string"
+                      >7.00</span
+                    >, <span class="accent-string">10.00</span> або
+                    <span class="accent-string">13.00</span>), а вже до неї
+                    додавалися обрані начинки.
+                  </li>
+                </ol>
+              </div>
+            </details>
+
+            <hr />
+
+            <h3 id="p2-2">2. Оформлення замовлення</h3>
+
+            <p>
+              Наостанок поєднаємо наш конструктор із полем введення
+              <span class="accent-string">Entry</span> та кнопкою
+              <span class="accent-string">Button</span> (приклади роботи з ними
+              можна переглянути у вкладці <span class="bold">Додатково</span>).
+            </p>
+
+            <!-- Завдання 4 -->
+            <details class="task" name="l20-p2">
+              <summary><h4>Завдання 4: Ім'я та кнопка замовлення</h4></summary>
+              <div>
+                <ol>
+                  <li>
+                    У самому низу вікна додай напис
+                    <span class="italic">"Enter your name:"</span>, поле для
+                    введення імені <span class="accent-string">Entry</span>,
+                    кнопку <span class="italic">"Order Pizza"</span> та порожній
+                    <span class="accent-string">Label</span> для виведення
+                    подяки.
+                  </li>
+                  <li>
+                    Напиши функцію для кнопки: якщо користувач ввів своє ім'я, у
+                    нижньому написі має з'явитися текст
+                    <span class="italic"
+                      >"Thanks for your order, &lt;ім'я&gt;!"</span
+                    >.
+                  </li>
+                  <li>
+                    Якщо поле залишили порожнім (<span class="accent-string"
+                      >""</span
+                    >), виводь загальне повідомлення:
+                    <span class="italic">"Thank you for your order!"</span>.
+                  </li>
+                </ol>
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- 🍋 PART 3: Додатково -->
+      <section id="part-3" class="lesson-wrapper tab-content">
         <div class="lesson-block">
           <div class="lesson-header">
             <h2>
@@ -539,12 +577,12 @@ canvas.create_oval(
                 width="60"
                 height="60"
               />
-              <span>Кольори та шрифти</span>
+              <span>Довідник: Кольори, шрифти та повторення</span>
             </h2>
           </div>
 
           <div class="lesson-content">
-            <h3>Таблиця кольорів:</h3>
+            <h3 id="colors">Таблиця кольорів</h3>
             <div class="tablecontainer">
               <table>
                 <thead>
@@ -690,7 +728,7 @@ canvas.create_oval(
 
             <hr />
 
-            <h3>Таблиця шрифтів:</h3>
+            <h3 id="fonts">Таблиця шрифтів</h3>
             <div class="tablecontainer">
               <table>
                 <thead>
@@ -749,202 +787,101 @@ canvas.create_oval(
                 </tbody>
               </table>
             </div>
-          </div>
-        </div>
-      </section>
 
-      <!-- 🍎 PART 3: Домашнє завдання -->
-      <section id="part-3" class="lesson-wrapper tab-content">
-        <div class="lesson-block">
-          <div class="lesson-header">
-            <h2>
-              <img
-                src="../media/icons/apple.svg"
-                class="star"
-                alt="apple"
-                width="60"
-                height="60"
-              />
-              <span>Домашнє завдання</span>
-            </h2>
-          </div>
+            <hr />
 
-          <div class="lesson-content">
-            <h3>Завдання</h3>
+            <h3 id="label">1. Label (Напис)</h3>
+            <p>
+              Створення текстового напису та зміна його тексту або кольору за
+              допомогою методу <span class="accent-string">.config()</span>:
+            </p>
+            <pre><code class="language-python">label = Label(
+    window,
+    text="Hello!",
+    font=("Arial", 16, "bold"),
+    bg="lavender",
+    fg="purple",
+)
+label.pack(pady=10)
 
-            <h4>1) Дай відповіді на питання:</h4>
+# Як змінити текст або колір пізніше (наприклад, всередині функції):
+label.config(text="New text", fg="crimson")</code></pre>
 
-            <!-- Питання 1 -->
-            <div class="test-question">
-              <p>
-                1. Який віджет використовують для створення полотна для
-                малювання?
-              </p>
-              <label class="test-label">
-                <input
-                  type="radio"
-                  class="test-radio"
-                  name="l20-q1"
-                  value="Paint"
-                />
-                Paint()
-              </label>
-              <label class="test-label">
-                <input
-                  type="radio"
-                  class="test-radio"
-                  name="l20-q1"
-                  value="Canvas"
-                />
-                Canvas()
-              </label>
-              <label class="test-label">
-                <input
-                  type="radio"
-                  class="test-radio"
-                  name="l20-q1"
-                  value="Frame"
-                />
-                Frame()
-              </label>
-            </div>
+            <hr />
 
-            <!-- Питання 2 -->
-            <div class="test-question">
-              <p>2. Яка команда повністю очищує полотно canvas?</p>
-              <label class="test-label">
-                <input
-                  type="radio"
-                  class="test-radio"
-                  name="l20-q2"
-                  value="delete_all"
-                />
-                canvas.delete("all")
-              </label>
-              <label class="test-label">
-                <input
-                  type="radio"
-                  class="test-radio"
-                  name="l20-q2"
-                  value="delete_1_0"
-                />
-                canvas.delete("1.0", END)
-              </label>
-              <label class="test-label">
-                <input
-                  type="radio"
-                  class="test-radio"
-                  name="l20-q2"
-                  value="clear"
-                />
-                canvas.clear()
-              </label>
-            </div>
+            <h3 id="button">2. Button (Кнопка)</h3>
+            <p>
+              Кнопка викликає вказану в параметрі
+              <span class="accent-string">command</span> функцію при натисканні
+              (назва функції пишеться <span class="bold">без дужок</span>):
+            </p>
+            <pre><code class="language-python">def change_color():
+    label.config(fg="darkgreen")
 
-            <!-- Питання 3 -->
-            <div class="test-question">
-              <p>
-                3. Як отримати координати курсора мишки всередині функції
-                draw(event)?
-              </p>
-              <label class="test-label">
-                <input
-                  type="radio"
-                  class="test-radio"
-                  name="l20-q3"
-                  value="canvas_xy"
-                />
-                canvas.x та canvas.y
-              </label>
-              <label class="test-label">
-                <input
-                  type="radio"
-                  class="test-radio"
-                  name="l20-q3"
-                  value="event_xy"
-                />
-                event.x та event.y
-              </label>
-              <label class="test-label">
-                <input
-                  type="radio"
-                  class="test-radio"
-                  name="l20-q3"
-                  value="get_xy"
-                />
-                event.get()
-              </label>
-            </div>
+btn = Button(
+    window,
+    text="Click me",
+    font=("Arial", 12),
+    bg="lightgreen",
+    command=change_color,
+)
+btn.pack(pady=10)</code></pre>
 
-            <!-- Питання 4 -->
-            <div class="test-question">
-              <p>
-                4. Яке ключове слово потрібно написати всередині функції, щоб
-                вона могла змінити зовнішню змінну color?
-              </p>
-              <label class="test-label">
-                <input
-                  type="radio"
-                  class="test-radio"
-                  name="l20-q4"
-                  value="global"
-                />
-                global color
-              </label>
-              <label class="test-label">
-                <input
-                  type="radio"
-                  class="test-radio"
-                  name="l20-q4"
-                  value="change"
-                />
-                change color
-              </label>
-              <label class="test-label">
-                <input
-                  type="radio"
-                  class="test-radio"
-                  name="l20-q4"
-                  value="return"
-                />
-                return color
-              </label>
-            </div>
+            <hr />
 
-            <!-- Питання 5 -->
-            <div class="test-question">
-              <p>
-                5. Як найпростіше зробити кнопку «Гумка» (Eraser) на білому
-                полотні?
-              </p>
-              <label class="test-label">
-                <input
-                  type="radio"
-                  class="test-radio"
-                  name="l20-q5"
-                  value="delete_all"
-                />
-                Викликати canvas.delete("all")
-              </label>
-              <label class="test-label">
-                <input
-                  type="radio"
-                  class="test-radio"
-                  name="l20-q5"
-                  value="white_color"
-                />
-                Змінити колір пензлика на білий ("white")
-              </label>
-              <label class="test-label">
-                <input
-                  type="radio"
-                  class="test-radio"
-                  name="l20-q5"
-                  value="none_color"
-                />
-                Видалити функцію draw
-              </label>
-            </div>
+            <h3 id="entry">3. Entry (Однорядкове поле введення)</h3>
+            <p>
+              Метод <span class="accent-string">.get()</span> повертає введений
+              текст, а <span class="accent-string">.delete(0, END)</span> очищає
+              поле:
+            </p>
+            <pre><code class="language-python">entry = Entry(window, font=("Arial", 14), width=20)
+entry.pack(pady=10)
+
+def show_input():
+    user_text = entry.get()          # читаємо текст із поля
+    label.config(text=user_text)
+    entry.delete(0, END)             # очищаємо поле введення</code></pre>
+
+            <hr />
+
+            <h3 id="frame">4. Frame (Рамка)</h3>
+            <p>
+              Щоб поставити кілька елементів поруч в один рядок, поміщаємо їх у
+              <span class="accent-string">Frame</span> із параметром
+              <span class="accent-string">side=LEFT</span>:
+            </p>
+            <pre><code class="language-python">row_frame = Frame(window)
+row_frame.pack(pady=10)
+
+# У якості контейнера вказуємо row_frame замість window
+name_label = Label(row_frame, text="Name:", font=("Arial", 12))
+name_label.pack(side=LEFT, padx=5)
+
+name_entry = Entry(row_frame, font=("Arial", 12), width=15)
+name_entry.pack(side=LEFT, padx=5)</code></pre>
+
+            <hr />
+
+            <h3 id="global">5. global</h3>
+            <p>
+              Якщо всередині функції потрібно <span class="bold">змінити</span>
+              значення змінної, створеної поза функцією (наприклад, збільшити
+              рахунок або лічильник), використовуємо
+              <span class="accent-string">global</span>:
+            </p>
+            <pre><code class="language-python">count = 0
+
+def add_one():
+    global count
+    count = count + 1
+    counter_label.config(text=f"Clicks: {count}")
+
+counter_label = Label(window, text="Clicks: 0", font=("Arial", 16))
+counter_label.pack(pady=10)
+
+plus_btn = Button(window, text="+1", font=("Arial", 14), command=add_one)
+plus_btn.pack(pady=5)</code></pre>
           </div>
         </div>
       </section>
