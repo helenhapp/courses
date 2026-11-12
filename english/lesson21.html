@@ -259,43 +259,43 @@
                   <tr>
                     <td><span class="bold">1. a desert</span></td>
                     <td><span class="accent-string">/ˈdezət/</span></td>
-                    <td>пустеля</td>
+                    <td><span class="reveal">пустеля</span></td>
                     <td>It is very hot in the desert during the day.</td>
                   </tr>
                   <tr>
                     <td><span class="bold">2. a lake</span></td>
                     <td><span class="accent-string">/leɪk/</span></td>
-                    <td>озеро</td>
+                    <td><span class="reveal">озеро</span></td>
                     <td>There are many fish in this lake.</td>
                   </tr>
                   <tr>
                     <td><span class="bold">3. grass</span></td>
                     <td><span class="accent-string">/ɡrɑːs/</span></td>
-                    <td>трава</td>
+                    <td><span class="reveal">трава</span></td>
                     <td>The grass in the park is green and soft.</td>
                   </tr>
                   <tr>
                     <td><span class="bold">4. a rock painting</span></td>
                     <td><span class="accent-string">/ˈrɒk ˌpeɪntɪŋ/</span></td>
-                    <td>наскельний малюнок</td>
+                    <td><span class="reveal">наскельний малюнок</span></td>
                     <td>The museum has an old rock painting of a hunter.</td>
                   </tr>
                   <tr>
                     <td><span class="bold">5. climate</span></td>
                     <td><span class="accent-string">/ˈklaɪmət/</span></td>
-                    <td>клімат</td>
+                    <td><span class="reveal">клімат</span></td>
                     <td>The climate in Spain is warm and sunny.</td>
                   </tr>
                   <tr>
                     <td><span class="bold">6. rainfall</span></td>
                     <td><span class="accent-string">/ˈreɪnfɔːl/</span></td>
-                    <td>опади, кількість опадів</td>
+                    <td><span class="reveal">опади, кількість опадів</span></td>
                     <td>The rainfall in this city is low in summer.</td>
                   </tr>
                   <tr>
                     <td><span class="bold">7. to dry up</span></td>
                     <td><span class="accent-string">/ˌdraɪ ˈʌp/</span></td>
-                    <td>висихати, пересихати</td>
+                    <td><span class="reveal">висихати, пересихати</span></td>
                     <td>Rivers sometimes dry up in very hot summers.</td>
                   </tr>
                 </tbody>
@@ -390,7 +390,7 @@
                 In the cave, we saw a
                 <input
                   type="text"
-                  id="l21-v-8"
+                  id="l21-v-7"
                   class="test-input"
                   style="width: 150px"
                 />
@@ -1585,6 +1585,13 @@
             toggle();
           }
         });
+      });
+
+      document.addEventListener("click", (event) => {
+        const word = event.target.closest(".reveal");
+        if (word) {
+          word.classList.toggle("revealed");
+        }
       });
     </script>
   </body>
