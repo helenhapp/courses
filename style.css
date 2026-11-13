@@ -3577,6 +3577,10 @@ code.long-code .hljs-ln td.hljs-ln-code {
     background 0.2s ease,
     color 0.2s ease;
 }
+.reveal:not(.revealed) .accent-string {
+  background: transparent;
+  border: transparent;
+}
 
 .reveal:hover {
   background: #609979;

@@ -1,0 +1,875 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Навчальні матеріали з Python" />
+
+    <link rel="icon" type="image/svg+xml" href="../media/icons/carambola.svg" />
+
+    <title>Python Lesson 21</title>
+
+    <script>
+      const savedTheme = localStorage.getItem("lms_theme") || "light";
+      document.documentElement.setAttribute("data-theme", savedTheme);
+
+      const hljsThemeLink =
+        savedTheme === "dark"
+          ? "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css"
+          : "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css";
+
+      document.head.insertAdjacentHTML(
+        "beforeend",
+        `<link id="hljs-theme" rel="stylesheet" href="${hljsThemeLink}" />`,
+      );
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Fira+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Tektur:wght@400..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"
+    ></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.css"
+    />
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.js"
+    ></script>
+
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/javascript/javascript.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/xml/xml.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/css/css.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/htmlmixed/htmlmixed.min.js"
+    ></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/theme/dracula.min.css"
+    />
+
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/python/python.min.js"
+    ></script>
+
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt-stdlib.js"
+    ></script>
+
+    <link rel="stylesheet" href="../style.css?v=10.0" />
+    <script src="../script.js?v=10.0" defer></script>
+  </head>
+
+  <body>
+    <!-- transition curtain -->
+    <div class="transition-curtain"></div>
+
+    <!-- top-bar -->
+    <div id="nav-container">
+      <nav class="top-bar">
+        <div class="logo-container">
+          <img
+            src="../media/icons/carambola.svg"
+            alt="Logo"
+            class="site-logo"
+          />
+        </div>
+
+        <div class="top-bar__controls">
+          <label class="toggle-switch" aria-label="Перемикач теми">
+            <input type="checkbox" id="theme-checkbox" />
+            <span class="slider">
+              <span class="icon sun"
+                ><img src="../media/icons/stars.svg"
+              /></span>
+              <span class="icon moon"
+                ><img src="../media/icons/moon.svg"
+              /></span>
+            </span>
+          </label>
+          <button
+            id="dyslexia-mode-btn"
+            class="wide-toggle"
+            title="Шрифт для дислектиків"
+          >
+            Aa
+          </button>
+        </div>
+      </nav>
+    </div>
+
+    <!-- lesson header -->
+    <header>
+      <div class="title-container">
+        <h1 id="lesson-title">Python: 21</h1>
+      </div>
+
+      <p class="topic">List / Dict / Tuple / Set</p>
+
+      <hr class="pretty-divider" />
+    </header>
+
+    <!-- lesson content -->
+    <main>
+      <!-- tab buttons -->
+      <div class="tabs-nav">
+        <button class="tab-btn active" data-target="part-1">Повторення</button>
+        <button class="tab-btn" data-target="part-2">Tuple та Set</button>
+        <button class="tab-btn" data-target="part-3">Mutable/Immutable</button>
+      </div>
+
+      <!-- 🍓 PART 1: review lists and dicts -->
+      <section id="part-1" class="lesson-wrapper tab-content active show">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img
+                src="../media/icons/strawberry.svg"
+                class="star"
+                alt="strawberry"
+              />
+              <span>Повторення: списки та словники</span>
+            </h2>
+          </div>
+
+          <div class="lesson-content">
+            <h3 id="reivew-list">List (список)</h3>
+
+            <p>
+              <span class="bold">Коли використовувати list?</span> Коли потрібна
+              впорядкована колекція, яка може змінюватись: елементи можна
+              додавати, видаляти, сортувати, і вони можуть повторюватись.
+              Наприклад: список оцінок
+              <span class="accent-string">[7, 9, 5]</span> або англійські слова
+              для вивчення.
+            </p>
+
+            <!-- Завдання 1 -->
+            <details class="task" name="l21-p1" open>
+              <summary><h4>Завдання 1: List</h4></summary>
+              <div>
+                <p>Дано список оцінок:</p>
+                <pre><code class="language-python">scores = [7, 9, 5, 10, 8]</code></pre>
+
+                <ul>
+                  <li>
+                    Додай до списку оцінку
+                    <span class="accent-string">6</span> (за допомогою методу
+                    <span class="accent-string">append</span>).
+                  </li>
+                  <li>
+                    Виведи:
+                    <ul style="margin-top: 0">
+                      <li>
+                        найбільшу оцінку (<span class="accent-string">max</span
+                        >);
+                      </li>
+                      <li>
+                        середнє арифметичне всіх оцінок (<span
+                          class="accent-string"
+                          >sum</span
+                        >, <span class="accent-string">len</span>);
+                      </li>
+                      <li>
+                        список оцінок, відсортований за зростанням (<span
+                          class="accent-string"
+                          >sorted(list)</span
+                        >).
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+
+                <p>🐍 Очікуваний результат:</p>
+                <pre style="margin-bottom: 0"><code>10
+7.5
+[5, 6, 7, 8, 9, 10]</code></pre>
+              </div>
+            </details>
+
+            <hr />
+
+            <h3 id="reivew-dict">Dictionary (словник)</h3>
+
+            <p>
+              <span class="bold">Коли використовувати dict?</span> Коли кожному
+              значенню відповідає своя "назва" (ключ) і треба швидко знаходити
+              значення за нею: ціни товарів
+              <span class="accent-string">{"apple": 20}</span>, оцінки учнів за
+              іменами, переклад слів.
+            </p>
+
+            <!-- Завдання 2 -->
+            <details class="task" name="l21-p1">
+              <summary><h4>Завдання 2: Dict</h4></summary>
+              <div>
+                <p>Дано словник цін:</p>
+                <pre><code class="language-python">prices = {"apple": 20, "pear": 35}</code></pre>
+                <p>
+                  Додай <span class="accent-string">"plum": 28</span>, зміни
+                  ціну яблука на <span class="accent-string">22</span>, потім
+                  циклом виведи кожен товар з ціною і знайди загальну суму.
+                </p>
+
+                <ul>
+                  <li>
+                    додай сливу (<span class="accent-string">"plum"</span>) із
+                    ціною <span class="accent-string">28</span>;
+                  </li>
+                  <li>
+                    зміни ціну яблука на
+                    <span class="accent-string">22</span> (через доступ за
+                    ключем
+                    <span class="accent-string">dict[key] = new_value</span>);
+                  </li>
+                  <li>
+                    за допомогою циклу
+                    <span class="accent-string"
+                      >for key, value in dict.items()</span
+                    >
+                    виведи кожен товар і його ціну;
+                  </li>
+                  <li>
+                    виведи суму всіх цін (можна порахувати в тому самому циклі).
+                  </li>
+                </ul>
+
+                <p>🐍 Очікуваний результат:</p>
+                <pre style="margin-bottom: 0"><code>apple 22
+pear 35
+plum 28
+Разом: 85</code></pre>
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- 🍉 PART 2: tuple and set -->
+      <section id="part-2" class="lesson-wrapper tab-content">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img
+                src="../media/icons/watermelon.svg"
+                class="star"
+                alt="watermelon"
+              />
+              <span>Кортежі та множини</span>
+            </h2>
+          </div>
+
+          <div class="lesson-content">
+            <h3 id="p2-tuple">Tuple (кортеж)</h3>
+
+            <p>
+              <span class="bold">Кортеж (tuple)</span> — це
+              <span class="accent">список, який не можна змінювати</span> після
+              створення. Записується в круглих дужках замість квадратних.
+            </p>
+
+            <pre><code class="language-python">point = (3, 4)
+print(point[0]) # 3
+print(len(point)) # 2
+
+point[0] = 5 # TypeError: 'tuple' object does not support item assignment</code></pre>
+
+            <p><span class="bold">Корисні речі:</span></p>
+            <ul style="list-style-type: square">
+              <li>
+                Розпакування:
+                <span class="accent-string">x, y = point</span> дає
+                <span class="accent-string">x = 3</span> та
+                <span class="accent-string">y = 4</span>.
+              </li>
+              <li>
+                Повернення кількох значень з функції:
+                <span class="accent-string">return a, b</span> насправді
+                повертає кортеж.
+              </li>
+              <li>
+                <span class="accent">Кортеж з одного елемента</span> потребує
+                коми: <span class="accent-string">(5,)</span>. Без коми
+                <span class="accent-string">(5)</span> — це просто число у
+                дужках.
+              </li>
+            </ul>
+
+            <p class="bold">❓ Що виведе цей код?</p>
+            <pre><code class="language-python">def min_max(numbers):
+    return min(numbers), max(numbers)
+
+print(min_max([1, 2, 3])) 
+
+lowest, highest = min_max([8, -4, 15, 32, 7])
+print(lowest)
+print(highest)
+
+print(type((5)))
+print(type((-5)))</code></pre>
+
+            <p>
+              <span class="bold">Коли використовувати tuple?</span> Коли набір
+              значень — це "одна річ" і не має змінюватись: координати точки
+              <span class="accent-string">(x, y)</span>, rgb-колір
+              <span class="accent-string">(255, 0, 0)</span>, дата
+              <span class="accent-string">(2026, 11, 13)</span>.
+            </p>
+
+            <!-- Завдання 3 -->
+            <details class="task" name="l21-p2" open>
+              <summary><h4>Завдання 3: Відстань між точками</h4></summary>
+              <div>
+                <p>Дано дві точки на площині:</p>
+                <pre><code class="language-python">A = (1, 2)
+B = (4, 6)</code></pre>
+
+                <ul>
+                  <li>
+                    Розпакуй кожну точку у змінні
+                    <span class="accent-string">x1, y1</span> та
+                    <span class="accent-string">x2, y2</span>.
+                  </li>
+                  <li>
+                    Обчисли відстань між точками за формулою:
+                    <img
+                      src="./images/lesson21/distance.png"
+                      alt="distance formula"
+                    />
+                  </li>
+                  <li>
+                    Спробуй написати
+                    <span class="accent-string">A[0] = 10</span> і прочитай
+                    повідомлення про помилку. Що саме там сказано?
+                  </li>
+                </ul>
+
+                <p>
+                  🐍 Очікуваний результат:
+                  <span class="accent-string">5.0</span>, а потім помилка
+                  <span class="accent-string">TypeError</span>.
+                </p>
+              </div>
+            </details>
+
+            <!-- Завдання 4 -->
+            <details class="task" name="l21-p2">
+              <summary>
+                <h4>Завдання 4: Функція, що повертає кортеж</h4>
+              </summary>
+              <div>
+                <ul>
+                  <li>
+                    Напиши функцію
+                    <span class="accent-string">stats(numbers)</span>, яка
+                    приймає список і повертає
+                    <span class="bold">кортеж</span> із трьох чисел:
+                    <ul style="margin-top: 0">
+                      <li>мінімум;</li>
+                      <li>максимум;</li>
+                      <li>середнє арифметичне.</li>
+                    </ul>
+                  </li>
+                  <li>
+                    Виклич її для списку
+                    <span class="accent-string">[4, 8, 15, 16, 23, 42]</span>.
+                  </li>
+                </ul>
+
+                <p>🐍 Очікуваний результат:</p>
+                <pre style="margin-bottom: 0"><code>4 42 18.0</code></pre>
+              </div>
+            </details>
+
+            <hr />
+
+            <h3 id="part-b">Множина (set)</h3>
+
+            <p>
+              <span class="bold">Множина (set)</span> — це набір
+              <span class="bold">унікальних невпорядкованих</span> елементів.
+              Записується у фігурних дужках.
+            </p>
+
+            <pre><code class="language-python">s = {1, 2, 2, 3, 3, 3}
+print(s) # {1, 2, 3}, дублікати зникли</code></pre>
+
+            <p><span class="bold">Основне:</span></p>
+            <ul style="list-style-type: square">
+              <li>
+                <span class="accent-string">len(s)</span> та
+                <span class="accent-string">x in s</span> працюють, як у списку
+                (причому перевірка <span class="accent-string">in</span> у
+                множині працює значно швидше!).
+              </li>
+              <li>
+                <span class="accent">Немає індексів:</span>
+                <span class="accent-string">s[0]</span> видає помилку, бо в
+                множини немає порядку.
+              </li>
+              <li>
+                Додати елемент: <span class="accent-string">s.add(5)</span>.
+              </li>
+              <li>
+                Видалити елемент:
+                <span class="accent-string">s.discard(5)</span> (без помилки,
+                якщо елемента немає) або
+                <span class="accent-string">s.remove(5)</span> (помилка, якщо
+                немає).
+              </li>
+              <li>
+                <span class="accent">Порожня множина:</span>
+                <span class="accent-string">set()</span>, а не
+                <span class="accent-string">{}</span> (бо
+                <span class="accent-string">{}</span> — це порожній словник!).
+              </li>
+              <li>
+                Як швидко прибрати дублікати зі списку:
+                <pre><code class="language-python">names = ["Sam", "Nick", "Sam"]
+unique_names = list(set(names))
+print(unique_names) # ["Sam", "Nick"] (порядок може бути іншим)</code></pre>
+              </li>
+            </ul>
+
+            <p>
+              <span class="bold"
+                >Операції над множинами (як у математиці):</span
+              >
+            </p>
+            <pre><code class="language-python">A = {1, 2, 3, 4, 5, 6}
+B = {2, 4, 6, 8}
+
+print(A | B) # об'єднання (усі елементи з обох): {1, 2, 3, 4, 5, 6, 8}
+print(A & B) # перетин (спільні елементи): {2, 4, 6}
+print(A - B) # різниця (є в A, але немає в B): {1, 3, 5}
+print(A ^ B) # симетрична різниця (лише в одній): {1, 3, 5, 8}</code></pre>
+
+            <p class="bold">❓ Що виведе цей код?</p>
+            <pre><code class="language-python">print(len({1, 2, 2, 3, 3, 3}))
+print(type({}))
+print(type(set()))</code></pre>
+
+            <p class="bold">Сортування:</p>
+
+            <p>
+              <span class="accent-string">sorted(s)</span> працює і з множиною,
+              але завжди повертає новий <span class="accent">список</span> (у
+              множини немає порядку, а в списку є). Сама множина при цьому не
+              змінюється. Так само
+              <span class="accent-string">sorted()</span> поверне список, якщо
+              передати кортеж, рядок чи словник (для словника — відсортований
+              список ключів).
+            </p>
+            <pre><code class="language-python">s = {5, 1, 3}
+result = sorted(s)
+print(result) # [1, 3, 5] (це список, а не множина)
+print(type(result)) # &lt;class 'list'&gt;</code></pre>
+
+            <p>
+              <span class="bold">Коли використовувати множини?</span> Коли
+              важливо лише "чи є такий елемент" та "скільки різних", а порядок і
+              повтори не потрібні: унікальні відвідувачі сайту, множина простих
+              чисел в межах від 1 до 50, спільні дільники чисел 12 та 18.
+            </p>
+
+            <!-- Завдання 5 -->
+            <details class="task" name="l21-p2">
+              <summary>
+                <h4>Завдання 5: Унікальні значення</h4>
+              </summary>
+              <div>
+                <p>Дано результати кидків грального кубика:</p>
+                <pre><code class="language-python">rolls = [3, 5, 3, 6, 1, 5, 5, 2, 6, 3]</code></pre>
+                <ul>
+                  <li>
+                    Виведи, які <span class="bold">різні</span> значення випали
+                    (відсортуй за зростанням).
+                  </li>
+                  <li>Виведи, скільки всього різних значень випало.</li>
+                  <li>
+                    Виведи, які грані кубика (від 1 до 6)
+                    <span class="bold">жодного разу не випали</span>.
+                    <span class="italic">
+                      (Підказка: використай
+                      <span class="accent-string">set(range(1, 7))</span> і
+                      різницю множин.)
+                    </span>
+                  </li>
+                </ul>
+
+                <p>🐍 Очікуваний результат:</p>
+                <pre style="margin-bottom: 0"><code>[1, 2, 3, 5, 6]
+5
+{4}</code></pre>
+              </div>
+            </details>
+
+            <!-- Завдання 6 -->
+            <details class="task" name="l21-p2">
+              <summary>
+                <h4>Завдання 6: Спільні дільники</h4>
+              </summary>
+              <div>
+                <ul>
+                  <li>
+                    Напиши функцію
+                    <span class="accent-string">divisors(n)</span>, яка повертає
+                    <span class="bold">множину</span> всіх дільників числа
+                    <span class="accent-string">n</span>.
+                    <span class="italic"
+                      >(Використай цикл від 1 до
+                      <span class="accent-string">n</span> та оператор остачі
+                      <span class="accent-string">%</span>.)</span
+                    >
+                  </li>
+                  <li>
+                    Знайди всі <span class="bold">спільні дільники</span> чисел
+                    <span class="accent-string">12</span> і
+                    <span class="accent-string">18</span> за допомогою цієї
+                    функції та перетину множин.
+                  </li>
+                  <li>
+                    Знайди <span class="bold">найбільший</span> спільний дільник
+                    цих двох чисел.
+                  </li>
+                </ul>
+
+                <p>🐍 Очікуваний результат:</p>
+                <pre style="margin-bottom: 0"><code>Дільники 12:
+{1, 2, 3, 4, 6, 12}
+Дільники 18:
+{1, 2, 3, 6, 9, 18}
+Спільні дільники 12 і 18:
+{1, 2, 3, 6}
+НСД:
+6</code></pre>
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- 🍋 PART 3: mutable vs. immutable -->
+      <section id="part-3" class="lesson-wrapper tab-content">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img
+                src="../media/icons/lemon.svg"
+                class="star"
+                alt="a lemon slice"
+              />
+              <span>Незмінні та змінні типи даних</span>
+            </h2>
+          </div>
+
+          <div class="lesson-content">
+            <h3 id="p3-mutability">Mutable vs. Immutable</h3>
+
+            <p>
+              В Python типи даних можна поділити на
+              <span class="accent">незмінні</span> (immutable) та
+              <span class="accent">змінні</span> (mutable).
+            </p>
+
+            <ul style="list-style-type: square">
+              <li>
+                <span class="bold">Незмінні:</span>
+                <span class="accent-string">int, float, str, tuple, bool</span>.
+                Після створення їх вміст не міняється. Будь-яка "зміна" створює
+                <span class="bold">новий</span> об'єкт в памʼяті компʼютера.
+              </li>
+              <li>
+                <span class="bold">Змінні:</span>
+                <span class="accent-string">list, dict, set</span>. Їх вміст
+                можна змінювати "на місці" без створення нового об'єкта
+                (наприклад, через індекси та ключі, або за допомогою методів
+                <span class="accent-string">append()</span>,
+                <span class="accent-string">add()</span>, тощо).
+              </li>
+            </ul>
+
+            <pre><code class="language-python"># незмінюваний: int
+x = 5
+y = x
+y = y + 1
+print(x, y) # 5 6 (x не змінився)
+
+# незмінюваний: string
+word = "hello"
+# word[0] = "H" # видасть помилку TypeError
+print(word.upper()) # HELLO (це НОВИЙ рядок)
+print(word) # hello (старий рядок не змінився)
+
+# змінюваний: list
+list1 = [1, 2, 3]
+list2 = list1
+list2.append(4)
+print(list2) # [1, 2, 3, 4]
+print(list1) # [1, 2, 3, 4] (цей список теж змінився)</code></pre>
+
+            <p class="bold">❓ Що виведе цей код?</p>
+            <pre><code class="language-python">vowels_1 = {"a", "e", "i", "o", "u", "y"}
+vowels_2 = vowels_1
+vowels_2.remove("y")
+print(sorted(vowels_1))
+print(sorted(vowels_2))</code></pre>
+
+            <p class="bold">Створення справжньої копії:</p>
+            <pre><code class="language-python">a = [1, 2, 3]
+b = a.copy()
+b.append(4)
+print(a) # [1, 2, 3] (без змін)</code></pre>
+
+            <p class="bold">Передача mutable даних функції:</p>
+            <pre><code class="language-python">def add_zero(lst):
+    lst.append(0) # змінює оригінальний список
+
+nums = [1, 2]
+add_zero(nums)
+print(nums) # [1, 2, 0]</code></pre>
+
+            <p class="bold">Передача immutable даних функції:</p>
+            <pre><code class="language-python">def add_one(n):
+    n = n + 1 # змінює лише локальну змінну
+
+k = 5
+add_one(k)
+print(k) # 5</code></pre>
+
+            <p>
+              <span class="bold">Ще один важливий зв'язок:</span> ключами
+              словника можуть бути лише <span class="bold">незмінні</span>
+              об'єкти (наприклад, кортежі з координатами, але не списки):
+            </p>
+            <pre><code class="language-python">treasure = {(0, 0): "start", (2, 3): "chest"} # працює: ключі-кортежі
+bad = {[0, 0]: "start"} # TypeError: unhashable type: 'list'</code></pre>
+
+            <!-- Завдання 7 -->
+            <details class="task" name="l21-p3" open>
+              <summary><h4>Завдання 7: Фільтр чисел</h4></summary>
+              <div>
+                <p>Дано множину чисел від 1 до 10:</p>
+                <pre><code class="language-python">numbers = set(range(1, 11))</code></pre>
+
+                <ul>
+                  <li>
+                    Напиши функцію
+                    <span class="accent-string"
+                      >without_multiples(numbers, k)</span
+                    >, яка повертає <span class="bold">нову</span> множину без
+                    чисел, кратних <span class="accent-string">k</span>.
+                    Початкова множина
+                    <span class="bold">не повинна змінитись</span>.
+                  </li>
+                  <li>
+                    Отримай множину <span class="accent-string">no2</span> (це
+                    <span class="accent-string">numbers</span> без парних
+                    чисел).
+                  </li>
+                  <li>
+                    Знайди різницю цил множин (які саме числа зникли з
+                    початкового списку).
+                  </li>
+                </ul>
+
+                <p>
+                  🐍 Очікуваний результат (порядок чисел в множинах може
+                  відрізнятися):
+                </p>
+                <pre><code>numbers:
+{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+no2:
+{1, 3, 5, 7, 9}
+Видалені парні числа:
+{2, 4, 6, 8, 10}</code></pre>
+              </div>
+            </details>
+
+            <hr />
+
+            <h3 id="p3-summary">Підсумок</h3>
+
+            <div class="tablecontainer">
+              <table>
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th>list</th>
+                    <th>tuple</th>
+                    <th>set</th>
+                    <th>dict</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="bold">Приклад</span></td>
+                    <td><span class="accent-string">[1, 2, 3]</span></td>
+                    <td><span class="accent-string">(1, 2, 3)</span></td>
+                    <td><span class="accent-string">{1, 2, 3}</span></td>
+                    <td><span class="accent-string">{"a": 1, "b": 2}</span></td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">Порожній</span></td>
+                    <td><span class="accent-string">[]</span></td>
+                    <td><span class="accent-string">()</span></td>
+                    <td><span class="accent-string">set()</span></td>
+                    <td><span class="accent-string">{}</span></td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">Змінюваний (mutable)</span></td>
+                    <td>так</td>
+                    <td>ні</td>
+                    <td>так</td>
+                    <td>так</td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">Зберігає порядок</span></td>
+                    <td>так</td>
+                    <td>так</td>
+                    <td>ні</td>
+                    <td>так (порядок додавання)</td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">Повтори</span></td>
+                    <td>можуть бути</td>
+                    <td>можуть бути</td>
+                    <td>ні, лише унікальні елементи</td>
+                    <td>ключі унікальні, значення можуть повторюватись</td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">Доступ до елемента</span></td>
+                    <td>
+                      за індексом<br /><span class="accent-string">a[0]</span>
+                    </td>
+                    <td>
+                      за індексом<br /><span class="accent-string">a[0]</span>
+                    </td>
+                    <td>
+                      немає індексів, лише перевірка
+                      <span class="accent-string">x in s</span>
+                    </td>
+                    <td>
+                      за ключем<br /><span class="accent-string">d["a"]</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">Може бути ключем словника</span></td>
+                    <td>ні</td>
+                    <td>так (якщо всередині немає списків)</td>
+                    <td>ні</td>
+                    <td>ні</td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">Коли обирати</span></td>
+                    <td>впорядкована колекція, яка змінюється</td>
+                    <td>фіксована "одна річ": координати, колір, дата</td>
+                    <td>
+                      унікальні елементи, операції над множинами (<span
+                        class="accent-string"
+                        >| &amp; -</span
+                      >)
+                    </td>
+                    <td>пари "назва → значення", швидкий пошук за ключем</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>🌷 🍓 🌿 Made by Olena Hapchyna 🌿 🍓 🌷</p>
+
+      <div class="footer-credits">
+        <span
+          >Fruit icons by
+          <a
+            href="https://www.svgrepo.com/collection/fruits-vectors/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >An Nguyen</a
+          ></span
+        >
+        |
+        <a href="../credits.html" target="_blank">Credits &amp; Licenses</a>
+      </div>
+    </footer>
+
+    <button
+      id="scrollToTopBtn"
+      class="scroll-to-top"
+      aria-label="Scroll to top"
+    >
+      <img src="../media/icons/apple.svg" />
+    </button>
+
+    <dialog id="clear-confirm-dialog" class="custom-dialog">
+      <div class="dialog-content">
+        <h3>⚠️ Attention!</h3>
+        <p>Do you really want to delete ALL your answers and start over?</p>
+        <div class="dialog-actions">
+          <button type="button" id="dialog-cancel-btn">No</button>
+          <button type="button" id="dialog-confirm-btn">Yes, delete</button>
+        </div>
+      </div>
+    </dialog>
+
+    <script>
+      document.querySelectorAll(".gloss").forEach(function (el) {
+        var pill = document.createElement("span");
+        pill.className = "tr-pill";
+        pill.textContent = el.getAttribute("data-tr");
+        el.insertAdjacentElement("afterend", pill);
+        function toggle() {
+          pill.classList.toggle("show");
+        }
+        el.addEventListener("click", toggle);
+        el.addEventListener("keydown", function (e) {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            toggle();
+          }
+        });
+      });
+
+      document.addEventListener("click", (event) => {
+        const word = event.target.closest(".reveal");
+        if (word) {
+          word.classList.toggle("revealed");
+        }
+      });
+    </script>
+  </body>
+</html>
