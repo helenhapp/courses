@@ -145,6 +145,7 @@
         <button class="tab-btn active" data-target="part-1">Повторення</button>
         <button class="tab-btn" data-target="part-2">Tuple та Set</button>
         <button class="tab-btn" data-target="part-3">Mutable/Immutable</button>
+        <button class="tab-btn" data-target="part-4">Підсумок</button>
       </div>
 
       <!-- 🍓 PART 1: review lists and dicts -->
@@ -162,7 +163,7 @@
           </div>
 
           <div class="lesson-content">
-            <h3 id="reivew-list">List (список)</h3>
+            <h3 id="review-list">List (список)</h3>
 
             <p>
               <span class="bold">Коли використовувати list?</span> Коли потрібна
@@ -210,7 +211,7 @@
                 </ul>
 
                 <p>🐍 Очікуваний результат:</p>
-                <pre style="margin-bottom: 0"><code>10
+                <pre style="margin-bottom: 0"><code class="markdown">10
 7.5
 [5, 6, 7, 8, 9, 10]</code></pre>
               </div>
@@ -218,7 +219,7 @@
 
             <hr />
 
-            <h3 id="reivew-dict">Dictionary (словник)</h3>
+            <h3 id="review-dict">Dictionary (словник)</h3>
 
             <p>
               <span class="bold">Коли використовувати dict?</span> Коли кожному
@@ -234,11 +235,6 @@
               <div>
                 <p>Дано словник цін:</p>
                 <pre><code class="language-python">prices = {"apple": 20, "pear": 35}</code></pre>
-                <p>
-                  Додай <span class="accent-string">"plum": 28</span>, зміни
-                  ціну яблука на <span class="accent-string">22</span>, потім
-                  циклом виведи кожен товар з ціною і знайди загальну суму.
-                </p>
 
                 <ul>
                   <li>
@@ -264,10 +260,10 @@
                 </ul>
 
                 <p>🐍 Очікуваний результат:</p>
-                <pre style="margin-bottom: 0"><code>apple 22
-pear 35
-plum 28
-Разом: 85</code></pre>
+                <pre style="margin-bottom: 0"><code class="markdown">apple: $22
+pear: $35
+plum: $28
+total: $85</code></pre>
               </div>
             </details>
           </div>
@@ -335,7 +331,7 @@ print(lowest)
 print(highest)
 
 print(type((5)))
-print(type((-5)))</code></pre>
+print(type((5,)))</code></pre>
 
             <p>
               <span class="bold">Коли використовувати tuple?</span> Коли набір
@@ -403,10 +399,13 @@ B = (4, 6)</code></pre>
                     Виклич її для списку
                     <span class="accent-string">[4, 8, 15, 16, 23, 42]</span>.
                   </li>
+                  <li>Розпакуй результат у три змінні та виведи їх.</li>
                 </ul>
 
                 <p>🐍 Очікуваний результат:</p>
-                <pre style="margin-bottom: 0"><code>4 42 18.0</code></pre>
+                <pre style="margin-bottom: 0"><code class="markdown">min: 4 
+max: 42 
+average: 18.0</code></pre>
               </div>
             </details>
 
@@ -527,7 +526,9 @@ print(type(result)) # &lt;class 'list'&gt;</code></pre>
                 </ul>
 
                 <p>🐍 Очікуваний результат:</p>
-                <pre style="margin-bottom: 0"><code>[1, 2, 3, 5, 6]
+                <pre
+                  style="margin-bottom: 0"
+                ><code class="markdown">[1, 2, 3, 5, 6]
 5
 {4}</code></pre>
               </div>
@@ -564,7 +565,9 @@ print(type(result)) # &lt;class 'list'&gt;</code></pre>
                 </ul>
 
                 <p>🐍 Очікуваний результат:</p>
-                <pre style="margin-bottom: 0"><code>Дільники 12:
+                <pre
+                  style="margin-bottom: 0"
+                ><code class="markdown">Дільники 12:
 {1, 2, 3, 4, 6, 12}
 Дільники 18:
 {1, 2, 3, 6, 9, 18}
@@ -588,54 +591,66 @@ print(type(result)) # &lt;class 'list'&gt;</code></pre>
                 class="star"
                 alt="a lemon slice"
               />
-              <span>Незмінні та змінні типи даних</span>
+              <span>Незмінювані та змінювані типи даних</span>
             </h2>
           </div>
 
           <div class="lesson-content">
-            <h3 id="p3-mutability">Mutable vs. Immutable</h3>
+            <h3 id="p3-mutability">1. Mutable vs. Immutable</h3>
 
             <p>
-              В Python типи даних можна поділити на
-              <span class="accent">незмінні</span> (immutable) та
-              <span class="accent">змінні</span> (mutable).
+              У Python типи даних діляться на
+              <span class="accent">незмінювані</span> (immutable) та
+              <span class="accent">змінювані</span> (mutable):
             </p>
 
             <ul style="list-style-type: square">
               <li>
-                <span class="bold">Незмінні:</span>
+                <span class="bold">Незмінювані (immutable):</span>
                 <span class="accent-string">int, float, str, tuple, bool</span>.
                 Після створення їх вміст не міняється. Будь-яка "зміна" створює
-                <span class="bold">новий</span> об'єкт в памʼяті компʼютера.
+                <span class="bold">новий</span> об'єкт у памʼяті компʼютера.
               </li>
               <li>
-                <span class="bold">Змінні:</span>
+                <span class="bold">Змінювані (mutable):</span>
                 <span class="accent-string">list, dict, set</span>. Їх вміст
                 можна змінювати "на місці" без створення нового об'єкта
-                (наприклад, через індекси та ключі, або за допомогою методів
+                (наприклад, через індекси та ключі або за допомогою методів
                 <span class="accent-string">append()</span>,
-                <span class="accent-string">add()</span>, тощо).
+                <span class="accent-string">add()</span> тощо).
               </li>
             </ul>
 
-            <pre><code class="language-python"># незмінюваний: int
+            <p>Як поводяться <span class="bold">незмінювані</span> типи:</p>
+            <pre><code class="language-python"># число (int)
 x = 5
 y = x
 y = y + 1
 print(x, y) # 5 6 (x не змінився)
 
-# незмінюваний: string
+# рядок (str)
 word = "hello"
 # word[0] = "H" # видасть помилку TypeError
 print(word.upper()) # HELLO (це НОВИЙ рядок)
-print(word) # hello (старий рядок не змінився)
+print(word) # hello (старий рядок не змінився)</code></pre>
 
-# змінюваний: list
-list1 = [1, 2, 3]
+            <hr />
+
+            <h3 id="p3-copy">2. Пастка зі списками та метод .copy()</h3>
+
+            <p>
+              Для змінюваних типів запис
+              <span class="accent-string">list2 = list1</span>
+              <span class="accent">не створює копію</span> — обидві змінні
+              починають вказувати на один і той самий список у пам'яті:
+            </p>
+
+            <pre><code class="language-python">list1 = [1, 2, 3]
 list2 = list1
 list2.append(4)
+
 print(list2) # [1, 2, 3, 4]
-print(list1) # [1, 2, 3, 4] (цей список теж змінився)</code></pre>
+print(list1) # [1, 2, 3, 4] (перший список теж змінився!)</code></pre>
 
             <p class="bold">❓ Що виведе цей код?</p>
             <pre><code class="language-python">vowels_1 = {"a", "e", "i", "o", "u", "y"}
@@ -644,22 +659,38 @@ vowels_2.remove("y")
 print(sorted(vowels_1))
 print(sorted(vowels_2))</code></pre>
 
-            <p class="bold">Створення справжньої копії:</p>
+            <p>
+              Щоб створити <span class="bold">справжню незалежну копію</span>,
+              використовують метод <span class="accent-string">.copy()</span>:
+            </p>
             <pre><code class="language-python">a = [1, 2, 3]
 b = a.copy()
 b.append(4)
-print(a) # [1, 2, 3] (без змін)</code></pre>
+print(a) # [1, 2, 3] (оригінал без змін)
+print(b) # [1, 2, 3, 4]</code></pre>
 
-            <p class="bold">Передача mutable даних функції:</p>
-            <pre><code class="language-python">def add_zero(lst):
+            <hr />
+
+            <h3 id="p3-functions-keys">3. Функції та ключі словника</h3>
+
+            <p>
+              Та сама різниця працює при передачі даних у функцію. Якщо передати
+              у функцію <span class="bold">змінюваний</span> об'єкт (наприклад,
+              список або множину) і змінити його всередині, зміниться і оригінал
+              поза функцією:
+            </p>
+
+            <pre><code class="language-python"># Mutable (список зміниться):
+def add_zero(lst):
     lst.append(0) # змінює оригінальний список
 
 nums = [1, 2]
 add_zero(nums)
-print(nums) # [1, 2, 0]</code></pre>
+print(nums) # [1, 2, 0]
 
-            <p class="bold">Передача immutable даних функції:</p>
-            <pre><code class="language-python">def add_one(n):
+
+# Immutable (число поза функцією не зміниться):
+def add_one(n):
     n = n + 1 # змінює лише локальну змінну
 
 k = 5
@@ -667,9 +698,10 @@ add_one(k)
 print(k) # 5</code></pre>
 
             <p>
-              <span class="bold">Ще один важливий зв'язок:</span> ключами
-              словника можуть бути лише <span class="bold">незмінні</span>
-              об'єкти (наприклад, кортежі з координатами, але не списки):
+              <span class="bold">Ключі словника:</span> ключами у
+              <span class="accent-string">dict</span> можуть бути лише
+              <span class="accent">незмінювані</span> об'єкти (наприклад, числа,
+              рядки або кортежі з координатами, але не списки):
             </p>
             <pre><code class="language-python">treasure = {(0, 0): "start", (2, 3): "chest"} # працює: ключі-кортежі
 bad = {[0, 0]: "start"} # TypeError: unhashable type: 'list'</code></pre>
@@ -697,16 +729,16 @@ bad = {[0, 0]: "start"} # TypeError: unhashable type: 'list'</code></pre>
                     чисел).
                   </li>
                   <li>
-                    Знайди різницю цил множин (які саме числа зникли з
-                    початкового списку).
+                    Знайди різницю цих множин (які саме числа зникли з
+                    початкової множини).
                   </li>
                 </ul>
 
                 <p>
-                  🐍 Очікуваний результат (порядок чисел в множинах може
+                  🐍 Очікуваний результат (порядок чисел у множинах може
                   відрізнятися):
                 </p>
-                <pre><code>numbers:
+                <pre style="margin-bottom: 0"><code class="markdown">numbers:
 {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
 no2:
 {1, 3, 5, 7, 9}
@@ -714,10 +746,26 @@ no2:
 {2, 4, 6, 8, 10}</code></pre>
               </div>
             </details>
+          </div>
+        </div>
+      </section>
 
-            <hr />
+      <!-- 🍊 PART 4: summary -->
+      <section id="part-4" class="lesson-wrapper tab-content">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img
+                src="../media/icons/orange.svg"
+                class="star"
+                alt="an orange"
+              />
+              <span>Підсумок</span>
+            </h2>
+          </div>
 
-            <h3 id="p3-summary">Підсумок</h3>
+          <div class="lesson-content">
+            <h3>Порівняльна таблиця: list vs tuple vs set vs dict</h3>
 
             <div class="tablecontainer">
               <table>
@@ -834,42 +882,5 @@ no2:
     >
       <img src="../media/icons/apple.svg" />
     </button>
-
-    <dialog id="clear-confirm-dialog" class="custom-dialog">
-      <div class="dialog-content">
-        <h3>⚠️ Attention!</h3>
-        <p>Do you really want to delete ALL your answers and start over?</p>
-        <div class="dialog-actions">
-          <button type="button" id="dialog-cancel-btn">No</button>
-          <button type="button" id="dialog-confirm-btn">Yes, delete</button>
-        </div>
-      </div>
-    </dialog>
-
-    <script>
-      document.querySelectorAll(".gloss").forEach(function (el) {
-        var pill = document.createElement("span");
-        pill.className = "tr-pill";
-        pill.textContent = el.getAttribute("data-tr");
-        el.insertAdjacentElement("afterend", pill);
-        function toggle() {
-          pill.classList.toggle("show");
-        }
-        el.addEventListener("click", toggle);
-        el.addEventListener("keydown", function (e) {
-          if (e.key === "Enter" || e.key === " ") {
-            e.preventDefault();
-            toggle();
-          }
-        });
-      });
-
-      document.addEventListener("click", (event) => {
-        const word = event.target.closest(".reveal");
-        if (word) {
-          word.classList.toggle("revealed");
-        }
-      });
-    </script>
   </body>
 </html>
