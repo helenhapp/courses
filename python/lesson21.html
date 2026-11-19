@@ -144,8 +144,7 @@
       <div class="tabs-nav">
         <button class="tab-btn active" data-target="part-1">Повторення</button>
         <button class="tab-btn" data-target="part-2">Tuple та Set</button>
-        <button class="tab-btn" data-target="part-3">Mutable/Immutable</button>
-        <button class="tab-btn" data-target="part-4">Підсумок</button>
+        <button class="tab-btn" data-target="part-3">Д/з</button>
       </div>
 
       <!-- 🍓 PART 1: review lists and dicts -->
@@ -581,277 +580,161 @@ print(type(result)) # &lt;class 'list'&gt;</code></pre>
         </div>
       </section>
 
-      <!-- 🍋 PART 3: mutable vs. immutable -->
+      <!-- 🍎 PART 3: Домашнє завдання -->
       <section id="part-3" class="lesson-wrapper tab-content">
         <div class="lesson-block">
           <div class="lesson-header">
             <h2>
-              <img
-                src="../media/icons/lemon.svg"
-                class="star"
-                alt="a lemon slice"
-              />
-              <span>Незмінювані та змінювані типи даних</span>
+              <img src="../media/icons/apple.svg" class="star" alt="apple" />
+              <span>Домашнє завдання: Tkinter + Множини</span>
             </h2>
           </div>
 
           <div class="lesson-content">
-            <h3 id="p3-mutability">1. Mutable vs. Immutable</h3>
+            <h3 id="p3-reminders">Нагадування: віджети Tkinter</h3>
 
             <p>
-              У Python типи даних діляться на
-              <span class="accent">незмінювані</span> (immutable) та
-              <span class="accent">змінювані</span> (mutable):
+              У домашньому завданні ми поєднаємо функцію пошуку дільників
+              <span class="accent-string">divisors(n)</span> із графічним
+              інтерфейсом <span class="accent-string">Tkinter</span>.
+              Пригадаємо, як створювати основні елементи вікна:
             </p>
 
-            <ul style="list-style-type: square">
-              <li>
-                <span class="bold">Незмінювані (immutable):</span>
-                <span class="accent-string">int, float, str, tuple, bool</span>.
-                Після створення їх вміст не міняється. Будь-яка "зміна" створює
-                <span class="bold">новий</span> об'єкт у памʼяті компʼютера.
-              </li>
-              <li>
-                <span class="bold">Змінювані (mutable):</span>
-                <span class="accent-string">list, dict, set</span>. Їх вміст
-                можна змінювати "на місці" без створення нового об'єкта
-                (наприклад, через індекси та ключі або за допомогою методів
-                <span class="accent-string">append()</span>,
-                <span class="accent-string">add()</span> тощо).
-              </li>
-            </ul>
+            <h4>1. Головне вікно програми:</h4>
+            <pre><code class="language-python">from tkinter import *
 
-            <p>Як поводяться <span class="bold">незмінювані</span> типи:</p>
-            <pre><code class="language-python"># число (int)
-x = 5
-y = x
-y = y + 1
-print(x, y) # 5 6 (x не змінився)
+window = Tk()
+window.title("Дільники та НСД")
+window.geometry("400x300")
+window.config(bg="lavender")
 
-# рядок (str)
-word = "hello"
-# word[0] = "H" # видасть помилку TypeError
-print(word.upper()) # HELLO (це НОВИЙ рядок)
-print(word) # hello (старий рядок не змінився)</code></pre>
+# тут створюємо віджети
+
+window.eval("tk::PlaceWindow . center")
+window.mainloop()</code></pre>
+
+            <h4>2. Напис (Label) та зміна його тексту:</h4>
+            <pre><code class="language-python">result_label = Label(
+    window,
+    text="Тут буде результат",
+    font=("Arial", 14),
+    bg="lavender",
+)
+result_label.pack(pady=5)</code></pre>
+            <pre><code class="language-python"># Як змінити текст напису всередині функції:
+result_label.config(text="Новий текст")</code></pre>
+
+            <h4>3. Поле для введення (Entry) та читання числа:</h4>
+            <p>
+              Метод <span class="accent-string">.get()</span> завжди повертає
+              текст (<span class="accent-string">str</span>), тому для
+              математичних обчислень його потрібно перетворити на ціле число за
+              допомогою <span class="accent-string">int()</span>:
+            </p>
+            <pre><code class="language-python">entry1 = Entry(window, font=("Arial", 14), width=10)
+entry1.pack(pady=5)</code></pre>
+            <pre><code class="language-python"># Як прочитати ціле число всередині функції:
+num1 = int(entry1.get())</code></pre>
+
+            <h4>4. Кнопка (Button):</h4>
+            <pre><code class="language-python">def calculate():
+    # код функції
+    pass
+
+btn = Button(
+    window,
+    text="Знайти",
+    font=("Arial", 14),
+    command=calculate,
+)
+btn.pack(pady=10)</code></pre>
 
             <hr />
 
-            <h3 id="p3-copy">2. Пастка зі списками та метод .copy()</h3>
+            <h3 id="p3-hw-task">Завдання</h3>
 
             <p>
-              Для змінюваних типів запис
-              <span class="accent-string">list2 = list1</span>
-              <span class="accent">не створює копію</span> — обидві змінні
-              починають вказувати на один і той самий список у пам'яті:
+              На уроці ми написали програму, яка знаходить спільні дільники та
+              найбільший спільний дільник (НСД) у консолі:
             </p>
 
-            <pre><code class="language-python">list1 = [1, 2, 3]
-list2 = list1
-list2.append(4)
+            <pre><code class="language-python">def divisors(n):
+    result = set()
+    for i in range(1, n + 1):
+        if n % i == 0:
+            result.add(i)
+    return result
 
-print(list2) # [1, 2, 3, 4]
-print(list1) # [1, 2, 3, 4] (перший список теж змінився!)</code></pre>
+d12 = divisors(12)
+d18 = divisors(18)
+common = d12 &amp; d18</code></pre>
 
-            <p class="bold">❓ Що виведе цей код?</p>
-            <pre><code class="language-python">vowels_1 = {"a", "e", "i", "o", "u", "y"}
-vowels_2 = vowels_1
-vowels_2.remove("y")
-print(sorted(vowels_1))
-print(sorted(vowels_2))</code></pre>
-
-            <p>
-              Щоб створити <span class="bold">справжню незалежну копію</span>,
-              використовують метод <span class="accent-string">.copy()</span>:
-            </p>
-            <pre><code class="language-python">a = [1, 2, 3]
-b = a.copy()
-b.append(4)
-print(a) # [1, 2, 3] (оригінал без змін)
-print(b) # [1, 2, 3, 4]</code></pre>
-
-            <hr />
-
-            <h3 id="p3-functions-keys">3. Функції та ключі словника</h3>
-
-            <p>
-              Та сама різниця працює при передачі даних у функцію. Якщо передати
-              у функцію <span class="bold">змінюваний</span> об'єкт (наприклад,
-              список або множину) і змінити його всередині, зміниться і оригінал
-              поза функцією:
-            </p>
-
-            <pre><code class="language-python"># Mutable (список зміниться):
-def add_zero(lst):
-    lst.append(0) # змінює оригінальний список
-
-nums = [1, 2]
-add_zero(nums)
-print(nums) # [1, 2, 0]
-
-
-# Immutable (число поза функцією не зміниться):
-def add_one(n):
-    n = n + 1 # змінює лише локальну змінну
-
-k = 5
-add_one(k)
-print(k) # 5</code></pre>
-
-            <p>
-              <span class="bold">Ключі словника:</span> ключами у
-              <span class="accent-string">dict</span> можуть бути лише
-              <span class="accent">незмінювані</span> об'єкти (наприклад, числа,
-              рядки або кортежі з координатами, але не списки):
-            </p>
-            <pre><code class="language-python">treasure = {(0, 0): "start", (2, 3): "chest"} # працює: ключі-кортежі
-bad = {[0, 0]: "start"} # TypeError: unhashable type: 'list'</code></pre>
-
-            <!-- Завдання 7 -->
+            <!-- Домашнє завдання -->
             <details class="task" name="l21-p3" open>
-              <summary><h4>Завдання 7: Фільтр чисел</h4></summary>
+              <summary>
+                <h4>Калькулятор спільних дільників та НСД</h4>
+              </summary>
               <div>
-                <p>Дано множину чисел від 1 до 10:</p>
-                <pre><code class="language-python">numbers = set(range(1, 11))</code></pre>
+                <p>
+                  Створи програму з вікном
+                  <span class="accent-string">Tkinter</span>, у якому користувач
+                  може ввести два числа і побачити їхні спільні дільники та НСД:
+                </p>
 
-                <ul>
+                <ol>
                   <li>
-                    Напиши функцію
-                    <span class="accent-string"
-                      >without_multiples(numbers, k)</span
-                    >, яка повертає <span class="bold">нову</span> множину без
-                    чисел, кратних <span class="accent-string">k</span>.
-                    Початкова множина
-                    <span class="bold">не повинна змінитись</span>.
+                    Створи два поля <span class="accent-string">Entry</span> для
+                    введення першого і другого числа (за бажанням додай біля них
+                    підписи <span class="accent-string">Label</span> або
+                    розмісти їх в один рядок через
+                    <span class="accent-string">Frame</span>).
                   </li>
                   <li>
-                    Отримай множину <span class="accent-string">no2</span> (це
-                    <span class="accent-string">numbers</span> без парних
-                    чисел).
+                    Додай у код функцію
+                    <span class="accent-string">divisors(n)</span> із 6-го
+                    завдання.
                   </li>
                   <li>
-                    Знайди різницю цих множин (які саме числа зникли з
-                    початкової множини).
+                    Створи функцію (наприклад,
+                    <span class="accent-string">find_gcd()</span>), яка:
+                    <ul style="margin-top: 0">
+                      <li>
+                        читає обидва числа з полів
+                        <span class="accent-string">Entry</span> і перетворює їх
+                        на <span class="accent-string">int</span>;
+                      </li>
+                      <li>
+                        знаходить множини їхніх дільників через
+                        <span class="accent-string">divisors()</span> та їхній
+                        перетин (<span class="accent-string">&amp;</span>);
+                      </li>
+                      <li>
+                        виводить у <span class="accent-string">Label</span> усі
+                        спільні дільники та найбільший спільний дільник (<span
+                          class="accent-string"
+                          >max(common)</span
+                        >).
+                      </li>
+                    </ul>
                   </li>
-                </ul>
+                  <li>
+                    Створи кнопку <span class="accent-string">Button</span>, яка
+                    запускає цю функцію.
+                  </li>
+                </ol>
 
                 <p>
-                  🐍 Очікуваний результат (порядок чисел у множинах може
-                  відрізнятися):
+                  🐍 Приклад тексту в
+                  <span class="accent-string">Label</span> після введення чисел
+                  <span class="accent-string">12</span> і
+                  <span class="accent-string">18</span> та натискання кнопки:
                 </p>
-                <pre style="margin-bottom: 0"><code class="markdown">numbers:
-{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
-no2:
-{1, 3, 5, 7, 9}
-Видалені парні числа:
-{2, 4, 6, 8, 10}</code></pre>
+                <pre
+                  style="margin-bottom: 0"
+                ><code class="markdown">Спільні дільники: [1, 2, 3, 6]
+НСД: 6</code></pre>
               </div>
             </details>
-          </div>
-        </div>
-      </section>
-
-      <!-- 🍊 PART 4: summary -->
-      <section id="part-4" class="lesson-wrapper tab-content">
-        <div class="lesson-block">
-          <div class="lesson-header">
-            <h2>
-              <img
-                src="../media/icons/orange.svg"
-                class="star"
-                alt="an orange"
-              />
-              <span>Підсумок</span>
-            </h2>
-          </div>
-
-          <div class="lesson-content">
-            <h3>Порівняльна таблиця: list vs tuple vs set vs dict</h3>
-
-            <div class="tablecontainer">
-              <table>
-                <thead>
-                  <tr>
-                    <th></th>
-                    <th>list</th>
-                    <th>tuple</th>
-                    <th>set</th>
-                    <th>dict</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><span class="bold">Приклад</span></td>
-                    <td><span class="accent-string">[1, 2, 3]</span></td>
-                    <td><span class="accent-string">(1, 2, 3)</span></td>
-                    <td><span class="accent-string">{1, 2, 3}</span></td>
-                    <td><span class="accent-string">{"a": 1, "b": 2}</span></td>
-                  </tr>
-                  <tr>
-                    <td><span class="bold">Порожній</span></td>
-                    <td><span class="accent-string">[]</span></td>
-                    <td><span class="accent-string">()</span></td>
-                    <td><span class="accent-string">set()</span></td>
-                    <td><span class="accent-string">{}</span></td>
-                  </tr>
-                  <tr>
-                    <td><span class="bold">Змінюваний (mutable)</span></td>
-                    <td>так</td>
-                    <td>ні</td>
-                    <td>так</td>
-                    <td>так</td>
-                  </tr>
-                  <tr>
-                    <td><span class="bold">Зберігає порядок</span></td>
-                    <td>так</td>
-                    <td>так</td>
-                    <td>ні</td>
-                    <td>так (порядок додавання)</td>
-                  </tr>
-                  <tr>
-                    <td><span class="bold">Повтори</span></td>
-                    <td>можуть бути</td>
-                    <td>можуть бути</td>
-                    <td>ні, лише унікальні елементи</td>
-                    <td>ключі унікальні, значення можуть повторюватись</td>
-                  </tr>
-                  <tr>
-                    <td><span class="bold">Доступ до елемента</span></td>
-                    <td>
-                      за індексом<br /><span class="accent-string">a[0]</span>
-                    </td>
-                    <td>
-                      за індексом<br /><span class="accent-string">a[0]</span>
-                    </td>
-                    <td>
-                      немає індексів, лише перевірка
-                      <span class="accent-string">x in s</span>
-                    </td>
-                    <td>
-                      за ключем<br /><span class="accent-string">d["a"]</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><span class="bold">Може бути ключем словника</span></td>
-                    <td>ні</td>
-                    <td>так (якщо всередині немає списків)</td>
-                    <td>ні</td>
-                    <td>ні</td>
-                  </tr>
-                  <tr>
-                    <td><span class="bold">Коли обирати</span></td>
-                    <td>впорядкована колекція, яка змінюється</td>
-                    <td>фіксована "одна річ": координати, колір, дата</td>
-                    <td>
-                      унікальні елементи, операції над множинами (<span
-                        class="accent-string"
-                        >| &amp; -</span
-                      >)
-                    </td>
-                    <td>пари "назва → значення", швидкий пошук за ключем</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
           </div>
         </div>
       </section>

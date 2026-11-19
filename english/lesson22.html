@@ -1,0 +1,1626 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Навчальні матеріали" />
+
+    <link rel="icon" type="image/svg+xml" href="../media/icons/carambola.svg" />
+
+    <title>English Lesson 22</title>
+
+    <script>
+      const savedTheme = localStorage.getItem("lms_theme") || "light";
+      document.documentElement.setAttribute("data-theme", savedTheme);
+
+      const hljsThemeLink =
+        savedTheme === "dark"
+          ? "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css"
+          : "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css";
+
+      document.head.insertAdjacentHTML(
+        "beforeend",
+        `<link id="hljs-theme" rel="stylesheet" href="${hljsThemeLink}" />`,
+      );
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Fira+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Tektur:wght@400..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"
+    ></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.css"
+    />
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.js"
+    ></script>
+
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/javascript/javascript.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/xml/xml.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/css/css.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/htmlmixed/htmlmixed.min.js"
+    ></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/theme/dracula.min.css"
+    />
+
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/python/python.min.js"
+    ></script>
+
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt-stdlib.js"
+    ></script>
+
+    <link rel="stylesheet" href="../style.css?v=14.0" />
+    <script src="../script.js?v=14.0" defer></script>
+  </head>
+
+  <body>
+    <!-- transition curtain -->
+    <div class="transition-curtain"></div>
+
+    <!-- top-bar -->
+    <div id="nav-container">
+      <nav class="top-bar">
+        <div class="logo-container">
+          <img
+            src="../media/icons/carambola.svg"
+            alt="Logo"
+            class="site-logo"
+          />
+        </div>
+
+        <div class="top-bar__controls">
+          <button
+            id="translator-toggle-btn"
+            class="top-bar-btn"
+            type="button"
+            title="Translator"
+            aria-expanded="false"
+          >
+            🌍 <span class="btn-label">Translator</span>
+          </button>
+
+          <button
+            id="notes-toggle-btn"
+            class="top-bar-btn"
+            type="button"
+            title="Lesson Notes"
+            aria-expanded="false"
+          >
+            📝 <span class="btn-label">Notes</span>
+          </button>
+
+          <label class="toggle-switch" aria-label="Перемикач теми">
+            <input type="checkbox" id="theme-checkbox" />
+            <span class="slider">
+              <span class="icon sun"
+                ><img src="../media/icons/stars.svg"
+              /></span>
+              <span class="icon moon"
+                ><img src="../media/icons/moon.svg"
+              /></span>
+            </span>
+          </label>
+          <button
+            id="dyslexia-mode-btn"
+            class="wide-toggle"
+            title="Шрифт для дислектиків"
+          >
+            Aa
+          </button>
+        </div>
+      </nav>
+    </div>
+
+    <!-- 🌍 TRANSLATOR POP-UP -->
+    <div id="translator-popup" class="top-popup" hidden>
+      <div class="top-popup__header">
+        <h4>🌍 Translator</h4>
+        <button type="button" class="top-popup__close" aria-label="Close">
+          ✕
+        </button>
+      </div>
+
+      <div
+        class="translator-module"
+        data-source-lang="en"
+        data-target-lang="uk"
+      >
+        <div class="translator-lang-labels">
+          <span class="lang-source">Англійська</span>
+          <button type="button" class="swap-lang-btn" title="Swap languages">
+            ⇄
+          </button>
+          <span class="lang-target">Українська</span>
+        </div>
+
+        <div class="translator-inputs">
+          <input
+            type="text"
+            class="translator-input"
+            placeholder="Type a word..."
+          />
+          <button type="button" class="translate-btn">Translate</button>
+        </div>
+
+        <div class="translator-output" style="display: none"></div>
+      </div>
+    </div>
+
+    <!-- 📝 NOTES POP-UP -->
+    <div id="notes-popup" class="top-popup" hidden>
+      <div class="top-popup__header">
+        <h4>📝 Lesson Notes</h4>
+        <div class="top-popup__actions">
+          <span id="notes-status" class="notes-status">Saved</span>
+          <button type="button" class="top-popup__close" aria-label="Close">
+            ✕
+          </button>
+        </div>
+      </div>
+
+      <textarea
+        id="lesson-notes-textarea"
+        class="notes-textarea"
+        placeholder="Write your notes here... They are saved automatically."
+      ></textarea>
+    </div>
+
+    <!-- lesson header -->
+    <header>
+      <div class="title-container">
+        <h1 id="lesson-title">English: 22</h1>
+      </div>
+
+      <p class="topic">
+        can / could — Ability, Permission, Requests &amp; Rules
+      </p>
+
+      <hr class="pretty-divider" />
+    </header>
+
+    <!-- lesson content -->
+    <main>
+      <!-- tab buttons -->
+      <div class="tabs-nav">
+        <button class="tab-btn active" data-target="part-1">
+          Reading &amp; Vocabulary
+        </button>
+        <button class="tab-btn" data-target="part-2">Grammar</button>
+        <button class="tab-btn" data-target="part-3">Speaking</button>
+        <!-- <button class="tab-btn" data-target="part-4">Homework</button> -->
+      </div>
+
+      <!-- 🍓 PART 1: READING & VOCABULARY -->
+      <section id="part-1" class="lesson-wrapper tab-content active show">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img
+                src="../media/icons/strawberry.svg"
+                class="star"
+                alt="strawberry"
+              />
+              <span>Reading &amp; Vocabulary</span>
+            </h2>
+          </div>
+
+          <div class="lesson-content">
+            <h3 id="p1-1">1. Reading</h3>
+
+            <div class="callout2" style="margin-bottom: 20px">
+              <h4 style="margin: 0">
+                Robots: What Can They Do (and Not Do) Yet?
+              </h4>
+
+              <p>Robots are everywhere today, but what can they really do?</p>
+              <p>
+                Factory robots can lift heavy things and repeat the same
+                <span class="gloss" data-tr="рух">movement</span> thousands of
+                times without getting tired. In warehouses, machines can carry
+                boxes all day and all night. Small cleaning robots can clean the
+                floor
+                <span class="gloss" data-tr="самостійно">by themselves</span>,
+                but most of them can't climb stairs.
+              </p>
+              <p>
+                Fifty years ago, almost no robots could see, hear or speak.
+                Today many can. Some can recognise faces and voices, and a few
+                can even talk.
+              </p>
+              <p>
+                Machines can also work in places that are dangerous for people.
+                The robots on Mars can drive across the red sand, take photos
+                and study rocks. But they can't repair themselves, so engineers
+                on Earth need to help.
+              </p>
+              <p style="margin-bottom: 0">
+                Most robots can do only one job. A chess computer can
+                <span class="gloss" data-tr="перемогти">beat</span> a champion,
+                but it can't make a cup of tea. Some can run and jump, but they
+                can't walk everywhere like people. No machine can think like a
+                person yet.
+              </p>
+            </div>
+
+            <ol>
+              <li>What can factory robots do?</li>
+              <li>What can't most small cleaning robots do?</li>
+              <li>What couldn't most robots do fifty years ago?</li>
+              <li>What can robots on Mars do? What can't they do?</li>
+              <li>Why can't a chess computer make a cup of tea?</li>
+              <li>Which robot job do you think is the most useful? Why?</li>
+            </ol>
+
+            <textarea
+              id="l22-p1-q-notes"
+              class="test-textarea"
+              placeholder="Teacher notes / corrections..."
+            ></textarea>
+
+            <hr />
+
+            <h3 id="p1-2">2. Vocabulary</h3>
+
+            <h4>A. Match and translate</h4>
+
+            <p class="task-description">
+              Для кожного слова назви літеру означення (<strong>A–H</strong>) і
+              переклад українською (здогадайся з тексту та означення).
+            </p>
+
+            <div class="callout2" style="margin-bottom: 20px">
+              <p style="margin-top: 0">
+                <span class="bold">Definitions:</span>
+              </p>
+              <ul
+                style="
+                  list-style-type: none;
+                  margin: 0;
+                  padding-left: 0;
+                  line-height: 2;
+                "
+              >
+                <li>
+                  <label class="test-label" style="margin: 0">
+                    <input
+                      type="checkbox"
+                      class="test-checkbox"
+                      id="l22-def-a"
+                    />
+                    <span class="bold">A.</span> to do or say something again
+                  </label>
+                </li>
+                <li>
+                  <label class="test-label" style="margin: 0">
+                    <input
+                      type="checkbox"
+                      class="test-checkbox"
+                      id="l22-def-b"
+                    />
+                    <span class="bold">B.</span> a person who designs or builds
+                    machines
+                  </label>
+                </li>
+                <li>
+                  <label class="test-label" style="margin: 0">
+                    <input
+                      type="checkbox"
+                      class="test-checkbox"
+                      id="l22-def-c"
+                    />
+                    <span class="bold">C.</span> a big building where companies
+                    keep things before they sell them
+                  </label>
+                </li>
+                <li>
+                  <label class="test-label" style="margin: 0">
+                    <input
+                      type="checkbox"
+                      class="test-checkbox"
+                      id="l22-def-d"
+                    />
+                    <span class="bold">D.</span> to fix something that is broken
+                  </label>
+                </li>
+                <li>
+                  <label class="test-label" style="margin: 0">
+                    <input
+                      type="checkbox"
+                      class="test-checkbox"
+                      id="l22-def-e"
+                    />
+                    <span class="bold">E.</span> to know someone or something
+                    because you have seen or heard them before
+                  </label>
+                </li>
+                <li>
+                  <label class="test-label" style="margin: 0">
+                    <input
+                      type="checkbox"
+                      class="test-checkbox"
+                      id="l22-def-f"
+                    />
+                    <span class="bold">F.</span> a set of steps that go up or
+                    down inside a building
+                  </label>
+                </li>
+                <li>
+                  <label class="test-label" style="margin: 0">
+                    <input
+                      type="checkbox"
+                      class="test-checkbox"
+                      id="l22-def-g"
+                    />
+                    <span class="bold">G.</span> not safe; it can hurt you
+                  </label>
+                </li>
+                <li>
+                  <label class="test-label" style="margin: 0">
+                    <input
+                      type="checkbox"
+                      class="test-checkbox"
+                      id="l22-def-h"
+                    />
+                    <span class="bold">H.</span> to take something up from the
+                    floor
+                  </label>
+                </li>
+              </ul>
+            </div>
+
+            <div class="tablecontainer">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Word</th>
+                    <th style="min-width: 140px">Definition (A–H)</th>
+                    <th>Ukrainian</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="bold">1. lift</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l22-m-1d"
+                        class="test-input"
+                        style="width: 65px; margin: 0"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l22-m-1t"
+                        class="test-input"
+                        style="width: 100%; min-width: 180px; margin: 0"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">2. repeat</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l22-m-2d"
+                        class="test-input"
+                        style="width: 65px; margin: 0"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l22-m-2t"
+                        class="test-input"
+                        style="width: 100%; min-width: 180px; margin: 0"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">3. warehouse</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l22-m-3d"
+                        class="test-input"
+                        style="width: 65px; margin: 0"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l22-m-3t"
+                        class="test-input"
+                        style="width: 100%; min-width: 180px; margin: 0"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">4. stairs</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l22-m-4d"
+                        class="test-input"
+                        style="width: 65px; margin: 0"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l22-m-4t"
+                        class="test-input"
+                        style="width: 100%; min-width: 180px; margin: 0"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">5. recognise</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l22-m-5d"
+                        class="test-input"
+                        style="width: 65px; margin: 0"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l22-m-5t"
+                        class="test-input"
+                        style="width: 100%; min-width: 180px; margin: 0"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">6. dangerous</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l22-m-6d"
+                        class="test-input"
+                        style="width: 65px; margin: 0"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l22-m-6t"
+                        class="test-input"
+                        style="width: 100%; min-width: 180px; margin: 0"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">7. repair</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l22-m-7d"
+                        class="test-input"
+                        style="width: 65px; margin: 0"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l22-m-7t"
+                        class="test-input"
+                        style="width: 100%; min-width: 180px; margin: 0"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">8. engineer</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l22-m-8d"
+                        class="test-input"
+                        style="width: 65px; margin: 0"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l22-m-8t"
+                        class="test-input"
+                        style="width: 100%; min-width: 180px; margin: 0"
+                      />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h4>B. Write your own example</h4>
+
+            <p class="task-description">
+              Напиши свій приклад (кілька слів або речення) для 4 слів. Приклади
+              мають бути про роботів.
+            </p>
+
+            <div class="tablecontainer">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 180px">Word</th>
+                    <th>Your example (about robots)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="bold">1. lift</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l22-ex-1"
+                        class="test-input"
+                        style="
+                          width: 100%;
+                          min-width: 240px;
+                          text-align: left;
+                          margin: 0;
+                        "
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">2. repair</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l22-ex-2"
+                        class="test-input"
+                        style="
+                          width: 100%;
+                          min-width: 240px;
+                          text-align: left;
+                          margin: 0;
+                        "
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">3. recognise</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l22-ex-3"
+                        class="test-input"
+                        style="
+                          width: 100%;
+                          min-width: 240px;
+                          text-align: left;
+                          margin: 0;
+                        "
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">4. dangerous</span></td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l22-ex-4"
+                        class="test-input"
+                        style="
+                          width: 100%;
+                          min-width: 240px;
+                          text-align: left;
+                          margin: 0;
+                        "
+                      />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h4>C. Pronunciation (British English)</h4>
+
+            <p class="task-description">
+              Прочитай слова вголос за транскрипцією. Зверни особливу увагу на
+              вимову <strong>recognise</strong>, <strong>dangerous</strong>,
+              <strong>engineer</strong> та <strong>warehouse</strong>.
+            </p>
+
+            <div class="tablecontainer">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Word</th>
+                    <th>Transcription</th>
+                    <th>Word</th>
+                    <th>Transcription</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="bold">robot</span></td>
+                    <td><span class="accent-string">/ˈrəʊbɒt/</span></td>
+                    <td><span class="bold">recognise</span></td>
+                    <td><span class="accent-string">/ˈrekəɡnaɪz/</span></td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">lift</span></td>
+                    <td><span class="accent-string">/lɪft/</span></td>
+                    <td><span class="bold">dangerous</span></td>
+                    <td><span class="accent-string">/ˈdeɪndʒərəs/</span></td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">repeat</span></td>
+                    <td><span class="accent-string">/rɪˈpiːt/</span></td>
+                    <td><span class="bold">repair</span></td>
+                    <td><span class="accent-string">/rɪˈpeə/</span></td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">warehouse</span></td>
+                    <td><span class="accent-string">/ˈweəhaʊs/</span></td>
+                    <td><span class="bold">engineer</span></td>
+                    <td><span class="accent-string">/ˌendʒɪˈnɪə/</span></td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">stairs</span></td>
+                    <td><span class="accent-string">/steəz/</span></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 🍉 PART 2: GRAMMAR -->
+      <section id="part-2" class="lesson-wrapper tab-content">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img
+                src="../media/icons/watermelon.svg"
+                class="star"
+                alt="watermelon"
+              />
+              <span>Grammar</span>
+            </h2>
+          </div>
+
+          <div class="lesson-content">
+            <!-- ===================== BLOCK 1 ===================== -->
+            <h3 id="g-block-1">
+              Блок 1. <em>can / could</em>: що вмію і що вмів
+            </h3>
+
+            <p>
+              <span class="bold">Форма однакова для всіх осіб:</span> підмет +
+              <span class="accent">can / can't</span> + дієслово (1-ша форма,
+              без <em>to</em>, без <em>-s</em>). <br />Українською "вміти" і
+              "могти" — це одне й те саме <span class="bold">can</span> (<span
+                class="italic"
+                >Я вмію плавати = I can swim</span
+              >).
+            </p>
+
+            <div class="tablecontainer">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Час і тип</th>
+                    <th>Формула</th>
+                    <th>Приклади</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="bold">Теперішній (+ / –)</span></td>
+                    <td>
+                      Subject + <span class="bold">can / can't</span> + V1
+                    </td>
+                    <td>
+                      Birds <span class="bold">can fly</span>. Penguins
+                      <span class="bold">can't fly</span>.<br />
+                      She <span class="bold">can swim</span>.
+                      <span class="small">(не ✗ cans; can't = cannot)</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">Теперішній (?)</span></td>
+                    <td><span class="bold">Can</span> + Subject + V1?</td>
+                    <td>
+                      <span class="bold">Can</span> dolphins swim fast? — Yes,
+                      they <span class="bold">can</span>. / No, they
+                      <span class="bold">can't</span>.<br />
+                      <span class="small"
+                        >(без do/does: ✗ Do you can swim?)</span
+                      >
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span class="bold">Минулий (+ / – / ?)</span><br />
+                      <span class="small">(загальне вміння колись)</span>
+                    </td>
+                    <td>
+                      Subject + <span class="bold">could / couldn't</span> +
+                      V1<br />
+                      <span class="bold">Could</span> + Subject + V1?
+                    </td>
+                    <td>
+                      I <span class="bold">could read</span> when I was five.<br />
+                      <span class="bold">Could</span> dinosaurs swim? — Yes,
+                      they <span class="bold">could</span>. / No, they
+                      <span class="bold">couldn't</span>.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p>
+              Вимова: <span class="bold">can</span>
+              <span class="accent-string">/kən/</span>,
+              <span class="bold">can't</span>
+              <span class="accent-string">/kɑːnt/</span>,
+              <span class="bold">could</span>
+              <span class="accent-string">/kʊd/</span>,
+              <span class="bold">couldn't</span>
+              <span class="accent-string">/ˈkʊdnt/</span>.
+            </p>
+
+            <!-- Exercises 1–3 -->
+            <details class="task" name="l22">
+              <summary><h4>Exercises 1–3</h4></summary>
+              <div>
+                <p class="bold">
+                  Exercise 1. Закрий теорію вище і розкажи своїми словами:
+                </p>
+                <ol type="a" style="line-height: 2">
+                  <li>
+                    яка структура речення з <em>can</em> (що йде після
+                    <em>can</em>);
+                  </li>
+                  <li>як утворити питання з <em>can</em>;</li>
+                  <li>як сказати про вміння в минулому;</li>
+                </ol>
+                <textarea
+                  id="l22-ex1"
+                  class="test-textarea"
+                  placeholder="a) ..."
+                ></textarea>
+
+                <p class="bold" style="margin-top: 25px">
+                  Exercise 2. Translate into English (UA → EN).
+                </p>
+                <ol style="line-height: 2">
+                  <li>Дельфіни вміють плавати дуже швидко.</li>
+                  <li>Пінгвіни не вміють літати.</li>
+                  <li>Робот не може відкрити двері.</li>
+                  <li>Ти вмієш грати в шахи?</li>
+                  <li>Коли їй було п'ять років, вона вже вміла читати.</li>
+                  <li>Чи вміють собаки бачити в темряві?</li>
+                  <li>Вона не могла відкрити двері, бо в неї не було ключа.</li>
+                </ol>
+                <textarea
+                  id="l22-ex2"
+                  class="test-textarea"
+                  placeholder="1. ..."
+                ></textarea>
+
+                <p class="bold" style="margin-top: 25px">Exercise 3. Create</p>
+                <p>
+                  Вигадай <span class="bold">6 речень</span> про роботів за
+                  такими правилами:
+                </p>
+                <ul style="list-style-type: square">
+                  <li>2 речення з <span class="bold">can / can't</span>;</li>
+                  <li>
+                    2 речення з <span class="bold">could / couldn't</span>;
+                  </li>
+                  <li>
+                    2 питання: одне з <span class="bold">can</span>, одне з
+                    <span class="bold">could</span>;
+                  </li>
+                </ul>
+                <textarea
+                  id="l22-ex3"
+                  class="test-textarea"
+                  placeholder="1. ..."
+                ></textarea>
+              </div>
+            </details>
+
+            <hr />
+
+            <!-- ===================== BLOCK 2 ===================== -->
+            <h3 id="g-block-2">Блок 2. Дозвіл, прохання, правила</h3>
+
+            <div class="tablecontainer">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Ситуація</th>
+                    <th>Формула</th>
+                    <th>Приклади та відповіді</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="bold">1. Дозвіл</span><br /></td>
+                    <td>
+                      <span class="bold">Can I…?</span> /
+                      <span class="bold">Could I…?</span> + V1<br />
+                    </td>
+                    <td>
+                      <span class="bold">Can I</span> use your pen? — Sure, you
+                      <span class="bold">can</span>. / Sorry, you
+                      <span class="bold">can't</span>.<br />
+                      <span class="bold">Could I</span> sit here? — Of course. /
+                      I'm sorry, that seat is taken.<br />
+                      <span class="bold">Could I have</span> a glass of water,
+                      please?
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">2. Прохання</span><br /></td>
+                    <td>
+                      <span class="bold">Can you…?</span> /
+                      <span class="bold">Could you…?</span> + V1 (+
+                      <em>please</em>)
+                    </td>
+                    <td>
+                      <span class="bold">Can you</span> help me, please?<br />
+                      <span class="bold">Could you</span> open the door,
+                      please?<br />
+                      <span class="bold">Згода:</span> Sure. / Of course. / No
+                      problem.<br />
+                      <span class="bold">Відмова:</span> Sorry, I can't. +
+                      причина (<span class="italic">I'm busy.</span>)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">3. Правила</span></td>
+                    <td>
+                      <span class="bold">You can</span> /
+                      <span class="bold">You can't</span> + V1
+                    </td>
+                    <td>
+                      You <span class="bold">can</span> borrow more than three
+                      books.<br />
+                      You <span class="bold">can't</span> take photos here.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <ul style="list-style-type: square">
+              <li>
+                <span class="bold"
+                  ><span class="accent">Can</span> чи
+                  <span class="accent">Could</span>?</span
+                >
+                І в дозволах, і в проханнях <span class="bold">Can</span> — це
+                нейтральний варіант (до друзів, родини, однокласників), а
+                <span class="bold">Could</span> — ввічливіший (до незнайомців,
+                дорослих, учителя, офіціанта). Тут <em>could</em>
+                <span class="bold">не означає минулий час</span>.
+              </li>
+              <li>
+                <span class="bold">Відповідь на Could I…?:</span> у теперішньому
+                часі відповідаємо лише з <span class="bold">can / can't</span>,
+                не з <em>could</em>:
+                <span class="italic"
+                  >Could I use your pen? — Yes, you
+                  <span class="bold">can</span>.</span
+                >
+                ✓ (не ✗ <span class="italic">Yes, you could</span>).
+              </li>
+              <li>
+                <span class="bold">Розрізняй <em>I</em> та <em>you</em>:</span>
+                <span class="italic"
+                  ><span class="bold">Can I</span> open the window?</span
+                >
+                (можна <span class="bold">мені</span> відкрити? — дозвіл) vs.
+                <span class="italic"
+                  ><span class="bold">Can you</span> open the window?</span
+                >
+                (відкрий <span class="bold">ти</span>, будь ласка — прохання).
+              </li>
+              <li>
+                <span class="bold">Бонус:</span>
+                <span class="italic"
+                  ><span class="bold">Would you mind opening</span> the
+                  window?</span
+                >
+                — дуже ввічливе прохання; після <em>mind</em> завжди йде
+                <span class="bold">-ing</span>.
+              </li>
+            </ul>
+
+            <!-- Exercises 4–6 -->
+            <details class="task" name="l22">
+              <summary><h4>Exercises 4–6</h4></summary>
+              <div>
+                <p class="bold">
+                  Exercise 4. Закрий теорію вище і розкажи своїми словами:
+                </p>
+                <ol type="a" style="line-height: 2">
+                  <li>
+                    2 способи попросити дозвіл і 2 способи попросити про
+                    послугу;
+                  </li>
+                  <li>
+                    що ввічливіше: <span class="italic">can</span> чи
+                    <span class="italic">could</span>;
+                  </li>
+                  <li>
+                    різницю між
+                    <span class="italic">Can I open the window?</span> і
+                    <span class="italic">Can you open the window?</span>
+                  </li>
+                </ol>
+                <textarea
+                  id="l22-ex4"
+                  class="test-textarea"
+                  placeholder="a) ..."
+                ></textarea>
+
+                <p class="bold" style="margin-top: 25px">
+                  Exercise 5. Rewrite: перетвори кожне речення на питання.
+                  Зверни увагу на підказку в дужках: кому ти говориш і чи це
+                  дозвіл (<em>I</em>), чи прохання (<em>you</em>).
+                </p>
+                <ol style="line-height: 2.2">
+                  <li>Open the window. (незнайомцю в автобусі)</li>
+                  <li>I want to use your phone. (другові)</li>
+                  <li>Give me a glass of water. (офіціанту)</li>
+                  <li>Be quiet! (однокласнику, який шумить)</li>
+                  <li>I want to sit here. (незнайомому дорослому)</li>
+                  <li>Tell me the time. (незнайомцю на вулиці)</li>
+                </ol>
+                <textarea
+                  id="l22-ex5"
+                  class="test-textarea"
+                  placeholder="1. ..."
+                ></textarea>
+
+                <p class="bold" style="margin-top: 25px">
+                  Exercise 6. Create (діалоги): для кожної ситуації напиши: 1)
+                  питання, 2) відповідь "так", 3) відповідь "ні" з причиною.
+                </p>
+                <ol style="line-height: 2">
+                  <li>
+                    У музеї: ти хочеш сфотографувати картину, але фото
+                    заборонені.
+                  </li>
+                  <li>
+                    У бібліотеці: ти хочеш взяти 5 книжок, а можна взяти лише 3.
+                  </li>
+                  <li>
+                    У кафе: ти хочеш заплатити карткою, а кафе приймає лише
+                    готівку.
+                  </li>
+                  <li>
+                    У класі: ти не чуєш учителя й просиш говорити голосніше.
+                  </li>
+                  <li>
+                    У когось в гостях: ти хочеш відкрити вікно, бо спеконто.
+                  </li>
+                </ol>
+                <textarea
+                  id="l22-ex6"
+                  class="test-textarea"
+                  placeholder="1. Question: ... / Yes: ... / No: ..."
+                ></textarea>
+              </div>
+            </details>
+
+            <hr />
+
+            <!-- ===================== BLOCK 3 ===================== -->
+            <h3 id="g-block-3">
+              Блок 3 (додатковий): <em>will be able to</em>
+            </h3>
+
+            <p>
+              <span class="bold">can не має форми майбутнього часу.</span> Для
+              майбутнього використовуємо
+              <span class="bold">will be able to</span> (<em>зможу</em>) та
+              заперечення <span class="bold">won't be able to</span>:
+            </p>
+            <ul style="list-style-type: square">
+              <li>
+                <span class="italic"
+                  >I can't swim now. → I
+                  <span class="bold">will be able to</span> swim next
+                  summer.</span
+                >
+                (не ✗ <span class="italic">will can</span>)
+              </li>
+            </ul>
+
+            <details class="task" name="l22">
+              <summary>
+                <h4>Exercise 7</h4>
+              </summary>
+              <div>
+                <p class="bold">
+                  Rewrite the sentences about the future using
+                  <span class="italic">will be able to</span>:
+                </p>
+                <ol style="line-height: 2.2">
+                  <li>
+                    Robots can't clean the whole house yet. (<span class="bold"
+                      >in ten years</span
+                    >)
+                  </li>
+                  <li>
+                    We can't visit the museum today. (<span class="bold"
+                      >next week</span
+                    >)
+                  </li>
+                  <li>
+                    Children can't drive a car. (<span class="bold"
+                      >when they are 18</span
+                    >)
+                  </li>
+                  <li>
+                    She can't speak French now. (<span class="bold"
+                      >after the course</span
+                    >)
+                  </li>
+                  <li>
+                    The shop can't open today. (<span class="bold"
+                      >tomorrow</span
+                    >)
+                  </li>
+                </ol>
+                <textarea
+                  id="l22-ex7"
+                  class="test-textarea"
+                  placeholder="1. ..."
+                ></textarea>
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- 🍋 PART 3: SPEAKING -->
+      <section id="part-3" class="lesson-wrapper tab-content">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img
+                src="../media/icons/lemon.svg"
+                class="star"
+                alt="a lemon slice"
+              />
+              <span>Speaking: Robot Job Centre</span>
+            </h2>
+          </div>
+
+          <div class="lesson-content">
+            <h3 id="s-stage-1">Stage 1. What can the robots do?</h3>
+            <p>
+              Опиши кожного робота за <span class="bold">таблицею</span> та
+              <span class="bold">history notes</span>:
+            </p>
+            <div class="callout2">
+              <span class="italic"
+                >Robot A <span class="bold">can</span> ... and ... <br />It
+                <span class="bold">can't</span> ... <br />Last year it
+                <span class="bold">couldn't</span> ...</span
+              >
+            </div>
+
+            <h4>The Robots (✔ = can, ✘ = can't)</h4>
+
+            <div class="tablecontainer">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Robot</th>
+                    <th>Lift heavy things</th>
+                    <th>Climb stairs</th>
+                    <th>Recognise faces</th>
+                    <th>Speak</th>
+                    <th>Work in rain</th>
+                    <th>Work all night</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="bold">A</span></td>
+                    <td>✔</td>
+                    <td>✘</td>
+                    <td>✘</td>
+                    <td>✘</td>
+                    <td>✘</td>
+                    <td>✔</td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">B</span></td>
+                    <td>✘</td>
+                    <td>✘</td>
+                    <td>✔</td>
+                    <td>✔</td>
+                    <td>✘</td>
+                    <td>✘</td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">C</span></td>
+                    <td>✘</td>
+                    <td>✔</td>
+                    <td>✔</td>
+                    <td>✔</td>
+                    <td>✘</td>
+                    <td>✘</td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">D</span></td>
+                    <td>✔</td>
+                    <td>✔</td>
+                    <td>✘</td>
+                    <td>✘</td>
+                    <td>✔</td>
+                    <td>✘</td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">E</span></td>
+                    <td>✘</td>
+                    <td>✔</td>
+                    <td>✘</td>
+                    <td>✘</td>
+                    <td>✘</td>
+                    <td>✔</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="callout2" style="margin: 20px 0">
+              <p style="margin-top: 0">
+                <span class="bold">History notes:</span>
+              </p>
+              <ul style="list-style-type: square; margin-bottom: 0">
+                <li>
+                  <span class="bold">Robot B:</span> last year it couldn't
+                  recognise faces. Now it can.
+                </li>
+                <li>
+                  <span class="bold">Robot C:</span> last year it couldn't
+                  speak. Now it can.
+                </li>
+                <li>
+                  <span class="bold">Robot E:</span> last year it couldn't work
+                  all night. Now it can.
+                </li>
+              </ul>
+            </div>
+
+            <hr />
+
+            <h3 id="s-stage-2">Stage 2. Match the Robots to the Jobs</h3>
+
+            <p>
+              Розкажи, який робот отримує яку роботу і чому (використовуй
+              <span class="bold">can / can't / couldn't</span>).
+            </p>
+            <p>
+              A robot needs <span class="bold">ALL</span> the abilities for the
+              job (<span class="bold">one robot = one job</span>).
+            </p>
+
+            <h4>The Jobs</h4>
+
+            <div class="tablecontainer">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 50px">#</th>
+                    <th>Job</th>
+                    <th>The robot needs to…</th>
+                    <th style="width: 110px">Robot (A–E)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="bold">1</span></td>
+                    <td><span class="bold">Warehouse worker</span></td>
+                    <td>lift heavy things, work all night</td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l22-job-1"
+                        class="test-input"
+                        style="width: 100%; margin: 0"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">2</span></td>
+                    <td><span class="bold">Museum guide</span></td>
+                    <td>speak, recognise faces, climb stairs</td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l22-job-2"
+                        class="test-input"
+                        style="width: 100%; margin: 0"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">3</span></td>
+                    <td>
+                      <span class="bold"
+                        >Hospital
+                        <span
+                          class="gloss"
+                          data-tr="зустрічаючий, адміністратор"
+                          >greeter</span
+                        ></span
+                      >
+                    </td>
+                    <td>speak, recognise faces</td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l22-job-3"
+                        class="test-input"
+                        style="width: 100%; margin: 0"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">4</span></td>
+                    <td>
+                      <span class="bold"
+                        >Storm
+                        <span class="gloss" data-tr="порятунок, рятувальний"
+                          >rescue</span
+                        ></span
+                      >
+                    </td>
+                    <td>work in rain, lift heavy things, climb stairs</td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l22-job-4"
+                        class="test-input"
+                        style="width: 100%; margin: 0"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">5</span></td>
+                    <td><span class="bold">Office night cleaner</span></td>
+                    <td>climb stairs, work all night</td>
+                    <td>
+                      <input
+                        type="text"
+                        id="l22-job-5"
+                        class="test-input"
+                        style="width: 100%; margin: 0"
+                      />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p>Спростуй помилкові здогади:</p>
+            <ol>
+              <li>
+                <span class="italic"
+                  >"Robot C can speak and recognise faces, so it should be the
+                  hospital greeter, right?"</span
+                >
+              </li>
+              <li>
+                <span class="italic"
+                  >"Robot D can lift heavy things, so it should work in the
+                  warehouse, right?"</span
+                >
+              </li>
+            </ol>
+
+            <hr />
+
+            <h3 id="s-stage-3">Stage 3. Ask the Manager</h3>
+
+            <h4>The Rules</h4>
+
+            <div class="tablecontainer">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Request</th>
+                    <th>Rule</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="bold">Test a robot</span></td>
+                    <td>
+                      ✔ Yes, in the
+                      <span class="gloss" data-tr="майстерня">workshop</span>. ✘
+                      No, not outside the building
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="bold">Take a robot home</span></td>
+                    <td>✘ No. Robots stay at work</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span class="bold">Read the job list </span>
+                    </td>
+                    <td>✔ Yes, it is on the table</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span class="bold">Ask an engineer a question</span>
+                    </td>
+                    <td>✔ Yes, but only from 9 a.m. to 5 p.m.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p style="margin-top: 20px; margin-bottom: 5px">
+              <span class="bold"
+                >A. Permission (<em>Can I…? / Could I…?</em>):</span
+              >
+              попроси дозволу в менеджера, послухай відповідь за таблицею і
+              підсумуй одним реченням у форматі
+              <span class="italic">"So I can / can't ..."</span>:
+            </p>
+            <ol style="line-height: 2; margin-top: 0">
+              <li>test a robot outside the building</li>
+              <li>take a robot home</li>
+              <li>read the job list</li>
+              <li>ask an engineer a question at 7 p.m.</li>
+              <li>test a robot in the workshop</li>
+            </ol>
+
+            <p style="margin-top: 20px; margin-bottom: 5px">
+              <span class="bold"
+                >B. Requests (<em>Can you…? / Could you…?</em>):</span
+              >
+              попроси менеджера про допомогу:
+            </p>
+            <ol style="line-height: 2; margin-top: 0">
+              <li>explain the "Warehouse worker" job</li>
+              <li>call an engineer</li>
+              <li>repeat the rules more slowly</li>
+            </ol>
+
+            <textarea
+              id="l22-s-notes"
+              class="test-textarea"
+              placeholder="Speaking notes..."
+            ></textarea>
+          </div>
+        </div>
+      </section>
+
+      <!-- 🍊 PART 4: HOMEWORK -->
+      <section id="part-4" class="lesson-wrapper tab-content">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img
+                src="../media/icons/orange.svg"
+                class="star"
+                alt="an orange"
+              />
+              <span>Homework</span>
+            </h2>
+          </div>
+
+          <div class="lesson-content">
+            <h3 id="hw-title">Homework</h3>
+
+            <p>
+              <span class="bold">Варіант A (письмовий):</span> вибери
+              <span class="bold">5 слів</span> із уроку, які були найскладнішими
+              під час читання, потренуй їхню вимову вголос за транскрипцією і
+              напиши коротку історію <span class="bold">«My new robot»</span>
+              (8–10 речень) про робота, якого ти придумала. Умови: щонайменше
+              <span class="bold">3 речення з <em>can / can't</em></span
+              >, <span class="bold">1 з <em>could / couldn't</em></span> (чого
+              робот не вмів раніше) і <span class="bold">1 питання</span>.
+            </p>
+            <p>
+              <span class="bold">Варіант B (усний / retrieval):</span> вивчи
+              теорію вдома і на початку наступного уроку своїми словами поясни,
+              коли вживаємо <em>can</em>, а коли — <em>could</em>, і як
+              попросити дозволу та про послугу (з прикладами).
+            </p>
+
+            <textarea
+              id="l22-hw-text"
+              class="test-textarea"
+              placeholder="Write your 5 words and your story here..."
+            ></textarea>
+          </div>
+        </div>
+      </section>
+
+      <!-- ANSWER KEY (teacher only):
+      Reading Questions:
+      1. They can lift heavy things and repeat the same movement thousands of times without getting tired.
+      2. They can't climb stairs.
+      3. They couldn't see, hear or speak.
+      4. They can drive, take photos and study rocks. They can't repair themselves.
+      5. Because most robots can do only one job.
+      6. Open answer.
+
+      Vocabulary Exercise A:
+      1-H (піднімати), 2-A (повторювати), 3-C (склад), 4-F (сходи),
+      5-E (впізнавати), 6-G (небезпечний), 7-D (ремонтувати), 8-B (інженер).
+
+      Grammar Exercise 1:
+      a) can + V1 (базова форма дієслова).
+      b) без to, без -s/-ed/-ing, без do/does.
+      c) Can + підмет + V1?
+      d) could / couldn't.
+      e) e.g. She cans swim -> She can swim; Can you to help? -> Can you help?; Do you can swim? -> Can you swim?
+
+      Grammar Exercise 2:
+      1. Dolphins can swim very fast.
+      2. Penguins can't fly.
+      3. A robot can't open the door.
+      4. Can you play chess?
+      5. When she was five, she could already read.
+      6. In ancient times people couldn't send emails.
+      7. Can dogs see in the dark?
+      8. She couldn't open the door because she didn't have a key.
+
+      Grammar Exercise 5 (sample answers):
+      1. Could you open the window, please?
+      2. Can I use your phone?
+      3. Could I have a glass of water, please? / Could you bring me a glass of water, please?
+      4. Can you be quiet, please?
+      5. Could I sit here?
+      6. Could you tell me the time, please?
+
+      Grammar Exercise 7:
+      1. Robots will be able to clean the whole house in ten years.
+      2. We will be able to visit the museum next week.
+      3. Children will be able to drive a car when they are 18.
+      4. She will be able to speak French after the course.
+      5. The shop will be able to open tomorrow.
+
+      Bonus Exercise B1 (Find and fix):
+      1. can I to take -> can I take
+      2. you can't taking -> you can't take
+      3. I cans not find -> I can't (cannot) find
+      4. Do you can see -> Can you see
+      5. Yes, you could -> Yes, you can
+      6. Could you opened -> Could you open
+      (Correct sentence: "Could you help me, please?")
+
+      Speaking Stage 2A (Manager replies):
+      1. Sorry, you can't. Testing is only in the workshop.
+      2. No, you can't. Robots stay at work.
+      3. Yes, you can. It's on the table.
+      4. Sorry, you can't. Engineers are here from 9 a.m. to 5 p.m.
+      5. Yes, you can.
+      6. Yes, you can. Test it in the workshop.
+
+      Speaking Stage 3 (Matching):
+      Solution: A -> 1 (Warehouse worker), B -> 3 (Hospital greeter),
+      C -> 2 (Museum guide), D -> 4 (Storm rescue), E -> 5 (Office night cleaner).
+      Wrong guesses:
+      1) Robot C can speak and recognise faces, but it's the only robot for the museum (it can climb stairs), so B goes to the hospital.
+      2) Robot D can lift heavy things, but it can't work all night; the warehouse needs Robot A.
+      3) No, it couldn't. Now it can.
+      -->
+    </main>
+
+    <footer>
+      <p>🌷 🍓 🌿 Made by Olena Hapchyna 🌿 🍓 🌷</p>
+
+      <div class="footer-credits">
+        <span
+          >Fruit icons by
+          <a
+            href="https://www.svgrepo.com/collection/fruits-vectors/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >An Nguyen</a
+          ></span
+        >
+        |
+        <a href="../credits.html" target="_blank">Credits &amp; Licenses</a>
+      </div>
+    </footer>
+
+    <button
+      id="scrollToTopBtn"
+      class="scroll-to-top"
+      aria-label="Scroll to top"
+    >
+      <img src="../media/icons/apple.svg" />
+    </button>
+
+    <dialog id="clear-confirm-dialog" class="custom-dialog">
+      <div class="dialog-content">
+        <h3>⚠️ Attention!</h3>
+        <p>Do you really want to delete ALL your answers and start over?</p>
+        <div class="dialog-actions">
+          <button type="button" id="dialog-cancel-btn">No</button>
+          <button type="button" id="dialog-confirm-btn">Yes, delete</button>
+        </div>
+      </div>
+    </dialog>
+
+    <script>
+      document.querySelectorAll(".gloss").forEach(function (el) {
+        var pill = document.createElement("span");
+        pill.className = "tr-pill";
+        pill.textContent = el.getAttribute("data-tr");
+        el.insertAdjacentElement("afterend", pill);
+        function toggle() {
+          pill.classList.toggle("show");
+        }
+        el.addEventListener("click", toggle);
+        el.addEventListener("keydown", function (e) {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            toggle();
+          }
+        });
+      });
+
+      document.addEventListener("click", (event) => {
+        const word = event.target.closest(".reveal");
+        if (word) {
+          word.classList.toggle("revealed");
+        }
+      });
+    </script>
+  </body>
+</html>

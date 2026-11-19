@@ -948,12 +948,13 @@ tr:hover td code {
 th,
 td {
   padding: 7px 14px;
+  /* padding: 6px 10px; */
   border: 2px solid var(--accent);
   text-align: left;
   line-height: 1.4;
   hyphens: auto;
   -webkit-hyphens: auto;
-  min-width: 150px;
+  min-width: 100px;
 }
 
 th {
