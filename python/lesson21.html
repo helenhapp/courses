@@ -586,153 +586,71 @@ print(type(result)) # &lt;class 'list'&gt;</code></pre>
           <div class="lesson-header">
             <h2>
               <img src="../media/icons/apple.svg" class="star" alt="apple" />
-              <span>Домашнє завдання: Tkinter + Множини</span>
+              <span>Домашнє завдання</span>
             </h2>
           </div>
 
           <div class="lesson-content">
-            <h3 id="p3-reminders">Нагадування: віджети Tkinter</h3>
+            <h3 id="p3-reminders">Нагадування: операції над множинами</h3>
 
-            <p>
-              У домашньому завданні ми поєднаємо функцію пошуку дільників
-              <span class="accent-string">divisors(n)</span> із графічним
-              інтерфейсом <span class="accent-string">Tkinter</span>.
-              Пригадаємо, як створювати основні елементи вікна:
-            </p>
+            <pre><code class="language-python">A = {"a", "b", "c"}
+B = {"b", "c", "d"}
 
-            <h4>1. Головне вікно програми:</h4>
-            <pre><code class="language-python">from tkinter import *
-
-window = Tk()
-window.title("Дільники та НСД")
-window.geometry("400x300")
-window.config(bg="lavender")
-
-# тут створюємо віджети
-
-window.eval("tk::PlaceWindow . center")
-window.mainloop()</code></pre>
-
-            <h4>2. Напис (Label) та зміна його тексту:</h4>
-            <pre><code class="language-python">result_label = Label(
-    window,
-    text="Тут буде результат",
-    font=("Arial", 14),
-    bg="lavender",
-)
-result_label.pack(pady=5)</code></pre>
-            <pre><code class="language-python"># Як змінити текст напису всередині функції:
-result_label.config(text="Новий текст")</code></pre>
-
-            <h4>3. Поле для введення (Entry) та читання числа:</h4>
-            <p>
-              Метод <span class="accent-string">.get()</span> завжди повертає
-              текст (<span class="accent-string">str</span>), тому для
-              математичних обчислень його потрібно перетворити на ціле число за
-              допомогою <span class="accent-string">int()</span>:
-            </p>
-            <pre><code class="language-python">entry1 = Entry(window, font=("Arial", 14), width=10)
-entry1.pack(pady=5)</code></pre>
-            <pre><code class="language-python"># Як прочитати ціле число всередині функції:
-num1 = int(entry1.get())</code></pre>
-
-            <h4>4. Кнопка (Button):</h4>
-            <pre><code class="language-python">def calculate():
-    # код функції
-    pass
-
-btn = Button(
-    window,
-    text="Знайти",
-    font=("Arial", 14),
-    command=calculate,
-)
-btn.pack(pady=10)</code></pre>
+print(A &amp; B) # перетин (спільні елементи): {'b', 'c'}
+print(A | B) # об'єднання (усі елементи разом без повторів): {'a', 'b', 'c', 'd'}
+print(A - B) # різниця (є в A, але немає в B): {'a'}
+print(B - A) # різниця (є в B, але немає в A): {'d'}</code></pre>
 
             <hr />
 
             <h3 id="p3-hw-task">Завдання</h3>
 
-            <p>
-              На уроці ми написали програму, яка знаходить спільні дільники та
-              найбільший спільний дільник (НСД) у консолі:
-            </p>
-
-            <pre><code class="language-python">def divisors(n):
-    result = set()
-    for i in range(1, n + 1):
-        if n % i == 0:
-            result.add(i)
-    return result
-
-d12 = divisors(12)
-d18 = divisors(18)
-common = d12 &amp; d18</code></pre>
-
             <!-- Домашнє завдання -->
             <details class="task" name="l21-p3" open>
               <summary>
-                <h4>Калькулятор спільних дільників та НСД</h4>
+                <h4>Піцерія: список покупок 🍕</h4>
               </summary>
               <div>
-                <p>
-                  Створи програму з вікном
-                  <span class="accent-string">Tkinter</span>, у якому користувач
-                  може ввести два числа і побачити їхні спільні дільники та НСД:
-                </p>
+                <p>Дано рецепти двох піц у вигляді множин інгредієнтів:</p>
+
+                <pre><code class="language-python">pizza1 = {"dough", "tomatoes", "cheese", "mushrooms", "olives"}
+pizza2 = {"dough", "tomatoes", "cheese", "chicken", "pineapple"}</code></pre>
+
+                <p>За допомогою операцій над множинами знайди та виведи:</p>
 
                 <ol>
                   <li>
-                    Створи два поля <span class="accent-string">Entry</span> для
-                    введення першого і другого числа (за бажанням додай біля них
-                    підписи <span class="accent-string">Label</span> або
-                    розмісти їх в один рядок через
-                    <span class="accent-string">Frame</span>).
+                    <span class="bold">Спільні інгредієнти</span>, які потрібні
+                    для обох піц.
                   </li>
                   <li>
-                    Додай у код функцію
-                    <span class="accent-string">divisors(n)</span> із 6-го
-                    завдання.
+                    <span class="bold">Повний список покупок</span> у магазин,
+                    щоб приготувати обидві піци.
                   </li>
                   <li>
-                    Створи функцію (наприклад,
-                    <span class="accent-string">find_gcd()</span>), яка:
-                    <ul style="margin-top: 0">
-                      <li>
-                        читає обидва числа з полів
-                        <span class="accent-string">Entry</span> і перетворює їх
-                        на <span class="accent-string">int</span>;
-                      </li>
-                      <li>
-                        знаходить множини їхніх дільників через
-                        <span class="accent-string">divisors()</span> та їхній
-                        перетин (<span class="accent-string">&amp;</span>);
-                      </li>
-                      <li>
-                        виводить у <span class="accent-string">Label</span> усі
-                        спільні дільники та найбільший спільний дільник (<span
-                          class="accent-string"
-                          >max(common)</span
-                        >).
-                      </li>
-                    </ul>
+                    Інгредієнти, які потрібні
+                    <span class="bold">лише для першої</span> піци.
                   </li>
                   <li>
-                    Створи кнопку <span class="accent-string">Button</span>, яка
-                    запускає цю функцію.
+                    Інгредієнти, які потрібні
+                    <span class="bold">лише для другої</span> піци.
                   </li>
                 </ol>
 
-                <p>
-                  🐍 Приклад тексту в
-                  <span class="accent-string">Label</span> після введення чисел
-                  <span class="accent-string">12</span> і
-                  <span class="accent-string">18</span> та натискання кнопки:
+                <!-- <p>
+                  🐍 Очікуваний результат (порядок елементів у множинах може
+                  відрізнятися):
                 </p>
                 <pre
                   style="margin-bottom: 0"
-                ><code class="markdown">Спільні дільники: [1, 2, 3, 6]
-НСД: 6</code></pre>
+                ><code class="markdown">Спільні інгредієнти:
+{'dough', 'tomatoes', 'cheese'}
+Список покупок:
+{'dough', 'tomatoes', 'cheese', 'mushrooms', 'olives', 'chicken', 'pineapple'}
+Лише для першої піци:
+{'mushrooms', 'olives'}
+Лише для другої піци:
+{'chicken', 'pineapple'}</code></pre> -->
               </div>
             </details>
           </div>
