@@ -7,7 +7,7 @@
 
     <link rel="icon" type="image/svg+xml" href="../media/icons/carambola.svg" />
 
-    <title>Python Lesson 22-23</title>
+    <title>Python Lesson 22</title>
 
     <script>
       const savedTheme = localStorage.getItem("lms_theme") || "light";
@@ -130,10 +130,10 @@
     <!-- lesson header -->
     <header>
       <div class="title-container">
-        <h1 id="lesson-title">Python: 22-23</h1>
+        <h1 id="lesson-title">Python: 22</h1>
       </div>
 
-      <p class="topic">Listbox та filedialog</p>
+      <p class="topic">Listbox</p>
 
       <hr class="pretty-divider" />
     </header>
@@ -144,8 +144,7 @@
       <div class="tabs-nav">
         <button class="tab-btn active" data-target="part-1">Повторення</button>
         <button class="tab-btn" data-target="part-2">Listbox</button>
-        <button class="tab-btn" data-target="part-3">Методи</button>
-        <button class="tab-btn" data-target="part-4">filedialog</button>
+        <button class="tab-btn" data-target="part-3">Д/з</button>
       </div>
 
       <!-- 🍉 PART 1: Повторення -->
@@ -613,292 +612,406 @@ result_label.pack(pady=10)</code></pre>
         </div>
       </section>
 
-      <!-- 🍋 PART 3: Методи -->
+      <!-- 🍋 PART 3: ДЗ -->
       <section id="part-3" class="lesson-wrapper tab-content">
         <div class="lesson-block">
           <div class="lesson-header">
             <h2>
               <img src="../media/icons/lemon.svg" class="star" alt="lemon" />
-              <span>Методи Listbox</span>
+              <span>Домашнє завдання</span>
             </h2>
           </div>
 
           <div class="lesson-content">
-            <h3>Видалення та інші корисні методи</h3>
+            <h3 id="p3-tasks">Завдання</h3>
+
+            <ol>
+              <li>
+                Стилізувати застосунок із завдання 3 (налаштувати кольори фону
+                вікна і віджетів, кольори виділення в
+                <span class="accent-string">Listbox</span>, вигляд тексту тощо).
+              </li>
+              <li>
+                Повторити, як працюють методи
+                <span class="accent-string">listbox.curselection()</span> та
+                <span class="accent-string">listbox.get(index)</span>.
+              </li>
+            </ol>
+
+            <hr />
+
+            <h3 id="p3-bg">Однаковий фон для різних елементів</h3>
+
+            <p>
+              У Tkinter кожен віджет має свій власний стандартний колір фону.
+              Тому коли ти змінюєш колір головного вікна,
+              <span class="accent-string">Label</span> та
+              <span class="accent-string">Frame</span> усе одно залишаються
+              сірими, доки їм не задати той самий параметр
+              <span class="accent-string">bg</span>.
+            </p>
+
+            <p>
+              Щоб не писати назву чи код кольору щоразу вручну (і не змінювати
+              його в кількох місцях, якщо передумаєш), зручно зберегти колір у
+              змінній на початку програми — наприклад,
+              <span class="accent-string">BG</span> — і передавати її всюди, де
+              потрібен фон вікна:
+            </p>
+
+            <pre><code class="language-python">BG = "#D5F2E4"
+window.config(bg=BG)
+
+frame1 = Frame(window, bg=BG)
+frame1.pack(pady=10)
+
+label = Label(
+    window,
+    text="Words: 0",
+    font=("Arial", 14, "italic bold"),
+    fg="darkgreen",
+    bg=BG,
+)
+label.pack(pady=10)</code></pre>
+
+            <p>
+              Тепер, якщо захочеш змінити тему програми, достатньо замінити
+              колір лише в одному рядку зі змінною
+              <span class="accent-string">BG</span>.
+            </p>
+
+            <hr />
+
+            <h3 id="p3-colors">Кольори: назви та HEX</h3>
+
+            <p>
+              Окрім готових англійських назв із таблиці нижче, у Tkinter можна
+              використовувати <span class="bold">HEX-кольори</span> — це
+              будь-які відтінки, записані як
+              <span class="accent-string">#</span> і 6 символів (цифри
+              <span class="accent-string">0–9</span> та літери
+              <span class="accent-string">A–F</span>), наприклад
+              <span class="accent-string">"#D5F2E4"</span> або
+              <span class="accent-string">"#FBC5BF"</span>.
+            </p>
+
+            <p>
+              Підібрати власний відтінок і скопіювати його HEX-код можна тут:
+              <a
+                href="https://htmlcolorcodes.com/color-picker/"
+                target="_blank"
+                rel="noopener noreferrer"
+                style="text-decoration: underline; color: var(--link-color)"
+                >HTML Color Picker</a
+              >.
+            </p>
 
             <div class="tablecontainer">
               <table>
                 <thead>
                   <tr>
-                    <th>Команда</th>
-                    <th>Що робить</th>
+                    <th>Базові кольори</th>
+                    <th>Світлі (для фону)</th>
+                    <th>Темні (для тексту)</th>
                   </tr>
                 </thead>
                 <tbody>
+                  <!-- 1 -->
                   <tr>
                     <td>
-                      <span class="accent-string">.insert(END, "text")</span>
-                    </td>
-                    <td>додає рядок у кінець списку</td>
-                  </tr>
-                  <tr>
-                    <td><span class="accent-string">.delete(index)</span></td>
-                    <td>видаляє один рядок за індексом</td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <span class="accent-string">.delete(0, END)</span>
+                      <span class="circle" style="background: white"></span>
+                      <span class="accent-string">"white"</span>
                     </td>
                     <td>
-                      видаляє <span class="bold">всі</span> рядки (очищає
-                      список)
+                      <span class="circle" style="background: lightblue"></span>
+                      <span class="accent-string">"lightblue"</span>
+                    </td>
+                    <td>
+                      <span class="circle" style="background: darkblue"></span>
+                      <span class="accent-string">"darkblue"</span>
                     </td>
                   </tr>
+                  <!-- 2 -->
                   <tr>
-                    <td><span class="accent-string">.size()</span></td>
-                    <td>повертає кількість рядків</td>
-                  </tr>
-                  <tr>
-                    <td><span class="accent-string">.get(0, END)</span></td>
                     <td>
-                      повертає кортеж з <span class="bold">усіма</span> рядками
+                      <span class="circle" style="background: black"></span>
+                      <span class="accent-string">"black"</span>
+                    </td>
+                    <td>
+                      <span
+                        class="circle"
+                        style="background: lightgreen"
+                      ></span>
+                      <span class="accent-string">"lightgreen"</span>
+                    </td>
+                    <td>
+                      <span class="circle" style="background: darkgreen"></span>
+                      <span class="accent-string">"darkgreen"</span>
+                    </td>
+                  </tr>
+                  <!-- 3 -->
+                  <tr>
+                    <td>
+                      <span class="circle" style="background: red"></span>
+                      <span class="accent-string">"red"</span>
+                    </td>
+                    <td>
+                      <span
+                        class="circle"
+                        style="background: lightyellow"
+                      ></span>
+                      <span class="accent-string">"lightyellow"</span>
+                    </td>
+                    <td>
+                      <span class="circle" style="background: crimson"></span>
+                      <span class="accent-string">"crimson"</span>
+                    </td>
+                  </tr>
+                  <!-- 4 -->
+                  <tr>
+                    <td>
+                      <span class="circle" style="background: blue"></span>
+                      <span class="accent-string">"blue"</span>
+                    </td>
+                    <td>
+                      <span class="circle" style="background: lavender"></span>
+                      <span class="accent-string">"lavender"</span>
+                    </td>
+                    <td>
+                      <span class="circle" style="background: purple"></span>
+                      <span class="accent-string">"purple"</span>
+                    </td>
+                  </tr>
+                  <!-- 5 -->
+                  <tr>
+                    <td>
+                      <span class="circle" style="background: green"></span>
+                      <span class="accent-string">"green"</span>
+                    </td>
+                    <td>
+                      <span class="circle" style="background: mistyrose"></span>
+                      <span class="accent-string">"mistyrose"</span>
+                    </td>
+                    <td>
+                      <span class="circle" style="background: indigo"></span>
+                      <span class="accent-string">"indigo"</span>
+                    </td>
+                  </tr>
+                  <!-- 6 -->
+                  <tr>
+                    <td>
+                      <span class="circle" style="background: yellow"></span>
+                      <span class="accent-string">"yellow"</span>
+                    </td>
+                    <td>
+                      <span class="circle" style="background: peachpuff"></span>
+                      <span class="accent-string">"peachpuff"</span>
+                    </td>
+                    <td>
+                      <span class="circle" style="background: teal"></span>
+                      <span class="accent-string">"teal"</span>
+                    </td>
+                  </tr>
+                  <!-- 7 -->
+                  <tr>
+                    <td>
+                      <span class="circle" style="background: orange"></span>
+                      <span class="accent-string">"orange"</span>
+                    </td>
+                    <td>
+                      <span class="circle" style="background: aliceblue"></span>
+                      <span class="accent-string">"aliceblue"</span>
+                    </td>
+                    <td>
+                      <span
+                        class="circle"
+                        style="background: darkslateblue"
+                      ></span>
+                      <span class="accent-string">"darkslateblue"</span>
+                    </td>
+                  </tr>
+                  <!-- 8 -->
+                  <tr>
+                    <td>
+                      <span class="circle" style="background: pink"></span>
+                      <span class="accent-string">"pink"</span>
+                    </td>
+                    <td>
+                      <span class="circle" style="background: honeydew"></span>
+                      <span class="accent-string">"honeydew"</span>
+                    </td>
+                    <td>
+                      <span class="circle" style="background: chocolate"></span>
+                      <span class="accent-string">"chocolate"</span>
+                    </td>
+                  </tr>
+                  <!-- 9 -->
+                  <tr>
+                    <td>
+                      <span class="circle" style="background: gray"></span>
+                      <span class="accent-string">"gray"</span>
+                    </td>
+                    <td>
+                      <span class="circle" style="background: mintcream"></span>
+                      <span class="accent-string">"mintcream"</span>
+                    </td>
+                    <td>
+                      <span class="circle" style="background: navy"></span>
+                      <span class="accent-string">"navy"</span>
+                    </td>
+                  </tr>
+                  <!-- 10 -->
+                  <tr>
+                    <td>
+                      <span class="circle" style="background: gold"></span>
+                      <span class="accent-string">"gold"</span>
+                    </td>
+                    <td>
+                      <span class="circle" style="background: seashell"></span>
+                      <span class="accent-string">"seashell"</span>
+                    </td>
+                    <td>
+                      <span class="circle" style="background: maroon"></span>
+                      <span class="accent-string">"maroon"</span>
+                    </td>
+                  </tr>
+                  <!-- 11 -->
+                  <tr>
+                    <td>
+                      <span class="circle" style="background: violet"></span>
+                      <span class="accent-string">"violet"</span>
+                    </td>
+                    <td>
+                      <span class="circle" style="background: lightcyan"></span>
+                      <span class="accent-string">"lightcyan"</span>
+                    </td>
+                    <td>
+                      <span
+                        class="circle"
+                        style="background: darkslategray"
+                      ></span>
+                      <span class="accent-string">"darkslategray"</span>
+                    </td>
+                  </tr>
+                  <!-- 12 -->
+                  <tr>
+                    <td>
+                      <span class="circle" style="background: brown"></span>
+                      <span class="accent-string">"brown"</span>
+                    </td>
+                    <td>
+                      <span class="circle" style="background: ivory"></span>
+                      <span class="accent-string">"ivory"</span>
+                    </td>
+                    <td>
+                      <span
+                        class="circle"
+                        style="background: forestgreen"
+                      ></span>
+                      <span class="accent-string">"forestgreen"</span>
                     </td>
                   </tr>
                 </tbody>
               </table>
             </div>
 
-            <p>Видалення вибраного рядка:</p>
-            <pre><code class="language-python">days.delete(index)</code></pre>
+            <hr />
 
-            <p>Кількість рядків:</p>
-            <pre><code class="language-python">print(days.size())</code></pre>
-
-            <p>Чи є рядок у списку:</p>
-            <pre><code class="language-python">if "Monday" in days.get(0, END):
-    print("Already in the list!")</code></pre>
-
-            <!-- Завдання 4 -->
-            <details class="task" name="l22-p2">
-              <summary><h4>Завдання 4: Словник (частина 2)</h4></summary>
-              <div>
-                <p class="bold" style="margin-bottom: 0">
-                  Як має працювати кнопка <span class="accent">Add</span>:
-                </p>
-                <ul style="margin-top: 5px">
-                  <li>
-                    бере текст із <span class="accent-string">Entry</span>;
-                  </li>
-                  <li>прибирає зайві пробіли;</li>
-                  <li>
-                    якщо введено слово (не
-                    <span class="accent-string">""</span>), додає його до
-                    <span class="accent-string">Listbox</span>;
-                  </li>
-                  <li>
-                    очищає поле вводу (<span class="accent-string"
-                      >entry.delete(0, END)</span
-                    >);
-                  </li>
-                  <li>
-                    оновлює лічильник слів на екрані (наприклад,
-                    <span class="italic">"Words: 1"</span>);
-                  </li>
-                  <li>
-                    якщо слово вже є у списку, другий раз воно не додається.
-                  </li>
-                </ul>
-
-                <p class="bold" style="margin-bottom: 0">
-                  Як має працювати кнопка
-                  <span class="accent">Delete selected</span>:
-                </p>
-                <ul style="margin-top: 5px">
-                  <li>якщо вибране якесь слово, видаляє його зі списку;</li>
-                  <li>оновлює лічильник слів на екрані.</li>
-                </ul>
-
-                <img src="./images/lesson22/22-4.png" alt="expected result" />
-              </div>
-            </details>
-          </div>
-        </div>
-      </section>
-
-      <!-- 🍇 PART 4: Filedialog -->
-      <section id="part-4" class="lesson-wrapper tab-content">
-        <div class="lesson-block">
-          <div class="lesson-header">
-            <h2>
-              <img src="../media/icons/grapes.svg" class="star" alt="grapes" />
-              <span>filedialog</span>
-            </h2>
-          </div>
-
-          <div class="lesson-content">
-            <h3>Збереження у файл</h3>
+            <h3 id="p3-fonts">Шрифти та стиль тексту</h3>
 
             <p>
-              Слова, які зникають після закриття програми, не дуже корисні. Щоб
-              їх зберігати, потрібно дві речі:
-              <span class="bold">місце і назва для файлу</span> (їх обирає
-              користувач) і <span class="bold">запис даних у файл</span>.
+              Шрифт задається кортежем
+              <span class="accent-string">font=("Назва", розмір)</span>. Третім
+              елементом за бажанням можна додати стиль:
+              <span class="accent-string">"bold"</span> (жирний),
+              <span class="accent-string">"italic"</span> (курсив),
+              <span class="accent-string">"underline"</span> (підкреслений) або
+              їх поєднання, наприклад
+              <span class="accent-string"
+                >font=("Verdana", 14, "bold italic")</span
+              >.
             </p>
 
-            <p>
-              Вікно для вибору місця й назви файлу вміє показувати модуль
-              <span class="accent-string">filedialog</span>. Його потрібно
-              імпортувати окремо, бо рядок
-              <span class="accent-string">from tkinter import *</span> його не
-              підключає:
-            </p>
-
-            <pre><code class="language-python">from tkinter import *
-from tkinter import filedialog</code></pre>
-
-            <p>
-              Функція
-              <span class="accent-string">asksaveasfilename()</span> відкриває
-              вікно "Зберегти як..." і повертає шлях до файлу, який обрав
-              користувач:
-            </p>
-
-            <pre><code class="language-python">filepath = filedialog.asksaveasfilename(
-    defaultextension=".json",
-    filetypes=[("JSON files", "*.json"), ("All files", "*.*")],
-)
-print(filepath)  # наприклад, C:/Users/Anna/Documents/words.json</code></pre>
-
-            <ul>
-              <li>
-                <span class="accent-string">defaultextension</span>: додає
-                закінчення <span class="accent-string">.json</span> до назви
-                файлу, якщо користувач сам його не написав.
-              </li>
-              <li>
-                <span class="accent-string">filetypes</span>: список типів
-                файлів у вікні. Кожен тип — це пара
-                <span class="accent-string">(опис, шаблон)</span>.
-              </li>
-            </ul>
-
-            <p>
-              Якщо користувач закрив вікно або натиснув
-              <span class="italic">Cancel</span>, функція поверне порожній рядок
-              <span class="accent-string">""</span>. Тому перед записом даних у
-              файл треба перевірити, що шлях до файлу не порожній.
-            </p>
-
-            <p>Як зберегти дані у JSON-файл:</p>
-
-            <pre><code class="language-python">import json
-
-if filepath:
-    with open(filepath, "w", encoding="utf-8") as file:
-        json.dump(content, file, ensure_ascii=False, indent=2)</code></pre>
-
-            <p>
-              Тут <span class="accent-string">"w"</span> означає запис у файл,
-              <span class="accent-string">encoding="utf-8"</span> та
-              <span class="accent-string">ensure_ascii=False</span> потрібні,
-              щоб українські літери збереглися читабельно, а
-              <span class="accent-string">indent=2</span> робить красиві
-              відступи у файлі. Блок <span class="accent-string">with</span> сам
-              закриє файл після запису.
-            </p>
-
-            <p>Як зупинити функцію, якщо немає що зберігати:</p>
-
-            <pre><code class="language-python">def save():
-    # ...
-    if not content:
-        # тут можна змінити текст у Label
-        return
-
-    # далі пишемо код без else</code></pre>
-
-            <!-- Завдання 5 -->
-            <details class="task" name="l22-p3">
-              <summary><h4>Завдання 5: Словник (частина 3)</h4></summary>
-              <div>
-                <p>
-                  Напиши функцію для збереження списку слів у файл (для кнопки
-                  <span class="accent">Save words to JSON</span>).
-                </p>
-                <p>
-                  Спершу потрібно отримати всі слова з Listbox за допомогою
-                  <span class="accent-string">.get(0, END)</span>.
-                </p>
-                <p>
-                  Далі використай
-                  <span class="accent-string">filedialog</span> для збереження
-                  списку слів у JSON-файл (якщо список не порожній).
-                </p>
-              </div>
-            </details>
+            <div class="tablecontainer">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Назва шрифту</th>
+                    <th>Як виглядає</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="accent-string">"Arial"</span></td>
+                    <td style="font-family: Arial">Чистий сучасний шрифт</td>
+                  </tr>
+                  <tr>
+                    <td><span class="accent-string">"Helvetica"</span></td>
+                    <td style="font-family: Helvetica, Arial, sans-serif">
+                      Рівний класичний шрифт без засічок
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="accent-string">"Verdana"</span></td>
+                    <td style="font-family: Verdana">
+                      Широкий, легко читається
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="accent-string">"Tahoma"</span></td>
+                    <td style="font-family: Tahoma">
+                      Компактний і чіткий для інтерфейсу
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="accent-string">"Trebuchet MS"</span></td>
+                    <td style="font-family: &quot;Trebuchet MS&quot;">
+                      Стильний м'який шрифт для заголовків
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="accent-string">"Comic Sans MS"</span></td>
+                    <td style="font-family: &quot;Comic Sans MS&quot;">
+                      Неформальний, схожий на комікс
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="accent-string">"Georgia"</span></td>
+                    <td style="font-family: Georgia">
+                      Елегантний книжковий шрифт
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span class="accent-string">"Times New Roman"</span>
+                    </td>
+                    <td style="font-family: &quot;Times New Roman&quot;">
+                      Класичний шрифт із засічками
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="accent-string">"Courier New"</span></td>
+                    <td style="font-family: &quot;Courier New&quot;">
+                      Моноширинний (як друкарська машинка)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="accent-string">"Consolas"</span></td>
+                    <td style="font-family: Consolas, monospace">
+                      Сучасний моноширинний шрифт для коду
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="accent-string">"Impact"</span></td>
+                    <td style="font-family: Impact">Дуже товстий шрифт</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </section>
     </main>
-
-    <!--
-      ==================== ВІДПОВІДІ (ЛИШЕ ДЛЯ ВЧИТЕЛЯ) ====================
-
-      # Частина 1. Повторення:
-      1) Label і Button:
-         - Рядок 8 створює напис Label із текстом "Hello!", шрифтом Arial 16 і фоном lavender.
-         - Рядок 12 змінює текст напису на "Button clicked!" та колір тексту на фіолетовий.
-         - Помилка 1 (рядок 14): зайві дужки в command=change_text() — має бути command=change_text.
-         - Помилка 2: забули розмістити кнопку у вікні — додати btn.pack(pady=10).
-
-      2) Frame:
-         - Frame потрібен як окремий контейнер, щоб вишикувати кнопки горизонтально (side=LEFT),
-           не зламавши вертикальне розташування інших віджетів у window.
-         - Пропуски:
-           row = Frame(window, bg="lightyellow")
-           btn1 = Button(row, text="Pink", bg="pink")
-           btn1.pack(side=LEFT, padx=8)
-           btn2 = Button(row, text="Blue", bg="lightblue")
-           btn2.pack(side=LEFT, padx=8)
-
-      3) Entry:
-         - width=18 — ширина поля вводу (у символах); pady=15 — зовнішні відступи зверху і знизу.
-         - .strip() прибирає випадкові пробіли на початку та в кінці введеного тексту.
-         - Пропуски:
-           name = name_entry.get().strip()
-           result_label.config(text="Hello, " + name + "!")
-           name_entry.delete(0, END)
-
-      # Частина 2. Завдання 1–2 (months.py):
-      months = [
-          "January", "February", "March", "April", "May", "June",
-          "July", "August", "September", "October", "November", "December",
-      ]
-      for month in months:
-          months_list.insert(END, month)
-
-      def show_month():
-          selected = months_list.curselection()
-          if len(selected) == 0:
-              result_label.config(text="Choose a month!")
-          else:
-              index = selected[0]
-              month = months_list.get(index)
-              result_label.config(text=f"You chose: {month} (month number {index + 1})")
-
-      # Частина 2–3. Завдання 3–5 (Словник + filedialog):
-      def save_words():
-          all_words = list(words.get(0, END))
-          if len(all_words) == 0:
-              return
-          filepath = filedialog.asksaveasfilename(
-              defaultextension=".json",
-              filetypes=[("JSON files", "*.json"), ("All files", "*.*")],
-          )
-          if filepath:
-              with open(filepath, "w", encoding="utf-8") as file:
-                  json.dump(all_words, file, ensure_ascii=False, indent=2)
-    -->
 
     <footer>
       <p>🌷 🍓 🌿 Made by Olena Hapchyna 🌿 🍓 🌷</p>
