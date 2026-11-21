@@ -1,0 +1,919 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Навчальні матеріали з Python" />
+
+    <link rel="icon" type="image/svg+xml" href="../media/icons/carambola.svg" />
+
+    <title>Python Lesson 22</title>
+
+    <script>
+      const savedTheme = localStorage.getItem("lms_theme") || "light";
+      document.documentElement.setAttribute("data-theme", savedTheme);
+
+      const hljsThemeLink =
+        savedTheme === "dark"
+          ? "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css"
+          : "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css";
+
+      document.head.insertAdjacentHTML(
+        "beforeend",
+        `<link id="hljs-theme" rel="stylesheet" href="${hljsThemeLink}" />`,
+      );
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Fira+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Tektur:wght@400..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"
+    ></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.css"
+    />
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.js"
+    ></script>
+
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/javascript/javascript.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/xml/xml.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/css/css.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/htmlmixed/htmlmixed.min.js"
+    ></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/theme/dracula.min.css"
+    />
+
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/python/python.min.js"
+    ></script>
+
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt-stdlib.js"
+    ></script>
+
+    <link rel="stylesheet" href="../style.css?v=10.0" />
+    <script src="../script.js?v=10.0" defer></script>
+  </head>
+
+  <body>
+    <!-- transition curtain -->
+    <div class="transition-curtain"></div>
+
+    <!-- top-bar -->
+    <div id="nav-container">
+      <nav class="top-bar">
+        <div class="logo-container">
+          <img
+            src="../media/icons/carambola.svg"
+            alt="Logo"
+            class="site-logo"
+          />
+        </div>
+
+        <div class="top-bar__controls">
+          <label class="toggle-switch" aria-label="Перемикач теми">
+            <input type="checkbox" id="theme-checkbox" />
+            <span class="slider">
+              <span class="icon sun"
+                ><img src="../media/icons/stars.svg"
+              /></span>
+              <span class="icon moon"
+                ><img src="../media/icons/moon.svg"
+              /></span>
+            </span>
+          </label>
+          <button
+            id="dyslexia-mode-btn"
+            class="wide-toggle"
+            title="Шрифт для дислектиків"
+          >
+            Aa
+          </button>
+        </div>
+      </nav>
+    </div>
+
+    <!-- lesson header -->
+    <header>
+      <div class="title-container">
+        <h1 id="lesson-title">Python: 22</h1>
+      </div>
+
+      <p class="topic">Listbox та filedialog</p>
+
+      <hr class="pretty-divider" />
+    </header>
+
+    <!-- lesson content -->
+    <main>
+      <!-- tab buttons -->
+      <div class="tabs-nav">
+        <button class="tab-btn active" data-target="part-1">Повторення</button>
+        <button class="tab-btn" data-target="part-2">Listbox</button>
+        <button class="tab-btn" data-target="part-3">filedialog</button>
+      </div>
+
+      <!-- 🍉 PART 1: Повторення -->
+      <section id="part-1" class="lesson-wrapper tab-content active show">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img
+                src="../media/icons/watermelon.svg"
+                class="star"
+                alt="watermelon"
+              />
+              <span>Повторення: віджети Tkinter</span>
+            </h2>
+          </div>
+
+          <div class="lesson-content">
+            <!-- Блок 1: Label та Button -->
+            <h3 id="p1-label-btn">1. Label та Button: знайди помилки</h3>
+
+            <p>
+              У цьому коді є <span class="accent">дві помилки</span>. Спочатку
+              прочитай код і дай відповіді на питання, а потім виправ помилки
+              прямо в редакторі та перевір результат:
+            </p>
+
+            <ol>
+              <li>
+                Що робить рядок <span class="accent-string">8</span>? А рядок
+                <span class="accent-string">12</span>?
+              </li>
+              <li>
+                Запусти код. Чому текст змінився одразу, а самої кнопки у вікні
+                немає?
+              </li>
+              <li>
+                Виправ обидві помилки, щоб кнопка з'явилася і змінювала напис
+                <span class="bold">лише після натискання</span>.
+              </li>
+            </ol>
+
+            <div
+              class="custom-editor-wrapper python-editor-wrapper"
+              id="l22-rev-1"
+            >
+              <div class="editor-header">
+                <span class="editor-title">Python: Label &amp; Button</span>
+                <div class="editor-actions">
+                  <button type="button" class="run-btn" title="Запустити">
+                    ▶️
+                  </button>
+                  <button type="button" class="reset-btn" title="Скинути код">
+                    🔄
+                  </button>
+                </div>
+              </div>
+              <textarea class="custom-editor-input">
+from tkinter import *
+
+window = Tk()
+window.title("Review 1")
+window.geometry("300x200")
+window.config(bg="lavender")
+
+title = Label(window, text="Hello!", font=("Arial", 16), bg="lavender")
+title.pack(pady=15)
+
+def change_text():
+    title.config(text="Button clicked!", fg="purple")
+
+btn = Button(window, text="Click me", command=change_text())
+
+window.mainloop()</textarea
+              >
+              <pre class="custom-editor-output">Очікування запуску...</pre>
+            </div>
+
+            <hr />
+
+            <!-- Блок 2: Frame -->
+            <h3 id="p1-frame">2. Frame: кнопки в один рядок</h3>
+
+            <ol>
+              <li>
+                Навіщо тут потрібна рамка
+                <span class="accent-string">Frame</span>, якщо кнопки можна було
+                б покласти одразу у <span class="accent-string">window</span>?
+              </li>
+              <li>
+                Допиши пропущені слова замість
+                <span class="accent-string">___</span> і запусти код, щоб кнопки
+                <span class="italic">Pink</span> та
+                <span class="italic">Blue</span> стали поруч в один рядок.
+              </li>
+            </ol>
+
+            <div
+              class="custom-editor-wrapper python-editor-wrapper"
+              id="l22-rev-2"
+            >
+              <div class="editor-header">
+                <span class="editor-title">Python: Frame</span>
+                <div class="editor-actions">
+                  <button type="button" class="run-btn" title="Запустити">
+                    ▶️
+                  </button>
+                  <button type="button" class="reset-btn" title="Скинути код">
+                    🔄
+                  </button>
+                </div>
+              </div>
+              <textarea class="custom-editor-input">
+from tkinter import *
+
+window = Tk()
+window.title("Review 2")
+window.geometry("300x180")
+window.config(bg="lightyellow")
+
+label = Label(window, text="Choose a color:", font=("Arial", 14), bg="lightyellow")
+label.pack(pady=15)
+
+row = ___(window, bg="lightyellow")
+row.pack(pady=5)
+
+btn1 = Button(___, text="Pink", bg="pink")
+btn1.pack(side=___, padx=8)
+
+btn2 = Button(___, text="Blue", bg="lightblue")
+btn2.pack(side=___, padx=8)
+
+window.mainloop()</textarea
+              >
+              <pre class="custom-editor-output">Очікування запуску...</pre>
+            </div>
+
+            <hr />
+
+            <!-- Блок 3: Entry -->
+            <h3 id="p1-entry">3. Entry: зчитування та очищення</h3>
+
+            <ol>
+              <li>
+                Що задають параметри
+                <span class="accent-string">width=18</span> у рядку
+                <span class="accent-string">8</span> та
+                <span class="accent-string">pady=15</span> у рядку
+                <span class="accent-string">9</span>?
+              </li>
+              <li>
+                Навіщо у рядку <span class="accent-string">12</span> написано
+                <span class="accent-string">.strip()</span>?
+              </li>
+              <li>
+                Допиши пропущені слова у функції
+                <span class="accent-string">greet()</span> (рядки 12–14), щоб
+                програма читала ім'я з поля вводу, виводила привітання в
+                <span class="accent-string">result_label</span> і очищувала поле
+                <span class="accent-string">name_entry</span>.
+              </li>
+            </ol>
+
+            <div
+              class="custom-editor-wrapper python-editor-wrapper"
+              id="l22-rev-3"
+            >
+              <div class="editor-header">
+                <span class="editor-title">Python: Entry</span>
+                <div class="editor-actions">
+                  <button type="button" class="run-btn" title="Запустити">
+                    ▶️
+                  </button>
+                  <button type="button" class="reset-btn" title="Скинути код">
+                    🔄
+                  </button>
+                </div>
+              </div>
+              <textarea class="custom-editor-input">
+from tkinter import *
+
+window = Tk()
+window.title("Review 3")
+window.geometry("320x220")
+window.config(bg="honeydew")
+
+name_entry = Entry(window, font=("Arial", 14), width=18)
+name_entry.pack(pady=15)
+
+def greet():
+    name = name_entry.___().strip()
+    result_label.___(text="Hello, " + name + "!")
+    name_entry.___(0, ___)
+
+btn = Button(window, text="Greet", font=("Arial", 12), command=greet)
+btn.pack(pady=5)
+
+result_label = Label(window, text="...", font=("Arial", 14), bg="honeydew")
+result_label.pack(pady=15)
+
+window.mainloop()</textarea
+              >
+              <pre class="custom-editor-output">Очікування запуску...</pre>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 🍓 PART 2: Listbox -->
+      <section id="part-2" class="lesson-wrapper tab-content">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img
+                src="../media/icons/strawberry.svg"
+                class="star"
+                alt="strawberry"
+              />
+              <span>Список Listbox</span>
+            </h2>
+          </div>
+
+          <div class="lesson-content">
+            <h3 id="p2-intro">Вступ</h3>
+
+            <p>
+              Сьогодні ми вчимося створювати <span class="bold">списки</span>, з
+              яких користувач може вибрати один (або кілька) рядків. Такі списки
+              є скрізь: вибір країни, місяця, мови, пісні в плеєрі...
+            </p>
+
+            <p>
+              У Tkinter для цього є віджет
+              <span class="accent">Listbox</span>. А щоб слова зі списку не
+              зникали після закриття програми, ми також навчимося зберігати їх у
+              файл за допомогою модуля <span class="accent">filedialog</span>.
+            </p>
+
+            <p class="bold">Шаблон вікна:</p>
+            <pre><code class="language-python">from tkinter import *
+
+window = Tk()
+window.title("Listbox")
+window.geometry("350x450")
+
+# тут додаватимемо код
+
+window.eval("tk::PlaceWindow . center")
+window.mainloop()</code></pre>
+
+            <hr />
+
+            <h3 id="p2-create">1. Створення Listbox і додавання рядків</h3>
+
+            <pre><code class="language-python">days = Listbox(
+    window,
+    font=("Arial", 14),
+    height=7,
+    width=15,
+    selectmode=MULTIPLE,
+    selectbackground="lavender",
+    selectforeground="purple",
+)
+days.pack(pady=10)
+
+days.insert(END, "Monday")
+days.insert(END, "Tuesday")
+days.insert(END, "Wednesday")</code></pre>
+
+            <ul style="list-style-type: square">
+              <li>
+                <span class="accent-string">height=7</span> — скільки
+                <span class="bold">рядків</span> видно одночасно.
+              </li>
+              <li>
+                <span class="accent-string">width=15</span> — ширина в
+                <span class="bold">символах</span>.
+              </li>
+              <li>
+                <span class="accent-string">insert(куди, що)</span> — додає
+                рядок. <span class="accent-string">END</span> означає "в кінець
+                списку".
+              </li>
+              <li>
+                <span class="accent-string">insert(0, "Sunday")</span> — додасть
+                рядок на початок списку.
+              </li>
+              <li>
+                <span class="accent-string">selectmode=MULTIPLE</span> —
+                дозволяє обирати одночасно кілька елементів зі списку. За
+                замовчуванням можна обрати лише один елемент.
+              </li>
+              <li>
+                <span class="accent-string">selectbackground</span> — задає
+                колір фону вибраних елементів.
+              </li>
+              <li>
+                <span class="accent-string">selectforeground</span> — задає
+                колір тексту вибраних елементів.
+              </li>
+            </ul>
+
+            <p>
+              Якщо рядків багато, додавати їх по одному незручно. Натомість
+              можна використати цикл:
+            </p>
+
+            <pre><code class="language-python">days_list = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+
+for day in days_list:
+    days.insert(END, day)</code></pre>
+
+            <img src="./images/lesson22/22-1.png" alt="code result" />
+
+            <!-- Завдання 1 -->
+            <details class="task" name="l22-p2">
+              <summary><h4>Завдання 1: Місяці (частина 1)</h4></summary>
+              <div>
+                <ol>
+                  <li>
+                    Створи файл <span class="accent-string">months.py</span> і
+                    налаштуй вікно за шаблоном.
+                  </li>
+                  <li>
+                    Створи список <span class="accent-string">months</span> із
+                    12 англійських назв місяців (<span class="accent-string"
+                      >"January"</span
+                    >, <span class="accent-string">"February"</span>, ...) і
+                    заповни ним <span class="accent-string">Listbox</span> за
+                    допомогою циклу <span class="accent-string">for</span>.
+                    Параметр
+                    <span class="accent-string">selectmode=MULTIPLE</span> тут
+                    не потрібен (будемо обирати один місяць).
+                  </li>
+                </ol>
+              </div>
+            </details>
+
+            <hr />
+
+            <h3 id="p2-select">
+              2. Що вибрав користувач: curselection() та get()
+            </h3>
+
+            <p>
+              Щоб дізнатися, що обрав користувач зі списку, потрібно використати
+              такі два методи:
+            </p>
+
+            <ol>
+              <li>
+                <span class="accent-string">.curselection()</span> — повертає
+                <span class="bold">індекси</span> усіх вибраних рядків (у
+                вигляді кортежу/tuple).
+              </li>
+              <li>
+                <span class="accent-string">.get(індекс)</span> — повертає
+                <span class="bold">текст</span> рядка за його індексом.
+              </li>
+            </ol>
+
+            <pre><code class="language-python">def show_day():
+    selected = days.curselection()  # наприклад, (2,)
+
+    if len(selected) == 0:  # якщо не вибрано нічого
+        result_label.config(text="Choose a day!")
+    else:
+        index = selected[0]  # 2
+        day = days.get(index)  # "Wednesday"
+        result_label.config(text=f"You chose: {day}")
+
+btn = Button(window, text="Show", command=show_day, font=("Arial", 12))
+btn.pack()
+
+result_label = Label(window, text="...", font=("Arial", 14))
+result_label.pack(pady=10)</code></pre>
+
+            <p>
+              <span class="bold">Індекси починаються з 0.</span> Перший рядок
+              має індекс <span class="accent-string">0</span>, другий —
+              <span class="accent-string">1</span> і так далі. Якщо нічого не
+              вибрано, <span class="accent-string">curselection()</span> поверне
+              порожній кортеж <span class="accent-string">()</span>. Тоді
+              <span class="accent-string">selected[0]</span> дасть помилку
+              <span class="accent-string"
+                >IndexError: tuple index out of range</span
+              >. Тому спочатку <span class="bold">завжди перевіряємо</span>, що
+              щось вибрано:
+              <span class="accent-string">len(selected) &gt; 0</span>.
+            </p>
+
+            <p>
+              У прикладі вище функція виводить лише перший обраний елемент. Ось
+              як можна вивести всі:
+            </p>
+            <pre><code class="language-python">def show_day():
+    selected = days.curselection()  # наприклад, (2, 3)
+
+    if len(selected) == 0: 
+        result_label.config(text="Choose a day!")
+    else:
+        result_text = ""
+        for index in selected:
+            day = days.get(index)
+            result_text += day + "\n"
+        result_label.config(text=f"You chose:\n{result_text}")</code></pre>
+
+            <img src="./images/lesson22/22-2.png" alt="code result" />
+
+            <!-- Завдання 2 -->
+            <details class="task" name="l22-p2">
+              <summary><h4>Завдання 2: Місяці (частина 2)</h4></summary>
+              <div>
+                <ol>
+                  <li>
+                    Додай кнопку <span class="accent-string">"Show"</span> і
+                    порожній <span class="accent-string">Label</span> для
+                    результату.
+                  </li>
+                  <li>
+                    Напиши функцію для кнопки:
+                    <ul style="margin-top: 0">
+                      <li>
+                        якщо нічого не вибрано — виведи
+                        <span class="accent-string">"Choose a month!"</span>;
+                      </li>
+                      <li>
+                        інакше виведи повідомлення у форматі:
+                        <span class="italic"
+                          >"You chose: March (month number 3)"</span
+                        >.
+                      </li>
+                    </ul>
+                  </li>
+                </ol>
+              </div>
+            </details>
+
+            <!-- Завдання 3 -->
+            <details class="task" name="l22-p2">
+              <summary><h4>Завдання 3: Словник (частина 1)</h4></summary>
+
+              <div>
+                <p>
+                  Напишемо програму для створення і збереження списку
+                  англійських слів (поки що без перекладів).
+                </p>
+
+                <p>
+                  Для початку створи новий файл, налаштуй головне вікно програми
+                  і додай усі необхідні віджети (Frame, Entry, Button, Listbox,
+                  Label). На цьому етапі список має бути порожній, а кнопки ще
+                  нічого не роблять (не мають параметра
+                  <span class="accent-string">command</span>).
+                </p>
+
+                <img src="./images/lesson22/22-3.png" alt="expected result" />
+
+                <p>
+                  Кольори можеш обрати які хочеш. У прикладі для фону
+                  використано <span class="accent-string">#D5F2E4</span>.
+                </p>
+              </div>
+            </details>
+
+            <hr />
+
+            <h3 id="p2-methods">3. Видалення та інші корисні методи</h3>
+
+            <div class="tablecontainer">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Команда</th>
+                    <th>Що робить</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <span class="accent-string">.insert(END, "text")</span>
+                    </td>
+                    <td>додає рядок у кінець списку</td>
+                  </tr>
+                  <tr>
+                    <td><span class="accent-string">.delete(index)</span></td>
+                    <td>видаляє один рядок за індексом</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span class="accent-string">.delete(0, END)</span>
+                    </td>
+                    <td>
+                      видаляє <span class="bold">всі</span> рядки (очищає
+                      список)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="accent-string">.size()</span></td>
+                    <td>повертає кількість рядків</td>
+                  </tr>
+                  <tr>
+                    <td><span class="accent-string">.get(0, END)</span></td>
+                    <td>
+                      повертає кортеж з <span class="bold">усіма</span> рядками
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p>Видалення вибраного рядка:</p>
+            <pre><code class="language-python">days.delete(index)</code></pre>
+
+            <p>Кількість рядків:</p>
+            <pre><code class="language-python">print(days.size())</code></pre>
+
+            <p>Чи є рядок у списку:</p>
+            <pre><code class="language-python">if "Monday" in days.get(0, END):
+    print("Already in the list!")</code></pre>
+
+            <!-- Завдання 4 -->
+            <details class="task" name="l22-p2">
+              <summary><h4>Завдання 4: Словник (частина 2)</h4></summary>
+              <div>
+                <p class="bold" style="margin-bottom: 0">
+                  Як має працювати кнопка <span class="accent">Add</span>:
+                </p>
+                <ul style="margin-top: 5px">
+                  <li>
+                    бере текст із <span class="accent-string">Entry</span>;
+                  </li>
+                  <li>прибирає зайві пробіли;</li>
+                  <li>
+                    якщо введено слово (не
+                    <span class="accent-string">""</span>), додає його до
+                    <span class="accent-string">Listbox</span>;
+                  </li>
+                  <li>
+                    очищає поле вводу (<span class="accent-string"
+                      >entry.delete(0, END)</span
+                    >);
+                  </li>
+                  <li>
+                    оновлює лічильник слів на екрані (наприклад,
+                    <span class="italic">"Words: 1"</span>);
+                  </li>
+                  <li>
+                    якщо слово вже є у списку, другий раз воно не додається.
+                  </li>
+                </ul>
+
+                <p class="bold" style="margin-bottom: 0">
+                  Як має працювати кнопка
+                  <span class="accent">Delete selected</span>:
+                </p>
+                <ul style="margin-top: 5px">
+                  <li>якщо вибране якесь слово, видаляє його зі списку;</li>
+                  <li>оновлює лічильник слів на екрані.</li>
+                </ul>
+
+                <img src="./images/lesson22/22-4.png" alt="expected result" />
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- 🍇 PART 3: Filedialog -->
+      <section id="part-3" class="lesson-wrapper tab-content">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img src="../media/icons/grapes.svg" class="star" alt="grapes" />
+              <span>filedialog</span>
+            </h2>
+          </div>
+
+          <div class="lesson-content">
+            <h3>Збереження у файл</h3>
+
+            <p>
+              Слова, які зникають після закриття програми, не дуже корисні. Щоб
+              їх зберігати, потрібно дві речі:
+              <span class="bold">місце і назва для файлу</span> (їх обирає
+              користувач) і <span class="bold">запис даних у файл</span>.
+            </p>
+
+            <p>
+              Вікно для вибору місця й назви файлу вміє показувати модуль
+              <span class="accent-string">filedialog</span>. Його потрібно
+              імпортувати окремо, бо рядок
+              <span class="accent-string">from tkinter import *</span> його не
+              підключає:
+            </p>
+
+            <pre><code class="language-python">from tkinter import *
+from tkinter import filedialog</code></pre>
+
+            <p>
+              Функція
+              <span class="accent-string">asksaveasfilename()</span> відкриває
+              вікно "Зберегти як..." і повертає шлях до файлу, який обрав
+              користувач:
+            </p>
+
+            <pre><code class="language-python">filepath = filedialog.asksaveasfilename(
+    defaultextension=".json",
+    filetypes=[("JSON files", "*.json"), ("All files", "*.*")],
+)
+print(filepath)  # наприклад, C:/Users/Anna/Documents/words.json</code></pre>
+
+            <ul>
+              <li>
+                <span class="accent-string">defaultextension</span>: додає
+                закінчення <span class="accent-string">.json</span> до назви
+                файлу, якщо користувач сам його не написав.
+              </li>
+              <li>
+                <span class="accent-string">filetypes</span>: список типів
+                файлів у вікні. Кожен тип — це пара
+                <span class="accent-string">(опис, шаблон)</span>.
+              </li>
+            </ul>
+
+            <p>
+              Якщо користувач закрив вікно або натиснув
+              <span class="italic">Cancel</span>, функція поверне порожній рядок
+              <span class="accent-string">""</span>. Тому перед записом даних у
+              файл треба перевірити, що шлях до файлу не порожній.
+            </p>
+
+            <p>Як зберегти дані у JSON-файл:</p>
+
+            <pre><code class="language-python">import json
+
+if filepath:
+    with open(filepath, "w", encoding="utf-8") as file:
+        json.dump(content, file, ensure_ascii=False, indent=2)</code></pre>
+
+            <p>
+              Тут <span class="accent-string">"w"</span> означає запис у файл,
+              <span class="accent-string">encoding="utf-8"</span> та
+              <span class="accent-string">ensure_ascii=False</span> потрібні,
+              щоб українські літери збереглися читабельно, а
+              <span class="accent-string">indent=2</span> робить красиві
+              відступи у файлі. Блок <span class="accent-string">with</span> сам
+              закриє файл після запису.
+            </p>
+
+            <p>Як зупинити функцію, якщо немає що зберігати:</p>
+
+            <pre><code class="language-python">def save():
+    # ...
+    if not content:
+        # тут можна змінити текст у Label
+        return
+
+    # далі пишемо код без else</code></pre>
+
+            <!-- Завдання 5 -->
+            <details class="task" name="l22-p3">
+              <summary><h4>Завдання 5: Словник (частина 3)</h4></summary>
+              <div>
+                <p>
+                  Напиши функцію для збереження списку слів у файл (для кнопки
+                  <span class="accent">Save words to JSON</span>).
+                </p>
+                <p>
+                  Спершу потрібно отримати всі слова з Listbox за допомогою
+                  <span class="accent-string">.get(0, END)</span>. Цей метод
+                  повертає кортеж, тому для зручності перетворимо його на
+                  звичайний список через
+                  <span class="accent-string">list(...)</span>.
+                </p>
+                <p>
+                  Далі використай
+                  <span class="accent-string">filedialog</span> для збереження
+                  списку слів у JSON-файл (якщо список не порожній).
+                </p>
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!--
+      ==================== ВІДПОВІДІ (ЛИШЕ ДЛЯ ВЧИТЕЛЯ) ====================
+
+      # Частина 1. Повторення:
+      1) Label і Button:
+         - Рядок 8 створює напис Label із текстом "Hello!", шрифтом Arial 16 і фоном lavender.
+         - Рядок 12 змінює текст напису на "Button clicked!" та колір тексту на фіолетовий.
+         - Помилка 1 (рядок 14): зайві дужки в command=change_text() — має бути command=change_text.
+         - Помилка 2: забули розмістити кнопку у вікні — додати btn.pack(pady=10).
+
+      2) Frame:
+         - Frame потрібен як окремий контейнер, щоб вишикувати кнопки горизонтально (side=LEFT),
+           не зламавши вертикальне розташування інших віджетів у window.
+         - Пропуски:
+           row = Frame(window, bg="lightyellow")
+           btn1 = Button(row, text="Pink", bg="pink")
+           btn1.pack(side=LEFT, padx=8)
+           btn2 = Button(row, text="Blue", bg="lightblue")
+           btn2.pack(side=LEFT, padx=8)
+
+      3) Entry:
+         - width=18 — ширина поля вводу (у символах); pady=15 — зовнішні відступи зверху і знизу.
+         - .strip() прибирає випадкові пробіли на початку та в кінці введеного тексту.
+         - Пропуски:
+           name = name_entry.get().strip()
+           result_label.config(text="Hello, " + name + "!")
+           name_entry.delete(0, END)
+
+      # Частина 2. Завдання 1–2 (months.py):
+      months = [
+          "January", "February", "March", "April", "May", "June",
+          "July", "August", "September", "October", "November", "December",
+      ]
+      for month in months:
+          months_list.insert(END, month)
+
+      def show_month():
+          selected = months_list.curselection()
+          if len(selected) == 0:
+              result_label.config(text="Choose a month!")
+          else:
+              index = selected[0]
+              month = months_list.get(index)
+              result_label.config(text=f"You chose: {month} (month number {index + 1})")
+
+      # Частина 2–3. Завдання 3–5 (Словник + filedialog):
+      def save_words():
+          all_words = list(words.get(0, END))
+          if len(all_words) == 0:
+              return
+          filepath = filedialog.asksaveasfilename(
+              defaultextension=".json",
+              filetypes=[("JSON files", "*.json"), ("All files", "*.*")],
+          )
+          if filepath:
+              with open(filepath, "w", encoding="utf-8") as file:
+                  json.dump(all_words, file, ensure_ascii=False, indent=2)
+    -->
+
+    <footer>
+      <p>🌷 🍓 🌿 Made by Olena Hapchyna 🌿 🍓 🌷</p>
+
+      <div class="footer-credits">
+        <span
+          >Fruit icons by
+          <a
+            href="https://www.svgrepo.com/collection/fruits-vectors/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >An Nguyen</a
+          ></span
+        >
+        |
+        <a href="../credits.html" target="_blank">Credits &amp; Licenses</a>
+      </div>
+    </footer>
+
+    <button
+      id="scrollToTopBtn"
+      class="scroll-to-top"
+      aria-label="Scroll to top"
+    >
+      <img src="../media/icons/apple.svg" />
+    </button>
+  </body>
+</html>
