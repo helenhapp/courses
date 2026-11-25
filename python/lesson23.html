@@ -1,0 +1,969 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Навчальні матеріали з Python" />
+
+    <link rel="icon" type="image/svg+xml" href="../media/icons/carambola.svg" />
+
+    <title>Python Lesson 23</title>
+
+    <script>
+      const savedTheme = localStorage.getItem("lms_theme") || "light";
+      document.documentElement.setAttribute("data-theme", savedTheme);
+
+      const hljsThemeLink =
+        savedTheme === "dark"
+          ? "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css"
+          : "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css";
+
+      document.head.insertAdjacentHTML(
+        "beforeend",
+        `<link id="hljs-theme" rel="stylesheet" href="${hljsThemeLink}" />`,
+      );
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Fira+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Tektur:wght@400..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"
+    ></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.css"
+    />
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.js"
+    ></script>
+
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/javascript/javascript.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/xml/xml.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/css/css.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/htmlmixed/htmlmixed.min.js"
+    ></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/theme/dracula.min.css"
+    />
+
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/python/python.min.js"
+    ></script>
+
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt-stdlib.js"
+    ></script>
+
+    <link rel="stylesheet" href="../style.css?v=10.0" />
+    <script src="../script.js?v=10.0" defer></script>
+  </head>
+
+  <body>
+    <!-- transition curtain -->
+    <div class="transition-curtain"></div>
+
+    <!-- top-bar -->
+    <div id="nav-container">
+      <nav class="top-bar">
+        <div class="logo-container">
+          <img
+            src="../media/icons/carambola.svg"
+            alt="Logo"
+            class="site-logo"
+          />
+        </div>
+
+        <div class="top-bar__controls">
+          <label class="toggle-switch" aria-label="Перемикач теми">
+            <input type="checkbox" id="theme-checkbox" />
+            <span class="slider">
+              <span class="icon sun"
+                ><img src="../media/icons/stars.svg"
+              /></span>
+              <span class="icon moon"
+                ><img src="../media/icons/moon.svg"
+              /></span>
+            </span>
+          </label>
+          <button
+            id="dyslexia-mode-btn"
+            class="wide-toggle"
+            title="Шрифт для дислектиків"
+          >
+            Aa
+          </button>
+        </div>
+      </nav>
+    </div>
+
+    <!-- lesson header -->
+    <header>
+      <div class="title-container">
+        <h1 id="lesson-title">Python: 23</h1>
+      </div>
+
+      <p class="topic">Listbox та filedialog</p>
+
+      <hr class="pretty-divider" />
+    </header>
+
+    <!-- lesson content -->
+    <main>
+      <!-- tab buttons -->
+      <div class="tabs-nav">
+        <button class="tab-btn active" data-target="part-1">Інтерфейс</button>
+        <button class="tab-btn" data-target="part-2">Додавання</button>
+        <button class="tab-btn" data-target="part-3">Видалення</button>
+        <button class="tab-btn" data-target="part-4">Збереження</button>
+        <button class="tab-btn" data-target="part-5">Додатково</button>
+      </div>
+
+      <!-- 🍉 PART 1: Інтерфейс -->
+      <section id="part-1" class="lesson-wrapper tab-content active show">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img
+                src="../media/icons/watermelon.svg"
+                class="star"
+                alt="watermelon"
+              />
+              <span>Інтерфейс</span>
+            </h2>
+          </div>
+
+          <div class="lesson-content">
+            <h3 id="p1-intro">Що робимо сьогодні</h3>
+
+            <p>
+              У тебе вже є вікно "Словника" з усіма віджетами, але кнопки ще
+              нічого не роблять. Сьогодні додамо логіку: слова будуть
+              додаватися, видалятися та зберігатися у файл.
+            </p>
+
+            <p>
+              Кожну функцію робимо за однією схемою:
+              <span class="accent">написати</span> →
+              <span class="accent">перевірити</span> →
+              <span class="accent">покращити</span>. Спочатку пишемо просту
+              версію, яка вже працює, а потім додаємо перевірки та повідомлення,
+              щоб програмою було зручно користуватися.
+            </p>
+
+            <hr />
+
+            <h3 id="p1-focus">Фокус на полі вводу</h3>
+
+            <p>
+              Щоб курсор одразу блимав у полі вводу при відкритті програми і
+              можна було друкувати, не клікаючи по ньому мишкою, використовують
+              метод
+              <span class="accent-string">focus()</span>:
+            </p>
+
+            <pre><code class="language-python">entry = Entry(row1, width=25, font=("Arial", 14))
+entry.pack(padx=10, side=LEFT)
+entry.focus()</code></pre>
+
+            <!-- Завдання 1 -->
+            <details class="task" name="l23-p1">
+              <summary><h4>Завдання 1: Доробляємо інтерфейс</h4></summary>
+              <div>
+                <ol>
+                  <li>
+                    Над рамкою з полем вводу і кнопкою
+                    <span class="accent">Add</span> додай
+                    <span class="accent-string">Label</span> з інструкцією у два
+                    рядки:
+                    <span class="accent-string"
+                      >"Enter: ENG word - UKR translation"</span
+                    >
+                    і
+                    <span class="accent-string"
+                      >"(наприклад: hello - привіт)"</span
+                    >. Для переходу на новий рядок використай
+                    <span class="accent-string">\n</span>. Віджети з'являються у
+                    тому порядку, в якому їх розміщено через
+                    <span class="accent-string">pack()</span>, тому цей
+                    <span class="accent-string">Label</span> треба створити
+                    <span class="bold">перед</span>
+                    <span class="accent-string">Frame</span>.
+                  </li>
+                  <li>
+                    Заміни напис
+                    <span class="accent-string">"Words: 0"</span> на
+                    <span class="bold">порожній</span>
+                    <span class="accent-string">Label</span> з назвою
+                    <span class="accent-string">messages</span> (<span
+                      class="accent-string"
+                      >text=""</span
+                    >). У ньому виводитимуться повідомлення для користувача.
+                    Колір тексту задамо пізніше.
+                  </li>
+                  <li>
+                    Додай <span class="accent-string">entry.focus()</span> і
+                    перевір, що після запуску курсор одразу стоїть у полі вводу.
+                  </li>
+                </ol>
+
+                <img src="./images/lesson23/23-1.png" alt="expected result" />
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- 🍓 PART 2: Додавання -->
+      <section id="part-2" class="lesson-wrapper tab-content">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img
+                src="../media/icons/strawberry.svg"
+                class="star"
+                alt="strawberry"
+              />
+              <span>Додавання слова</span>
+            </h2>
+          </div>
+
+          <div class="lesson-content">
+            <h3 id="p2-msg">Функція для повідомлень</h3>
+
+            <p>
+              Після кожної дії програма має щось сказати користувачу, наприклад,
+              показати зелене повідомлення
+              <span class="italic">"Word added"</span> або червоне – про
+              помилку. Але якщо щоразу писати
+              <span class="accent-string"
+                >messages.config(text="Word added", fg="green")</span
+              >, але з різним текстом, отримаємо багато повторень майже
+              однакового коду, і це не дуже добре. Краще створити
+              <span class="bold">одну функцію</span> для всіх повідомлень:
+            </p>
+
+            <pre><code class="language-python">def display_message(msg, color="black"):
+    messages.config(text=msg, fg=color)</code></pre>
+
+            <ul>
+              <li>
+                <span class="accent-string">msg</span> — текст повідомлення;
+              </li>
+              <li>
+                <span class="accent-string">clr</span> — колір тексту. Запис
+                <span class="accent-string">color="black"</span> означає
+                <span class="bold">значення за замовчуванням</span>: якщо колір
+                не передати, текст буде чорним.
+              </li>
+            </ul>
+
+            <pre><code class="language-python">display_message("Word added", "green")  # зелений текст
+display_message("Enter a word first", "red")  # червоний текст
+display_message("Hello")  # чорний (за замовчуванням)</code></pre>
+
+            <!-- Завдання 2 -->
+            <details class="task" name="l23-p2">
+              <summary><h4>Завдання 2: Функція display_message</h4></summary>
+              <div>
+                <ol>
+                  <li>
+                    Напиши функцію
+                    <span class="accent-string">display_message</span> одразу
+                    після <span class="accent-string">Label messages</span>.
+                  </li>
+                  <li>
+                    <span class="bold">Перевір:</span> тимчасово додай перед
+                    <span class="accent-string">window.mainloop()</span> рядок
+                    <span class="accent-string"
+                      >display_message("Test", "green")</span
+                    >, запусти програму і переконайся, що з'явився зелений
+                    напис. Потім видали цей тестовий рядок.
+                  </li>
+                </ol>
+              </div>
+            </details>
+
+            <hr />
+
+            <h3 id="p2-add">Додавання слова</h3>
+
+            <p>
+              Тепер напишемо функцію
+              <span class="accent-string">add_word()</span> для кнопки
+              <span class="accent">Add</span>. Спочатку проста версія без
+              перевірок.
+            </p>
+
+            <!-- Завдання 3 -->
+            <details class="task" name="l23-p2">
+              <summary><h4>Завдання 3: Додавання слова</h4></summary>
+              <div>
+                <p>
+                  Функція <span class="accent-string">add_word()</span> має:
+                </p>
+                <ol>
+                  <li>
+                    взяти текст із <span class="accent-string">entry</span> і
+                    прибрати зайві пробіли (<span class="accent-string"
+                      >strip()</span
+                    >);
+                  </li>
+                  <li>
+                    додати слово в кінець
+                    <span class="accent-string">Listbox</span>;
+                  </li>
+                  <li>очистити поле вводу;</li>
+                  <li>
+                    вивести зеленим повідомлення
+                    <span class="accent-string">"Word added"</span>.
+                  </li>
+                </ol>
+
+                <p>
+                  <span class="bold">Перевір:</span> додай кілька слів,
+                  наприклад
+                  <span class="accent-string">"hello - привіт"</span> і
+                  <span class="accent-string">"cat - кіт"</span>. Слова
+                  з'являються у списку, поле очищується, видно зелене
+                  повідомлення. (Поки що можна додати й порожній рядок, і слово
+                  без перекладу — це виправимо в додатковому завданні.)
+                </p>
+
+                <img src="./images/lesson23/23-2.png" alt="expected result" />
+              </div>
+            </details>
+
+            <hr />
+
+            <h3 id="p2-enter">Клавіша Enter замість кнопки</h3>
+
+            <p>
+              Зручніше додавати слово, просто натиснувши
+              <span class="accent">Enter</span>. Для цього є метод
+              <span class="accent-string">bind()</span>:
+            </p>
+
+            <pre><code class="language-python">entry.bind("&lt;Return&gt;", lambda event: my_function())</code></pre>
+
+            <ul>
+              <li>
+                <span class="accent-string">bind(подія, функція)</span> — "коли
+                станеться подія, виклич функцію";
+              </li>
+              <li>
+                <span class="accent-string">"&lt;Return&gt;"</span> — подія
+                "натиснули Enter";
+              </li>
+              <li>
+                Tkinter передає у функцію аргумент
+                <span class="accent-string">event</span> (інформацію про подію),
+                а функція
+                <span class="accent-string">my_function()</span> нічого не
+                приймає. Тому використовуємо
+                <span class="accent-string">lambda</span> — коротку функцію без
+                назви:
+                <span class="accent-string">lambda event: my_function()</span>
+                означає "прийми <span class="accent-string">event</span> і
+                виклич <span class="accent-string">my_function()</span>".
+              </li>
+            </ul>
+
+            <p>
+              Такий рядок можна розмістити відразу після створення віджета
+              <span class="accent-string">Entry</span>, навіть якщо функцію
+              створено нижче: код усередині
+              <span class="accent-string">lambda</span> виконається лише тоді,
+              коли користувач натисне Enter.
+            </p>
+
+            <!-- Завдання 4 -->
+            <details class="task" name="l23-p2">
+              <summary><h4>Завдання 4: Додавання клавішею Enter</h4></summary>
+              <div>
+                <p>
+                  Додай <span class="accent-string">bind()</span> для поля
+                  вводу.
+                </p>
+                <p>
+                  <span class="bold">Перевір:</span> слово додається по Enter.
+                </p>
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- 🍋 PART 3: Видалення -->
+      <section id="part-3" class="lesson-wrapper tab-content">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img src="../media/icons/lemon.svg" class="star" alt="lemon" />
+              <span>Видалення слова</span>
+            </h2>
+          </div>
+
+          <div class="lesson-content">
+            <h3 id="p3-methods">Методи Listbox</h3>
+
+            <div class="tablecontainer">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Команда</th>
+                    <th>Що робить</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <span class="accent-string">.insert(END, "text")</span>
+                    </td>
+                    <td>додає рядок у кінець списку</td>
+                  </tr>
+                  <tr>
+                    <td><span class="accent-string">.delete(index)</span></td>
+                    <td>видаляє один рядок за індексом</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span class="accent-string">.delete(0, END)</span>
+                    </td>
+                    <td>
+                      видаляє <span class="bold">всі</span> рядки (очищає
+                      список)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><span class="accent-string">.size()</span></td>
+                    <td>повертає кількість рядків</td>
+                  </tr>
+                  <tr>
+                    <td><span class="accent-string">.get(0, END)</span></td>
+                    <td>
+                      повертає кортеж з <span class="bold">усіма</span> рядками
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p>Видалення вибраного рядка:</p>
+            <pre><code class="language-python">selected = words.curselection()  # наприклад, (2,)
+index = selected[0]  # 2
+words.delete(index)</code></pre>
+
+            <p>
+              Нагадування: якщо нічого не вибрано,
+              <span class="accent-string">curselection()</span> поверне порожній
+              кортеж <span class="accent-string">()</span>, і
+              <span class="accent-string">selected[0]</span> дасть помилку. Тому
+              спочатку перевіряємо
+              <span class="accent-string">len(selected)</span>.
+            </p>
+
+            <!-- Завдання 5 -->
+            <details class="task" name="l23-p3">
+              <summary><h4>Завдання 5: Видалення слова</h4></summary>
+              <div>
+                <p>
+                  Напиши функцію
+                  <span class="accent-string">delete_word()</span> для кнопки
+                  <span class="accent">Delete selected</span>. Вона має:
+                </p>
+                <ol>
+                  <li>отримати індекси вибраних рядків;</li>
+                  <li>
+                    якщо щось вибрано — видалити перший вибраний рядок і вивести
+                    зеленим <span class="accent-string">"Word deleted"</span>.
+                  </li>
+                </ol>
+                <p>
+                  <span class="bold">Перевір:</span> додай кілька слів, виділи
+                  одне і видали його.
+                </p>
+
+                <div class="image-gallery3">
+                  <img
+                    style="height: 250px"
+                    src="./images/lesson23/23-3.png"
+                    alt="expected result"
+                  />
+                  <img
+                    style="height: 250px"
+                    src="./images/lesson23/23-4.png"
+                    alt="expected result"
+                  />
+                </div>
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- 🍇 PART 4: Збереження -->
+      <section id="part-4" class="lesson-wrapper tab-content">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img src="../media/icons/grapes.svg" class="star" alt="grapes" />
+              <span>Збереження у файл</span>
+            </h2>
+          </div>
+
+          <div class="lesson-content">
+            <h3>Збереження у файл</h3>
+
+            <p>
+              Слова, які зникають після закриття програми, не дуже корисні. Щоб
+              їх зберігати, потрібно дві речі:
+              <span class="bold">місце і назва для файлу</span> (їх обирає
+              користувач) і <span class="bold">запис даних у файл</span>.
+            </p>
+
+            <p>
+              Вікно для вибору місця й назви файлу вміє показувати модуль
+              <span class="accent-string">filedialog</span>. Його потрібно
+              імпортувати окремо, бо рядок
+              <span class="accent-string">from tkinter import *</span> його не
+              підключає:
+            </p>
+
+            <pre><code class="language-python">from tkinter import *
+from tkinter import filedialog</code></pre>
+
+            <p>
+              Функція
+              <span class="accent-string">asksaveasfilename()</span> відкриває
+              вікно "Зберегти як..." і повертає шлях до файлу, який обрав
+              користувач:
+            </p>
+
+            <pre><code class="language-python">filepath = filedialog.asksaveasfilename(
+    defaultextension=".json",
+    filetypes=[("JSON files", "*.json"), ("All files", "*.*")],
+)
+print(filepath)  # наприклад, C:/Users/Anna/Documents/words.json</code></pre>
+
+            <ul>
+              <li>
+                <span class="accent-string">defaultextension</span>: додає
+                закінчення <span class="accent-string">.json</span> до назви
+                файлу, якщо користувач сам його не написав.
+              </li>
+              <li>
+                <span class="accent-string">filetypes</span>: список типів
+                файлів у вікні. Кожен тип — це пара
+                <span class="accent-string">(опис, шаблон)</span>.
+              </li>
+            </ul>
+
+            <img src="./images/lesson23/23-5.png" alt="expected result" />
+
+            <p>
+              Якщо користувач закрив вікно або натиснув
+              <span class="italic">Cancel</span>, функція поверне порожній рядок
+              <span class="accent-string">""</span>. Тому перед записом даних у
+              файл треба перевірити, що шлях до файлу не порожній.
+            </p>
+
+            <p>Як зберегти дані у JSON-файл:</p>
+
+            <pre><code class="language-python">import json
+
+if filepath:
+    with open(filepath, "w", encoding="utf-8") as file:
+        json.dump(content, file, ensure_ascii=False, indent=2)</code></pre>
+
+            <p>
+              Тут <span class="accent-string">"w"</span> означає запис у файл,
+              <span class="accent-string">encoding="utf-8"</span> та
+              <span class="accent-string">ensure_ascii=False</span> потрібні,
+              щоб українські літери збереглися читабельно, а
+              <span class="accent-string">indent=2</span> робить красиві
+              відступи у файлі. Блок <span class="accent-string">with</span> сам
+              закриє файл після запису.
+            </p>
+
+            <!-- Завдання 6 -->
+            <details class="task" name="l23-p4">
+              <summary><h4>Завдання 6: Збереження слів</h4></summary>
+              <div>
+                <p>
+                  Напиши функцію
+                  <span class="accent-string">save_words()</span> для кнопки
+                  <span class="accent">Save words to JSON</span>. Вона має:
+                </p>
+                <ol>
+                  <li>
+                    отримати всі слова з
+                    <span class="accent-string">Listbox</span> (<span
+                      class="accent-string"
+                      >.get(0, END)</span
+                    >);
+                  </li>
+                  <li>
+                    відкрити вікно збереження (<span class="accent-string"
+                      >asksaveasfilename</span
+                    >) з розширенням <span class="accent-string">.json</span>;
+                  </li>
+                  <li>
+                    якщо шлях до файлу обрано — записати слова у файл за
+                    допомогою <span class="accent-string">json.dump()</span> і
+                    вивести зеленим
+                    <span class="accent-string">"Saved 3 words"</span>
+                    (кількість має бути справжньою: використай f-рядок і
+                    <span class="accent-string">len()</span>).
+                  </li>
+                </ol>
+
+                <p>
+                  <span class="bold">Перевір:</span> додай кілька слів, збережи
+                  їх і відкрий створений файл у VS Code. Українські літери мають
+                  бути читабельними.
+                </p>
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- ⭐ PART 5: Додатково -->
+      <section id="part-5" class="lesson-wrapper tab-content">
+        <div class="lesson-block">
+          <div class="lesson-header">
+            <h2>
+              <img
+                src="../media/icons/carambola.svg"
+                class="star"
+                alt="carambola"
+              />
+              <span>Додаткові завдання</span>
+            </h2>
+          </div>
+
+          <div class="lesson-content">
+            <h3 id="p5-extra">Додаткові завдання</h3>
+            <p>
+              Ці завдання <span class="bold">додаткові</span>: програма вже
+              працює і без них, але з ними нею зручніше користуватися.
+            </p>
+
+            <hr />
+
+            <h3 id="p5-check">Перевірка введення</h3>
+
+            <p>
+              Користувач може ввести що завгодно: нічого, слово без перекладу чи
+              те саме слово двічі. Перевіряємо кожен випадок за допомогою
+              <span class="accent-string">if / elif / else</span>. Спрацює лише
+              <span class="bold">перша</span> умова, яка виконується, або
+              <span class="accent-string">else</span>, якщо жодна не підійшла.
+            </p>
+
+            <pre><code class="language-python">if ...:  # умова 1
+    display_message("...", "red")
+elif ...:  # умова 2
+    display_message("...", "red")
+else:
+    # усе гаразд, додаємо слово</code></pre>
+
+            <p>Що знадобиться для умов:</p>
+            <ul>
+              <li>
+                <span class="accent-string">not word</span> — рядок порожній
+                (або <span class="accent-string">word == ""</span>);
+              </li>
+              <li>
+                <span class="accent-string">" - " not in word</span> — у слові
+                немає розділювача
+                <span class="accent-string">" - "</span> (пробіл, дефіс,
+                пробіл);
+              </li>
+              <li>
+                <span class="accent-string">word in words.get(0, END)</span> —
+                таке слово вже є у списку.
+                <span class="accent-string">.get(0, END)</span> повертає кортеж
+                зі <span class="bold">всіма</span> рядками
+                <span class="accent-string">Listbox</span>.
+              </li>
+            </ul>
+
+            <!-- Завдання 1 -->
+            <details class="task" name="l23-p5">
+              <summary>
+                <h4>Додаткове завдання 1: Перевірка введення при додаванні</h4>
+              </summary>
+              <div>
+                <p>
+                  Додай у <span class="accent-string">add_word()</span> три
+                  перевірки. Усі повідомлення <span class="bold">червоні</span>:
+                </p>
+                <ul>
+                  <li>
+                    слово порожнє —
+                    <span class="accent-string">"Enter a word first"</span>;
+                  </li>
+                  <li>
+                    немає розділювача <span class="accent-string">" - "</span> —
+                    <span class="accent-string"
+                      >"Use format: word - translation"</span
+                    >;
+                  </li>
+                  <li>
+                    слово вже є у списку —
+                    <span class="accent-string"
+                      >"This word is already in the list"</span
+                    >.
+                  </li>
+                </ul>
+                <p>
+                  Якщо всі перевірки пройдено — додаємо слово, як у попередньому
+                  завданні.
+                </p>
+                <p>
+                  <span class="bold">Перевір:</span> по черзі спробуй кожну
+                  помилку і одне правильне слово.
+                </p>
+
+                <div class="image-gallery3">
+                  <img
+                    style="height: 250px"
+                    src="./images/lesson23/23-6.png"
+                    alt="expected result"
+                  />
+                  <img
+                    style="height: 250px"
+                    src="./images/lesson23/23-7.png"
+                    alt="expected result"
+                  />
+                </div>
+              </div>
+            </details>
+
+            <!-- Завдання 2 -->
+            <details class="task" name="l23-p5">
+              <summary>
+                <h4>Додаткове завдання 2: Повідомлення при видаленні</h4>
+              </summary>
+              <div>
+                <p>
+                  При натисканні кнопки для видалення слова, якщо нічого не
+                  вибрано, має вивестися червоне повідомлення
+                  <span class="accent-string">"Select a word to delete"</span>.
+                </p>
+                <p>
+                  <span class="bold">Перевір:</span> натисни кнопку при
+                  порожньому списку та коли слова є, але жодне не вибране.
+                </p>
+              </div>
+            </details>
+
+            <hr />
+
+            <h3 id="p5-save">Збереження: перевірки</h3>
+
+            <p>Як зупинити функцію, якщо немає що зберігати:</p>
+
+            <pre><code class="language-python">def save():
+    # ...
+    if not content:
+        # тут можна змінити текст у Label
+        return
+
+    # далі пишемо код без else</code></pre>
+
+            <!-- Завдання 3 -->
+            <details class="task" name="l23-p5">
+              <summary>
+                <h4>Додаткове завдання 3: Перевірки при збереженні</h4>
+              </summary>
+              <div>
+                <ul>
+                  <li>
+                    Якщо список слів порожній, виведи червоним
+                    <span class="accent-string">"The list is empty"</span> і
+                    зупини функцію (<span class="accent-string">return</span>)
+                    ще до відкриття вікна збереження.
+                  </li>
+                  <li>
+                    Якщо користувач закрив вікно або натиснув
+                    <span class="italic">Cancel</span>, виведи сірим
+                    <span class="accent-string">"Save canceled"</span>.
+                  </li>
+                </ul>
+                <p>
+                  <span class="bold">Перевір:</span> збереження порожнього
+                  списку, збереження зі скасуванням і звичайне збереження.
+                </p>
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!--
+      ==================== ВІДПОВІДІ (ЛИШЕ ДЛЯ ВЧИТЕЛЯ) ====================
+
+      # ОСНОВНІ ЗАВДАННЯ
+
+      # Завдання 1 (інтерфейс)
+      instructions = Label(
+          window,
+          text="Enter: ENG word - UKR translation\n(наприклад: hello - привіт)",
+          font=("Arial", 14),
+          bg=BG,
+      )
+      instructions.pack(pady=(15, 5))   # перед row1
+
+      messages = Label(window, text="", font=("Arial", 14), bg=BG)
+      messages.pack(pady=15)            # замість "Words: 0"
+
+      entry.focus()                     # після entry.pack(...)
+
+      # Завдання 2
+      def display_message(msg, clr="black"):
+          messages.config(text=msg, fg=clr)
+
+      # Завдання 3 (додавання)
+      def add_word():
+          word = entry.get().strip()
+          words.insert(END, word)
+          entry.delete(0, END)
+          display_message("Word added", "green")
+
+      # Завдання 4 (Enter)
+      entry.bind("<Return>", lambda event: add_word())
+
+      # Завдання 5 (видалення)
+      def delete_word():
+          selected = words.curselection()
+          if len(selected) > 0:
+              index = selected[0]
+              words.delete(index)
+              display_message("Word deleted", "green")
+
+      # Завдання 6 (збереження)
+      def save_words():
+          all_words = words.get(0, END)
+          filepath = filedialog.asksaveasfilename(
+              defaultextension=".json",
+              filetypes=[("JSON files", "*.json"), ("All files", "*.*")],
+          )
+          if filepath != "":
+              with open(filepath, "w", encoding="utf-8") as file:
+                  json.dump(all_words, file, ensure_ascii=False, indent=2)
+              display_message(f"Saved {len(all_words)} words", "green")
+
+      # ДОДАТКОВІ ЗАВДАННЯ
+
+      # Додаткове 1 (перевірки в add_word)
+      def add_word():
+          word = entry.get().strip()
+
+          if not word:
+              display_message("Enter a word first", "red")
+          elif " - " not in word:
+              display_message("Use format: word - translation", "red")
+          elif word in words.get(0, END):
+              display_message("This word is already in the list", "red")
+          else:
+              words.insert(END, word)
+              entry.delete(0, END)
+              display_message("Word added", "green")
+
+      # Додаткове 2 (повідомлення при видаленні)
+      def delete_word():
+          selected = words.curselection()
+
+          if len(selected) == 0:
+              display_message("Select a word to delete", "red")
+          else:
+              index = selected[0]
+              words.delete(index)
+              display_message("Word deleted", "green")
+
+      # Додаткове 3 (перевірки при збереженні)
+      def save_words():
+          all_words = words.get(0, END)
+
+          if len(all_words) == 0:
+              display_message("The list is empty", "red")
+              return
+
+          filepath = filedialog.asksaveasfilename(
+              defaultextension=".json",
+              filetypes=[("JSON files", "*.json"), ("All files", "*.*")],
+          )
+
+          if filepath != "":
+              with open(filepath, "w", encoding="utf-8") as file:
+                  json.dump(all_words, file, ensure_ascii=False, indent=2)
+              display_message(f"Saved {len(all_words)} words", "green")
+          else:
+              display_message("Save canceled", "gray")
+
+      # Порядок у файлі (як у фінальному коді): імпорти, BG, window, instructions, row1,
+      # entry (+ focus, bind), add_word, add_btn, words, delete_word, delete_btn,
+      # save_words, save_btn, messages, display_message, mainloop.
+    -->
+
+    <footer>
+      <p>🌷 🍓 🌿 Made by Olena Hapchyna 🌿 🍓 🌷</p>
+
+      <div class="footer-credits">
+        <span
+          >Fruit icons by
+          <a
+            href="https://www.svgrepo.com/collection/fruits-vectors/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >An Nguyen</a
+          ></span
+        >
+        |
+        <a href="../credits.html" target="_blank">Credits &amp; Licenses</a>
+      </div>
+    </footer>
+
+    <button
+      id="scrollToTopBtn"
+      class="scroll-to-top"
+      aria-label="Scroll to top"
+    >
+      <img src="../media/icons/apple.svg" />
+    </button>
+  </body>
+</html>
