@@ -281,7 +281,7 @@ entry.focus()</code></pre>
                 <span class="accent-string">msg</span> — текст повідомлення;
               </li>
               <li>
-                <span class="accent-string">clr</span> — колір тексту. Запис
+                <span class="accent-string">color</span> — колір тексту. Запис
                 <span class="accent-string">color="black"</span> означає
                 <span class="bold">значення за замовчуванням</span>: якщо колір
                 не передати, текст буде чорним.
@@ -677,7 +677,7 @@ if filepath:
             <h3 id="p5-extra">Додаткові завдання</h3>
             <p>
               Ці завдання <span class="bold">додаткові</span>: програма вже
-              працює і без них, але з ними нею зручніше користуватися.
+              працює і без них, але з ними вона зручніша.
             </p>
 
             <hr />
@@ -854,8 +854,8 @@ else:
       entry.focus()                     # після entry.pack(...)
 
       # Завдання 2
-      def display_message(msg, clr="black"):
-          messages.config(text=msg, fg=clr)
+      def display_message(msg, color="black"):
+          messages.config(text=msg, fg=color)
 
       # Завдання 3 (додавання)
       def add_word():
